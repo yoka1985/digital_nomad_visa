@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Map with Visa Data</title>
+    <style>
+        svg { width: 100%; height: 600px; }
+        body { margin: 0; padding: 0; }
+        .legend { position: absolute; top: 50px; right: 10px; background: white; padding: 10px; border: 1px solid #ccc; }
+        .filter { position: absolute; top: 50px; left: 10px; }
+        .title { position: absolute; top: 10px; left: 10px; font-size: 18px; font-weight: bold; z-index: 1000; }
+        select { padding: 5px; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="title" id="mapTitle">Visa Duration (Months)</div>
+    <div class="filter">
+        <label for="filterSelect">Filter by: </label>
+        <select id="filterSelect">
+            <option value="duration_months">Duration (Months)</option>
+            <option value="min_income_usd">Min Income (USD)</option>
+        </select>
+    </div>
+    <div id="map"></div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
+    <script>
+        // Provided JSON data
+        const visaData = [
+            { "country": "Albania", "visa_name": "Albania Digital Nomad Visa", "min_income_usd": 11000, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Albania introduced its Digital Nomad Visa (officially called the \"Unique Permit\") in 2022. This permit is initially valid for 1 year and can be renewed for up to a total of 5 years. Albania offers dig..." },
+            { "country": "Andorra", "visa_name": "Andorra Digital Nomad Visa", "min_income_usd": 2750, "duration_months": 24, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Andorra's Digital Nomad Visa, officially announced in December 2022, opened for applications in mid-2023. The visa is valid for 2 years, with options to renew for another 2 years, then 3 years, and fi..." },
+            { "country": "Armenia", "visa_name": "Armenia Digital Nomad Visa", "min_income_usd": null, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Launched in 2022, Armenia's Digital Nomad Visa offers two options: a temporary residence permit valid for 1 year with the possibility of renewal, or a permanent residence permit. The main requirement ..." },
+            { "country": "Croatia", "visa_name": "Croatia Digital Nomad Visa", "min_income_usd": 3000, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Croatia's Digital Nomad Visa was officially launched in 2021, allowing non-EU/EEA citizens to stay in the country for up to 1 year, with the option to reapply after a 6-month waiting period. Successfu..." },
+            { "country": "Cyprus", "visa_name": "Cyprus Digital Nomad Visa", "min_income_usd": 4180, "duration_months": 24, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Cyprus opened applications for its Digital Nomad Visa in 2025, allowing UK and non-EU citizens to work remotely on the island for up to 12 months, with an option to renew for an additional 2 years. In..." },
+            { "country": "Estonia", "visa_name": "Estonia Digital Nomad Visa", "min_income_usd": 4400, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Estonia, known for its pioneering e-residency program for foreign entrepreneurs with EU-based businesses, launched the world’s first official Digital Nomad Visa in August 2020. This visa offers two op..." },
+            { "country": "Finland", "visa_name": "Finland Digital Nomad Visa", "min_income_usd": 1430, "duration_months": 48, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "While Finland does not offer a dedicated digital nomad visa, EU/EEA citizens can work remotely there for up to 3 months, while non-EU citizens could instead use Finland's Self-Employment Visa. This pe..." },
+            { "country": "France", "visa_name": "France Digital Nomad Visa", "min_income_usd": 1980, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "France does not currently have a specific digital nomad visa. However, their Profession Libérale Visa is a suitable option for digital nomads, as it allows self-employed individuals, such as freelance..." },
+            { "country": "Germany", "visa_name": "Germany Digital Nomad Visa", "min_income_usd": 9900, "duration_months": 36, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Germany's freelance visa, officially called the \"Aufenthaltserlaubnis für selbständige Tätigkeit\", is a residency permit that allows foreign freelancers and self-employed individuals to live in German..." },
+            { "country": "Greece", "visa_name": "Greece Digital Nomad Visa", "min_income_usd": 3850, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Since September 2021, Greece has offered its own digital nomad visa allowing digital nomads to stay in the country for 1 year, for a maximum stay of 2 years. Applicants staying longer than 2 years are..." }
+        ];
+
+        // Define categories and colors
+        const categories = {
+            duration_months: [
+                { range: '≤12', value: 12, color: 'red' },
+                { range: '13–24', value: 24, color: 'orange' },
+                { range: '25–36', value: 36, color: 'yellow' },
+                { range: '37–48', value: 48, color: 'green' },
+                { range: '>48', value: Infinity, color: 'blue' }
+            ],
+            min_income_usd: [
+                { range: '≤2000', value: 2000, color: 'red' },
+                { range: '2001–4000', value: 4000, color: 'orange' },
+                { range: '4001–6000', value: 6000, color: 'yellow' },
+                { range: '6001–10000', value: 10000, color: 'green' },
+                { range: '>10000', value: Infinity, color: 'blue' }
+            ]
+        };
+
+        // Current filter
+        let currentFilter = 'duration_months';
+
+        // Set up SVG
+        const width = 960, height = 600;
+        const svg = d3.select('#map').append('svg')
+            .attr('width', width)
+            .attr('height', height);
+
+        const projection = d3.geoNaturalEarth1()
+            .scale(150)
+            .translate([width / 2, height / 2]);
+        const path = d3.geoPath().projection(projection);
+
+        // Zoom behavior
+        const zoom = d3.zoom()
+            .scaleExtent([1, 8])
+            .on('zoom', function(event) {
+                svg.selectAll('path').attr('transform', event.transform);
+            });
+        svg.call(zoom);
+
+        // Load TopoJSON data
+        d3.json('https://unpkg.com/world-atlas@2.0.2/countries-110m.json').then(function(topoData) {
+            const geoData = topojson.feature(topoData, topoData.objects.countries);
+
+            // Draw map
+            const paths = svg.selectAll('path')
+                .data(geoData.features)
+                .enter().append('path')
+                .attr('d', path)
+                .attr('stroke', 'black')
+                .attr('stroke-width', 1);
+
+            // Style function
+            function updateStyles() {
+                paths.attr('fill', d => {
+                    const countryData = visaData.find(c => c.country === d.properties.name);
+                    if (countryData && countryData[currentFilter] !== null) {
+                        const value = countryData[currentFilter];
+                        for (let cat of categories[currentFilter]) {
+                            if (value <= cat.value) return cat.color;
+                        }
+                    }
+                    return '#d3d3d3';
+                });
+            }
+
+            // Initial styling
+            updateStyles();
+
+            // Add popups
+            paths.on('click', function(event, d) {
+                const countryData = visaData.find(c => c.country === d.properties.name);
+                if (countryData && countryData.duration_months !== null && countryData.min_income_usd !== null) {
+                    const popup = document.createElement('div');
+                    popup.style.position = 'absolute';
+                    popup.style.background = 'white';
+                    popup.style.border = '1px solid #ccc';
+                    popup.style.padding = '10px';
+                    popup.style.zIndex = '1000';
+                    popup.innerHTML = `<b>${d.properties.name}</b><br>` +
+                                      `Visa: ${countryData.visa_name}<br>` +
+                                      `Duration: ${countryData.duration_months} months<br>` +
+                                      `Min Income: $${countryData.min_income_usd || 'N/A'}`;
+                    const coords = d3.pointer(event, svg.node());
+                    popup.style.left = coords[0] + 'px';
+                    popup.style.top = coords[1] + 'px';
+                    document.body.appendChild(popup);
+                    setTimeout(() => popup.remove(), 3000);
+                }
+            });
+
+            // Add legend
+            const legend = svg.append('g')
+                .attr('class', 'legend')
+                .attr('transform', 'translate(860, 40)');
+
+            function updateLegend() {
+                legend.selectAll('*').remove();
+                legend.append('text')
+                    .attr('x', 0)
+                    .attr('y', 0)
+                    .text(currentFilter === 'duration_months' ? 'Duration (Months)' : 'Min Income (USD)')
+                    .style('font-weight', 'bold');
+                categories[currentFilter].forEach((cat, i) => {
+                    legend.append('rect')
+                        .attr('x', 0)
+                        .attr('y', 20 + i * 20)
+                        .attr('width', 18)
+                        .attr('height', 18)
+                        .style('fill', cat.color);
+                    legend.append('text')
+                        .attr('x', 24)
+                        .attr('y', 32 + i * 20)
+                        .text(cat.range);
+                });
+            }
+            updateLegend();
+
+            // Update on filter change
+            d3.select('#filterSelect').on('change', function() {
+                currentFilter = this.value;
+                updateStyles();
+                updateLegend();
+                d3.select('#mapTitle').text(currentFilter === 'duration_months' ? 'Visa Duration (Months)' : 'Minimum Income (USD)');
+            });
+        });
+    </script>
+</body>
+</html>
