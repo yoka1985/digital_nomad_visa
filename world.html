@@ -201,6 +201,20 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
     <script>
+        // Provided JSON data with added bureaucracy field
+        const visaData = [
+            { "country": "Albania", "visa_name": "Albania Digital Nomad Visa", "min_income_usd": 11000, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "bureaucracy": 2, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Albania introduced its Digital Nomad Visa (officially called the \"Unique Permit\") in 2022. This permit is initially valid for 1 year and can be renewed for up to a total of 5 years." },
+            { "country": "Andorra", "visa_name": "Andorra Digital Nomad", "min_income_usd": 2750, "duration_months": 24, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "bureaucracy": 2, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Andorra's Digital Nomad Visa, officially announced in December 2022, opened for applications in mid-2023." },
+            { "country": "Armenia", "visa_name": "Armenia Digital Nomad Visa", "min_income_usd": null, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee"], "bureaucracy": 3, "application_link": null, "source_url": "https://freakingnomads.com/", "notes": "Launched in 2022, Armenia’s Digital Nomad Visa offers two options: a temporary residence permit valid for 1 year." },
+            { "country": "Croatia", "visa_name": "Croatia Digital Nomad Visa", "min_income_usd": 3000, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "bureaucracy": 1, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Croatia’s Digital Nomad Visa was officially launched in 2021." },
+            { "country": "Cyprus", "visa_name": "Cyprus Digital Nomad Visa", "min_income_usd": 4180, "duration_months": 24, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "bureaucracy": 1, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Cyprus opened applications for its Digital Nomad Visa in 2025." },
+            { "country": "Estonia", "visa_name": "Estonia Digital Nomad Visa", "min_income_usd": 4400, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "bureaucracy": 2, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Estonia, known for its pioneering e-residency program, launched the world’s first official Digital Nomad Visa." },
+            { "country": "Finland", "visa_name": "Finland Digital Nomad Visa", "min_income_usd": 1430, "duration_months": 48, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "bureaucracy": 2, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "While Finland does not offer a dedicated digital nomad visa, it allows remote workers to stay under certain conditions." },
+            { "country": "France", "visa_name": "France Digital Nomad Visa", "min_income_usd": 1980, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "bureaucracy": 1, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "France does not currently have a specific digital nomad visa but allows remote work under existing visa schemes." },
+            { "country": "Germany", "visa_name": "Germany Digital Nomad Visa", "min_income_usd": 9900, "duration_months": 36, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "bureaucracy": 1, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Germany’s freelance visa, officially called the Freiberufler visa, supports digital nomads." },
+            { "country": "Greece", "visa_name": "Greece Digital Nomad Visa", "min_income_usd": 3850, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "bureaucracy": 1, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Since September 2022, Greece has offered its own digital nomad visa with attractive conditions." }
+        ];
+
         // Define categories and colors
         const categories = {
             duration_months: [
@@ -269,11 +283,8 @@
             });
         svg.call(zoom);
 
-        // Load data and TopoJSON
-        Promise.all([
-            d3.json('/data/data_v1.json'),
-            d3.json('https://unpkg.com/world-atlas@2.0.2/countries-110m.json')
-        ]).then(function([visaData, topoData]) {
+        // Load TopoJSON data
+        d3.json('https://unpkg.com/world-atlas@2.0.2/countries-110m.json').then(function(topoData) {
             const geoData = topojson.feature(topoData, topoData.objects.countries);
 
             // Draw map
@@ -388,7 +399,7 @@
             // Add legend
             const legend = svg.append('g')
                 .attr('class', 'legend')
-                .attr('transform', `translate(${width - 140}, 8)`);
+                .attr('transform', `translate(${width - 140}, 40)`);
 
             function updateLegend() {
                 legend.selectAll('*').remove();
@@ -397,7 +408,7 @@
                     .attr('y', 0)
                     .text({
                         duration_months: 'Duration (Months)',
-                        min_income_usd: 'USD Income',
+                        min_income_usd: 'Min Income (USD)',
                         bureaucracy: 'Bureaucracy Level',
                         remote_work_proof_required: 'Remote Work Proof',
                         employment_type: 'Employment Type'
@@ -415,3 +426,50 @@
                         .attr('height', 20)
                         .style('fill', cat.color)
                         .on('mouseover', function() {
+                            d3.select('.legend-tooltip').remove();
+                            svg.append('text')
+                                .attr('class', 'legend-tooltip')
+                                .attr('x', width - 140)
+                                .attr('y', 24 + i * 24 - 12)
+                                .text(cat.desc)
+                                .style('visibility', 'visible');
+                        })
+                        .on('mouseout', function() {
+                            d3.select('.legend-tooltip').remove();
+                        });
+                    group.append('text')
+                        .attr('x', 28)
+                        .attr('y', 16)
+                        .text(cat.range)
+                        .style('font-size', '0.9rem')
+                        .style('fill', '#e2e8f0');
+                });
+            }
+            updateLegend();
+
+            // Update on filter or nationality change
+            d3.select('#filterSelect').on('change', function() {
+                currentFilter = this.value;
+                updateStyles();
+                updateLegend();
+                updateTitle();
+            });
+            d3.select('#nationalitySelect').on('change', function() {
+                currentNationality = this.value;
+                updateStyles();
+                updateTitle();
+            });
+
+            function updateTitle() {
+                d3.select('#mapTitle').text(`${currentNationality}: ${{
+                    duration_months: 'Visa Duration (Months)',
+                    min_income_usd: 'Minimum Income (USD)',
+                    bureaucracy: 'Bureaucracy Level',
+                    remote_work_proof_required: 'Remote Work Proof',
+                    employment_type: 'Employment Type'
+                }[currentFilter]}`);
+            }
+        });
+    </script>
+</body>
+</html>
