@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Nomad Visa Explorer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(to bottom, #0f172a, #1e293b); 
+            color: #e2e8f0; 
+        }
+        svg { 
+            width: 100vw; 
+            height: 60vh; 
+            max-height: 600px; 
+            display: block; 
+        }
+        .title { 
+            position: absolute; 
+            top: 1rem; 
+            left: 1rem; 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            color: #00d4ff; 
+            text-shadow: 0 0 8px rgba(0, 212, 255, 0.5); 
+            z-index: 1000; 
+        }
+        .filter { 
+            position: absolute; 
+            top: 4rem; 
+            left: 1rem; 
+            z-index: 1000; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 0.75rem; 
+        }
+        label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #94a3b8;
+        }
+        select { 
+            padding: 0.6rem; 
+            font-size: 1rem; 
+            font-weight: 500; 
+            border-radius: 8px; 
+            border: 1px solid #00d4ff; 
+            background: #2c3e50; 
+            color: #e2e8f0; 
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
+            transition: transform 0.2s, box-shadow 0.2s; 
+            outline: none; 
+        }
+        select:hover, select:focus { 
+            transform: scale(1.05); 
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5); 
+        }
+        .legend { 
+            position: absolute; 
+            top: 10rem; 
+            right: 1rem; 
+            background: linear-gradient(to bottom, #1a2a44, #2c3e50); 
+            padding: 1.2rem; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3); 
+            z-index: 1000; 
+            border: 1px solid #00d4ff; 
+        }
+        .legend text {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+        }
+        .legend rect { 
+            cursor: pointer; 
+            stroke: #00d4ff; 
+            stroke-width: 1; 
+            border-radius: 4px; 
+            transition: transform 0.2s; 
+        }
+        .legend rect:hover {
+            transform: scale(1.05);
+        }
+        .legend-tooltip { 
+            position: absolute; 
+            background: #1a2a44; 
+            color: #e2e8f0; 
+            padding: 0.6rem; 
+            border-radius: 6px; 
+            font-size: 0.85rem; 
+            z-index: 2000; 
+            pointer-events: none; 
+            box-shadow: 0 2px 8px rgba(0, 212, 255, 0.3); 
+            border: 1px solid #00d4ff; 
+        }
+        .popup { 
+            position: absolute; 
+            background: #1a2a44; 
+            padding: 1.2rem; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3); 
+            z-index: 2000; 
+            max-width: 90vw; 
+            width: 340px; 
+            font-size: 0.9rem; 
+            color: #e2e8f0; 
+            border: 1px solid #ffd700; 
+        }
+        .popup .close { 
+            position: absolute; 
+            top: 0.6rem; 
+            right: 0.6rem; 
+            cursor: pointer; 
+            color: #00d4ff; 
+            font-weight: 700; 
+            transition: color 0.2s; 
+        }
+        .popup .close:hover { 
+            color: #ff4d4d; 
+        }
+        .popup .header { 
+            font-size: 1.1rem; 
+            font-weight: 700; 
+            margin-bottom: 0.8rem; 
+        }
+        .popup .row { 
+            display: flex; 
+            align-items: center; 
+            margin-bottom: 0.5rem; 
+        }
+        .popup .icon { 
+            margin-right: 0.5rem; 
+            font-size: 1rem; 
+        }
+        .popup .bar { 
+            height: 8px; 
+            border-radius: 4px; 
+            margin-left: 0.5rem; 
+        }
+        .popup .notes { 
+            position: relative; 
+            cursor: pointer; 
+        }
+        .popup .notes-tooltip { 
+            position: absolute; 
+            background: #1a2a44; 
+            color: #e2e8f0; 
+            padding: 0.6rem; 
+            border-radius: 6px; 
+            font-size: 0.85rem; 
+            z-index: 2001; 
+            box-shadow: 0 2px 8px rgba(0, 212, 255, 0.3); 
+            border: 1px solid #00d4ff; 
+            width: 280px; 
+            left: 0; 
+            top: 1.5rem; 
+            display: none; 
+        }
+        .popup .notes:hover .notes-tooltip { 
+            display: block; 
+        }
+        @media (max-width: 600px) { 
+            .title { font-size: 1.4rem; }
+            .filter { top: 3rem; }
+            .legend { top: 9rem; right: 0.5rem; padding: 0.8rem; }
+            .popup { width: 80vw; font-size: 0.85rem; }
+        }
+        path { 
+            transition: stroke 0.2s; 
+            filter: none; 
+        }
+        .glow { 
+            filter: url(#glow); 
+        }
+    </style>
+</head>
+<body>
+    <div class="title" id="mapTitle">USA: Visa Duration (Months)</div>
+    <div class="filter">
+        <label for="nationalitySelect">Your Nationality:</label>
+        <select id="nationalitySelect">
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="Canada">Canada</option>
+            <option value="Other">Other</option>
+        </select>
+        <label for="filterSelect">Filter by:</label>
+        <select id="filterSelect">
+            <option value="duration_months">Duration (Months)</option>
+            <option value="min_income_usd">Min Income (USD)</option>
+            <option value="bureaucracy">Bureaucracy Level</option>
+            <option value="remote_work_proof_required">Remote Work Proof</option>
+            <option value="employment_type">Employment Type</option>
+        </select>
+    </div>
+    <div id="map"></div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
+    <script>
+        // Define categories and colors
+        const categories = {
+            duration_months: [
+                { range: '≤12', value: 12, color: '#ff4d4d', desc: 'Red: Short-term visa (up to 1 year)' },
+                { range: '13–24', value: 24, color: '#ff9900', desc: 'Orange: Medium-term visa (1–2 years)' },
+                { range: '25–36', value: 36, color: '#ffd700', desc: 'Yellow: Extended visa (2–3 years)' },
+                { range: '37–48', value: 48, color: '#33cc33', desc: 'Green: Long-term visa (3–4 years)' },
+                { range: '>48', value: Infinity, color: '#3399ff', desc: 'Blue: Very long-term visa (over 4 years)' }
+            ],
+            min_income_usd: [
+                { range: '≤2000', value: 2000, color: '#ff4d4d', desc: 'Red: Very low income requirement' },
+                { range: '2001–4000', value: 4000, color: '#ff9900', desc: 'Orange: Low income requirement' },
+                { range: '4001–6000', value: 6000, color: '#ffd700', desc: 'Yellow: Moderate income requirement' },
+                { range: '6001–10000', value: 10000, color: '#33cc33', desc: 'Green: High income requirement' },
+                { range: '>10000', value: Infinity, color: '#3399ff', desc: 'Blue: Very high income requirement' }
+            ],
+            bureaucracy: [
+                { range: 'Low', value: 1, color: '#33cc33', desc: 'Green: Simple application process' },
+                { range: 'Medium', value: 2, color: '#ffd700', desc: 'Yellow: Moderate application complexity' },
+                { range: 'High', value: 3, color: '#ff4d4d', desc: 'Red: Complex application process' }
+            ],
+            remote_work_proof_required: [
+                { range: 'Not Required', value: false, color: '#33cc33', desc: 'Green: No proof of remote work needed' },
+                { range: 'Required', value: true, color: '#ff4d4d', desc: 'Red: Proof of remote work required' }
+            ],
+            employment_type: [
+                { range: 'None', value: 0, color: '#ff4d4d', desc: 'Red: No employment types specified' },
+                { range: 'Single', value: 1, color: '#ffd700', desc: 'Yellow: One employment type allowed' },
+                { range: 'Both', value: 2, color: '#33cc33', desc: 'Green: Both employee and freelancer allowed' }
+            ]
+        };
+
+        // Current filter and nationality
+        let currentFilter = 'duration_months';
+        let currentNationality = 'USA';
+
+        // Set up SVG
+        const width = window.innerWidth;
+        const height = Math.min(window.innerHeight * 0.6, 600);
+        const svg = d3.select('#map').append('svg')
+            .attr('width', width)
+            .attr('height', height);
+
+        // Add glow filter
+        svg.append('defs').append('filter')
+            .attr('id', 'glow')
+            .append('feGaussianBlur')
+            .attr('stdDeviation', '2.5')
+            .attr('result', 'coloredBlur')
+            .append('feMerge')
+            .append('feMergeNode')
+            .attr('in', 'coloredBlur')
+            .append('feMergeNode')
+            .attr('in', 'SourceGraphic');
+
+        const projection = d3.geoNaturalEarth1()
+            .scale(width / 6.4)
+            .translate([width / 2, height / 2]);
+        const path = d3.geoPath().projection(projection);
+
+        // Zoom behavior
+        const zoom = d3.zoom()
+            .scaleExtent([1, 8])
+            .on('zoom', function(event) {
+                svg.selectAll('path').attr('transform', event.transform);
+            });
+        svg.call(zoom);
+
+        // Load data and TopoJSON
+        Promise.all([
+            d3.json('/data/data_v1.json'),
+            d3.json('https://unpkg.com/world-atlas@2.0.2/countries-110m.json')
+        ]).then(function([visaData, topoData]) {
+            const geoData = topojson.feature(topoData, topoData.objects.countries);
+
+            // Draw map
+            const paths = svg.selectAll('path')
+                .data(geoData.features)
+                .enter().append('path')
+                .attr('d', path)
+                .attr('stroke', 'black')
+                .attr('stroke-width', 1);
+
+            // Style function
+            function updateStyles() {
+                paths.attr('fill', d => {
+                    const countryData = visaData.find(c => c.country === d.properties.name);
+                    if (countryData && countryData[currentFilter] !== null) {
+                        const value = currentFilter === 'employment_type' ? 
+                            countryData[currentFilter].length : 
+                            currentFilter === 'remote_work_proof_required' ? 
+                            (countryData[currentFilter] === null ? false : countryData[currentFilter]) :
+                            countryData[currentFilter];
+                        const ranges = categories[currentFilter];
+                        for (let cat of ranges) {
+                            if (value <= cat.value || (currentFilter === 'remote_work_proof_required' && value === cat.value)) {
+                                return cat.color;
+                            }
+                        }
+                    }
+                    return '#d3d3d3';
+                });
+            }
+
+            // Initial styling
+            updateStyles();
+
+            // Add hover effect
+            paths.on('mouseover', function() {
+                const path = d3.select(this);
+                const currentTransform = path.attr('transform') || 'translate(0,0) scale(1)';
+                path.classed('glow', true)
+                    .transition()
+                    .duration(200)
+                    .attr('transform', `${currentTransform} translate(0,-2)`)
+                    .attr('stroke', '#ffd700')
+                    .attr('stroke-width', 2);
+            })
+            .on('mouseout', function() {
+                const path = d3.select(this);
+                const currentTransform = path.attr('transform') || 'translate(0,0) scale(1)';
+                const baseTransform = currentTransform.replace(/translate\(0,-2\)/, '');
+                path.classed('glow', false)
+                    .transition()
+                    .duration(200)
+                    .attr('transform', baseTransform)
+                    .attr('stroke', 'black')
+                    .attr('stroke-width', 1);
+            });
+
+            // Add popups
+            paths.on('click', function(event, d) {
+                const path = d3.select(this);
+                path.classed('glow', false); // Remove glow on click
+                const countryData = visaData.find(c => c.country === d.properties.name);
+                if (countryData && countryData.duration_months !== null && countryData.min_income_usd !== null) {
+                    d3.selectAll('.popup').remove();
+                    const popup = document.createElement('div');
+                    popup.className = 'popup';
+                    const notesPreview = countryData.notes.length > 50 ? countryData.notes.slice(0, 50) + '...' : countryData.notes;
+                    const durationColor = categories.duration_months.find(cat => countryData.duration_months <= cat.value).color;
+                    const incomeColor = countryData.min_income_usd ? categories.min_income_usd.find(cat => countryData.min_income_usd <= cat.value).color : '#d3d3d3';
+                    const bureaucracyColor = categories.bureaucracy.find(cat => countryData.bureaucracy === cat.value).color;
+                    const remoteColor = categories.remote_work_proof_required.find(cat => (countryData.remote_work_proof_required === null ? false : countryData.remote_work_proof_required) === cat.value).color;
+                    const employmentColor = categories.employment_type.find(cat => countryData.employment_type.length === cat.value).color;
+                    popup.innerHTML = `
+                        <span class="close">✖</span>
+                        <div class="header">${d.properties.name}: ${countryData.visa_name}</div>
+                        <div class="row">
+                            <span class="icon">📅</span>Duration: ${countryData.duration_months} months
+                            <div class="bar" style="width: ${countryData.duration_months * 2}px; background: ${durationColor};"></div>
+                        </div>
+                        <div class="row">
+                            <span class="icon">💰</span>Min Income: $${countryData.min_income_usd || 'N/A'}
+                            <div class="bar" style="width: ${countryData.min_income_usd ? Math.min(countryData.min_income_usd / 100, 100) : 0}px; background: ${incomeColor};"></div>
+                        </div>
+                        <div class="row">
+                            <span class="icon">📋</span>Bureaucracy: ${['', 'Low', 'Medium', 'High'][countryData.bureaucracy] || 'N/A'}
+                            <div class="bar" style="width: ${countryData.bureaucracy * 20}px; background: ${bureaucracyColor};"></div>
+                        </div>
+                        <div class="row">
+                            <span class="icon">💼</span>Remote Proof: ${countryData.remote_work_proof_required ? 'Required' : 'Not Required'}
+                            <div class="bar" style="width: ${countryData.remote_work_proof_required ? 30 : 15}px; background: ${remoteColor};"></div>
+                        </div>
+                        <div class="row">
+                            <span class="icon">👷</span>Employment: ${countryData.employment_type.join(', ')}
+                            <div class="bar" style="width: ${countryData.employment_type.length * 20}px; background: ${employmentColor};"></div>
+                        </div>
+                        <div class="row">
+                            <span class="icon">${countryData.allowed_passports.includes('All') ? '✅' : '❌'}</span>Eligible for ${currentNationality}
+                        </div>
+                        <div class="row notes">
+                            <span class="icon">📝</span>Notes: ${notesPreview}
+                            <div class="notes-tooltip">${countryData.notes}</div>
+                        </div>
+                    `;
+                    const coords = d3.pointer(event, svg.node());
+                    popup.style.left = Math.min(coords[0], width - 350) + 'px';
+                    popup.style.top = Math.min(coords[1], height - 240) + 'px';
+                    document.body.appendChild(popup);
+                    popup.querySelector('.close').onclick = () => popup.remove();
+                }
+            });
+
+            // Add legend
+            const legend = svg.append('g')
+                .attr('class', 'legend')
+                .attr('transform', `translate(${width - 140}, 8)`);
+
+            function updateLegend() {
+                legend.selectAll('*').remove();
+                legend.append('text')
+                    .attr('x', 0)
+                    .attr('y', 0)
+                    .text({
+                        duration_months: 'Duration (Months)',
+                        min_income_usd: 'USD Income',
+                        bureaucracy: 'Bureaucracy Level',
+                        remote_work_proof_required: 'Remote Work Proof',
+                        employment_type: 'Employment Type'
+                    }[currentFilter])
+                    .style('font-weight', '700')
+                    .style('font-size', '1rem')
+                    .style('fill', '#00d4ff');
+                categories[currentFilter].forEach((cat, i) => {
+                    const group = legend.append('g')
+                        .attr('transform', `translate(0, ${24 + i * 24})`);
+                    group.append('rect')
+                        .attr('x', 0)
+                        .attr('y', 0)
+                        .attr('width', 20)
+                        .attr('height', 20)
+                        .style('fill', cat.color)
+                        .on('mouseover', function() {
