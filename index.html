@@ -1,326 +1,330 @@
-import React, { useState, useEffect } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Nomad Visa Matcher</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel to transpile JSX in the browser -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        body {
+            background-color: #0f172a; /* Corresponds to slate-900 */
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #334155; } /* slate-700 */
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 10px; } /* purple-500 */
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #7c3aed; } /* purple-600 */
+        /* Tooltip style */
+        .group:hover .group-hover\:block {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
 
-// --- DATA ---
+    <!-- The React application code goes inside this script tag -->
+    <script type="text/babel">
+        // --- DATA ---
+        const visaData = {
+          "metadata": { "scrape_date": "2025-05-29T23:07:27.489550", "total_visas": 67, "unique_countries": 67, "sources_scraped": 4, "version": "1.1", "scoring_notes": "The 'tax_attractiveness' and 'social_security_attractiveness' scores are on a 1 to 5 scale (1=least attractive, 5=most attractive)..." },
+          "visas": [
+            { "country": "Albania", "visa_name": "Albania Digital Nomad Visa", "min_income_usd": 110, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Albania introduced its Digital Nomad Visa (officially called the \"Unique Permit\") in 2022. This permit is initially valid for 1 year and can be renewed for up to a total of 5 years. Albania offers a low cost of living and beautiful beaches.", "bureaucracy_score": 4, "visa_cost": 170, "tax_attractiveness": 4, "social_security_attractiveness": 3, "cost_of_living_score": 1, "internet_quality_score": 2, "safety_score": 4, "requires_local_health_insurance": false, "tax_per_income": "Personal: Generally 0% on foreign income for DN visa holders if criteria met; otherwise progressive up to 23%. Corp: 15%.", "social_security_per_income": "Personal: Potentially exempt if covered abroad under treaty; otherwise contributions may apply. Corp: Employers contribute ~16.7%.", "date_of_cost_check": "2025-05-30", "nomad_sentiment_score": 4 },
+            { "country": "Andorra", "visa_name": "Andorra Digital Nomad Visa", "min_income_usd": 2750, "duration_months": 24, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Andorra's Digital Nomad Visa, officially announced in December 2022, opened for applications in mid-2023. The visa is valid for 2 years. Requires a significant deposit of around €50,000.", "bureaucracy_score": 3, "visa_cost": 565, "tax_attractiveness": 4, "social_security_attractiveness": 2, "min_bank_balance_usd": 56500, "balance_can_replace_income": false, "cost_of_living_score": 3, "internet_quality_score": 5, "safety_score": 5, "requires_local_health_insurance": true, "tax_per_income": "Personal: 10% flat rate (first €24k exempt, then 5% up to €40k). Corp: 10%.", "social_security_per_income": "Personal: Mandatory contributions ~22% for self-employed. Corp: Employer/employee contributions apply.", "date_of_cost_check": "2025-05-30", "nomad_sentiment_score": 3 },
+            { "country": "Argentina", "visa_name": "Argentina Digital Nomad Visa", "min_income_usd": 200, "duration_months": 6, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Argentina's Digital Nomad Visa was launched on May 21, 2022, offering remote workers the opportunity to stay in the country for 6 months, with the possibility to extend for another 6 months.", "bureaucracy_score": 3, "visa_cost": 200, "tax_attractiveness": 3, "social_security_attractiveness": 3, "cost_of_living_score": 1, "internet_quality_score": 2, "safety_score": 3, "requires_local_health_insurance": false, "tax_per_income": "Personal: DN visa holders might be exempt if tax treaties apply or specific DN rules clarify. Tax resident after 12 months; progressive 5-35%. Corp: 25-35%.", "social_security_per_income": "Personal: Self-employed (Monotributo) simplified regime possible. Complex for foreign earners if deemed resident. Corp: Contributions for local employees.", "date_of_cost_check": "2025-05-30", "nomad_sentiment_score": 5 },
+            { "country": "Armenia", "visa_name": "Armenia Digital Nomad Visa", "min_income_usd": 250, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Launched in 2022, Armenia's Digital Nomad Visa offers two options: a temporary residence permit valid for 1 year with the possibility of renewal, or a permanent residence permit. The main requirement is proof of remote work or business ownership.", "bureaucracy_score": 3, "visa_cost": 85, "tax_attractiveness": 3, "social_security_attractiveness": 4, "cost_of_living_score": 1, "internet_quality_score": 2, "safety_score": 4, "requires_local_health_insurance": false, "tax_per_income": "Personal: 20% flat rate. Special regime for micro-businesses/IT startups possible (0-5%). Corp: 18%.", "social_security_per_income": "Personal: Generally not mandatory for foreign-earned income if non-resident for SS. Corp: Contributions apply for locally employed.", "date_of_cost_check": "2025-05-30", "nomad_sentiment_score": 4 },
+            { "country": "Brazil", "visa_name": "Brazil Digital Nomad (MERCOSUR)", "min_income_usd": 1500, "duration_months": 24, "allowed_passports": ["Argentine", "Paraguayan", "Uruguayan", "Bolivian", "Chilean", "Colombian", "Ecuadorian", "Peruvian"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "source_url": "https://www.gov.br/mre/pt-br/consulado-oslo/mercosur-agreement", "notes": "Special residency agreement for citizens of MERCOSUR and associated states. Easier process than the standard Digital Nomad visa for eligible nationalities.", "bureaucracy_score": 2, "visa_cost": 200, "tax_attractiveness": 2, "social_security_attractiveness": 2, "cost_of_living_score": 2, "internet_quality_score": 3, "safety_score": 2, "requires_local_health_insurance": true, "tax_per_income": "Personal: Tax resident if >183 days. Progressive rates (0-27.5%). Foreign income taxed.", "social_security_per_income": "Personal: INSS contributions if considered resident worker/self-employed.", "date_of_cost_check": "2025-06-05", "nomad_sentiment_score": 4 },
+            { "country": "Chile", "visa_name": "Chile Tech Visa", "min_income_usd": 2000, "duration_months": 12, "allowed_passports": ["American", "Canadian", "Spanish", "Portuguese", "Argentine", "British"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer", "business_owner"], "source_url": "https://investchile.gob.cl/resources/tech-visa/", "notes": "Aimed at tech entrepreneurs and workers in the technology sector. Requires a letter of invitation from a Chilean tech hub or company. Streamlined process.", "bureaucracy_score": 2, "visa_cost": 150, "tax_attractiveness": 3, "social_security_attractiveness": 3, "cost_of_living_score": 3, "internet_quality_score": 4, "safety_score": 4, "requires_local_health_insurance": true, "tax_per_income": "Personal: Foreigners can be exempt from tax on foreign-source income for up to 3 years. Standard rates are progressive from 0% to 40%.", "social_security_per_income": "Personal: Exemption from local social security may be possible if covered by a foreign system.", "date_of_cost_check": "2025-06-05", "nomad_sentiment_score": 4 },
+            { "country": "Croatia", "visa_name": "Croatia Digital Nomad Visa", "min_income_usd": 150, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "source_url": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "notes": "Croatia's Digital Nomad Visa was officially launched in 2021. Offers a tax exemption on foreign income. Can show savings instead of income.", "bureaucracy_score": 3, "visa_cost": 125, "tax_attractiveness": 5, "social_security_attractiveness": 5, "min_bank_balance_usd": 38612, "balance_can_replace_income": true, "cost_of_living_score": 2, "internet_quality_score": 3, "safety_score": 4, "requires_local_health_insurance": true, "tax_per_income": "Personal: 0% on foreign income for DN visa holders.", "social_security_per_income": "Personal: Exempt if covered abroad (proof needed) or from treaty country. Corp: Not directly applicable to DN visa.", "date_of_cost_check": "2025-05-30", "nomad_sentiment_score": 5 },
+            { "country": "Estonia", "visa_name": "Estonia Digital Nomad Visa", "min_income_usd": 4500, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer", "business_owner"], "source_url": "https://www.e-resident.gov.ee/nomad-visa/", "notes": "Estonia, known for its pioneering e-residency program, launched one of the world's first official Digital Nomad Visas. High income requirement but very efficient process.", "bureaucracy_score": 1, "visa_cost": 102, "tax_attractiveness": 4, "social_security_attractiveness": 4, "cost_of_living_score": 3, "internet_quality_score": 4, "safety_score": 4, "requires_local_health_insurance": false, "tax_per_income": "Personal: Not a tax resident if stay is less than 183 days in a 12-month period. Otherwise, a 20% flat tax applies.", "social_security_per_income": "Personal: No Estonian SS if not employed by Estonian entity and covered abroad. Corp (Estonian entity): 33% social tax on salaries.", "date_of_cost_check": "2025-06-05", "nomad_sentiment_score": 4 },
+            { "country": "Philippines", "visa_name": "Philippines Digital Nomad Visa", "min_income_usd": 2000, "duration_months": 12, "allowed_passports": ["American", "Japanese", "South Korean", "British", "Canadian", "Australian"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "source_url": "https://immigration.gov.ph/", "notes": "New visa introduced to attract long-stay remote workers to the Philippines. Offers a simple application process for eligible nationalities and a tax exemption on foreign-sourced income.", "bureaucracy_score": 3, "visa_cost": 200, "tax_attractiveness": 5, "social_security_attractiveness": 4, "cost_of_living_score": 1, "internet_quality_score": 2, "safety_score": 2, "requires_local_health_insurance": true, "tax_per_income": "Personal: Exempt from local income tax on income generated from foreign sources.", "social_security_per_income": "Personal: Not required to contribute to local social security if working for a foreign company.", "date_of_cost_check": "2025-06-05", "nomad_sentiment_score": 3 },
+            { "country": "South Korea", "visa_name": "South Korea Workcation Visa", "min_income_usd": 6500, "duration_months": 12, "allowed_passports": ["American", "Canadian", "British", "Australian", "German", "French", "Japanese", "New Zealander"], "remote_work_proof_required": true, "employment_type": ["employee"], "source_url": "https://www.korea.net/Government/Current-Affairs/National-Affairs/view?articleId=246571", "notes": "The 'Workcation' visa is aimed at high-earning individuals working for foreign companies. It allows a stay of up to one year with the possibility of renewal.", "bureaucracy_score": 2, "visa_cost": 90, "tax_attractiveness": 3, "social_security_attractiveness": 3, "cost_of_living_score": 4, "internet_quality_score": 5, "safety_score": 5, "requires_local_health_insurance": true, "tax_per_income": "Personal: Taxed only on Korea-sourced income unless stay exceeds 183 days. High income tax rates for residents.", "social_security_per_income": "Personal: Mandatory health insurance subscription after 6 months of stay.", "date_of_cost_check": "2025-06-05", "nomad_sentiment_score": 4 },
+            { "country": "UAE", "visa_name": "UAE Golden Visa (Tech)", "min_income_usd": 8200, "duration_months": 120, "allowed_passports": ["Israeli", "Indian", "Russian", "American", "British", "Chinese"], "remote_work_proof_required": true, "employment_type": ["business_owner", "employee"], "source_url": "https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/golden-visa", "notes": "A long-term 10-year residency visa for top talents in technology, science, and innovation. Requires a high salary or significant investment/business ownership. Provides many benefits of residency.", "bureaucracy_score": 2, "visa_cost": 1000, "tax_attractiveness": 5, "social_security_attractiveness": 4, "cost_of_living_score": 4, "internet_quality_score": 5, "safety_score": 5, "requires_local_health_insurance": true, "tax_per_income": "Personal: 0% income tax in UAE. Corp: 9% on taxable income > AED 375,000.", "social_security_per_income": "Personal: No mandatory SS for expats. Health insurance required.", "date_of_cost_check": "2025-06-05", "nomad_sentiment_score": 4 }
+          ]
+        };
 
-const visaData = {
-  "metadata": {
-    "scrape_date": "2025-05-29T23:07:27.489550",
-    "total_visas": 67,
-    "unique_countries": 67,
-    "sources_scraped": 4,
-    "version": "1.1",
-    "scoring_notes": "The 'tax_attractiveness' and 'social_security_attractiveness' scores are on a 1 to 5 scale (1=least attractive, 5=most attractive)..."
-  },
-  "visas": [
-    { "country": "Albania", "visa_name": "Albania Digital Nomad Visa", "min_income_usd": 110, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Albania introduced its Digital Nomad Visa (officially called the \"Unique Permit\") in 2022. This permit is initially valid for 1 year and can be renewed for up to a total of 5 years. Albania offers a low cost of living and beautiful beaches.", "bureaucracy_score": 4, "visa_cost": 170, "tax_attractiveness": 4, "social_security_attractiveness": 3, "cost_of_living_score": 1, "internet_quality_score": 2, "safety_score": 4, "requires_local_health_insurance": false, "tax_per_income": "Personal: Generally 0% on foreign income for DN visa holders if criteria met; otherwise progressive up to 23%. Corp: 15%.", "social_security_per_income": "Personal: Potentially exempt if covered abroad under treaty; otherwise contributions may apply. Corp: Employers contribute ~16.7%.", "date_of_cost_check": "2025-05-30", "nomad_sentiment_score": 4 },
-    { "country": "Andorra", "visa_name": "Andorra Digital Nomad Visa", "min_income_usd": 2750, "duration_months": 24, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Andorra's Digital Nomad Visa, officially announced in December 2022, opened for applications in mid-2023. The visa is valid for 2 years. Requires a significant deposit of around €50,000.", "bureaucracy_score": 3, "visa_cost": 565, "tax_attractiveness": 4, "social_security_attractiveness": 2, "min_bank_balance_usd": 56500, "balance_can_replace_income": false, "cost_of_living_score": 3, "internet_quality_score": 5, "safety_score": 5, "requires_local_health_insurance": true, "tax_per_income": "Personal: 10% flat rate (first €24k exempt, then 5% up to €40k). Corp: 10%.", "social_security_per_income": "Personal: Mandatory contributions ~22% for self-employed. Corp: Employer/employee contributions apply.", "date_of_cost_check": "2025-05-30", "nomad_sentiment_score": 3 },
-    { "country": "Argentina", "visa_name": "Argentina Digital Nomad Visa", "min_income_usd": 200, "duration_months": 6, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Argentina's Digital Nomad Visa was launched on May 21, 2022, offering remote workers the opportunity to stay in the country for 6 months, with the possibility to extend for another 6 months.", "bureaucracy_score": 3, "visa_cost": 200, "tax_attractiveness": 3, "social_security_attractiveness": 3, "cost_of_living_score": 1, "internet_quality_score": 2, "safety_score": 3, "requires_local_health_insurance": false, "tax_per_income": "Personal: DN visa holders might be exempt if tax treaties apply or specific DN rules clarify. Tax resident after 12 months; progressive 5-35%. Corp: 25-35%.", "social_security_per_income": "Personal: Self-employed (Monotributo) simplified regime possible. Complex for foreign earners if deemed resident. Corp: Contributions for local employees.", "date_of_cost_check": "2025-05-30", "nomad_sentiment_score": 5 },
-    { "country": "Armenia", "visa_name": "Armenia Digital Nomad Visa", "min_income_usd": 250, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Launched in 2022, Armenia's Digital Nomad Visa offers two options: a temporary residence permit valid for 1 year with the possibility of renewal, or a permanent residence permit. The main requirement is proof of remote work or business ownership.", "bureaucracy_score": 3, "visa_cost": 85, "tax_attractiveness": 3, "social_security_attractiveness": 4, "cost_of_living_score": 1, "internet_quality_score": 2, "safety_score": 4, "requires_local_health_insurance": false, "tax_per_income": "Personal: 20% flat rate. Special regime for micro-businesses/IT startups possible (0-5%). Corp: 18%.", "social_security_per_income": "Personal: Generally not mandatory for foreign-earned income if non-resident for SS. Corp: Contributions apply for locally employed.", "date_of_cost_check": "2025-05-30", "nomad_sentiment_score": 4 },
-    { "country": "Brazil", "visa_name": "Brazil Digital Nomad (MERCOSUR)", "min_income_usd": 1500, "duration_months": 24, "allowed_passports": ["Argentine", "Paraguayan", "Uruguayan", "Bolivian", "Chilean", "Colombian", "Ecuadorian", "Peruvian"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "source_url": "https://www.gov.br/mre/pt-br/consulado-oslo/mercosur-agreement", "notes": "Special residency agreement for citizens of MERCOSUR and associated states. Easier process than the standard Digital Nomad visa for eligible nationalities.", "bureaucracy_score": 2, "visa_cost": 200, "tax_attractiveness": 2, "social_security_attractiveness": 2, "cost_of_living_score": 2, "internet_quality_score": 3, "safety_score": 2, "requires_local_health_insurance": true, "tax_per_income": "Personal: Tax resident if >183 days. Progressive rates (0-27.5%). Foreign income taxed.", "social_security_per_income": "Personal: INSS contributions if considered resident worker/self-employed.", "date_of_cost_check": "2025-06-05", "nomad_sentiment_score": 4 },
-    { "country": "Chile", "visa_name": "Chile Tech Visa", "min_income_usd": 2000, "duration_months": 12, "allowed_passports": ["American", "Canadian", "Spanish", "Portuguese", "Argentine", "British"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer", "business_owner"], "source_url": "https://investchile.gob.cl/resources/tech-visa/", "notes": "Aimed at tech entrepreneurs and workers in the technology sector. Requires a letter of invitation from a Chilean tech hub or company. Streamlined process.", "bureaucracy_score": 2, "visa_cost": 150, "tax_attractiveness": 3, "social_security_attractiveness": 3, "cost_of_living_score": 3, "internet_quality_score": 4, "safety_score": 4, "requires_local_health_insurance": true, "tax_per_income": "Personal: Foreigners can be exempt from tax on foreign-source income for up to 3 years. Standard rates are progressive from 0% to 40%.", "social_security_per_income": "Personal: Exemption from local social security may be possible if covered by a foreign system.", "date_of_cost_check": "2025-06-05", "nomad_sentiment_score": 4 },
-    { "country": "Croatia", "visa_name": "Croatia Digital Nomad Visa", "min_income_usd": 150, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "source_url": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "notes": "Croatia's Digital Nomad Visa was officially launched in 2021. Offers a tax exemption on foreign income. Can show savings instead of income.", "bureaucracy_score": 3, "visa_cost": 125, "tax_attractiveness": 5, "social_security_attractiveness": 5, "min_bank_balance_usd": 38612, "balance_can_replace_income": true, "cost_of_living_score": 2, "internet_quality_score": 3, "safety_score": 4, "requires_local_health_insurance": true, "tax_per_income": "Personal: 0% on foreign income for DN visa holders.", "social_security_per_income": "Personal: Exempt if covered abroad (proof needed) or from treaty country. Corp: Not directly applicable to DN visa.", "date_of_cost_check": "2025-05-30", "nomad_sentiment_score": 5 },
-    { "country": "Estonia", "visa_name": "Estonia Digital Nomad Visa", "min_income_usd": 4500, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer", "business_owner"], "source_url": "https://www.e-resident.gov.ee/nomad-visa/", "notes": "Estonia, known for its pioneering e-residency program, launched one of the world's first official Digital Nomad Visas. High income requirement but very efficient process.", "bureaucracy_score": 1, "visa_cost": 102, "tax_attractiveness": 4, "social_security_attractiveness": 4, "cost_of_living_score": 3, "internet_quality_score": 4, "safety_score": 4, "requires_local_health_insurance": false, "tax_per_income": "Personal: Not a tax resident if stay is less than 183 days in a 12-month period. Otherwise, a 20% flat tax applies.", "social_security_per_income": "Personal: No Estonian SS if not employed by Estonian entity and covered abroad. Corp (Estonian entity): 33% social tax on salaries.", "date_of_cost_check": "2025-06-05", "nomad_sentiment_score": 4 },
-    { "country": "Philippines", "visa_name": "Philippines Digital Nomad Visa", "min_income_usd": 2000, "duration_months": 12, "allowed_passports": ["American", "Japanese", "South Korean", "British", "Canadian", "Australian"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "source_url": "https://immigration.gov.ph/", "notes": "New visa introduced to attract long-stay remote workers to the Philippines. Offers a simple application process for eligible nationalities and a tax exemption on foreign-sourced income.", "bureaucracy_score": 3, "visa_cost": 200, "tax_attractiveness": 5, "social_security_attractiveness": 4, "cost_of_living_score": 1, "internet_quality_score": 2, "safety_score": 2, "requires_local_health_insurance": true, "tax_per_income": "Personal: Exempt from local income tax on income generated from foreign sources.", "social_security_per_income": "Personal: Not required to contribute to local social security if working for a foreign company.", "date_of_cost_check": "2025-06-05", "nomad_sentiment_score": 3 },
-    { "country": "South Korea", "visa_name": "South Korea Workcation Visa", "min_income_usd": 6500, "duration_months": 12, "allowed_passports": ["American", "Canadian", "British", "Australian", "German", "French", "Japanese", "New Zealander"], "remote_work_proof_required": true, "employment_type": ["employee"], "source_url": "https://www.korea.net/Government/Current-Affairs/National-Affairs/view?articleId=246571", "notes": "The 'Workcation' visa is aimed at high-earning individuals working for foreign companies. It allows a stay of up to one year with the possibility of renewal.", "bureaucracy_score": 2, "visa_cost": 90, "tax_attractiveness": 3, "social_security_attractiveness": 3, "cost_of_living_score": 4, "internet_quality_score": 5, "safety_score": 5, "requires_local_health_insurance": true, "tax_per_income": "Personal: Taxed only on Korea-sourced income unless stay exceeds 183 days. High income tax rates for residents.", "social_security_per_income": "Personal: Mandatory health insurance subscription after 6 months of stay.", "date_of_cost_check": "2025-06-05", "nomad_sentiment_score": 4 },
-    { "country": "UAE", "visa_name": "UAE Golden Visa (Tech)", "min_income_usd": 8200, "duration_months": 120, "allowed_passports": ["Israeli", "Indian", "Russian", "American", "British", "Chinese"], "remote_work_proof_required": true, "employment_type": ["business_owner", "employee"], "source_url": "https://u.ae/en/information-and-services/visa-and-emirates-id/residence-visas/golden-visa", "notes": "A long-term 10-year residency visa for top talents in technology, science, and innovation. Requires a high salary or significant investment/business ownership. Provides many benefits of residency.", "bureaucracy_score": 2, "visa_cost": 1000, "tax_attractiveness": 5, "social_security_attractiveness": 4, "cost_of_living_score": 4, "internet_quality_score": 5, "safety_score": 5, "requires_local_health_insurance": true, "tax_per_income": "Personal: 0% income tax in UAE. Corp: 9% on taxable income > AED 375,000.", "social_security_per_income": "Personal: No mandatory SS for expats. Health insurance required.", "date_of_cost_check": "2025-06-05", "nomad_sentiment_score": 4 }
-  ]
-};
+        const worldNationalities = [
+          "Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Argentine", "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian", "Brazilian", "British", "Bruneian", "Bulgarian", "Burkinabe", "Burmese", "Burundian", "Cambodian", "Cameroonian", "Canadian", "Cape Verdean", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comoran", "Congolese", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican", "Dutch", "Ecuadorean", "Egyptian", "Emirati", "Equatorial Guinean", "Eritrean", "Estonian", "Ethiopian", "Fijian", "Filipino", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", "Grenadian", "Guatemalan", "Guinean", "Guyanese", "Haitian", "Honduran", "Hungarian", "Icelander", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Ivorian", "Jamaican", "Japanese", "Jordanian", "Kazakhstani", "Kenyan", "Kuwaiti", "Kyrgyz", "Laotian", "Latvian", "Lebanese", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", "Luxembourger", "Macedonian", "Malagasy", "Malawian", "Malaysian", "Maldivian", "Malian", "Maltese", "Marshallese", "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monacan", "Mongolian", "Montenegrin", "Moroccan", "Mozambican", "Namibian", "Nauruan", "Nepalese", "New Zealander", "Nicaraguan", "Nigerian", "Nigerien", "North Korean", "Norwegian", "Omani", "Pakistani", "Palauan", "Panamanian", "Papua New Guinean", "Paraguayan", "Peruvian", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Saint Lucian", "Salvadoran", "Samoan", "San Marinese", "Sao Tomean", "Saudi", "Scottish", "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean", "Slovak", "Slovenian", "Solomon Islander", "Somali", "South African", "South Korean", "Spanish", "Sri Lankan", "Sudanese", "Surinamer", "Swazi", "Swedish", "Swiss", "Syrian", "Taiwanese", "Tajik", "Tanzanian", "Thai", "Togolese", "Tongan", "Trinidadian", "Tunisian", "Turkish", "Tuvaluan", "Ugandan", "Ukrainian", "Uruguayan", "Uzbekistani", "Venezuelan", "Vietnamese", "Welsh", "Yemenite", "Zambian", "Zimbabwean"
+        ].sort();
 
-const worldNationalities = [
-  "Afghan", "Albanian", "Algerian", "American", "Andorran", "Angolan", "Argentine", "Armenian", "Australian", "Austrian", "Azerbaijani", "Bahamian", "Bahraini", "Bangladeshi", "Barbadian", "Belarusian", "Belgian", "Belizean", "Beninese", "Bhutanese", "Bolivian", "Bosnian", "Brazilian", "British", "Bruneian", "Bulgarian", "Burkinabe", "Burmese", "Burundian", "Cambodian", "Cameroonian", "Canadian", "Cape Verdean", "Central African", "Chadian", "Chilean", "Chinese", "Colombian", "Comoran", "Congolese", "Costa Rican", "Croatian", "Cuban", "Cypriot", "Czech", "Danish", "Djiboutian", "Dominican", "Dutch", "Ecuadorean", "Egyptian", "Emirati", "Equatorial Guinean", "Eritrean", "Estonian", "Ethiopian", "Fijian", "Filipino", "Finnish", "French", "Gabonese", "Gambian", "Georgian", "German", "Ghanaian", "Greek", "Grenadian", "Guatemalan", "Guinean", "Guyanese", "Haitian", "Honduran", "Hungarian", "Icelander", "Indian", "Indonesian", "Iranian", "Iraqi", "Irish", "Israeli", "Italian", "Ivorian", "Jamaican", "Japanese", "Jordanian", "Kazakhstani", "Kenyan", "Kuwaiti", "Kyrgyz", "Laotian", "Latvian", "Lebanese", "Liberian", "Libyan", "Liechtensteiner", "Lithuanian", "Luxembourger", "Macedonian", "Malagasy", "Malawian", "Malaysian", "Maldivian", "Malian", "Maltese", "Marshallese", "Mauritanian", "Mauritian", "Mexican", "Micronesian", "Moldovan", "Monacan", "Mongolian", "Montenegrin", "Moroccan", "Mozambican", "Namibian", "Nauruan", "Nepalese", "New Zealander", "Nicaraguan", "Nigerian", "Nigerien", "North Korean", "Norwegian", "Omani", "Pakistani", "Palauan", "Panamanian", "Papua New Guinean", "Paraguayan", "Peruvian", "Polish", "Portuguese", "Qatari", "Romanian", "Russian", "Rwandan", "Saint Lucian", "Salvadoran", "Samoan", "San Marinese", "Sao Tomean", "Saudi", "Scottish", "Senegalese", "Serbian", "Seychellois", "Sierra Leonean", "Singaporean", "Slovak", "Slovenian", "Solomon Islander", "Somali", "South African", "South Korean", "Spanish", "Sri Lankan", "Sudanese", "Surinamer", "Swazi", "Swedish", "Swiss", "Syrian", "Taiwanese", "Tajik", "Tanzanian", "Thai", "Togolese", "Tongan", "Trinidadian", "Tunisian", "Turkish", "Tuvaluan", "Ugandan", "Ukrainian", "Uruguayan", "Uzbekistani", "Venezuelan", "Vietnamese", "Welsh", "Yemenite", "Zambian", "Zimbabwean"
-].sort();
-
-// Helper to get country flag emoji
-const COUNTRY_CODE_MAP = {
-    'Albania': 'AL', 'Andorra': 'AD', 'Argentina': 'AR', 'Armenia': 'AM', 'Australia': 'AU', 'Austria': 'AT', 'Brazil': 'BR', 'Canada': 'CA', 'Chile': 'CL', 'Colombia': 'CO', 'Croatia': 'HR', 'Cyprus': 'CY', 'Estonia': 'EE', 'Germany': 'DE', 'Greece': 'GR', 'Hungary': 'HU', 'Iceland': 'IS', 'Indonesia': 'ID', 'Ireland': 'IE', 'Italy': 'IT', 'Japan': 'JP', 'Malaysia': 'MY', 'Malta': 'MT', 'Mauritius': 'MU', 'Mexico': 'MX', 'Montenegro': 'ME', 'Netherlands': 'NL', 'New Zealand': 'NZ', 'Norway': 'NO', 'Panama': 'PA', 'Philippines': 'PH', 'Portugal': 'PT', 'Romania': 'RO', 'South Africa': 'ZA', 'South Korea': 'KR', 'Spain': 'ES', 'Thailand': 'TH', 'UAE': 'AE'
-};
-function getCountryFlagEmoji(countryName) {
-    const countryCode = COUNTRY_CODE_MAP[countryName];
-    if (!countryCode) return '🏳️';
-    return String.fromCodePoint(...[...countryCode.toUpperCase()].map(char => char.charCodeAt(0) + 127397));
-}
-
-const incomeLevels = [
-    { label: "Any Income", value: "any", userIncomeForMatch: null },
-    { label: "< $1k", value: "0-999", userIncomeForMatch: 999 },
-    { label: "$1-2k", value: "1000-1999", userIncomeForMatch: 1999 },
-    { label: "$2-3k", value: "2000-2999", userIncomeForMatch: 2999 },
-    { label: "$3-5k", value: "3000-4999", userIncomeForMatch: 4999 },
-    { label: "$5k+", value: "5000+", userIncomeForMatch: Infinity }
-];
-
-const workStyles = [
-    { label: "Any", value: "Any", icon: "🌐" },
-    { label: "Employee", value: "employee", icon: "👨‍💼" },
-    { label: "Freelancer", value: "freelancer", icon: "🧑‍🎨" },
-    { label: "Business Owner", value: "business_owner", icon: "🕴️" }
-];
-
-// --- HELPER FUNCTIONS ---
-const getScoreAttributes = (score, type = 'standard') => {
-    const standardDesc = ['Very Poor', 'Poor', 'Average', 'Good', 'Excellent'];
-    const reversedDesc = ['Very Low', 'Low', 'Moderate', 'High', 'Very High'];
-    const sentimentDesc = ['Very Negative', 'Negative', 'Mixed', 'Positive', 'Very Positive'];
-    const sentimentEmoji = ['😡', '😠', '😐', '😊', '😍'];
-    const colors = ['bg-red-500', 'bg-orange-500', 'bg-yellow-500', 'bg-lime-500', 'bg-green-500'];
-    
-    if (score === null || score === undefined || score < 1 || score > 5) {
-        return { description: 'N/A', color: 'bg-slate-600', percentage: 0, emoji: '🤔' };
-    }
-
-    const index = Math.round(score) - 1;
-    const isReversed = type === 'cost' || type === 'bureaucracy';
-
-    let description, emoji;
-    if (type === 'sentiment') {
-        description = sentimentDesc[index];
-        emoji = sentimentEmoji[index];
-    } else {
-        description = isReversed ? reversedDesc[index] : standardDesc[index];
-        emoji = ''; // Standard scores don't need a standalone emoji here
-    }
-
-    return {
-        description,
-        color: isReversed ? colors.slice().reverse()[index] : colors[index],
-        percentage: (score / 5) * 100,
-        emoji
-    };
-};
-
-
-// --- COMPONENTS ---
-
-function App() {
-    const [selectedNationality, setSelectedNationality] = useState('');
-    const [selectedIncomeValue, setSelectedIncomeValue] = useState("any");
-    const [selectedWorkStyle, setSelectedWorkStyle] = useState('Any');
-    const [filteredVisas, setFilteredVisas] = useState([]);
-    const [modalContent, setModalContent] = useState(null);
-
-    useEffect(() => {
-        if (!selectedNationality) {
-            setFilteredVisas([]);
-            return;
+        const COUNTRY_CODE_MAP = {
+            'Albania': 'AL', 'Andorra': 'AD', 'Argentina': 'AR', 'Armenia': 'AM', 'Australia': 'AU', 'Austria': 'AT', 'Brazil': 'BR', 'Canada': 'CA', 'Chile': 'CL', 'Colombia': 'CO', 'Croatia': 'HR', 'Cyprus': 'CY', 'Estonia': 'EE', 'Germany': 'DE', 'Greece': 'GR', 'Hungary': 'HU', 'Iceland': 'IS', 'Indonesia': 'ID', 'Ireland': 'IE', 'Italy': 'IT', 'Japan': 'JP', 'Malaysia': 'MY', 'Malta': 'MT', 'Mauritius': 'MU', 'Mexico': 'MX', 'Montenegro': 'ME', 'Netherlands': 'NL', 'New Zealand': 'NZ', 'Norway': 'NO', 'Panama': 'PA', 'Philippines': 'PH', 'Portugal': 'PT', 'Romania': 'RO', 'South Africa': 'ZA', 'South Korea': 'KR', 'Spain': 'ES', 'Thailand': 'TH', 'UAE': 'AE'
+        };
+        function getCountryFlagEmoji(countryName) {
+            const countryCode = COUNTRY_CODE_MAP[countryName];
+            if (!countryCode) return '🏳️';
+            return String.fromCodePoint(...[...countryCode.toUpperCase()].map(char => char.charCodeAt(0) + 127397));
         }
 
-        const currentIncomeOption = incomeLevels.find(level => level.value === selectedIncomeValue);
-        const userIncomeForMatch = currentIncomeOption?.userIncomeForMatch;
-        
-        const adjustedVisas = visaData.visas.map(visa => ({ ...visa, min_income_usd_monthly: visa.min_income_usd }));
+        const incomeLevels = [
+            { label: "Any Income", value: "any", userIncomeForMatch: null },
+            { label: "< $1k", value: "0-999", userIncomeForMatch: 999 },
+            { label: "$1-2k", value: "1000-1999", userIncomeForMatch: 1999 },
+            { label: "$2-3k", value: "2000-2999", userIncomeForMatch: 2999 },
+            { label: "$3-5k", value: "3000-4999", userIncomeForMatch: 4999 },
+            { label: "$5k+", value: "5000+", userIncomeForMatch: Infinity }
+        ];
 
-        const results = adjustedVisas.filter(visa => {
-            const nationalityMatch = visa.allowed_passports.includes("All") || visa.allowed_passports.includes(selectedNationality);
-            if (!nationalityMatch) return false;
+        const workStyles = [
+            { label: "Any", value: "Any", icon: "🌐" },
+            { label: "Employee", value: "employee", icon: "👨‍💼" },
+            { label: "Freelancer", value: "freelancer", icon: "🧑‍🎨" },
+            { label: "Business Owner", value: "business_owner", icon: "🕴️" }
+        ];
 
-            let incomeMatch = true;
-            if (userIncomeForMatch !== null && visa.min_income_usd_monthly !== null) {
-                incomeMatch = userIncomeForMatch === Infinity || visa.min_income_usd_monthly <= userIncomeForMatch;
+        const getScoreAttributes = (score, type = 'standard') => {
+            const standardDesc = ['Very Poor', 'Poor', 'Average', 'Good', 'Excellent'];
+            const reversedDesc = ['Very Low', 'Low', 'Moderate', 'High', 'Very High'];
+            const sentimentDesc = ['Very Negative', 'Negative', 'Mixed', 'Positive', 'Very Positive'];
+            const sentimentEmoji = ['😡', '😠', '😐', '😊', '😍'];
+            const colors = ['bg-red-500', 'bg-orange-500', 'bg-yellow-500', 'bg-lime-500', 'bg-green-500'];
+            if (score === null || score === undefined || score < 1 || score > 5) {
+                return { description: 'N/A', color: 'bg-slate-600', percentage: 0, emoji: '🤔' };
             }
-            if (!incomeMatch) return false;
+            const index = Math.round(score) - 1;
+            const isReversed = type === 'cost' || type === 'bureaucracy';
+            let description, emoji;
+            if (type === 'sentiment') {
+                description = sentimentDesc[index];
+                emoji = sentimentEmoji[index];
+            } else {
+                description = isReversed ? reversedDesc[index] : standardDesc[index];
+                emoji = '';
+            }
+            return { description, emoji, color: isReversed ? colors.slice().reverse()[index] : colors[index], percentage: (score / 5) * 100 };
+        };
 
-            let workStyleMatch = true;
-            if (selectedWorkStyle !== 'Any') {
-                const visaEmploymentTypes = visa.employment_type?.map(type => type.toLowerCase()) || [];
-                if (selectedWorkStyle === 'business_owner') {
-                    workStyleMatch = visaEmploymentTypes.includes('freelancer') || visaEmploymentTypes.includes('business_owner');
-                } else {
-                    workStyleMatch = visaEmploymentTypes.includes(selectedWorkStyle.toLowerCase());
+        function App() {
+            const [selectedNationality, setSelectedNationality] = React.useState('');
+            const [selectedIncomeValue, setSelectedIncomeValue] = React.useState("any");
+            const [selectedWorkStyle, setSelectedWorkStyle] = React.useState('Any');
+            const [filteredVisas, setFilteredVisas] = React.useState([]);
+            const [modalContent, setModalContent] = React.useState(null);
+
+            React.useEffect(() => {
+                if (!selectedNationality) {
+                    setFilteredVisas([]);
+                    return;
                 }
-            }
-            return workStyleMatch;
-        });
-        setFilteredVisas(results);
-    }, [selectedNationality, selectedIncomeValue, selectedWorkStyle]);
-    
-    return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-gray-100 font-sans p-4 sm:p-6 md:p-8">
-            <header className="text-center mb-8 max-w-3xl mx-auto">
-                <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
-                    Visa Match & Clarity Engine
-                </h1>
-                <p className="text-slate-400 mt-2">Instantly find your digital nomad visa options worldwide.</p>
-            </header>
-
-            <div className="bg-slate-800 shadow-2xl rounded-xl p-6 mb-8 max-w-4xl mx-auto">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
-                    <div className="lg:col-span-1">
-                        <label htmlFor="nationality" className="block text-sm font-medium text-slate-300 mb-2">🌍 Your Passport Country</label>
-                        <select id="nationality" value={selectedNationality} onChange={(e) => setSelectedNationality(e.target.value)}
-                            className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-white">
-                            <option value="">-- Select Nationality --</option>
-                            {worldNationalities.map(nat => <option key={nat} value={nat}>{nat}</option>)}
-                        </select>
+                const currentIncomeOption = incomeLevels.find(level => level.value === selectedIncomeValue);
+                const userIncomeForMatch = currentIncomeOption?.userIncomeForMatch;
+                const results = visaData.visas.filter(visa => {
+                    const nationalityMatch = visa.allowed_passports.includes("All") || visa.allowed_passports.includes(selectedNationality);
+                    if (!nationalityMatch) return false;
+                    let incomeMatch = true;
+                    if (userIncomeForMatch !== null && visa.min_income_usd !== null) {
+                        incomeMatch = userIncomeForMatch === Infinity || visa.min_income_usd <= userIncomeForMatch;
+                    }
+                    if (!incomeMatch) return false;
+                    let workStyleMatch = true;
+                    if (selectedWorkStyle !== 'Any') {
+                        const visaEmploymentTypes = visa.employment_type?.map(type => type.toLowerCase()) || [];
+                        if (selectedWorkStyle === 'business_owner') {
+                            workStyleMatch = visaEmploymentTypes.includes('freelancer') || visaEmploymentTypes.includes('business_owner');
+                        } else {
+                            workStyleMatch = visaEmploymentTypes.includes(selectedWorkStyle.toLowerCase());
+                        }
+                    }
+                    return workStyleMatch;
+                });
+                setFilteredVisas(results);
+            }, [selectedNationality, selectedIncomeValue, selectedWorkStyle]);
+            
+            return (
+                <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-gray-100 font-sans p-4 sm:p-6 md:p-8">
+                    <header className="text-center mb-8 max-w-3xl mx-auto">
+                        <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+                            Visa Match & Clarity Engine
+                        </h1>
+                        <p className="text-slate-400 mt-2">Instantly find your digital nomad visa options worldwide.</p>
+                    </header>
+                    <div className="bg-slate-800 shadow-2xl rounded-xl p-6 mb-8 max-w-4xl mx-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
+                            <div className="lg:col-span-1">
+                                <label htmlFor="nationality" className="block text-sm font-medium text-slate-300 mb-2">🌍 Your Passport Country</label>
+                                <select id="nationality" value={selectedNationality} onChange={(e) => setSelectedNationality(e.target.value)}
+                                    className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-white">
+                                    <option value="">-- Select Nationality --</option>
+                                    {worldNationalities.map(nat => <option key={nat} value={nat}>{nat}</option>)}
+                                </select>
+                            </div>
+                            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                                 <div>
+                                    <label className="block text-sm font-medium text-slate-300 mb-2">💰 Est. Monthly Income (USD)</label>
+                                    <div className="flex flex-wrap gap-2">
+                                        {incomeLevels.map(level => (
+                                            <button key={level.value} onClick={() => setSelectedIncomeValue(level.value)}
+                                                className={`px-3 py-2 text-sm rounded-md transition-all ${selectedIncomeValue === level.value ? 'bg-purple-600 text-white shadow-lg ring-2 ring-purple-400' : 'bg-slate-700 hover:bg-slate-600 text-slate-300'}`}>
+                                                {level.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-slate-300 mb-2">🧑‍💻 Work Style</label>
+                                    <div className="flex flex-wrap gap-2">
+                                        {workStyles.map(style => (
+                                            <button key={style.value} onClick={() => setSelectedWorkStyle(style.value)}
+                                                className={`flex items-center gap-2 px-3 py-2 text-sm rounded-md transition-all ${selectedWorkStyle === style.value ? 'bg-purple-600 text-white shadow-lg ring-2 ring-purple-400' : 'bg-slate-700 hover:bg-slate-600 text-slate-300'}`}>
+                                                <span>{style.icon}</span>{style.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-                         <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">💰 Est. Monthly Income (USD)</label>
-                            <div className="flex flex-wrap gap-2">
-                                {incomeLevels.map(level => (
-                                    <button key={level.value} onClick={() => setSelectedIncomeValue(level.value)}
-                                        className={`px-3 py-2 text-sm rounded-md transition-all ${selectedIncomeValue === level.value ? 'bg-purple-600 text-white shadow-lg ring-2 ring-purple-400' : 'bg-slate-700 hover:bg-slate-600 text-slate-300'}`}>
-                                        {level.label}
-                                    </button>
+                    <main className="mt-8 max-w-7xl mx-auto">
+                        {selectedNationality && (filteredVisas.length > 0 ? (
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                {filteredVisas.map((visa, index) => (
+                                    <VisaCard key={`${visa.country}-${index}`} visa={visa} onViewDetails={() => setModalContent(visa)} />
                                 ))}
                             </div>
+                        ) : <p className="text-center text-slate-400 py-10">No visas match your current criteria.</p>)}
+                        {!selectedNationality && <p className="text-center text-slate-400 py-10 text-lg">Please select your passport country.</p>}
+                    </main>
+                    {modalContent && <DetailsModal visa={modalContent} onClose={() => setModalContent(null)} />}
+                    <footer className="text-center mt-12 py-4 border-t border-slate-700">
+                        <p className="text-sm text-slate-500">Always verify information with official sources.</p>
+                    </footer>
+                </div>
+            );
+        }
+
+        function VisaCard({ visa, onViewDetails }) {
+            const bureaucracyAttrs = getScoreAttributes(visa.bureaucracy_score, 'bureaucracy');
+            return (
+                <div className="bg-slate-800 shadow-xl rounded-lg p-5 flex flex-col justify-between transition-all hover:shadow-purple-500/30 hover:scale-[1.02] duration-300">
+                    <div>
+                        <h3 className="text-xl font-bold text-purple-400 mb-2">
+                            {getCountryFlagEmoji(visa.country)} {visa.country} – <span className="font-normal text-slate-300">{visa.visa_name}</span>
+                        </h3>
+                        <div className="space-y-3 text-sm mb-4">
+                            <p>⏳<span className="font-semibold"> Duration:</span> {visa.duration_months ? `${visa.duration_months} months` : 'N/A'}</p>
+                            <p>💸<span className="font-semibold"> Visa Cost:</span> {visa.visa_cost !== null ? `~$${visa.visa_cost}` : 'N/A'}</p>
+                            <p className="flex items-center">
+                                <span className="font-semibold mr-2">🤯 Bureaucracy:</span>
+                                <span className={`font-bold ${bureaucracyAttrs.color.replace('bg-', 'text-')}`}>{bureaucracyAttrs.description}</span>
+                            </p>
                         </div>
-                        <div>
-                            <label className="block text-sm font-medium text-slate-300 mb-2">🧑‍💻 Work Style</label>
-                            <div className="flex flex-wrap gap-2">
-                                {workStyles.map(style => (
-                                    <button key={style.value} onClick={() => setSelectedWorkStyle(style.value)}
-                                        className={`flex items-center gap-2 px-3 py-2 text-sm rounded-md transition-all ${selectedWorkStyle === style.value ? 'bg-purple-600 text-white shadow-lg ring-2 ring-purple-400' : 'bg-slate-700 hover:bg-slate-600 text-slate-300'}`}>
-                                        <span>{style.icon}</span>{style.label}
-                                    </button>
-                                ))}
+                    </div>
+                    <div className="mt-auto">
+                        <a href={visa.source_url || '#'} target="_blank" rel="noopener noreferrer" className="text-xs text-slate-400 hover:text-purple-300 block truncate mb-3" title={visa.source_url || 'Source not available'}>
+                            {visa.date_of_cost_check ? `Checked: ${visa.date_of_cost_check}` : '\u00A0'}
+                        </a>
+                        <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition" onClick={onViewDetails}>
+                            View Full Details
+                        </button>
+                    </div>
+                </div>
+            );
+        }
+
+        const ScoreBar = ({ score, label, emoji, type = 'standard' }) => {
+            const { description, color, percentage } = getScoreAttributes(score, type);
+            return (
+                <div className="w-full">
+                    <div className="flex justify-between items-center mb-1 text-sm">
+                        <span className="font-medium text-slate-300">{emoji} {label}</span>
+                        <span className={`font-bold ${color.replace('bg-', 'text-')}`}>{description}</span>
+                    </div>
+                    <div className="w-full bg-slate-700 rounded-full h-2.5">
+                        <div className={`${color} h-2.5 rounded-full`} style={{ width: `${percentage}%` }}></div>
+                    </div>
+                </div>
+            );
+        };
+
+        const DetailText = ({ label, value }) => (
+            <div className="relative group text-sm">
+                 <p className="text-slate-300 truncate">
+                    <strong className="text-slate-400">{label}:</strong> {value || 'N/A'}
+                </p>
+                <div className="absolute bottom-full left-0 w-max max-w-xs mb-2 hidden group-hover:block bg-slate-900 text-white text-xs rounded-lg py-2 px-3 z-10 border border-slate-700 shadow-lg">
+                    {value || 'N/A'}
+                </div>
+            </div>
+        );
+
+        function DetailsModal({ visa, onClose }) {
+            const sentimentAttrs = getScoreAttributes(visa.nomad_sentiment_score, 'sentiment');
+            return (
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4 transition-opacity duration-300" onClick={onClose}>
+                    <div className="bg-slate-800 rounded-xl shadow-2xl p-6 md:p-8 max-w-3xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar" onClick={e => e.stopPropagation()}>
+                        <div className="flex justify-between items-center pb-4 border-b border-slate-700">
+                            <h2 className="text-2xl font-bold text-purple-400">{getCountryFlagEmoji(visa.country)} {visa.country}</h2>
+                            <button onClick={onClose} className="text-slate-400 hover:text-white text-3xl font-light">&times;</button>
+                        </div>
+                        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-6">
+                                <div className="bg-slate-900/50 p-4 rounded-lg">
+                                    <h3 className="text-lg font-semibold text-slate-200 mb-3">🔑 Key Information</h3>
+                                    <div className="space-y-2 text-sm text-slate-300">
+                                        <p><strong className="text-slate-400">Visa Name:</strong> {visa.visa_name}</p>
+                                        <p><strong className="text-slate-400">Duration:</strong> {visa.duration_months ? `${visa.duration_months} months` : 'N/A'}</p>
+                                        <p><strong className="text-slate-400">Cost (est.):</strong> {visa.visa_cost !== null ? `~$${visa.visa_cost}` : 'N/A'}</p>
+                                    </div>
+                                </div>
+                                <div className="bg-slate-900/50 p-4 rounded-lg">
+                                    <h3 className="text-lg font-semibold text-slate-200 mb-3">✅ Requirements</h3>
+                                    <div className="space-y-2 text-sm text-slate-300">
+                                        <p><strong className="text-slate-400">Min. Income:</strong> {visa.min_income_usd ? `$${visa.min_income_usd.toLocaleString()}/mo` : 'Not Specified'}</p>
+                                        <p><strong className="text-slate-400">Min. Bank Balance:</strong> {visa.min_bank_balance_usd ? `$${visa.min_bank_balance_usd.toLocaleString()}` : 'N/A'}</p>
+                                    </div>
+                                </div>
+                                <div className="bg-slate-900/50 p-4 rounded-lg">
+                                    <h3 className="text-lg font-semibold text-slate-200 mb-3">⚖️ Tax & Social Security</h3>
+                                    <div className="space-y-4 text-sm">
+                                        <ScoreBar score={visa.tax_attractiveness} label="Tax Attractiveness" emoji="💸"/>
+                                        <DetailText label="Tax Details" value={visa.tax_per_income} />
+                                        <ScoreBar score={visa.social_security_attractiveness} label="SS Attractiveness" emoji="🤝"/>
+                                        <DetailText label="SS Details" value={visa.social_security_per_income} />
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="space-y-6">
+                                <div className="bg-slate-900/50 p-4 rounded-lg">
+                                    <h3 className="text-lg font-semibold text-slate-200 mb-4">⭐ Location Scores</h3>
+                                    <div className="space-y-4">
+                                        <ScoreBar score={visa.cost_of_living_score} label="Cost of Living" emoji="💰" type="cost" />
+                                        <ScoreBar score={visa.internet_quality_score} label="Internet" emoji="🌐"/>
+                                        <ScoreBar score={visa.safety_score} label="Safety" emoji="🛡️"/>
+                                        <ScoreBar score={visa.bureaucracy_score} label="Bureaucracy" emoji="🤯" type="bureaucracy" />
+                                    </div>
+                                </div>
+                                <div className="bg-slate-900/50 p-4 rounded-lg">
+                                   <h3 className="text-lg font-semibold text-slate-200 mb-3">❤️ Nomad Sentiment</h3>
+                                   <div className="flex items-center gap-4">
+                                       <span className="text-4xl">{sentimentAttrs.emoji}</span>
+                                       <div className="w-full">
+                                           <p className="text-slate-300 font-bold">{sentimentAttrs.description}</p>
+                                           <p className="text-xs text-slate-400">Based on recent online discussions</p>
+                                       </div>
+                                   </div>
+                                </div>
+                                {visa.notes && <>
+                                    <div className="bg-slate-900/50 p-4 rounded-lg">
+                                        <h3 className="text-lg font-semibold text-slate-200 mb-2">📝 Notes</h3>
+                                        <p className="text-sm text-slate-300">{visa.notes}</p>
+                                    </div>
+                                </>}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            );
+        }
 
-            <main className="mt-8 max-w-7xl mx-auto">
-                {selectedNationality && (filteredVisas.length > 0 ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {filteredVisas.map((visa, index) => (
-                            <VisaCard key={`${visa.country}-${index}`} visa={visa} onViewDetails={() => setModalContent(visa)} />
-                        ))}
-                    </div>
-                ) : <p className="text-center text-slate-400 py-10">No visas match your current criteria.</p>)}
-                {!selectedNationality && <p className="text-center text-slate-400 py-10 text-lg">Please select your passport country.</p>}
-            </main>
-            
-            {modalContent && <DetailsModal visa={modalContent} onClose={() => setModalContent(null)} />}
-            
-            <footer className="text-center mt-12 py-4 border-t border-slate-700">
-                <p className="text-sm text-slate-500">Always verify information with official sources.</p>
-            </footer>
-        </div>
-    );
-}
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App />);
 
-function VisaCard({ visa, onViewDetails }) {
-    const bureaucracyAttrs = getScoreAttributes(visa.bureaucracy_score, 'bureaucracy');
-
-    return (
-        <div className="bg-slate-800 shadow-xl rounded-lg p-5 flex flex-col justify-between transition-all hover:shadow-purple-500/30 hover:scale-[1.02] duration-300">
-            <div>
-                <h3 className="text-xl font-bold text-purple-400 mb-2">
-                    {getCountryFlagEmoji(visa.country)} {visa.country} – <span className="font-normal text-slate-300">{visa.visa_name}</span>
-                </h3>
-                <div className="space-y-3 text-sm mb-4">
-                    <p>⏳<span className="font-semibold"> Duration:</span> {visa.duration_months ? `${visa.duration_months} months` : 'N/A'}</p>
-                    <p>💸<span className="font-semibold"> Visa Cost:</span> {visa.visa_cost !== null ? `~$${visa.visa_cost}` : 'N/A'}</p>
-                    <p className="flex items-center">
-                        <span className="font-semibold mr-2">🤯 Bureaucracy:</span>
-                        <span className={`font-bold ${bureaucracyAttrs.color.replace('bg-', 'text-')}`}>{bureaucracyAttrs.description}</span>
-                    </p>
-                </div>
-            </div>
-            <div className="mt-auto">
-                 <a href={visa.source_url || '#'} target="_blank" rel="noopener noreferrer" className="text-xs text-slate-400 hover:text-purple-300 block truncate mb-3" title={visa.source_url || 'Source not available'}>
-                    {visa.date_of_cost_check ? `Checked: ${visa.date_of_cost_check}` : '\u00A0'}
-                </a>
-                <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition" onClick={onViewDetails}>
-                    View Full Details
-                </button>
-            </div>
-            <style>{`.custom-scrollbar::-webkit-scrollbar { width: 6px; } .custom-scrollbar::-webkit-scrollbar-track { background: #334155; } .custom-scrollbar::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 10px; }`}</style>
-        </div>
-    );
-}
-
-const ScoreBar = ({ score, label, emoji, type = 'standard' }) => {
-    const { description, color, percentage } = getScoreAttributes(score, type);
-
-    return (
-        <div className="w-full">
-            <div className="flex justify-between items-center mb-1 text-sm">
-                <span className="font-medium text-slate-300">{emoji} {label}</span>
-                <span className={`font-bold ${color.replace('bg-', 'text-')}`}>{description}</span>
-            </div>
-            <div className="w-full bg-slate-700 rounded-full h-2.5">
-                <div className={`${color} h-2.5 rounded-full`} style={{ width: `${percentage}%` }}></div>
-            </div>
-        </div>
-    );
-};
-
-const DetailText = ({ label, value }) => (
-    <p className="text-slate-300" title={value}>
-        <strong className="text-slate-400">{label}:</strong> 
-        <span className="truncate inline-block align-bottom" style={{maxWidth: '70%'}}>{value || 'N/A'}</span>
-    </p>
-);
-
-function DetailsModal({ visa, onClose }) {
-    const sentimentAttrs = getScoreAttributes(visa.nomad_sentiment_score, 'sentiment');
-    return (
-        <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4 transition-opacity duration-300" onClick={onClose}>
-            <div className="bg-slate-800 rounded-xl shadow-2xl p-6 md:p-8 max-w-3xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar" onClick={e => e.stopPropagation()}>
-                <div className="flex justify-between items-center pb-4 border-b border-slate-700">
-                    <h2 className="text-2xl font-bold text-purple-400">{getCountryFlagEmoji(visa.country)} {visa.country}</h2>
-                    <button onClick={onClose} className="text-slate-400 hover:text-white text-3xl font-light">&times;</button>
-                </div>
-                
-                <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-6">
-                        <div className="bg-slate-900/50 p-4 rounded-lg">
-                            <h3 className="text-lg font-semibold text-slate-200 mb-3">🔑 Key Information</h3>
-                            <div className="space-y-2 text-sm text-slate-300">
-                                <p><strong className="text-slate-400">Visa Name:</strong> {visa.visa_name}</p>
-                                <p><strong className="text-slate-400">Duration:</strong> {visa.duration_months ? `${visa.duration_months} months` : 'N/A'}</p>
-                                <p><strong className="text-slate-400">Cost (est.):</strong> {visa.visa_cost !== null ? `~$${visa.visa_cost}` : 'N/A'}</p>
-                            </div>
-                        </div>
-                        <div className="bg-slate-900/50 p-4 rounded-lg">
-                            <h3 className="text-lg font-semibold text-slate-200 mb-3">✅ Requirements</h3>
-                            <div className="space-y-2 text-sm text-slate-300">
-                                <p><strong className="text-slate-400">Min. Income:</strong> {visa.min_income_usd_monthly ? `$${visa.min_income_usd_monthly.toLocaleString()}/mo` : 'Not Specified'}</p>
-                                <p><strong className="text-slate-400">Min. Bank Balance:</strong> {visa.min_bank_balance_usd ? `$${visa.min_bank_balance_usd.toLocaleString()}` : 'N/A'}</p>
-                            </div>
-                        </div>
-                         <div className="bg-slate-900/50 p-4 rounded-lg">
-                            <h3 className="text-lg font-semibold text-slate-200 mb-3">⚖️ Tax & Social Security</h3>
-                            <div className="space-y-4 text-sm">
-                                <ScoreBar score={visa.tax_attractiveness} label="Tax Attractiveness" emoji="💸"/>
-                                <DetailText label="Tax Details" value={visa.tax_per_income} />
-                                <ScoreBar score={visa.social_security_attractiveness} label="SS Attractiveness" emoji="🤝"/>
-                                <DetailText label="SS Details" value={visa.social_security_per_income} />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="space-y-6">
-                        <div className="bg-slate-900/50 p-4 rounded-lg">
-                            <h3 className="text-lg font-semibold text-slate-200 mb-4">⭐ Location Scores</h3>
-                            <div className="space-y-4">
-                                <ScoreBar score={visa.cost_of_living_score} label="Cost of Living" emoji="💰" type="cost" />
-                                <ScoreBar score={visa.internet_quality_score} label="Internet" emoji="🌐"/>
-                                <ScoreBar score={visa.safety_score} label="Safety" emoji="🛡️"/>
-                                <ScoreBar score={visa.bureaucracy_score} label="Bureaucracy" emoji="🤯" type="bureaucracy" />
-                            </div>
-                        </div>
-                        <div className="bg-slate-900/50 p-4 rounded-lg">
-                           <h3 className="text-lg font-semibold text-slate-200 mb-3">❤️ Nomad Sentiment</h3>
-                           <div className="flex items-center gap-4">
-                               <span className="text-4xl">{sentimentAttrs.emoji}</span>
-                               <div className="w-full">
-                                   <p className="text-slate-300 font-bold">{sentimentAttrs.description}</p>
-                                   <p className="text-xs text-slate-400">Based on recent online discussions</p>
-                               </div>
-                           </div>
-                        </div>
-                        {visa.notes && <>
-                            <div className="bg-slate-900/50 p-4 rounded-lg">
-                                <h3 className="text-lg font-semibold text-slate-200 mb-2">📝 Notes</h3>
-                                <p className="text-sm text-slate-300">{visa.notes}</p>
-                            </div>
-                        </>}
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-}
-
-export default App;
+    </script>
+</body>
+</html>
