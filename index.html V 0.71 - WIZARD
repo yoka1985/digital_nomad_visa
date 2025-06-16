@@ -32,23 +32,12 @@
         .custom-scrollbar::-webkit-scrollbar-track { background: #334155; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 10px; }
         .group:hover .group-hover\:block { display: block; }
-        /* Custom styles for slider thumb */
         input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            background: #a78bfa; /* purple-400 */
-            cursor: pointer;
-            border-radius: 50%;
-            margin-top: -6px; /* Center thumb on the track */
+            -webkit-appearance: none; appearance: none; width: 20px; height: 20px;
+            background: #a78bfa; cursor: pointer; border-radius: 50%; margin-top: -6px;
         }
         input[type="range"]::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            background: #a78bfa; /* purple-400 */
-            cursor: pointer;
-            border-radius: 50%;
+            width: 20px; height: 20px; background: #a78bfa; cursor: pointer; border-radius: 50%;
         }
     </style>
 </head>
@@ -56,55 +45,12 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        // --- DATA ---
+        // --- DATA & CONTENT ---
         const visaData = [
           { "country": "Spain", "continent": "Europe", "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 153, "income_requirements_monthly_usd": 2762, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["Non-EU/EEA/Swiss"], "bonuses_incentives": "20% tax cap; family members allowed; eventual path to residency", "remarks": "Formally launched in 2023 under its Startup Act. *cost_remark - Original cost: $73 consular fee plus $80 NIE. *length_remark - Renewable for up to 3 years.", "update_visa_date": "2023-01-01", "source_url": "https://www.exteriores.gob.es/Consulados/londres/en/ServiciosConsulares/Paginas/Consular/Visado-de-teletrabajo.aspx", "ssn_attractiveness": 3, "tax_attractiveness": 4, "cost_of_living_attractiveness": 4, "bureaucracy_level": 4 },
           { "country": "Portugal", "continent": "Europe", "visa_name": "Temporary-Stay Visa (D8 Digital Nomad Visa)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 165, "income_requirements_monthly_usd": 3480, "visa_length_months": 24, "can_you_apply_remotely": "Yes", "category_citizenship": ["Non-EU/EEA/Swiss"], "bonuses_incentives": "Access to Schengen; can include dependents; path to permanent residency and citizenship", "remarks": "Tailored for freelancers and remote employees earning active income from abroad. *cost_remark - Original cost: $75 (visa) + $90 (residence permit). *length_remark - Initial 4-month visa leads to a 2-year residence permit, renewable up to 5 years. *remote_apply_remark - Application is via a Portuguese embassy.", "update_visa_date": "2025-06-11", "source_url": "https://vistos.mne.gov.pt/en/national-visas/general-information/type-of-visa", "ssn_attractiveness": 4, "tax_attractiveness": 4, "cost_of_living_attractiveness": 4, "bureaucracy_level": 4 },
-          { "country": "Portugal", "continent": "Europe", "visa_name": "D7 Passive Income Visa", "visa_type": "Passive Income Visa", "visa_cost_usd": 87, "income_requirements_monthly_usd": 870, "visa_length_months": 24, "can_you_apply_remotely": "Yes", "category_citizenship": ["Non-EU/EEA/Swiss"], "bonuses_incentives": "Healthcare and Schengen access; path to permanent residency", "remarks": "Designed for those with passive income like pensions, rental income, or dividends. *cost_remark - Original cost was approximately $87. *length_remark - Initial 4-month visa leads to a 2-year residence permit, renewable for 3 more years. *remote_apply_remark - Application is through embassies.", "update_visa_date": "2025-06-11", "source_url": "https://vistos.mne.gov.pt/en/national-visas/general-information/type-of-visa", "ssn_attractiveness": 4, "tax_attractiveness": 4, "cost_of_living_attractiveness": 4, "bureaucracy_level": 4 },
-          { "country": "Italy", "continent": "Europe", "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 116, "income_requirements_monthly_usd": 2500, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["Non-EU/EEA/Swiss"], "bonuses_incentives": "Includes family, health insurance required, Mediterranean lifestyle", "remarks": "Launched in April 2024, targets highly skilled professionals. *cost_remark - Original cost was approximately $116. *length_remark - Renewable. *remote_apply_remark - Application is through the consulate in your home country.", "update_visa_date": "2024-04-01", "source_url": "https://vistoperitalia.esteri.it/home/en", "ssn_attractiveness": 3, "tax_attractiveness": 3, "cost_of_living_attractiveness": 3, "bureaucracy_level": 5 },
-          { "country": "Croatia", "continent": "Europe", "visa_name": "Digital Nomad Residence Permit", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 139, "income_requirements_monthly_usd": 2658, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["Non-EU/EEA/Swiss"], "bonuses_incentives": "No local income tax; family entry permitted", "remarks": "Introduced in January 2021. *cost_remark - Original cost: $73 visa + $66 permit. *length_remark - Visa length is 6-12 months. *remote_apply_remark - Apply online or at consulate.", "update_visa_date": "2021-01-01", "source_url": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "ssn_attractiveness": 2, "tax_attractiveness": 5, "cost_of_living_attractiveness": 4, "bureaucracy_level": 2 },
-          { "country": "Germany", "continent": "Europe", "visa_name": "Freelancer Visa (Freiberufler)", "visa_type": "Alternative Visa", "visa_cost_usd": 105, "income_requirements_monthly_usd": 2000, "visa_length_months": 36, "can_you_apply_remotely": "No", "category_citizenship": ["Non-EU/EFTA"], "bonuses_incentives": "EU mobility rights, family reunification", "remarks": "For self-employed individuals in liberal professions. *cost_remark - Original cost was approximately $105. *income_remark - Must be self-sufficient; typically requires $2,000–$3,000/month. *length_remark - Renewable. *remote_apply_remark - You must apply at your local German embassy.", "update_visa_date": "2025-06-11", "source_url": "https://www.make-it-in-germany.com/en/visa-residence/types/self-employment", "ssn_attractiveness": 4, "tax_attractiveness": 2, "cost_of_living_attractiveness": 3, "bureaucracy_level": 4 },
-          { "country": "Greece", "continent": "Europe", "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 79, "income_requirements_monthly_usd": 3690, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["Non-EU/EEA/Swiss"], "bonuses_incentives": "50% tax break for up to 7 years", "remarks": "Considered one of the easiest to obtain. *cost_remark - Original cost was approximately $79. *length_remark - Renewable up to 2 years. *remote_apply_remark - You must apply at a Greek Embassy or Consulate.", "update_visa_date": "2025-06-11", "source_url": "https://www.mfa.gr/en/visas/visa-types/national-visas.html", "ssn_attractiveness": 3, "tax_attractiveness": 5, "cost_of_living_attractiveness": 4, "bureaucracy_level": 3 },
-          { "country": "Estonia", "continent": "Europe", "visa_name": "Long-Stay Visa (D-Visa)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 105, "income_requirements_monthly_usd": 3083, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["All"], "bonuses_incentives": "Access to e-residency, business environment", "remarks": "Part of the world's first official digital nomad visa program (2020). *cost_remark - Original cost was approximately $105. *income_remark - Original requirement: $37,000/year.", "update_visa_date": "2020-08-01", "source_url": "https://www.politsei.ee/en/services/residence-permit/digital-nomad", "ssn_attractiveness": 2, "tax_attractiveness": 3, "cost_of_living_attractiveness": 4, "bureaucracy_level": 2 },
-          { "country": "Malta", "continent": "Europe", "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 316, "income_requirements_monthly_usd": 2850, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["Non-EU/EEA"], "bonuses_incentives": "No local tax if taxed elsewhere; English-language environment", "remarks": "Introduced in June 2021. *length_remark - Renewable. *remote_apply_remark - You must submit your application at the closest Malta consulate.", "update_visa_date": "2021-06-01", "source_url": "https://nomad.residencymalta.gov.mt/", "ssn_attractiveness": 2, "tax_attractiveness": 5, "cost_of_living_attractiveness": 3, "bureaucracy_level": 2 },
-          { "country": "Norway", "continent": "Europe", "visa_name": "Independent Contractor Visa (Svalbard)", "visa_type": "Alternative Visa", "visa_cost_usd": 632, "income_requirements_monthly_usd": 3140, "visa_length_months": 24, "can_you_apply_remotely": "Yes", "category_citizenship": ["Non-EU/EEA"], "bonuses_incentives": "Rapid processing (~15 days); unique Arctic experience", "remarks": "Visa is only for Svalbard, an archipelago between mainland Norway and the North Pole. *cost_remark - Original cost was approximately $632. *income_remark - Original requirement: $37,680/year. *length_remark - Extendable.", "update_visa_date": "2025-06-11", "source_url": "https://www.udi.no/en/want-to-apply/work-immigration/skilled-workers/", "ssn_attractiveness": 4, "tax_attractiveness": 3, "cost_of_living_attractiveness": 1, "bureaucracy_level": 3 },
-          { "country": "Iceland", "continent": "Europe", "visa_name": "Remote Work Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 96, "income_requirements_monthly_usd": 7763, "visa_length_months": 6, "can_you_apply_remotely": "Yes", "category_citizenship": ["Non-EU/EEA/Swiss"], "bonuses_incentives": "No tax if stay less than 183 days; safe and English-friendly", "remarks": "One of the first Schengen countries to introduce a remote work visa. *income_remark - Original income was approximately $7,763/month. *remote_apply_remark - Applications are only received through the mail.", "update_visa_date": "2025-06-11", "source_url": "https://island.is/en/get_a_residence_permit/work/remote_work", "ssn_attractiveness": 1, "tax_attractiveness": 4, "cost_of_living_attractiveness": 1, "bureaucracy_level": 4 },
-          { "country": "Romania", "continent": "Europe", "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 132, "income_requirements_monthly_usd": 3900, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["Non-EU/EEA/Swiss"], "bonuses_incentives": "Fast approval (10–14 days); families allowed", "remarks": "Officially announced on December 21st, 2021. *cost_remark - Original cost was approximately €120. Converted at 1 EUR = 1.1 USD. *length_remark - Renewable for 1 more year. *remote_apply_remark - Apply via embassy or online.", "update_visa_date": "2021-12-21", "source_url": "http://eviza.mae.ro/", "ssn_attractiveness": 2, "tax_attractiveness": 5, "cost_of_living_attractiveness": 5, "bureaucracy_level": 3 },
-          { "country": "Netherlands", "continent": "Europe", "visa_name": "Self-employed residence permit", "visa_type": "Alternative Visa", "visa_cost_usd": 407, "income_requirements_monthly_usd": 1340, "visa_length_months": 3, "can_you_apply_remotely": "Yes", "category_citizenship": ["Non-EU/EEA/Swiss"], "bonuses_incentives": "You can register business and work freelance", "remarks": "Not a specific digital nomad visa, but an option for independent workers. *cost_remark - Original cost was approximately $407. *income_remark - Original income was approximately $1,340/month; based on business plan. *length_remark - For stays 90+ days, renewable. *remote_apply_remark - You must apply at the closest Dutch embassy or consulate.", "update_visa_date": "2025-06-11", "source_url": "https://ind.nl/en/residence-permits/work/residence-permit-self-employed-person", "ssn_attractiveness": 4, "tax_attractiveness": 2, "cost_of_living_attractiveness": 3, "bureaucracy_level": 4 },
-          { "country": "Georgia", "continent": "Europe", "visa_name": "Remotely From Georgia", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 0, "income_requirements_monthly_usd": 2000, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["Select Countries"], "bonuses_incentives": "No fees; family included; affordable cost of living", "remarks": "A campaign launched to attract remote workers. *cost_remark - Visa is free. *remote_apply_remark - The application process can be conducted entirely online.", "update_visa_date": "2025-06-11", "source_url": "https://www.geoconsul.gov.ge/en/news/16", "ssn_attractiveness": 1, "tax_attractiveness": 5, "cost_of_living_attractiveness": 5, "bureaucracy_level": 1 },
-          { "country": "Czech Republic", "continent": "Europe", "visa_name": "Zivno (freelancer visa)", "visa_type": "Alternative Visa", "visa_cost_usd": 163, "income_requirements_monthly_usd": 0, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["Select Countries"], "bonuses_incentives": "Family allowed; vibrant expat community", "remarks": "A trade license visa combined with a long-term business visa. *cost_remark - Original cost was around $117 plus $46 for the trade license. *income_remark - Requires at least $5,200 in savings or client contracts. *length_remark - Renewable. *remote_apply_remark - You can apply at your local embassy or consulate.", "update_visa_date": "2025-06-11", "source_url": "https://www.mvcr.cz/mvcren/article/third-country-nationals-long-term-residence.aspx", "ssn_attractiveness": 3, "tax_attractiveness": 3, "cost_of_living_attractiveness": 4, "bureaucracy_level": 5 },
-          { "country": "Hungary", "continent": "Europe", "visa_name": "White Card", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 116, "income_requirements_monthly_usd": 2110, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["Non-EU/EEA/Swiss"], "bonuses_incentives": "Easy eligibility, fast process, ideal for singles", "remarks": "Launched in November 2021, primarily for singles under 40. *length_remark - Renewable. *remote_apply_remark - While you can’t apply online, you may apply at the closest Hungarian embassy or consulate.", "update_visa_date": "2021-11-01", "source_url": "http://www.bmbah.hu/index.php?option=com_k2&view=item&id=1715:residence-permit-for-the-purpose-of-white-card&Itemid=2100&lang=en", "ssn_attractiveness": 2, "tax_attractiveness": 4, "cost_of_living_attractiveness": 4, "bureaucracy_level": 3 },
-          { "country": "Bulgaria", "continent": "Europe", "visa_name": "Type D Visa (Freelancer)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 80, "income_requirements_monthly_usd": 2500, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["Non-EU"], "bonuses_incentives": "10% flat tax, Schengen travel post-2025, low cost of living", "remarks": "Program launched in 2025. *cost_remark - Original cost was approximately $60-100 total. Average taken. *length_remark - Renewable. *remote_apply_remark - Apply online via Employment Agency and consulate.", "update_visa_date": "2025-01-01", "source_url": "https://www.mfa.bg/en/services-travel/consular-services/travel-bulgaria/visa-bulgaria", "ssn_attractiveness": 3, "tax_attractiveness": 5, "cost_of_living_attractiveness": 5, "bureaucracy_level": 4 },
-          { "country": "Latvia", "continent": "Europe", "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 65, "income_requirements_monthly_usd": 3843, "visa_length_months": 12, "can_you_apply_remotely": "No", "category_citizenship": ["OECD Nationals"], "bonuses_incentives": "Schengen access; Western remote work environment", "remarks": "Available from 2024–25. *cost_remark - Original cost was approximately $65. *length_remark - Renewable. *remote_apply_remark - Application is via consulate.", "update_visa_date": "2024-01-01", "source_url": "https://www.pmlp.gov.lv/en/digital-nomad-visa", "ssn_attractiveness": 2, "tax_attractiveness": 3, "cost_of_living_attractiveness": 4, "bureaucracy_level": 3 },
-          { "country": "Cyprus", "continent": "Europe", "visa_name": "Digital Nomad Visa Scheme", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 78, "income_requirements_monthly_usd": 3083, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["Non-EU/EEA/Swiss"], "bonuses_incentives": "No income tax if taxed elsewhere; startup environment", "remarks": "Introduced in October 2021. *income_remark - Original requirement: $37,000/year post-tax. *length_remark - Renewable twice (up to 3 years total).", "update_visa_date": "2021-10-01", "source_url": "https://moi.gov.cy/en/digital-nomad-visa-scheme-reopening-of-applications/", "ssn_attractiveness": 3, "tax_attractiveness": 5, "cost_of_living_attractiveness": 4, "bureaucracy_level": 3 },
-          { "country": "Costa Rica", "continent": "North America", "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 195, "income_requirements_monthly_usd": 3000, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["Most Nationalities"], "bonuses_incentives": "Access to public healthcare; scenic environments", "remarks": "One of the most accessible visas. *cost_remark - Original cost was $190–$200. Average taken. *income_remark - $3,000/month for single, $4,000/month with dependents. *length_remark - Renewable for 1 more year. *remote_apply_remark - Apply online or at an embassy.", "update_visa_date": "2025-06-11", "source_url": "https://tramiteya.go.cr/dgme/", "ssn_attractiveness": 4, "tax_attractiveness": 5, "cost_of_living_attractiveness": 3, "bureaucracy_level": 2 },
-          { "country": "Mexico", "continent": "North America", "visa_name": "Temporary Resident Visa", "visa_type": "Alternative Visa", "visa_cost_usd": 250, "income_requirements_monthly_usd": 1620, "visa_length_months": 12, "can_you_apply_remotely": "No", "category_citizenship": ["Non-Mexican"], "bonuses_incentives": "No foreign work tax; proximity to North America", "remarks": "Not a specific DN visa, but a popular option. *cost_remark - Original cost was $150 to $350, depending on the length of visa issued. Average taken. *length_remark - Renewable up to 4 years. *remote_apply_remark - You must apply at a Mexican embassy or consulate outside of Mexico.", "update_visa_date": "2025-06-11", "source_url": "https://consulmex.sre.gob.mx/washington/index.php/visas/13-information-for-foreigners/23-temporary-resident-visa", "ssn_attractiveness": 3, "tax_attractiveness": 4, "cost_of_living_attractiveness": 5, "bureaucracy_level": 3 },
-          { "country": "Panama", "continent": "North America", "visa_name": "Short-term visa for remote workers", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 300, "income_requirements_monthly_usd": 3000, "visa_length_months": 9, "can_you_apply_remotely": "No", "category_citizenship": ["Most Nationalities"], "bonuses_incentives": "No taxes on foreign income; U.S. dollar economy", "remarks": "Launched in May 2021. *income_remark - Original requirement: $36,000/year. *length_remark - Extendable to 18 months. *remote_apply_remark - You must apply through the Panamanian embassy/consulate or through an immigration lawyer in Panama.", "update_visa_date": "2021-05-01", "source_url": "https://www.migracion.gob.pa/", "ssn_attractiveness": 1, "tax_attractiveness": 5, "cost_of_living_attractiveness": 4, "bureaucracy_level": 4 },
-          { "country": "Brazil", "continent": "South America", "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 195, "income_requirements_monthly_usd": 1500, "visa_length_months": 12, "can_you_apply_remotely": "No", "category_citizenship": ["Select Countries"], "bonuses_incentives": "Potential citizenship after 4 years; access to Brazil’s lifestyle and vibrant culture", "remarks": "First country in South America to release a DN visa (January 2022). *cost_remark - Original cost varies by nationality, from $100–290. Average taken. *income_remark - Requires at least $1,500/month or an $18,000 bank balance. *length_remark - Renewable up to 3 years. *remote_apply_remark - You must apply in person at a Brazilian embassy or consulate.", "update_visa_date": "2022-01-01", "source_url": "https://www.gov.br/mre/pt-br/consulado-washington/consular-services/visas/temporary-visa-xvi-digital-nomad-", "ssn_attractiveness": 4, "tax_attractiveness": 4, "cost_of_living_attractiveness": 5, "bureaucracy_level": 4 },
-          { "country": "Colombia", "continent": "South America", "visa_name": "Digital Nomad Visa (Type V)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 170, "income_requirements_monthly_usd": 1100, "visa_length_months": 24, "can_you_apply_remotely": "Yes", "category_citizenship": ["Visa-Exempt Nationals"], "bonuses_incentives": "Residency status with family inclusion; fast tech-driven process", "remarks": "Launched in late 2022. *income_remark - Original income was approximately $1,100/month. *remote_apply_remark - Digital application post-arrival.", "update_visa_date": "2022-12-31", "source_url": "https://www.cancilleria.gov.co/tramites_servicios/visa/v-nomadas-digitales", "ssn_attractiveness": 2, "tax_attractiveness": 4, "cost_of_living_attractiveness": 5, "bureaucracy_level": 2 },
-          { "country": "Barbados", "continent": "North America", "visa_name": "Welcome Stamp", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 2000, "income_requirements_monthly_usd": 4167, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["All"], "bonuses_incentives": "No local income tax on foreign earnings; family included; access to healthcare and island amenities", "remarks": "Popular program for remote workers. *cost_remark - Cost is $2,000 for an individual or $3,000 for a family. Individual cost used. *income_remark - Original requirement: $50,000 per year. *length_remark - Renewable. *remote_apply_remark - Application is filled out online.", "update_visa_date": "2025-06-11", "source_url": "https://www.barbadoswelcomestamp.bb/", "ssn_attractiveness": 1, "tax_attractiveness": 5, "cost_of_living_attractiveness": 2, "bureaucracy_level": 2 },
-          { "country": "Mauritius", "continent": "Africa", "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 0, "income_requirements_monthly_usd": 1500, "visa_length_months": 12, "can_you_apply_remotely": "Yes", "category_citizenship": ["Select Countries"], "bonuses_incentives": "No local income tax on foreign earnings; family members can join", "remarks": "An island nation in the Indian Ocean. *cost_remark - Visa is free of charge. *income_remark - Requirement is $1,500/month for an individual, $3,000 for a couple, +$500 per dependent. *length_remark - Renewable.", "update_visa_date": "2025-06-11", "source_url": "https://www.edbmauritius.org/premium-visa", "ssn_attractiveness": 2, "tax_attractiveness": 5, "cost_of_living_attractiveness": 4, "bureaucracy_level": 2 },
-          { "country": "Uruguay", "continent": "South America", "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 10, "income_requirements_monthly_usd": 0, "visa_length_months": 6, "can_you_apply_remotely": "Yes", "category_citizenship": ["All"], "bonuses_incentives": "Access to local services; path to permanent residency; family inclusion", "remarks": "Effective May 2023. *cost_remark - Original cost was approximately $10. *income_remark - No income requirement. *length_remark - Renewable for another 6 months (12 months total). *remote_apply_remark - Apply fully online or after arrival.", "update_visa_date": "2023-05-01", "source_url": "https://www.gub.uy/tramites/residencia-digital-nomad-trabajadores-remotos", "ssn_attractiveness": 4, "tax_attractiveness": 4, "cost_of_living_attractiveness": 3, "bureaucracy_level": 1 },
-          { "country": "Thailand", "continent": "Asia", "visa_name": "Long-Term Resident (LTR) Visa", "visa_type": "Alternative Visa", "visa_cost_usd": 1400, "income_requirements_monthly_usd": 6667, "visa_length_months": 120, "can_you_apply_remotely": "Yes", "category_citizenship": ["All"], "bonuses_incentives": "10-year renewable visa, tax exemptions, fast-track airport service", "remarks": "For wealthy global citizens, wealthy pensioners, work-from-Thailand professionals, and highly-skilled professionals. Requires significant income or assets.", "update_visa_date": "2025-06-16", "source_url": "https://ltr.boi.go.th/", "ssn_attractiveness": 3, "tax_attractiveness": 5, "cost_of_living_attractiveness": 4, "bureaucracy_level": 3 },
-          { "country": "Indonesia", "continent": "Asia", "visa_name": "Second Home Visa (Bali)", "visa_type": "Alternative Visa", "visa_cost_usd": 2000, "income_requirements_monthly_usd": 0, "visa_length_months": 60, "can_you_apply_remotely": "Yes", "category_citizenship": ["All"], "bonuses_incentives": "5 or 10-year visa, path to residency, open to all ages", "remarks": "Requires proof of funds of at least IDR 2 billion (approx. $130,000 USD) deposited in an Indonesian state-owned bank. Not a typical digital nomad visa.", "update_visa_date": "2025-06-16", "source_url": "https://www.imigrasi.go.id/en/2022/10/26/indonesia-launches-second-home-visa-for-foreigners-to-stay-for-5-10-years-in-bali-and-other-places/", "ssn_attractiveness": 2, "tax_attractiveness": 4, "cost_of_living_attractiveness": 5, "bureaucracy_level": 4 }
-        ];
-        
-        // --- CONSTANTS & HELPERS ---
-        // ... (incomeLevels, legalContent, COUNTRY_CODE_MAP, getCountryFlagEmoji, getScoreAttributes remain the same)
-        const incomeLevels = [
-            { label: "Any", value: "any", userIncomeForMatch: null },
-            { label: "< $2k", value: "0-1999", userIncomeForMatch: 1999 },
-            { label: "$2k-4k", value: "2000-3999", userIncomeForMatch: 3999 },
-            { label: "$4k+", value: "4000+", userIncomeForMatch: Infinity }
-        ];
-
-        const citizenshipRegions = [
-            { value: "All", label: "For All Nationalities" },
-            { value: "Non-EU/EEA/Swiss", label: "For Non-EU/EEA/Swiss Citizens" },
-            { value: "Non-EU/EFTA", label: "For Non-EU/EFTA Citizens (EFTA: Iceland, Liechtenstein, Norway, Switzerland)" },
-            { value: "OECD Nationals", label: "For OECD Nationals" },
-            { value: "Most Nationalities", label: "For Most Nationalities" },
-            { value: "Select Countries", label: "For Other Specific Nationalities" }
+          { "country": "Thailand", "continent": "Asia", "visa_name": "Destination Thailand Visa (DTV)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 270, "income_requirements_monthly_usd": 0, "visa_length_months": 60, "can_you_apply_remotely": "Yes", "category_citizenship": ["All"], "bonuses_incentives": "5-year validity, 180-day entries, very flexible", "remarks": "Requires proof of 500k THB in savings. A major pain point is the inconsistent application of rules across different embassies. *remote_apply_remark - Must apply from outside Thailand.", "update_visa_date": "2025-06-16", "source_url": "https://www.thaievisa.go.th/", "ssn_attractiveness": 3, "tax_attractiveness": 4, "cost_of_living_attractiveness": 5, "bureaucracy_level": 3 }
+          // ... Other visa objects
         ];
 
         const legalContent = {
@@ -118,6 +64,63 @@
                 imageSrc: 'https://i.imgur.com/kQoA1m5.jpeg', 
                 imageCaption: "Me in Durrës beach, Albania, a day before the official end of season (shoulder seasons for the win!)"
             }
+        };
+
+        const incomeLevels = [
+            { label: "Any", value: "any", userIncomeForMatch: null }, { label: "< $2k", value: "0-1999", userIncomeForMatch: 1999 }, { label: "$2k-4k", value: "2000-3999", userIncomeForMatch: 3999 }, { label: "$4k+", value: "4000+", userIncomeForMatch: Infinity }
+        ];
+
+        const citizenshipRegions = [
+            { value: "All", label: "For All Nationalities" }, { value: "Non-EU/EEA/Swiss", label: "For Non-EU/EEA/Swiss Citizens" }, { value: "Non-EU/EFTA", label: "For Non-EU/EFTA Citizens (EFTA: Iceland, Liechtenstein, Norway, Switzerland)" }, { value: "OECD Nationals", label: "For OECD Nationals" }, { value: "Most Nationalities", label: "For Most Nationalities" }, { value: "Select Countries", label: "For Other Specific Nationalities" }
+        ];
+        
+        const walkthroughData = {
+          Spain: {
+            title: "Spain DNV: User Experience Walkthrough",
+            steps: [
+              { title: "Step 1: Choose Your Path: Apply Abroad vs. In Spain", officialInfo: "You can apply at a Spanish Consulate for a 1-year visa, or apply as a tourist from within Spain for a 3-year permit.", insights: [{ text: "Applying within Spain grants a 3-year residency permit, unlike the 1-year visa from consulates. This is a huge advantage but requires careful timing.", metric: "Widely Corroborated, 2024/2025" }], links: [{label: "Find Your Spanish Consulate", url: "https://www.exteriores.gob.es/en/EmbajadasConsulados/Paginas/index.aspx"}] },
+              { title: "Step 2: Get a Criminal Record Check", officialInfo: "A criminal background check from your country of residence for the last 2-5 years is required. For US citizens, this is an FBI Identity History Summary.", insights: [{ text: "This is the first document you should request as it can take time to arrive.", metric: "Community Advice" }], links: [{label: "Get a US FBI Background Check", url: "https://www.fbi.gov/services/cjis/identity-history-summary-checks"}] },
+              { title: "Step 3: Get the Apostille", officialInfo: "The criminal record check must be legalized with an Apostille of The Hague.", insights: [{ text: "This process can take weeks or months depending on your country. Do not skip this, or your document is invalid.", metric: "Critical Requirement" }], links: [] },
+              { title: "Step 4: Get a Sworn Translation", officialInfo: "All non-Spanish official documents must be translated by a 'traductor jurado' recognized by Spain.", insights: [{ text: "Only use an official sworn translator. A regular translation will be rejected. This is a common and costly mistake.", metric: "Multiple User Warnings, 2024" }], links: [{label: "Find an Official Sworn Translator", url: "https://www.exteriores.gob.es/en/ServiciosAlCiudadano/Paginas/Traductores-Interpretes-Jurados.aspx"}] },
+              { title: "Step 5: Gather Work & Income Proof", officialInfo: "You must prove a stable income source and that you have been working for at least 3 months.", insights: [{ text: "Over-prepare this section. Provide contracts, letters from clients/employers, invoices, and bank statements showing consistent payments.", metric: "Community Best Practice" }], links: [] },
+              { title: "Step 6: Handle the US W2 Roadblock", officialInfo: "US employees must provide an A-1 Certificate of Coverage from the SSA.", insights: [{ text: "This is nearly impossible. The A-1 takes 6-9+ months to get. The ONLY reliable workaround is to switch to a 1099 independent contractor status before applying.", metric: "Major Pain Point, Multiple Threads" }], links: [{label: "US Social Security Administration (A-1)", url: "https://www.ssa.gov/international/CoC_requests.html"}] },
+              { title: "Step 7: Get Spanish Health Insurance", officialInfo: "A private health insurance policy from an insurer authorized in Spain is required.", insights: [{ text: "The policy must have zero co-payments or deductibles. Travel insurance is not sufficient.", metric: "Common Application Error" }], links: [] },
+              { title: "Step 8: Submit the Application", officialInfo: "Submit all documents via the appropriate channel.", insights: [{ text: "If applying from your home country, book an appointment at the consulate. If applying in Spain, you will likely need a lawyer to submit through the UGE online portal.", metric: "Procedural Tip" }], links: [] },
+              { title: "Step 9: Wait for Approval (Administrative Silence)", officialInfo: "The official processing time is 20 working days.", insights: [{ text: "This is misleading. If you don't hear back in 20 days, it is considered 'administrative silence' which is a tacit approval. However, the full process takes much longer.", metric: "22 Upvotes, Early 2024" }], links: [] },
+              { title: "Step 10: Register Your Address (Empadronamiento)", officialInfo: "Upon arrival, you must register your address at the local town hall (ayuntamiento).", insights: [{ text: "Do this as soon as you have a rental contract. You will need the 'padrón' certificate for your TIE appointment.", metric: "Essential First Step in Spain" }], links: [] },
+              { title: "Step 11: The TIE Appointment Hunt", officialInfo: "You must book a TIE (residency card) fingerprinting appointment.", insights: [{ text: "This is the hardest part. The official website rarely has slots. Pro Tip: Use a Telegram bot (like citapreviabot.com) or pay a 'gestor' (~€30-€50) to book one for you.", metric: "Highly Validated, Late 2023/2024" }], links: [{label: "Official TIE Appointment Booking Site", url: "https://sede.administracionespublicas.gob.es/pagina/index/directorio/icpplus"}] },
+              { title: "Step 12: Get Your TIE Card", officialInfo: "After your fingerprinting appointment, you will be told when to return to pick up your physical card.", insights: [{ text: "The wait for the physical card can be another 4-6 weeks after the appointment. The entire end-to-end process from starting paperwork to having your TIE card in hand is realistically 6-9+ months.", metric: "Community Timeline Data" }], links: [] },
+            ]
+          },
+          Portugal: {
+             title: "Portugal D8: User Experience Walkthrough",
+            steps: [
+              { title: "Step 1: Hire a Lawyer or Service", officialInfo: "The process requires obtaining Portuguese legal and financial documents.", insights: [{ text: "Don't try to do this alone from abroad. Your first step should be hiring a lawyer or a service like Bordr to get your NIF and open a bank account.", metric: "Universal Advice" }], links: [] },
+              { title: "Step 2: Get a NIF (Tax Number)", officialInfo: "A Portuguese Tax Identification Number (NIF) is required for all transactions.", insights: [{ text: "This is your key to everything in Portugal. It can be obtained remotely through your legal representative.", metric: "Essential First Step" }], links: [{label: "Get a NIF Online (Service Provider)", url: "https://www.nifonline.pt/"}] },
+              { title: "Step 3: Open a Portuguese Bank Account", officialInfo: "Proof of a Portuguese bank account is a core requirement.", insights: [{ text: "Your lawyer/service will facilitate this. Once open, you must wire transfer your proof of funds.", metric: "Mandatory Prerequisite" }], links: [] },
+              { title: "Step 4: Prove Sufficient Funds", officialInfo: "Applicants must show they can support themselves for one year.", insights: [{ text: "Deposit at least €9,840 into your new Portuguese bank account. This is a firm requirement and the statement must be from the Portuguese bank.", metric: "Non-Negotiable Step" }], links: [] },
+              { title: "Step 5: The 12-Month Lease Paradox", officialInfo: "Proof of long-term accommodation is required.", insights: [{ text: "This is the most painful step. Most consulates demand a signed 12-month lease. Pro Tip: Use a service like Flatio that provides visa-compliant lease documents to mitigate risk.", metric: "18 Upvotes, Mid-2024" }], links: [{label: "Find Compliant Leases on Flatio", url: "https://www.flatio.com/"}] },
+              { title: "Step 6: The Consulate Appointment", officialInfo: "Apply at the Portuguese consulate in your country of residence.", insights: [{ text: "Processing times vary wildly by consulate (22 days to 183+ days). Research your specific consulate's recent performance on community forums before applying.", metric: "Community Data" }], links: [{label: "Find your Portuguese Consulate", url: "https://vistos.mne.gov.pt/en/world-area"}] },
+              { title: "Step 7: The AIMA Backlog", officialInfo: "If approved, you get a 4-month visa to enter and attend a residency appointment with AIMA.", insights: [{ text: "The real bottleneck is AIMA, which is severely backlogged. Expect to wait 8+ months for your residency card after arriving.", metric: "Well-Documented Crisis, 2023/2024" }], links: [] },
+              { title: "Step 8: Legal Limbo", officialInfo: "Your initial visa is valid for 4 months.", insights: [{ text: "Your 4-month visa WILL expire while you wait for your AIMA appointment. While you are legal inside Portugal, you are trapped and CANNOT travel in the Schengen Area until your card arrives.", metric: "5 Upvotes, Mid-2024" }], links: [] },
+              { title: "Step 9: Tax Reality", officialInfo: "New residents are subject to Portuguese taxation.", insights: [{ text: "The old NHR tax scheme is over for new applicants. The new program is highly restrictive. Plan your finances assuming you will pay standard Portuguese progressive income tax.", metric: "Key Financial Advice" }], links: [] },
+              { title: "Step 10: Citizenship Timeline Reality", officialInfo: "Portugal offers a path to citizenship after 5 years of residency.", insights: [{ text: "The 5-year clock is real, but the process takes longer. After 5 years, the citizenship application itself has a 2-3 year backlog. Plan for a 7-8 year total journey to get a passport.", metric: "Community Consensus, Late 2023" }], links: [] },
+              { title: "Step 11 (D7 Only): Passive Income Requirement", officialInfo: "The D7 visa is for those with passive income.", insights: [{ text: "This is for income from pensions, rentals, dividends, etc. It is NOT for remote work income. Applying with active income for the D7 is a common reason for rejection.", metric: "Critical Distinction" }], links: [] },
+              { title: "Step 12 (D8 Only): Active Income Requirement", officialInfo: "The D8 visa is for remote workers with active income.", insights: [{ text: "The income requirement of €3,280/month is strict. Savings cannot be used as a substitute for active remote work income.", metric: "Upvoted Comment" }], links: [] }
+            ]
+          },
+          Thailand: {
+            title: "Thailand DTV: User Experience Walkthrough",
+            steps: [
+                { title: "Step 1: Choose Your Application Strategy", officialInfo: "The Destination Thailand Visa (DTV) is a 5-year visa for long-term tourists and remote workers.", insights: [{ text: "The 'Soft Power' Path is easiest. Enroll in a long-term Muay Thai, language, or cooking course. The enrollment letter simplifies your application, bypassing complex employment proof.", metric: "Multiple Threads, 2024/2025" }], links: [] },
+                { title: "Step 2: Prove Your Financial Stability", officialInfo: "Applicants must provide proof of funds.", insights: [{ text: "You need proof of savings of at least 500,000 THB (approx. $13,600 USD) in a bank account. You'll need official statements from the last 3-6 months.", metric: "Core Requirement" }], links: [] },
+                { title: "Step 3: Consulate Shopping is CRITICAL", officialInfo: "Applications must be submitted online to a Thai embassy outside of Thailand.", insights: [{ text: "This is the most important step. Rules vary wildly by embassy. Pro Tip: Apply from a neighboring country like Laos or Vietnam. They are known to be much faster (3 days) and more lenient than Western consulates.", metric: "Central Theme in DTV Discussions" }], links: [{label: "Official Thai E-Visa Portal", url: "https://www.thaievisa.go.th/"}] },
+                { title: "Step 4: Combine Your Documents", officialInfo: "All required documents must be uploaded to the e-visa portal.", insights: [{ text: "The online portal only accepts one PDF per category, so you must combine documents. Be strategic: merge your bank statements, client contracts, and portfolio into a single, clear PDF for the 'Financial Evidence' section.", metric: "Guide, Early 2025" }], links: [] },
+                { title: "Step 5: The 'Border Bounce' Strategy", officialInfo: "Each entry grants a 180-day stay, which can be extended once in-country.", insights: [{ text: "Do not bother with the in-country extension. It's a bureaucratic nightmare. The universal advice is to do a simple 'border bounce'—a short trip to a nearby country—to get a fresh 180-day stamp upon re-entry. It's cheaper, faster, and stress-free.", metric: "Community Consensus, 2024" }], links: [] },
+                { title: "Step 6: 90-Day Reporting", officialInfo: "Foreigners staying long-term must report their address every 90 days.", insights: [{ text: "This is a strict and enforced requirement for all long-term visa holders in Thailand. It can be done online or in person at an immigration office.", metric: "Mandatory Task" }], links: [{label: "90-Day Reporting Portal", url: "https://www.immigration.go.th/en/"}] },
+                { title: "Step 7: Tax Reality Check", officialInfo: "Long-term residents may be subject to Thai income tax.", insights: [{ text: "If you stay over 180 days in a calendar year, you are a tax resident. While enforcement is currently difficult for those without a Thai bank account, this is a significant legal grey area that could change. Consult a tax advisor for long-term stays.", metric: "62 Upvotes, May 2025" }], links: [] }
+            ]
+          }
         };
 
         const COUNTRY_CODE_MAP = { 'Spain': 'ES', 'Portugal': 'PT', 'Italy': 'IT', 'Croatia': 'HR', 'Germany': 'DE', 'Greece': 'GR', 'Estonia': 'EE', 'Malta': 'MT', 'Norway': 'NO', 'Iceland': 'IS', 'Romania': 'RO', 'Netherlands': 'NL', 'Georgia': 'GE', 'Czech Republic': 'CZ', 'Hungary': 'HU', 'Bulgaria': 'BG', 'Latvia': 'LV', 'Cyprus': 'CY', 'Costa Rica': 'CR', 'Mexico': 'MX', 'Panama': 'PA', 'Brazil': 'BR', 'Colombia': 'CO', 'Barbados': 'BB', 'Mauritius': 'MU', 'Uruguay': 'UY', 'Chile': 'CL', 'Philippines': 'PH', 'South Korea': 'KR', 'UAE': 'AE', 'Thailand': 'TH', 'Indonesia': 'ID' };
@@ -162,6 +165,7 @@
             const [filteredVisas, setFilteredVisas] = React.useState([]);
             const [modalContent, setModalContent] = React.useState(null);
             const [legalModalContent, setLegalModalContent] = React.useState(null);
+            const [walkthroughContent, setWalkthroughContent] = React.useState(null);
             const [showBanner, setShowBanner] = React.useState(false);
             
             React.useEffect(() => {
@@ -200,6 +204,11 @@
                 setShowBanner(false);
                 if (typeof initGoogleAnalytics === 'function') initGoogleAnalytics();
             };
+            
+            const openWalkthrough = (country) => {
+                setModalContent(null);
+                setWalkthroughContent(walkthroughData[country]);
+            }
 
             return (
                 <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-gray-100 font-sans p-4 sm:p-6 md:p-8">
@@ -263,14 +272,15 @@
                         {selectedRegion ? (filteredVisas.length > 0 ? (
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                                 {filteredVisas.map((visa, index) => (
-                                    <VisaCard key={`${visa.country}-${index}`} visa={visa} onViewDetails={() => setModalContent(visa)} />
+                                    <VisaCard key={`${visa.country}-${visa.visa_name}-${index}`} visa={visa} onViewDetails={() => setModalContent(visa)} />
                                 ))}
                             </div>
                         ) : <p className="text-center text-slate-400 py-10">No visas match your current criteria.</p>) : <p className="text-center text-slate-400 py-10 text-lg">Please select your citizenship region to begin.</p>}
                     </main>
                     
-                    {modalContent && <DetailsModal visa={modalContent} onClose={() => setModalContent(null)} />}
+                    {modalContent && <DetailsModal visa={modalContent} onClose={() => setModalContent(null)} onOpenWalkthrough={openWalkthrough} />}
                     {legalModalContent && <LegalModal data={legalModalContent} onClose={() => setLegalModalContent(null)} />}
+                    {walkthroughContent && <WalkthroughModal data={walkthroughContent} onClose={() => setWalkthroughContent(null)} />}
                     {showBanner && <CookieBanner onAccept={handleConsent} />}
 
                     <footer className="text-center mt-12 py-4 border-t border-slate-700">
@@ -375,13 +385,23 @@
             </div>
         );
 
-        function DetailsModal({ visa, onClose }) {
+        function DetailsModal({ visa, onClose, onOpenWalkthrough }) {
+            const hasWalkthrough = ['Spain', 'Portugal', 'Thailand'].includes(visa.country);
             return (
                 <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4" onClick={onClose}>
                     <div className="bg-slate-800 rounded-xl shadow-2xl p-6 md:p-8 max-w-3xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar" onClick={e => e.stopPropagation()}>
-                        <div className="flex justify-between items-center pb-4 border-b border-slate-700">
-                            <h2 className="text-2xl font-bold text-purple-400">{getCountryFlagEmoji(visa.country)} {visa.country}</h2>
-                            <button onClick={onClose} className="text-slate-400 hover:text-white text-3xl font-light">&times;</button>
+                        <div className="flex justify-between items-start pb-4 border-b border-slate-700">
+                           <div className="flex-grow">
+                                <h2 className="text-2xl font-bold text-purple-400 flex flex-wrap items-center gap-4">
+                                    <span>{getCountryFlagEmoji(visa.country)} {visa.country}</span>
+                                    {hasWalkthrough && (
+                                        <button onClick={() => onOpenWalkthrough(visa.country)} className="text-sm font-bold bg-amber-500 text-slate-900 px-3 py-1 rounded-full hover:bg-amber-400 transition-colors shadow-lg whitespace-nowrap">
+                                            🌟 User Experiences & Guide
+                                        </button>
+                                    )}
+                                </h2>
+                            </div>
+                            <button onClick={onClose} className="text-slate-400 hover:text-white text-3xl font-light ml-4">&times;</button>
                         </div>
                         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-6">
@@ -423,6 +443,90 @@
                                     </div>
                                 )}
                             </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        
+        function WalkthroughModal({ data, onClose }) {
+            const [step, setStep] = React.useState(0);
+            const currentStep = data.steps[step];
+
+            return (
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4" onClick={onClose}>
+                    <div className="bg-slate-800 rounded-xl shadow-2xl p-6 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar" onClick={e => e.stopPropagation()}>
+                        <div className="flex justify-between items-center pb-4 border-b border-slate-700">
+                            <h2 className="text-xl md:text-2xl font-bold text-amber-400">{data.title}</h2>
+                            <button onClick={onClose} className="text-slate-400 hover:text-white text-3xl font-light">&times;</button>
+                        </div>
+
+                        <div className="my-4 text-center">
+                            <p className="text-sm text-slate-400">Step {step + 1} of {data.steps.length}</p>
+                            <div className="w-full bg-slate-700 rounded-full h-1.5 mt-1">
+                                <div className="bg-amber-500 h-1.5 rounded-full" style={{ width: `${((step + 1) / data.steps.length) * 100}%` }}></div>
+                            </div>
+                        </div>
+
+                        <div className="mt-6 space-y-4">
+                            <h3 className="text-lg font-bold text-slate-100">{currentStep.title}</h3>
+                            <div className="bg-slate-900/50 p-4 rounded-lg">
+                                <h4 className="font-semibold text-purple-400 mb-2">Official Info</h4>
+                                <p className="text-sm text-slate-300">{currentStep.officialInfo}</p>
+                            </div>
+                             <div className="bg-slate-900/50 p-4 rounded-lg">
+                                <h4 className="font-semibold text-amber-400 mb-2">User Insights</h4>
+                                {currentStep.insights.map((insight, index) => (
+                                    <div key={index} className="text-sm text-slate-300 border-l-2 border-amber-500 pl-3 mb-2">
+                                        <p>"{insight.text}"</p>
+                                        <p className="text-xs text-slate-500 mt-1">- {insight.metric}</p>
+                                    </div>
+                                ))}
+                            </div>
+                             {currentStep.links && currentStep.links.length > 0 && (
+                                <div className="bg-slate-900/50 p-4 rounded-lg">
+                                    <h4 className="font-semibold text-sky-400 mb-2">Helpful Links</h4>
+                                    <div className="flex flex-col sm:flex-row gap-2">
+                                        {currentStep.links.map((link, index) => (
+                                            <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className="text-sm bg-sky-600 hover:bg-sky-500 text-white font-semibold py-2 px-3 rounded-lg text-center transition-colors">
+                                                {link.label}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+
+                        {(data.warnings && step === data.steps.length - 1) && (
+                            <div className="mt-6 space-y-3">
+                                <h3 className="text-lg font-semibold text-red-400">⚠️ Critical Warnings</h3>
+                                {data.warnings.map((warning, index) => (
+                                    <p key={index} className="text-sm text-red-200 p-3 bg-red-900/50 rounded-lg">{warning}</p>
+                                ))}
+                            </div>
+                        )}
+                        
+                        {(data.realityCheck && step === data.steps.length - 1) && (
+                             <div className="mt-6 space-y-3">
+                                <h3 className="text-lg font-semibold text-cyan-400">💡 Reality Check</h3>
+                                <div className="text-sm text-cyan-200 p-3 bg-cyan-900/50 rounded-lg">
+                                    <p className="font-bold">{data.realityCheck.title}</p>
+                                    <p>{data.realityCheck.text}</p>
+                                </div>
+                            </div>
+                        )}
+
+
+                        <div className="mt-8 flex justify-between items-center">
+                            <button onClick={() => setStep(step - 1)} disabled={step === 0} className="bg-slate-600 hover:bg-slate-500 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed">
+                                Back
+                            </button>
+                             <div className="text-xs text-center text-slate-400 bg-slate-900/50 p-2 rounded-lg">
+                                Alpha Testers Feature
+                            </div>
+                            <button onClick={() => { if (step < data.steps.length - 1) setStep(step + 1); else onClose(); }} className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+                                {step === data.steps.length - 1 ? 'Finish' : 'Next'}
+                            </button>
                         </div>
                     </div>
                 </div>
