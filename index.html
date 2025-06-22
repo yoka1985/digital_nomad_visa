@@ -54,7 +54,7 @@
           { "country_name": "Bulgaria", "continent": "Europe", "visas": [ { "visa_name": "Digital Nomad/Freelancer Program (Type D Visa)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "12 months, renewable", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "10% flat tax, low cost of living.", "link_source": "https://www.mfa.bg/en/services-travel/consular-services/travel-bulgaria/visa-bulgaria", "issued_date": "2024-03-01", "apply_form_link": null, "remote_application_bin": false, "visa_cost_usd": 107, "income_requirement_usd_month": 2667, "cost_of_living": { "accommodation": "~$345-805/month apartments", "food": "~$230-460/month food", "transportation": "~$35-69/month transport", "overall_index": "Low, Eastern Europe" }, "remarks": "🇧🇬 Great for those seeking a low-tax EU base.\n• Official government application details are still less clear than in other countries.\n• Must apply in person at a Bulgarian consulate." }, { "visa_name": "Digital Nomad Visa (Long-Stay Type D)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Not specified", "visa_length": "Initial visa up to 1 year, convertible to a renewable residence permit.", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA/Swiss nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "10% flat income tax, full Schengen Area mobility, low cost of living.", "link_source": "Not available (awaiting State Gazette publication)", "issued_date": "2025-06-18", "apply_form_link": "Not available", "remote_application_bin": false, "visa_cost_usd": null, "income_requirement_usd_month": 1987, "cost_of_living": { "accommodation": "~€250-400/month (Sofia); €300-350/month (Plovdiv, Varna); lower in Bansko", "food": "~€150-250/month", "transportation": "~€20-50/month", "overall_index": "Low, among the lowest in the EU" }, "remarks": "🇧🇬 New visa as of mid-2024! \n• Key benefit: full Schengen Area access and a very low 10% flat income tax. \n• Requirement is to earn 3x the country's average salary (approx. €1,300/month). \n• Must apply in person at a Bulgarian consulate." } ], "ratings": { "tax_friendliness": 4, "cost_of_living": 4, "bureaucracy_level": 4 } },
           { "country_name": "Croatia", "continent": "Europe", "visas": [ { "visa_name": "Digital Nomad Residence Permit", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "Up to 1 year", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "No local income tax.", "link_source": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "issued_date": "2021-01-01", "apply_form_link": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "remote_application_bin": true, "visa_cost_usd": 150, "income_requirement_usd_month": 2720, "cost_of_living": { "accommodation": "~$460-1,035/month", "food": "~$288-575/month", "transportation": "~$46-92/month", "overall_index": "Moderate, Southern Europe" }, "remarks": "☀️ Major benefit is income tax exemption on foreign earnings.\n• Income requirement increases by 10% for each family member.\n• You cannot reapply for a consecutive year immediately after the first permit expires." } ], "ratings": { "tax_friendliness": 3, "cost_of_living": 3, "bureaucracy_level": 4 } }
         ];
-        
+
         const legalContent = {
             terms: { title: 'Terms of Use', content: `Welcome to our Digital Nomad Visa Matcher... For any questions, please contact us at 10mvpsin20days@gmail.com.` },
             privacy: { title: 'Privacy Policy', content: `This Privacy Policy describes how we handle your information... please contact us at 10mvpsin20days@gmail.com.` },
@@ -63,7 +63,7 @@
                 story: `My name is Yonatan, and I've been living the digital nomad life for the past several years. With a background in tech, I grew increasingly frustrated with the inconsistent, outdated, and often confusing visa information scattered across the web. \n\nI built this tool to solve my own problem: to create a single, clear, and user-friendly place to compare visa options without the headache. My goal is to reduce the bureaucratic pain for fellow nomads.\n\nData on this site is aggregated from official government websites, reputable legal and immigration blogs, and cross-referenced with validated user experiences from online communities like Reddit.`,
                 disclaimer: `Information keeps changing, and updates are currently done on a monthly average, so it's always better to double-check official sources.`,
                 closing: `I hope this serves you well, and I'm always open to suggestions for improvement!`,
-                imageSrc: 'https://i.imgur.com/kQoA1m5.jpeg', 
+                imageSrc: 'ME_ALBN_80.jpg', 
                 imageCaption: "Me in Durrës beach, Albania, a day before the official end of season (shoulder seasons for the win!)"
             }
         };
@@ -533,6 +533,64 @@
                                 {step === data.steps.length - 1 ? 'Finish' : 'Next'}
                             </button>
                         </div>
+                    </div>
+                </div>
+            );
+        }
+        
+        function GuideModal({onClose}){
+            const htmlContent = `
+                <!DOCTYPE html> 
+                 <html lang="en"> 
+                 <head> 
+                     <meta charset="UTF-8"> 
+                     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+                     <title>The Spanish Digital Nomad Visa: A Complete Guide [2025 Edition]</title> 
+                     <script src="https://cdn.tailwindcss.com"></script> 
+                     <link rel="preconnect" href="https://fonts.googleapis.com"> 
+                     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+                     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Lora:wght@400;500;700&display=swap" rel="stylesheet"> 
+                     <style> 
+                         body { font-family: 'Inter', sans-serif; background-color: #f8fafc; } 
+                         h1, h2, h3 { font-family: 'Lora', serif; } 
+                         .page { background-color: white; padding: 3rem 4rem; margin-bottom: 2rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); border-radius: 0.5rem; }
+                         .title-page { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; min-height: 80vh; border-bottom: 8px solid #c00; } 
+                         .title-page h1 { font-size: 3.75rem; font-weight: 800; color: #1f2937; } 
+                         .title-page .subtitle { font-size: 1.25rem; color: #4b5563; max-width: 600px; margin-top: 1rem; } 
+                         .edition-badge { background-color: #facc15; color: #422006; padding: 0.5rem 1.5rem; border-radius: 9999px; font-weight: 700; letter-spacing: 1px; margin-top: 2rem; border: 2px solid #422006; }
+                         .toc a { color: #2563eb; text-decoration: none; transition: color 0.2s; } 
+                         .toc a:hover { color: #1d4ed8; }
+                         .red-flag { background-color: #fef2f2; border-left: 5px solid #ef4444; padding: 1.5rem; border-radius: 0.5rem; margin-top: 1.5rem; } 
+                         .red-flag-title { display: flex; align-items: center; font-weight: 700; color: #b91c1c; font-size: 1.125rem; } 
+                         .red-flag-title svg { margin-right: 0.75rem; width: 24px; height: 24px; }
+                         .btn { display: inline-block; background-color: #2563eb; color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; font-weight: 500; text-decoration: none; transition: background-color 0.2s; } 
+                         .btn:hover { background-color: #1d4ed8; }
+                         .btn-secondary { background-color: #e5e7eb; color: #374151; } 
+                         .btn-secondary:hover { background-color: #d1d5db; }
+                     </style> 
+                 </head> 
+                 <body class="p-8"> 
+                    <div class="max-w-4xl mx-auto"> 
+                        <div class="page title-page"> 
+                            <div class="mb-4"> 
+                                <span style="font-size: 4rem;">🇪🇸</span> 
+                            </div> 
+                            <h1>The Spanish Digital Nomad Visa</h1> 
+                            <p class="subtitle">A Complete Guide to Your Application</p> 
+                            <p class="subtitle mt-2 font-semibold">Your Step-by-Step Manual for Navigating the Process and Building a Life in Spain</p> 
+                            <div class="edition-badge">[ 2025 Edition ]</div> 
+                        </div>
+                    </div> 
+                 </body> 
+                 </html>
+            `;
+            return (
+                 <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50 p-4" onClick={onClose}>
+                    <div className="bg-white rounded-xl shadow-2xl w-full h-full flex flex-col">
+                        <div className="flex justify-end p-2">
+                           <button onClick={onClose} className="text-slate-800 hover:text-black text-3xl font-light">&times;</button>
+                        </div>
+                        <iframe srcDoc={htmlContent} className="w-full h-full border-0"/>
                     </div>
                 </div>
             );
