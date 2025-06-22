@@ -1,1094 +1,547 @@
-
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8" />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Digital Nomad Visa Matcher</title>
-
-    <!-- Tailwind CSS for styling -->
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- React Libraries -->
-
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-
-    <!-- Babel to transpile JSX in the browser -->
-
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    
-
-    <!-- Google Analytics Gtag Script -->
-
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6N573S8D8S"></script>
-
-    <script>
-
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag(){dataLayer.push(arguments);}
-
-        gtag('consent', 'default', { 'analytics_storage': 'denied' });
-
-        function initGoogleAnalytics() {
-
-            gtag('consent', 'update', { 'analytics_storage': 'granted' });
-
-            gtag('js', new Date());
-
-            gtag('config', 'G-6N573S8D8S');
-
-            console.log("Google Analytics Initialized");
-
-        }
-
-    </script>
-
-    
-
-    <style>
-
-        body { background-color: #0f172a; }
-
-        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-
-        .custom-scrollbar::-webkit-scrollbar-track { background: #334155; }
-
-        .custom-scrollbar::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 10px; }
-
-        .group:hover .group-hover\:block { display: block; }
-
-        input[type="range"]::-webkit-slider-thumb {
-
-            -webkit-appearance: none; appearance: none; width: 20px; height: 20px;
-
-            background: #a78bfa; cursor: pointer; border-radius: 50%; margin-top: -6px;
-
-        }
-
-        input[type="range"]::-moz-range-thumb {
-
-            width: 20px; height: 20px; background: #a78bfa; cursor: pointer; border-radius: 50%;
-
-        }
-
-    </style>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Nomad Visa Matcher</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- React Libraries -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel to transpile JSX in the browser -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- Google Analytics Gtag Script -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6N573S8D8S"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('consent', 'default', { 'analytics_storage': 'denied' });
+        function initGoogleAnalytics() {
+            gtag('consent', 'update', { 'analytics_storage': 'granted' });
+            gtag('js', new Date());
+            gtag('config', 'G-6N573S8D8S');
+            console.log("Google Analytics Initialized");
+        }
+    </script>
+    
+    <style>
+        body { background-color: #0f172a; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #334155; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #8b5cf6; border-radius: 10px; }
+        .group:hover .group-hover\:block { display: block; }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none; appearance: none; width: 20px; height: 20px;
+            background: #a78bfa; cursor: pointer; border-radius: 50%; margin-top: -6px;
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 20px; height: 20px; background: #a78bfa; cursor: pointer; border-radius: 50%;
+        }
+    </style>
 </head>
-
 <body>
-
-    <div id="root"></div>
-
-
-
-    <script type="text/babel">
-
-        // --- DATA & CONTENT ---
-
-        const visaDataSource = [
-
-          { "country_name": "Spain", "continent": "Europe", "visas": [{ "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 153, "income_requirement_usd_month": 2762, "visa_length_months": 12, "remote_application_bin": true, "eligible_citizens": "Non-EU/EEA/Swiss", "bonuses_incentives": "20% tax cap; family members allowed; eventual path to residency", "remarks": "Formally launched in 2023 under its Startup Act. *cost_remark - Original cost: $73 consular fee plus $80 NIE. *length_remark - Renewable for up to 3 years.", "issued_date": "2023-01-01", "link_source": "https://www.exteriores.gob.es/Consulados/londres/en/ServiciosConsulares/Paginas/Consular/Visado-de-teletrabajo.aspx" }], "ratings": { "tax_friendliness": 4, "cost_of_living": 3, "bureaucracy_level": 4 } },
-
-          { "country_name": "Portugal", "continent": "Europe", "visas": [{ "visa_name": "Temporary-Stay Visa (D8 Digital Nomad Visa)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 165, "income_requirement_usd_month": 3480, "visa_length_months": 24, "remote_application_bin": true, "eligible_citizens": "Non-EU/EEA/Swiss", "bonuses_incentives": "Access to Schengen; can include dependents; path to permanent residency and citizenship", "remarks": "Tailored for freelancers and remote employees earning active income from abroad. *cost_remark - Original cost: $75 (visa) + $90 (residence permit). *length_remark - Initial 4-month visa leads to a 2-year residence permit, renewable up to 5 years. *remote_apply_remark - Application is via a Portuguese embassy.", "issued_date": "2025-06-11", "link_source": "https://vistos.mne.gov.pt/en/national-visas/general-information/type-of-visa" }], "ratings": { "tax_friendliness": 4, "cost_of_living": 4, "bureaucracy_level": 4 } },
-
-          { "country_name": "Thailand", "continent": "Asia", "visas": [{ "visa_name": "Destination Thailand Visa (DTV)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 270, "income_requirement_usd_month": 0, "visa_length_months": 60, "remote_application_bin": true, "eligible_citizens": "All", "bonuses_incentives": "5-year validity, 180-day entries, very flexible", "remarks": "Requires proof of 500k THB in savings. A major pain point is the inconsistent application of rules across different embassies. *remote_apply_remark - Must apply from outside Thailand.", "issued_date": "2025-06-16", "link_source": "https://www.thaievisa.go.th/" }], "ratings": { "tax_friendliness": 4, "cost_of_living": 5, "bureaucracy_level": 2 } },
-
-          { "country_name": "Albania", "continent": "Europe", "visas": [ { "visa_name": "Unique Permit (for Digital Nomads)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "1 year, renewable up to 5", "visa_length_months": 60, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "Cost-effective, easy extensions.", "link_source": "https://e-albania.al/eAlbaniaServices/UseService.aspx?service_code=15356", "issued_date": "2022-01-01", "apply_form_link": "https://e-albania.al/eAlbaniaServices/UseService.aspx?service_code=15356", "remote_application_bin": true, "visa_cost_usd": 48, "income_requirement_usd_month": 834, "cost_of_living": { "accommodation": "~$230-690/month for apartments", "food": "~$173-345/month", "transportation": "~$23-58/month", "overall_index": "Very low, 30-40% of Western European costs" }, "remarks": "🇦🇱 Low income threshold & simple online process.\n• The 'Unique Permit' officially covers digital nomads.\n• After 5 years, you can apply for permanent residency. \n• Becomes tax resident after 183 days." } ], "ratings": { "tax_friendliness": 4, "cost_of_living": 5, "bureaucracy_level": 3 } },
-
-          { "country_name": "Bulgaria", "continent": "Europe", "visas": [ { "visa_name": "Digital Nomad/Freelancer Program (Type D Visa)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "12 months, renewable", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "10% flat tax, low cost of living.", "link_source": "https://www.mfa.bg/en/services-travel/consular-services/travel-bulgaria/visa-bulgaria", "issued_date": "2024-03-01", "apply_form_link": null, "remote_application_bin": false, "visa_cost_usd": 107, "income_requirement_usd_month": 2667, "cost_of_living": { "accommodation": "~$345-805/month apartments", "food": "~$230-460/month food", "transportation": "~$35-69/month transport", "overall_index": "Low, Eastern Europe" }, "remarks": "🇧🇬 Great for those seeking a low-tax EU base.\n• Official government application details are still less clear than in other countries.\n• Must apply in person at a Bulgarian consulate." }, { "visa_name": "Digital Nomad Visa (Long-Stay Type D)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Not specified", "visa_length": "Initial visa up to 1 year, convertible to a renewable residence permit.", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA/Swiss nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "10% flat income tax, full Schengen Area mobility, low cost of living.", "link_source": "Not available (awaiting State Gazette publication)", "issued_date": "2025-06-18", "apply_form_link": "Not available", "remote_application_bin": false, "visa_cost_usd": null, "income_requirement_usd_month": 1987, "cost_of_living": { "accommodation": "~€250-400/month (Sofia); €300-350/month (Plovdiv, Varna); lower in Bansko", "food": "~€150-250/month", "transportation": "~€20-50/month", "overall_index": "Low, among the lowest in the EU" }, "remarks": "🇧🇬 New visa as of mid-2024! \n• Key benefit: full Schengen Area access and a very low 10% flat income tax. \n• Requirement is to earn 3x the country's average salary (approx. €1,300/month). \n• Must apply in person at a Bulgarian consulate." } ], "ratings": { "tax_friendliness": 4, "cost_of_living": 4, "bureaucracy_level": 4 } },
-
-          { "country_name": "Croatia", "continent": "Europe", "visas": [ { "visa_name": "Digital Nomad Residence Permit", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "Up to 1 year", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "No local income tax.", "link_source": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "issued_date": "2021-01-01", "apply_form_link": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "remote_application_bin": true, "visa_cost_usd": 150, "income_requirement_usd_month": 2720, "cost_of_living": { "accommodation": "~$460-1,035/month", "food": "~$288-575/month", "transportation": "~$46-92/month", "overall_index": "Moderate, Southern Europe" }, "remarks": "☀️ Major benefit is income tax exemption on foreign earnings.\n• Income requirement increases by 10% for each family member.\n• You cannot reapply for a consecutive year immediately after the first permit expires." } ], "ratings": { "tax_friendliness": 3, "cost_of_living": 3, "bureaucracy_level": 4 } }
-
-        ];
-
-        
-
-        const legalContent = {
-
-            terms: { title: 'Terms of Use', content: `Welcome to our Digital Nomad Visa Matcher... For any questions, please contact us at 10mvpsin20days@gmail.com.` },
-
-            privacy: { title: 'Privacy Policy', content: `This Privacy Policy describes how we handle your information... please contact us at 10mvpsin20days@gmail.com.` },
-
-            about: { 
-
-                title: 'About This Project', 
-
-                story: `My name is Yonatan, and I've been living the digital nomad life for the past several years. With a background in tech, I grew increasingly frustrated with the inconsistent, outdated, and often confusing visa information scattered across the web. \n\nI built this tool to solve my own problem: to create a single, clear, and user-friendly place to compare visa options without the headache. My goal is to reduce the bureaucratic pain for fellow nomads.\n\nData on this site is aggregated from official government websites, reputable legal and immigration blogs, and cross-referenced with validated user experiences from online communities like Reddit.`,
-
-                disclaimer: `Information keeps changing, and updates are currently done on a monthly average, so it's always better to double-check official sources.`,
-
-                closing: `I hope this serves you well, and I'm always open to suggestions for improvement!`,
-
-                imageSrc: 'ME_ALB_80.jpg', 
-
-                imageCaption: "Me in Durrës beach, Albania, a day before the official end of season (shoulder seasons for the win!)"
-
-            }
-
-        };
-
-
-
-        const incomeLevels = [
-
-            { label: "Any", value: "any", userIncomeForMatch: null }, { label: "< $2k", value: "0-1999", userIncomeForMatch: 1999 }, { label: "$2k-4k", value: "2000-3999", userIncomeForMatch: 3999 }, { label: "$4k+", value: "4000+", userIncomeForMatch: Infinity }
-
-        ];
-
-
-
-        const citizenshipRegions = [
-
-            { value: "All", label: "For All Nationalities", subCategories: ["All", "Most Nationalities", "Visa-Exempt Nationals"]}, 
-
-            { value: "Non-EU/EEA/Swiss", label: "For Non-EU/EEA/Swiss Citizens", subCategories: ["Non-EU/EEA/Swiss", "Non-EU/EFTA", "Non-EU", "Non-EU/EEA nationals"] }, 
-
-            { value: "Developed Countries", label: "Specific Developed Countries (OECD, etc.)", subCategories: ["OECD Nationals"]}, 
-
-            { value: "Specific Nationalities", label: "Other Specific Nationalities", subCategories: ["Select Countries", "Non-Mexican"]}
-
-        ];
-
-        
-
-        const walkthroughData = {
-
-          Spain: {
-
-            title: "Spain DNV: User Experience Walkthrough",
-
-            steps: [
-
-              { title: "Step 1: Choose Your Path: Apply Abroad vs. In Spain", officialInfo: "You can apply at a Spanish Consulate for a 1-year visa, or apply as a tourist from within Spain for a 3-year permit.", insights: [{ text: "Applying within Spain grants a 3-year residency permit, unlike the 1-year visa from consulates. This is a huge advantage but requires careful timing.", metric: "Widely Corroborated, 2024/2025" }], links: [{label: "Demo Guide", url: "https://www.digitalnomadvisa.help/g_demo_esp.html", highlight: true},{label: "Find Your Spanish Consulate", url: "https://www.exteriores.gob.es/en/EmbajadasConsulados/Paginas/index.aspx"}] },
-
-              { title: "Step 2: Get a Criminal Record Check", officialInfo: "A criminal background check from your country of residence for the last 2-5 years is required. For US citizens, this is an FBI Identity History Summary.", insights: [{ text: "This is the first document you should request as it can take time to arrive.", metric: "Community Advice" }], links: [{label: "Get a US FBI Background Check", url: "https://www.fbi.gov/services/cjis/identity-history-summary-checks"}] },
-
-              { title: "Step 3: Get the Apostille", officialInfo: "The criminal record check must be legalized with an Apostille of The Hague.", insights: [{ text: "This process can take weeks or months depending on your country. Do not skip this, or your document is invalid.", metric: "Critical Requirement" }], links: [] },
-
-              { title: "Step 4: Get a Sworn Translation", officialInfo: "All non-Spanish official documents must be translated by a 'traductor jurado' recognized by Spain.", insights: [{ text: "Only use an official sworn translator. A regular translation will be rejected. This is a common and costly mistake.", metric: "Multiple User Warnings, 2024" }], links: [{label: "Find an Official Sworn Translator", url: "https://www.exteriores.gob.es/en/ServiciosAlCiudadano/Paginas/Traductores-Interpretes-Jurados.aspx"}] },
-
-              { title: "Step 5: Handle the US W2 Roadblock", officialInfo: "US employees must provide an A-1 Certificate of Coverage from the SSA.", insights: [{ text: "This is nearly impossible. The A-1 takes 6-9+ months to get. The ONLY reliable workaround is to switch to a 1099 independent contractor status before applying.", metric: "Major Pain Point, Multiple Threads" }], links: [{label: "US Social Security Administration (A-1)", url: "https://www.ssa.gov/international/CoC_requests.html"}] },
-
-              { title: "Step 6: The Final Hurdle: TIE Appointment", officialInfo: "After approval, you must book a TIE (residency card) fingerprinting appointment within 30 days of arrival.", insights: [{ text: "Getting a TIE appointment is the hardest part. The official website rarely has slots. Pro Tip: Use a Telegram bot (like citapreviabot.com) or pay a 'gestor' (~€30-€50) to book one for you.", metric: "Highly Validated, Late 2023/2024" }], links: [{label: "Official TIE Appointment Booking Site", url: "https://sede.administracionespublicas.gob.es/pagina/index/directorio/icpplus"}] },
-
-              { title: "Step 7: Tax & Cost Reality Check", officialInfo: "The official visa processing time is 20 working days.", insights: [{ text: "The official timeline is a myth. Expect the entire end-to-end process to take 6-9+ months. Also, assume you will NOT get the 'Beckham Law' flat tax; budget for standard progressive tax rates and high 'autónomo' fees.", metric: "22 Upvotes, Early 2024" }], links: [] },
-
-              { title: "Step 8: Get the Detailed Guide", officialInfo: "Download the complete community-sourced guide for a final checklist and detailed tips.", insights: [{ text: "Reviewing this guide before submitting can help you avoid common rejection reasons and prepare for life in Spain.", metric: "Community Best Practice" }], links: [{label: "Download Instructional PDF", url: "./spn.pdf", highlight: true}, {label: "View as HTML Guide", url: "g_demo_esp.html/g_demo_esp.html", highlight: true}] }
-
-            ]
-
-          },
-
-          Portugal: { title: "Portugal D8: User Experience Walkthrough", steps: [ { title: "Step 1: Get a NIF & Bank Account", officialInfo: "Applicants must have a Portuguese NIF (tax number) and a Portuguese bank account before applying.", insights: [{ text: "You MUST do this first. Hire a lawyer or use an online service. You'll need to deposit at least €9,840 to prove sufficient funds for one year.", metric: "Universal Advice, 2024" }], links: [{label: "Get a NIF Online (Service Provider)", url: "https://www.nifonline.pt/"}] }, { title: "Step 2: The 12-Month Lease Paradox", officialInfo: "Proof of long-term accommodation is required.", insights: [{ text: "This is the most painful step. Most consulates demand a signed 12-month lease. This means paying rent on an empty flat for months while you wait. Pro Tip: Use a service like Flatio that provides visa-compliant lease documents.", metric: "18 Upvotes, Mid-2024" }], links: [{label: "Find Compliant Leases on Flatio", url: "https://www.flatio.com/"}] }, { title: "Step 3: The Consulate Appointment", officialInfo: "Apply at the Portuguese consulate in your country of residence.", insights: [{ text: "Processing times vary wildly by consulate (22 days to 183+ days). Research your specific consulate's recent performance on community forums before applying.", metric: "Community Data" }], links: [{label: "Find your Portuguese Consulate", url: "https://vistos.mne.gov.pt/en/world-area"}, {label: "VFS Global Portal (Example for USA)", url: "https://www.vfsglobal.com/portugal/usa/index.html"}] }, { title: "Step 4: The AIMA Backlog & Legal Limbo", officialInfo: "If approved, you get a 4-month visa to enter and attend a residency appointment with AIMA.", insights: [{ text: "The real bottleneck is AIMA, which is severely backlogged. Your 4-month visa WILL expire while you wait for your 8+ month appointment. While you are legal inside Portugal, you are trapped and CANNOT travel in the Schengen Area until your card arrives.", metric: "5 Upvotes, Mid-2024" }], links: [] }, { title: "Step 5: Citizenship Timeline Reality", officialInfo: "Portugal offers a path to citizenship after 5 years of residency.", insights: [{ text: "The 5-year clock is real, but the process takes longer. After 5 years, the citizenship application itself has a 2-3 year backlog. Plan for a 7-8 year total journey to get a passport.", metric: "Community Consensus, Late 2023" }], links: [] } ] },
-
-          Thailand: { title: "Thailand DTV: User Experience Walkthrough", steps: [ { title: "Step 1: Application Strategy", officialInfo: "The Destination Thailand Visa (DTV) is a 5-year visa for long-term tourists and remote workers.", insights: [{ text: "The 'Soft Power' Path is easiest. Enroll in a long-term Muay Thai, language, or cooking course. The enrollment letter simplifies your application, bypassing complex employment proof.", metric: "Multiple Threads, 2024/2025" }], links: [] }, { title: "Step 2: Prove Your Financial Stability", officialInfo: "Applicants must provide proof of funds.", insights: [{ text: "You need proof of savings of at least 500,000 THB (approx. $13,600 USD) in a bank account. You'll need official statements from the last 3-6 months.", metric: "Core Requirement" }], links: [] }, { title: "Step 3: Consulate Shopping is CRITICAL", officialInfo: "Applications must be submitted online to a Thai embassy outside of Thailand.", insights: [{ text: "This is the most important step. Rules vary wildly by embassy. Pro Tip: Apply from a neighboring country like Laos or Vietnam. They are known to be much faster (3 days) and more lenient than Western consulates.", metric: "Central Theme in DTV Discussions" }], links: [{label: "Official Thai E-Visa Portal", url: "https://www.thaievisa.go.th/"}] }, { title: "Step 4: The 'Border Bounce' Strategy", officialInfo: "Each entry grants a 180-day stay, which can be extended once in-country.", insights: [{ text: "Do not bother with the in-country extension. It's a bureaucratic nightmare. The universal advice is to do a simple 'border bounce'—a short trip to a nearby country—to get a fresh 180-day stamp upon re-entry. It's cheaper, faster, and stress-free.", metric: "Community Consensus, 2024" }], links: [] }, { title: "Step 5: 90-Day Reporting & TM.30", officialInfo: "Foreigners staying long-term must report their address every 90 days.", insights: [{ text: "This is a strict and enforced requirement. Additionally, your landlord must file a TM.30 form to report your stay. Ensure they do this, as it can cause issues for you later.", metric: "Mandatory Task" }], links: [{label: "90-Day Reporting Portal", url: "https://www.immigration.go.th/en/"}] }, { title: "Step 6: Tax Reality Check", officialInfo: "Long-term residents may be subject to Thai income tax.", insights: [{ text: "If you stay over 180 days in a calendar year, you are a tax resident. While enforcement is currently difficult for those without a Thai bank account, this is a significant legal grey area that could change. Consult a tax advisor for long-term stays.", metric: "62 Upvotes, May 2025" }], links: [] } ] }
-
-        };
-
-
-
-        const COUNTRY_CODE_MAP = { 'Spain': 'ES', 'Portugal': 'PT', 'Italy': 'IT', 'Croatia': 'HR', 'Germany': 'DE', 'Greece': 'GR', 'Estonia': 'EE', 'Malta': 'MT', 'Norway': 'NO', 'Iceland': 'IS', 'Romania': 'RO', 'Netherlands': 'NL', 'Georgia': 'GE', 'Czech Republic': 'CZ', 'Hungary': 'HU', 'Bulgaria': 'BG', 'Latvia': 'LV', 'Cyprus': 'CY', 'Costa Rica': 'CR', 'Mexico': 'MX', 'Panama': 'PA', 'Brazil': 'BR', 'Colombia': 'CO', 'Barbados': 'BB', 'Mauritius': 'MU', 'Uruguay': 'UY', 'Chile': 'CL', 'Philippines': 'PH', 'South Korea': 'KR', 'UAE': 'AE', 'Thailand': 'TH', 'Indonesia': 'ID' };
-
-        
-
-        function getCountryFlagEmoji(countryName) {
-
-            const countryCode = COUNTRY_CODE_MAP[countryName];
-
-            if (!countryCode) return '🏳️';
-
-            return String.fromCodePoint(...[...countryCode.toUpperCase()].map(char => char.charCodeAt(0) + 127397));
-
-        }
-
-        
-
-        const getScoreAttributes = (score, type = 'standard') => {
-
-            const maxScore = 5;
-
-            const standardDesc = ['Very Poor', 'Poor', 'Average', 'Good', 'Excellent'];
-
-            const bureaucracyDesc = ['Very Low', 'Low', 'Moderate', 'High', 'Very High'];
-
-            const costDesc = ['Very High', 'High', 'Moderate', 'Low', 'Very Low'];
-
-            const colors = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#10b981']; 
-
-            
-
-            if (score === null || score === undefined || score < 1 || score > maxScore) {
-
-                return { description: 'N/A', color: '#64748b', percentage: 0 };
-
-            }
-
-            const index = Math.round(score) - 1;
-
-            let description;
-
-            let currentColors = colors;
-
-
-
-            if (type === 'bureaucracy') {
-
-                description = bureaucracyDesc[index];
-
-                currentColors = colors.slice().reverse();
-
-            } else if (type === 'cost_of_living') {
-
-                description = costDesc[index];
-
-            }
-
-             else {
-
-                description = standardDesc[index];
-
-            }
-
-
-
-            return { description, color: currentColors[index], percentage: (score / maxScore) * 100 };
-
-        };
-
-        
-
-        // --- COMPONENTS ---
-
-        function App() {
-
-            const [selectedRegion, setSelectedRegion] = React.useState('');
-
-            const [selectedIncomeValue, setSelectedIncomeValue] = React.useState("any");
-
-            const [maxVisaCost, setMaxVisaCost] = React.useState(3000);
-
-            const [minTaxAttractiveness, setMinTaxAttractiveness] = React.useState(1);
-
-            const [minVisaLength, setMinVisaLength] = React.useState(1);
-
-            const [applyOnline, setApplyOnline] = React.useState(false);
-
-
-
-            const [visaData, setVisaData] = React.useState([]);
-
-            const [modalContent, setModalContent] = React.useState(null);
-
-            const [legalModalContent, setLegalModalContent] = React.useState(null);
-
-            const [walkthroughContent, setWalkthroughContent] = React.useState(null);
-
-            const [showBanner, setShowBanner] = React.useState(false);
-
-            const [showGuide, setShowGuide] = React.useState(false);
-
-            
-
-            React.useEffect(() => {
-
-                if (localStorage.getItem('ga_consent') !== 'true') setShowBanner(true);
-
-                else initGoogleAnalytics();
-
-            }, []);
-
-
-
-            React.useEffect(() => {
-
-                const processedData = visaDataSource.flatMap(country => 
-
-                    country.visas.map(visa => ({
-
-                        country: country.country_name,
-
-                        continent: country.continent,
-
-                        visa_name: visa.visa_name,
-
-                        visa_cost_usd: visa.visa_cost_usd,
-
-                        income_requirements_monthly_usd: visa.income_requirement_usd_month,
-
-                        visa_length_months: visa.visa_length_months,
-
-                        can_you_apply_remotely: visa.remote_application_bin,
-
-                        category_citizenship: [visa.eligible_citizens_cluster || visa.eligible_citizens],
-
-                        bonuses_incentives: visa.bonuses_incentives,
-
-                        remarks: visa.remarks,
-
-                        source_url: visa.link_source,
-
-                        tax_attractiveness: country.ratings.tax_friendliness,
-
-                        cost_of_living_attractiveness: country.ratings.cost_of_living,
-
-                        bureaucracy_level: country.ratings.bureaucracy_level
-
-                    }))
-
-                );
-
-                 const specialOrder = ["Spain", "Portugal", "Thailand"];
-
-                 processedData.sort((a, b) => {
-
-                    const aIndex = specialOrder.indexOf(a.country);
-
-                    const bIndex = specialOrder.indexOf(b.country);
-
-                    if (aIndex === -1 && bIndex === -1) return 0;
-
-                    if (aIndex === -1) return 1;
-
-                    if (bIndex === -1) return -1;
-
-                    return aIndex - bIndex;
-
-                });
-
-                setVisaData(processedData);
-
-            }, []);
-
-
-
-
-
-            const filteredVisas = React.useMemo(() => {
-
-                let results = visaData;
-
-
-
-                if (selectedRegion) {
-
-                    const selectedCategory = citizenshipRegions.find(r => r.value === selectedRegion);
-
-                    if (selectedCategory) {
-
-                        results = results.filter(visa => {
-
-                            const matchesCategory = selectedCategory.subCategories.some(sub => visa.category_citizenship.includes(sub));
-
-                            return matchesCategory || visa.category_citizenship.includes("All");
-
-                        });
-
-                    }
-
-                }
-
-
-
-                if (applyOnline) {
-
-                    results = results.filter(visa => visa.can_you_apply_remotely);
-
-                }
-
-
-
-                const incomeOption = incomeLevels.find(level => level.value === selectedIncomeValue);
-
-                const userIncome = incomeOption?.userIncomeForMatch;
-
-
-
-                return results.filter(visa => {
-
-                    if (userIncome !== null && visa.income_requirements_monthly_usd > userIncome) return false;
-
-                    if (visa.visa_cost_usd > maxVisaCost) return false;
-
-                    if (visa.tax_attractiveness < minTaxAttractiveness) return false;
-
-                    if (visa.visa_length_months < minVisaLength) return false;
-
-                    return true;
-
-                });
-
-
-
-            }, [visaData, selectedRegion, selectedIncomeValue, maxVisaCost, minTaxAttractiveness, minVisaLength, applyOnline]);
-
-
-
-
-
-            const handleConsent = () => {
-
-                localStorage.setItem('ga_consent', 'true');
-
-                setShowBanner(false);
-
-                if (typeof initGoogleAnalytics === 'function') initGoogleAnalytics();
-
-            };
-
-            
-
-            const openWalkthrough = (country) => {
-
-                setModalContent(null);
-
-                setWalkthroughContent(walkthroughData[country]);
-
-            }
-
-
-
-            return (
-
-                <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-gray-100 font-sans p-4 sm:p-6 md:p-8">
-
-                    <header className="text-center mb-4 max-w-3xl mx-auto">
-
-                        <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
-
-                            Visa Match & Clarity Engine
-
-                        </h1>
-
-                        <p className="text-slate-400 mt-2">Instantly find your digital nomad visa options worldwide.</p>
-
-                    </header>
-
-                    
-
-                    <div className="flex justify-center items-center gap-4 my-8">
-
-                         <button onClick={() => setLegalModalContent(legalContent.about)} className="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">
-
-                            💡 About This Project
-
-                        </button>
-
-                         <button onClick={() => setLegalModalContent({ title: 'How to Use', content: 'Start by selecting your citizenship region to see available visas. Use the income and advanced filters to narrow your search. Click any card for more details. For Spain, Portugal, and Thailand, click the special button to access a detailed, step-by-step application walkthrough with real user insights.' })} className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">
-
-                            ⚙️ How to Use
-
-                        </button>
-
-                    </div>
-
-                    
-
-                    <div className="bg-slate-800 shadow-2xl rounded-xl p-6 mb-8 max-w-6xl mx-auto">
-
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-
-                            <div className="space-y-6">
-
-                                <div>
-
-                                    <label htmlFor="nationality" className="flex items-center gap-2 text-sm font-medium text-slate-300 mb-2">
-
-                                        <span>🌍 Your Citizenship Region</span>
-
-                                        <div className="relative group">
-
-                                            <span className="cursor-pointer">❓</span>
-
-                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 w-72 mb-2 hidden group-hover:block bg-slate-900 text-white text-xs rounded-lg py-2 px-3 z-10 border border-slate-700 shadow-lg">
-
-                                                <h4 className="font-bold mb-1">How are these grouped?</h4>
-
-                                                <p><strong>Non-EU/EEA/Swiss:</strong> For citizens outside the European Union, European Economic Area, and Switzerland.</p>
-
-                                                <p><strong>Specific Developed Countries:</strong> For citizens of OECD member countries.</p>
-
-                                                <p><strong>Other Specific Nationalities:</strong> For visas that target a unique list of countries not covered by other groups.</p>
-
-                                            </div>
-
-                                        </div>
-
-                                    </label>
-
-                                    <select id="nationality" value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value)}
-
-                                        className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-white">
-
-                                        <option value="">-- Select Region --</option>
-
-                                        {citizenshipRegions.map(region => <option key={region.value} value={region.value}>{region.label}</option>)}
-
-                                    </select>
-
-                                </div>
-
-                                <div>
-
-                                    <label className="block text-sm font-medium text-slate-300 mb-2">💰 Est. Monthly Income (USD)</label>
-
-                                    <div className="flex flex-wrap gap-2">
-
-                                        {incomeLevels.map(level => (
-
-                                            <button key={level.value} onClick={() => setSelectedIncomeValue(level.value)}
-
-                                                className={`px-3 py-2 text-sm rounded-md transition-all ${selectedIncomeValue === level.value ? 'bg-purple-600 text-white shadow-lg ring-2 ring-purple-400' : 'bg-slate-700 hover:bg-slate-600 text-slate-300'}`}>
-
-                                                {level.label}
-
-                                            </button>
-
-                                        ))}
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                            <div className="space-y-6 bg-slate-900/50 p-4 rounded-lg">
-
-                                <h3 className="text-lg font-semibold text-purple-400">Advanced Filters</h3>
-
-                                <div className="space-y-4">
-
-                                    <div className="text-sm">
-
-                                        <label htmlFor="cost-slider" className="flex justify-between font-medium text-slate-300 mb-1"><span>💸 Max Visa Cost</span><span>${maxVisaCost}</span></label>
-
-                                        <input id="cost-slider" type="range" min="0" max="3000" step="50" value={maxVisaCost} onChange={e => setMaxVisaCost(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/>
-
-                                    </div>
-
-                                    <div className="text-sm">
-
-                                        <label htmlFor="tax-slider" className="flex justify-between font-medium text-slate-300 mb-1"><span>👍 Min Tax Attractiveness</span><span>{minTaxAttractiveness}/5</span></label>
-
-                                        <input id="tax-slider" type="range" min="1" max="5" step="1" value={minTaxAttractiveness} onChange={e => setMinTaxAttractiveness(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/>
-
-                                    </div>
-
-                                    <div className="text-sm">
-
-                                        <label htmlFor="length-slider" className="flex justify-between font-medium text-slate-300 mb-1"><span>⏳ Min Visa Length</span><span>{minVisaLength} months</span></label>
-
-                                        <input id="length-slider" type="range" min="1" max="36" step="1" value={minVisaLength} onChange={e => setMinVisaLength(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-
-                    <main className="mt-8 max-w-7xl mx-auto">
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                            {filteredVisas.map((visa, index) => (
-
-                                <VisaCard key={`${visa.country}-${visa.visa_name}-${index}`} visa={visa} onViewDetails={() => setModalContent(visa)} />
-
-                            ))}
-
-                        </div>
-
-                    </main>
-
-                    
-
-                    {modalContent && <DetailsModal visa={modalContent} onClose={() => setModalContent(null)} onOpenWalkthrough={openWalkthrough} />}
-
-                    {legalModalContent && <LegalModal data={legalModalContent} onClose={() => setLegalModalContent(null)} />}
-
-                    {walkthroughContent && <WalkthroughModal data={walkthroughContent} onClose={() => setWalkthroughContent(null)} />}
-
-                    {showBanner && <CookieBanner onAccept={handleConsent} />}
-
-                    {showGuide && <GuideModal onClose={() => setShowGuide(false)} />}
-
-                </div>
-
-            );
-
-        }
-
-        
-
-        function CookieBanner({ onAccept }) {
-
-             return (
-
-                <div className="fixed bottom-0 left-0 right-0 bg-slate-900/80 backdrop-blur-sm p-4 border-t border-slate-700 z-50">
-
-                    <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-
-                        <p className="text-sm text-slate-300">This site uses cookies for analytics to improve your experience.</p>
-
-                        <button onClick={onAccept} className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg whitespace-nowrap">Accept</button>
-
-                    </div>
-
-                </div>
-
-            );
-
-        }
-
-
-
-        function LegalModal({ data, onClose }) {
-
-             return (
-
-                <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4" onClick={onClose}>
-
-                    <div className="bg-slate-800 rounded-xl shadow-2xl p-6 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar" onClick={e => e.stopPropagation()}>
-
-                        <div className="flex justify-between items-center pb-4 border-b border-slate-700">
-
-                            <h2 className="text-2xl font-bold text-purple-400">{data.title}</h2>
-
-                            <button onClick={onClose} className="text-slate-400 hover:text-white text-3xl font-light">&times;</button>
-
-                        </div>
-
-                        <div className="mt-6 text-slate-300 text-sm space-y-4 leading-relaxed">
-
-                            {data.imageSrc && (
-
-                                <div className="text-center mb-6">
-
-                                    <img src={data.imageSrc} alt="Project Founder Yonatan" className="w-48 h-48 mx-auto rounded-full object-cover border-4 border-purple-400" style={{objectPosition: "25% 50%"}}/>
-
-                                    <p className="text-xs text-slate-400 mt-2 italic">{data.imageCaption}</p>
-
-                                </div>
-
-                            )}
-
-                            {data.story && data.story.split('\n').map((p, i) => <p key={i}>{p}</p>)}
-
-                            {data.disclaimer && <p className="mt-4 text-sm text-yellow-400 bg-yellow-900/50 p-3 rounded-lg">{data.disclaimer}</p>}
-
-                            {data.closing && <p className="mt-4 italic">{data.closing}</p>}
-
-                            {data.content && data.content.split('\n').map((p, i) => <p key={i}>{p}</p>)}
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            );
-
-        }
-
-
-
-        function VisaCard({ visa, onViewDetails }) {
-
-            const bureaucracyAttrs = getScoreAttributes(visa.bureaucracy_level, 'bureaucracy');
-
-            return (
-
-                <div className="bg-slate-800 shadow-xl rounded-lg p-5 flex flex-col justify-between transition-all hover:shadow-purple-500/30 hover:scale-[1.02] duration-300">
-
-                    <div>
-
-                        <h3 className="text-xl font-bold text-purple-400 mb-2">
-
-                            {getCountryFlagEmoji(visa.country)} {visa.country} – <span className="font-normal text-slate-300">{visa.visa_name}</span>
-
-                        </h3>
-
-                        <div className="space-y-3 text-sm mb-4">
-
-                            <p>⏳<span className="font-semibold"> Duration:</span> {visa.visa_length_months ? `${visa.visa_length_months} months` : 'N/A'}</p>
-
-                            <p>💸<span className="font-semibold"> Visa Cost:</span> {visa.visa_cost_usd !== null ? `~$${visa.visa_cost_usd}` : 'N/A'}</p>
-
-                            <p className="flex items-center">
-
-                                <span className="font-semibold mr-2">🤯 Bureaucracy:</span>
-
-                                <span className="font-bold" style={{color: bureaucracyAttrs.color}}>{bureaucracyAttrs.description}</span>
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                    <div className="mt-auto text-center">
-
-                         <a href={visa.source_url || '#'} target="_blank" rel="noopener noreferrer" className="inline-block bg-slate-700/50 hover:bg-slate-600/50 text-slate-300 text-xs font-semibold py-1 px-3 rounded-full transition-colors mb-4" title={visa.source_url || 'Source not available'}>
-
-                            Last Checked: June 21 2025
-
-                        </a>
-
-                        <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition" onClick={onViewDetails}>
-
-                            View Full Details
-
-                        </button>
-
-                    </div>
-
-                </div>
-
-            );
-
-        }
-
-
-
-        const ScoreBar = ({ score, label, emoji, type = 'standard' }) => {
-
-            const { description, color, percentage } = getScoreAttributes(score, type);
-
-            return (
-
-                <div className="w-full relative group">
-
-                    <div className="flex justify-between items-center mb-1 text-sm">
-
-                        <span className="font-medium text-slate-300">{emoji} {label}</span>
-
-                        <span className="font-bold" style={{color: color}}>{description}</span>
-
-                    </div>
-
-                    <div className="w-full bg-slate-700 rounded-full h-2.5">
-
-                        <div className="h-2.5 rounded-full" style={{ width: `${percentage}%`, backgroundColor: color }}></div>
-
-                    </div>
-
-                    {type === 'ssn_attractiveness' && (
-
-                        <div className="absolute bottom-full left-0 w-max max-w-xs mb-2 hidden group-hover:block bg-slate-900 text-white text-xs rounded-lg py-2 px-3 z-10 border border-slate-700 shadow-lg">
-
-                           Score based on mandatory social security payments. Higher is better (lower payments).
-
-                        </div>
-
-                    )}
-
-                </div>
-
-            );
-
-        };
-
-
-
-        const DetailText = ({ label, value }) => (
-
-            <div className="relative group text-sm">
-
-                 <p className="text-slate-300 truncate">
-
-                    <strong className="text-slate-400">{label}:</strong> {value || 'N/A'}
-
-                </p>
-
-                <div className="absolute bottom-full left-0 w-max max-w-xs mb-2 hidden group-hover:block bg-slate-900 text-white text-xs rounded-lg py-2 px-3 z-10 border border-slate-700 shadow-lg">
-
-                    {value || 'N/A'}
-
-                </div>
-
-            </div>
-
-        );
-
-
-
-        function DetailsModal({ visa, onClose, onOpenWalkthrough }) {
-
-            const hasWalkthrough = ['Spain', 'Portugal', 'Thailand'].includes(visa.country);
-
-            return (
-
-                <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4" onClick={onClose}>
-
-                    <div className="bg-slate-800 rounded-xl shadow-2xl p-6 md:p-8 max-w-3xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar" onClick={e => e.stopPropagation()}>
-
-                        <div className="flex justify-between items-start pb-4 border-b border-slate-700">
-
-                           <div className="flex-grow">
-
-                                <h2 className="text-2xl font-bold text-purple-400 flex flex-wrap items-center gap-4">
-
-                                    <span>{getCountryFlagEmoji(visa.country)} {visa.country}</span>
-
-                                </h2>
-
-                            </div>
-
-                            <button onClick={onClose} className="text-slate-400 hover:text-white text-3xl font-light ml-4">&times;</button>
-
-                        </div>
-
-                        {hasWalkthrough && (
-
-                            <div className="text-center my-6">
-
-                                <button onClick={() => onOpenWalkthrough(visa.country)} className="w-full font-bold bg-amber-500 text-slate-900 px-4 py-2 rounded-lg hover:bg-amber-400 transition-colors shadow-lg transform hover:scale-105">
-
-                                    🌟 View User Experiences & Application Guide 🌟
-
-                                </button>
-
-                            </div>
-
-                        )}
-
-                        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-
-                            <div className="space-y-6">
-
-                                <div className="bg-slate-900/50 p-4 rounded-lg">
-
-                                    <h3 className="text-lg font-semibold text-slate-200 mb-3">🔑 Key Information</h3>
-
-                                    <div className="space-y-2 text-sm text-slate-300">
-
-                                        <p><strong className="text-slate-400">Visa Name:</strong> {visa.visa_name}</p>
-
-                                        <p><strong className="text-slate-400">Duration:</strong> {visa.visa_length_months ? `${visa.visa_length_months} months` : 'N/A'}</p>
-
-                                        <p><strong className="text-slate-400">Cost (est.):</strong> {visa.visa_cost_usd !== null ? `~$${visa.visa_cost_usd}` : 'N/A'}</p>
-
-                                        <p><strong className="text-slate-400">Apply Online:</strong> {visa.can_you_apply_remotely ? 'Yes' : 'No'}</p>
-
-                                    </div>
-
-                                </div>
-
-                                <div className="bg-slate-900/50 p-4 rounded-lg">
-
-                                    <h3 className="text-lg font-semibold text-slate-200 mb-3">✅ Requirements</h3>
-
-                                    <div className="space-y-2 text-sm text-slate-300">
-
-                                        <p><strong className="text-slate-400">Min. Income:</strong> {visa.income_requirements_monthly_usd ? `$${visa.income_requirements_monthly_usd.toLocaleString()}/mo` : 'Not Specified'}</p>
-
-                                        <p><strong className="text-slate-400">Eligible Citizens:</strong> {visa.category_citizenship.join(', ')}</p>
-
-                                    </div>
-
-                                </div>
-
-                                <div className="bg-slate-900/50 p-4 rounded-lg">
-
-                                    <h3 className="text-lg font-semibold text-slate-200 mb-3">⭐ Bonuses & Incentives</h3>
-
-                                    <p className="text-sm text-slate-300">{visa.bonuses_incentives}</p>
-
-                                </div>
-
-                            </div>
-
-                            <div className="space-y-6">
-
-                                <div className="bg-slate-900/50 p-4 rounded-lg">
-
-                                    <h3 className="text-lg font-semibold text-slate-200 mb-4">📊 Attractiveness Scores (1-5)</h3>
-
-                                    <div className="space-y-4">
-
-                                        <ScoreBar score={visa.cost_of_living_attractiveness} label="Cost of Living" emoji="💰" type="cost_of_living" />
-
-                                        <ScoreBar score={visa.tax_attractiveness} label="Tax Attractiveness" emoji="💸"/>
-
-                                        <ScoreBar score={visa.bureaucracy_level} label="Bureaucracy" emoji="🤯" type="bureaucracy" />
-
-                                    </div>
-
-                                </div>
-
-                                {visa.remarks && (
-
-                                    <div className="bg-slate-900/50 p-4 rounded-lg">
-
-                                        <h3 className="text-lg font-semibold text-slate-200 mb-2">📝 Remarks</h3>
-
-                                        <p className="text-sm text-slate-300">{visa.remarks}</p>
-
-                                    </div>
-
-                                )}
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            );
-
-        }
-
-        
-
-        function WalkthroughModal({ data, onClose }) {
-
-            const [step, setStep] = React.useState(0);
-
-            const currentStep = data.steps[step];
-
-
-
-            return (
-
-                <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4" onClick={onClose}>
-
-                    <div className="bg-slate-800 rounded-xl shadow-2xl p-6 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar" onClick={e => e.stopPropagation()}>
-
-                        <div className="flex justify-between items-center pb-4 border-b border-slate-700">
-
-                            <h2 className="text-xl md:text-2xl font-bold text-amber-400">{data.title}</h2>
-
-                            <button onClick={onClose} className="text-slate-400 hover:text-white text-3xl font-light">&times;</button>
-
-                        </div>
-
-
-
-                        <div className="my-4 text-center">
-
-                            <p className="text-sm text-slate-400">Step {step + 1} of {data.steps.length}</p>
-
-                            <div className="w-full bg-slate-700 rounded-full h-1.5 mt-1">
-
-                                <div className="bg-amber-500 h-1.5 rounded-full" style={{ width: `${((step + 1) / data.steps.length) * 100}%` }}></div>
-
-                            </div>
-
-                        </div>
-
-
-
-                        <div className="mt-6 space-y-4">
-
-                            <h3 className="text-lg font-bold text-slate-100">{currentStep.title}</h3>
-
-                            <div className="bg-slate-900/50 p-4 rounded-lg">
-
-                                <h4 className="font-semibold text-purple-400 mb-2">Official Info</h4>
-
-                                <p className="text-sm text-slate-300">{currentStep.officialInfo}</p>
-
-                            </div>
-
-                             <div className="bg-slate-900/50 p-4 rounded-lg">
-
-                                <h4 className="font-semibold text-amber-400 mb-2">💡 User Insights</h4>
-
-                                {currentStep.insights.map((insight, index) => (
-
-                                    <div key={index} className="text-sm text-slate-300 border-l-2 border-amber-500 pl-3 mb-2">
-
-                                        <p>"{insight.text}"</p>
-
-                                        <p className="text-xs text-slate-500 mt-1">- {insight.metric}</p>
-
-                                    </div>
-
-                                ))}
-
-                            </div>
-
-                             {currentStep.links && currentStep.links.length > 0 && (
-
-                                <div className="bg-slate-900/50 p-4 rounded-lg">
-
-                                    <h4 className="font-semibold text-sky-400 mb-2">Helpful Links</h4>
-
-                                    <div className="flex flex-col sm:flex-row gap-2">
-
-                                        {currentStep.links.map((link, index) => (
-
-                                            <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className={`text-sm font-semibold py-2 px-3 rounded-lg text-center transition-colors ${link.highlight ? 'bg-amber-500 hover:bg-amber-400 text-slate-900' : 'bg-sky-600 hover:bg-sky-500 text-white'}`}>
-
-                                                {link.label}
-
-                                            </a>
-
-                                        ))}
-
-                                    </div>
-
-                                </div>
-
-                            )}
-
-                        </div>
-
-                        
-
-                        <div className="mt-8 flex justify-between items-center">
-
-                            <button onClick={() => setStep(step - 1)} disabled={step === 0} className="bg-slate-600 hover:bg-slate-500 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed">
-
-                                Back
-
-                            </button>
-
-                            <button onClick={() => { if (step < data.steps.length - 1) setStep(step + 1); else onClose(); }} className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
-
-                                {step === data.steps.length - 1 ? 'Finish' : 'Next'}
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            );
-
-        }
-
-
-
-        const container = document.getElementById('root');
-
-        const root = ReactDOM.createRoot(container);
-
-        root.render(<App />);
-
-
-
-    </script>
-
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // --- DATA & CONTENT ---
+        const visaDataSource = [
+          { "country_name": "Spain", "continent": "Europe", "visas": [{ "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 153, "income_requirement_usd_month": 2762, "visa_length_months": 12, "remote_application_bin": true, "eligible_citizens": "Non-EU/EEA/Swiss", "bonuses_incentives": "20% tax cap; family members allowed; eventual path to residency", "remarks": "Formally launched in 2023 under its Startup Act. *cost_remark - Original cost: $73 consular fee plus $80 NIE. *length_remark - Renewable for up to 3 years.", "issued_date": "2023-01-01", "link_source": "https://www.exteriores.gob.es/Consulados/londres/en/ServiciosConsulares/Paginas/Consular/Visado-de-teletrabajo.aspx" }], "ratings": { "tax_friendliness": 4, "cost_of_living": 3, "bureaucracy_level": 4 } },
+          { "country_name": "Portugal", "continent": "Europe", "visas": [{ "visa_name": "Temporary-Stay Visa (D8 Digital Nomad Visa)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 165, "income_requirement_usd_month": 3480, "visa_length_months": 24, "remote_application_bin": true, "eligible_citizens": "Non-EU/EEA/Swiss", "bonuses_incentives": "Access to Schengen; can include dependents; path to permanent residency and citizenship", "remarks": "Tailored for freelancers and remote employees earning active income from abroad. *cost_remark - Original cost: $75 (visa) + $90 (residence permit). *length_remark - Initial 4-month visa leads to a 2-year residence permit, renewable up to 5 years. *remote_apply_remark - Application is via a Portuguese embassy.", "issued_date": "2025-06-11", "link_source": "https://vistos.mne.gov.pt/en/national-visas/general-information/type-of-visa" }], "ratings": { "tax_friendliness": 4, "cost_of_living": 4, "bureaucracy_level": 4 } },
+          { "country_name": "Thailand", "continent": "Asia", "visas": [{ "visa_name": "Destination Thailand Visa (DTV)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 270, "income_requirement_usd_month": 0, "visa_length_months": 60, "remote_application_bin": true, "eligible_citizens": "All", "bonuses_incentives": "5-year validity, 180-day entries, very flexible", "remarks": "Requires proof of 500k THB in savings. A major pain point is the inconsistent application of rules across different embassies. *remote_apply_remark - Must apply from outside Thailand.", "issued_date": "2025-06-16", "link_source": "https://www.thaievisa.go.th/" }], "ratings": { "tax_friendliness": 4, "cost_of_living": 5, "bureaucracy_level": 2 } },
+          { "country_name": "Albania", "continent": "Europe", "visas": [ { "visa_name": "Unique Permit (for Digital Nomads)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "1 year, renewable up to 5", "visa_length_months": 60, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "Cost-effective, easy extensions.", "link_source": "https://e-albania.al/eAlbaniaServices/UseService.aspx?service_code=15356", "issued_date": "2022-01-01", "apply_form_link": "https://e-albania.al/eAlbaniaServices/UseService.aspx?service_code=15356", "remote_application_bin": true, "visa_cost_usd": 48, "income_requirement_usd_month": 834, "cost_of_living": { "accommodation": "~$230-690/month for apartments", "food": "~$173-345/month", "transportation": "~$23-58/month", "overall_index": "Very low, 30-40% of Western European costs" }, "remarks": "🇦🇱 Low income threshold & simple online process.\n• The 'Unique Permit' officially covers digital nomads.\n• After 5 years, you can apply for permanent residency. \n• Becomes tax resident after 183 days." } ], "ratings": { "tax_friendliness": 4, "cost_of_living": 5, "bureaucracy_level": 3 } },
+          { "country_name": "Bulgaria", "continent": "Europe", "visas": [ { "visa_name": "Digital Nomad/Freelancer Program (Type D Visa)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "12 months, renewable", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "10% flat tax, low cost of living.", "link_source": "https://www.mfa.bg/en/services-travel/consular-services/travel-bulgaria/visa-bulgaria", "issued_date": "2024-03-01", "apply_form_link": null, "remote_application_bin": false, "visa_cost_usd": 107, "income_requirement_usd_month": 2667, "cost_of_living": { "accommodation": "~$345-805/month apartments", "food": "~$230-460/month food", "transportation": "~$35-69/month transport", "overall_index": "Low, Eastern Europe" }, "remarks": "🇧🇬 Great for those seeking a low-tax EU base.\n• Official government application details are still less clear than in other countries.\n• Must apply in person at a Bulgarian consulate." }, { "visa_name": "Digital Nomad Visa (Long-Stay Type D)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Not specified", "visa_length": "Initial visa up to 1 year, convertible to a renewable residence permit.", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA/Swiss nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "10% flat income tax, full Schengen Area mobility, low cost of living.", "link_source": "Not available (awaiting State Gazette publication)", "issued_date": "2025-06-18", "apply_form_link": "Not available", "remote_application_bin": false, "visa_cost_usd": null, "income_requirement_usd_month": 1987, "cost_of_living": { "accommodation": "~€250-400/month (Sofia); €300-350/month (Plovdiv, Varna); lower in Bansko", "food": "~€150-250/month", "transportation": "~€20-50/month", "overall_index": "Low, among the lowest in the EU" }, "remarks": "🇧🇬 New visa as of mid-2024! \n• Key benefit: full Schengen Area access and a very low 10% flat income tax. \n• Requirement is to earn 3x the country's average salary (approx. €1,300/month). \n• Must apply in person at a Bulgarian consulate." } ], "ratings": { "tax_friendliness": 4, "cost_of_living": 4, "bureaucracy_level": 4 } },
+          { "country_name": "Croatia", "continent": "Europe", "visas": [ { "visa_name": "Digital Nomad Residence Permit", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "Up to 1 year", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "No local income tax.", "link_source": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "issued_date": "2021-01-01", "apply_form_link": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "remote_application_bin": true, "visa_cost_usd": 150, "income_requirement_usd_month": 2720, "cost_of_living": { "accommodation": "~$460-1,035/month", "food": "~$288-575/month", "transportation": "~$46-92/month", "overall_index": "Moderate, Southern Europe" }, "remarks": "☀️ Major benefit is income tax exemption on foreign earnings.\n• Income requirement increases by 10% for each family member.\n• You cannot reapply for a consecutive year immediately after the first permit expires." } ], "ratings": { "tax_friendliness": 3, "cost_of_living": 3, "bureaucracy_level": 4 } }
+        ];
+        
+        const legalContent = {
+            terms: { title: 'Terms of Use', content: `Welcome to our Digital Nomad Visa Matcher... For any questions, please contact us at 10mvpsin20days@gmail.com.` },
+            privacy: { title: 'Privacy Policy', content: `This Privacy Policy describes how we handle your information... please contact us at 10mvpsin20days@gmail.com.` },
+            about: { 
+                title: 'About This Project', 
+                story: `My name is Yonatan, and I've been living the digital nomad life for the past several years. With a background in tech, I grew increasingly frustrated with the inconsistent, outdated, and often confusing visa information scattered across the web. \n\nI built this tool to solve my own problem: to create a single, clear, and user-friendly place to compare visa options without the headache. My goal is to reduce the bureaucratic pain for fellow nomads.\n\nData on this site is aggregated from official government websites, reputable legal and immigration blogs, and cross-referenced with validated user experiences from online communities like Reddit.`,
+                disclaimer: `Information keeps changing, and updates are currently done on a monthly average, so it's always better to double-check official sources.`,
+                closing: `I hope this serves you well, and I'm always open to suggestions for improvement!`,
+                imageSrc: 'https://i.imgur.com/kQoA1m5.jpeg', 
+                imageCaption: "Me in Durrës beach, Albania, a day before the official end of season (shoulder seasons for the win!)"
+            }
+        };
+
+        const incomeLevels = [
+            { label: "Any", value: "any", userIncomeForMatch: null }, { label: "< $2k", value: "0-1999", userIncomeForMatch: 1999 }, { label: "$2k-4k", value: "2000-3999", userIncomeForMatch: 3999 }, { label: "$4k+", value: "4000+", userIncomeForMatch: Infinity }
+        ];
+
+        const citizenshipRegions = [
+            { value: "All", label: "For All Nationalities", subCategories: ["All", "Most Nationalities", "Visa-Exempt Nationals"]}, 
+            { value: "Non-EU/EEA/Swiss", label: "For Non-EU/EEA/Swiss Citizens", subCategories: ["Non-EU/EEA/Swiss", "Non-EU/EFTA", "Non-EU", "Non-EU/EEA nationals"] }, 
+            { value: "Developed Countries", label: "Specific Developed Countries (OECD, etc.)", subCategories: ["OECD Nationals"]}, 
+            { value: "Specific Nationalities", label: "Other Specific Nationalities", subCategories: ["Select Countries", "Non-Mexican"]}
+        ];
+        
+        const walkthroughData = {
+          Spain: {
+            title: "Spain DNV: User Experience Walkthrough",
+            steps: [
+              { title: "Step 1: Choose Your Path: Apply Abroad vs. In Spain", officialInfo: "You can apply at a Spanish Consulate for a 1-year visa, or apply as a tourist from within Spain for a 3-year permit.", insights: [{ text: "Applying within Spain grants a 3-year residency permit, unlike the 1-year visa from consulates. This is a huge advantage but requires careful timing.", metric: "Widely Corroborated, 2024/2025" }], links: [{label: "Complete Guide", url: "https://www.digitalnomadvisa.help/guide_spain.html", highlight: true},{label: "Find Your Spanish Consulate", url: "https://www.exteriores.gob.es/en/EmbajadasConsulados/Paginas/index.aspx"}] },
+              { title: "Step 2: Get a Criminal Record Check", officialInfo: "A criminal background check from your country of residence for the last 2-5 years is required. For US citizens, this is an FBI Identity History Summary.", insights: [{ text: "This is the first document you should request as it can take time to arrive.", metric: "Community Advice" }], links: [{label: "Get a US FBI Background Check", url: "https://www.fbi.gov/services/cjis/identity-history-summary-checks"}] },
+              { title: "Step 3: Get the Apostille", officialInfo: "The criminal record check must be legalized with an Apostille of The Hague.", insights: [{ text: "This process can take weeks or months depending on your country. Do not skip this, or your document is invalid.", metric: "Critical Requirement" }], links: [] },
+              { title: "Step 4: Get a Sworn Translation", officialInfo: "All non-Spanish official documents must be translated by a 'traductor jurado' recognized by Spain.", insights: [{ text: "Only use an official sworn translator. A regular translation will be rejected. This is a common and costly mistake.", metric: "Multiple User Warnings, 2024" }], links: [{label: "Find an Official Sworn Translator", url: "https://www.exteriores.gob.es/en/ServiciosAlCiudadano/Paginas/Traductores-Interpretes-Jurados.aspx"}] },
+              { title: "Step 5: Handle the US W2 Roadblock", officialInfo: "US employees must provide an A-1 Certificate of Coverage from the SSA.", insights: [{ text: "This is nearly impossible. The A-1 takes 6-9+ months to get. The ONLY reliable workaround is to switch to a 1099 independent contractor status before applying.", metric: "Major Pain Point, Multiple Threads" }], links: [{label: "US Social Security Administration (A-1)", url: "https://www.ssa.gov/international/CoC_requests.html"}] },
+              { title: "Step 6: The Final Hurdle: TIE Appointment", officialInfo: "After approval, you must book a TIE (residency card) fingerprinting appointment within 30 days of arrival.", insights: [{ text: "Getting a TIE appointment is the hardest part. The official website rarely has slots. Pro Tip: Use a Telegram bot (like citapreviabot.com) or pay a 'gestor' (~€30-€50) to book one for you.", metric: "Highly Validated, Late 2023/2024" }], links: [{label: "Official TIE Appointment Booking Site", url: "https://sede.administracionespublicas.gob.es/pagina/index/directorio/icpplus"}] },
+              { title: "Step 7: Tax & Cost Reality Check", officialInfo: "The official visa processing time is 20 working days.", insights: [{ text: "The official timeline is a myth. Expect the entire end-to-end process to take 6-9+ months. Also, assume you will NOT get the 'Beckham Law' flat tax; budget for standard progressive tax rates and high 'autónomo' fees.", metric: "22 Upvotes, Early 2024" }], links: [] },
+              { title: "Step 8: Get the Detailed Guide", officialInfo: "Download the complete community-sourced guide for a final checklist and detailed tips.", insights: [{ text: "Reviewing this guide before submitting can help you avoid common rejection reasons and prepare for life in Spain.", metric: "Community Best Practice" }], links: [{label: "Download Instructional PDF", url: "./spn.pdf", highlight: true}, {label: "View as HTML Guide", url: "guide_spain.html/g_demo_esp.html", highlight: true}] }
+            ]
+          },
+          Portugal: { title: "Portugal D8: User Experience Walkthrough", steps: [ { title: "Step 1: Get a NIF & Bank Account", officialInfo: "Applicants must have a Portuguese NIF (tax number) and a Portuguese bank account before applying.", insights: [{ text: "You MUST do this first. Hire a lawyer or use an online service. You'll need to deposit at least €9,840 to prove sufficient funds for one year.", metric: "Universal Advice, 2024" }], links: [{label: "Get a NIF Online (Service Provider)", url: "https://www.nifonline.pt/"}] }, { title: "Step 2: The 12-Month Lease Paradox", officialInfo: "Proof of long-term accommodation is required.", insights: [{ text: "This is the most painful step. Most consulates demand a signed 12-month lease. This means paying rent on an empty flat for months while you wait. Pro Tip: Use a service like Flatio that provides visa-compliant lease documents.", metric: "18 Upvotes, Mid-2024" }], links: [{label: "Find Compliant Leases on Flatio", url: "https://www.flatio.com/"}] }, { title: "Step 3: The Consulate Appointment", officialInfo: "Apply at the Portuguese consulate in your country of residence.", insights: [{ text: "Processing times vary wildly by consulate (22 days to 183+ days). Research your specific consulate's recent performance on community forums before applying.", metric: "Community Data" }], links: [{label: "Find your Portuguese Consulate", url: "https://vistos.mne.gov.pt/en/world-area"}, {label: "VFS Global Portal (Example for USA)", url: "https://www.vfsglobal.com/portugal/usa/index.html"}] }, { title: "Step 4: The AIMA Backlog & Legal Limbo", officialInfo: "If approved, you get a 4-month visa to enter and attend a residency appointment with AIMA.", insights: [{ text: "The real bottleneck is AIMA, which is severely backlogged. Your 4-month visa WILL expire while you wait for your 8+ month appointment. While you are legal inside Portugal, you are trapped and CANNOT travel in the Schengen Area until your card arrives.", metric: "5 Upvotes, Mid-2024" }], links: [] }, { title: "Step 5: Citizenship Timeline Reality", officialInfo: "Portugal offers a path to citizenship after 5 years of residency.", insights: [{ text: "The 5-year clock is real, but the process takes longer. After 5 years, the citizenship application itself has a 2-3 year backlog. Plan for a 7-8 year total journey to get a passport.", metric: "Community Consensus, Late 2023" }], links: [] } ] },
+          Thailand: { title: "Thailand DTV: User Experience Walkthrough", steps: [ { title: "Step 1: Application Strategy", officialInfo: "The Destination Thailand Visa (DTV) is a 5-year visa for long-term tourists and remote workers.", insights: [{ text: "The 'Soft Power' Path is easiest. Enroll in a long-term Muay Thai, language, or cooking course. The enrollment letter simplifies your application, bypassing complex employment proof.", metric: "Multiple Threads, 2024/2025" }], links: [] }, { title: "Step 2: Prove Your Financial Stability", officialInfo: "Applicants must provide proof of funds.", insights: [{ text: "You need proof of savings of at least 500,000 THB (approx. $13,600 USD) in a bank account. You'll need official statements from the last 3-6 months.", metric: "Core Requirement" }], links: [] }, { title: "Step 3: Consulate Shopping is CRITICAL", officialInfo: "Applications must be submitted online to a Thai embassy outside of Thailand.", insights: [{ text: "This is the most important step. Rules vary wildly by embassy. Pro Tip: Apply from a neighboring country like Laos or Vietnam. They are known to be much faster (3 days) and more lenient than Western consulates.", metric: "Central Theme in DTV Discussions" }], links: [{label: "Official Thai E-Visa Portal", url: "https://www.thaievisa.go.th/"}] }, { title: "Step 4: The 'Border Bounce' Strategy", officialInfo: "Each entry grants a 180-day stay, which can be extended once in-country.", insights: [{ text: "Do not bother with the in-country extension. It's a bureaucratic nightmare. The universal advice is to do a simple 'border bounce'—a short trip to a nearby country—to get a fresh 180-day stamp upon re-entry. It's cheaper, faster, and stress-free.", metric: "Community Consensus, 2024" }], links: [] }, { title: "Step 5: 90-Day Reporting & TM.30", officialInfo: "Foreigners staying long-term must report their address every 90 days.", insights: [{ text: "This is a strict and enforced requirement. Additionally, your landlord must file a TM.30 form to report your stay. Ensure they do this, as it can cause issues for you later.", metric: "Mandatory Task" }], links: [{label: "90-Day Reporting Portal", url: "https://www.immigration.go.th/en/"}] }, { title: "Step 6: Tax Reality Check", officialInfo: "Long-term residents may be subject to Thai income tax.", insights: [{ text: "If you stay over 180 days in a calendar year, you are a tax resident. While enforcement is currently difficult for those without a Thai bank account, this is a significant legal grey area that could change. Consult a tax advisor for long-term stays.", metric: "62 Upvotes, May 2025" }], links: [] } ] }
+        };
+
+        const COUNTRY_CODE_MAP = { 'Spain': 'ES', 'Portugal': 'PT', 'Italy': 'IT', 'Croatia': 'HR', 'Germany': 'DE', 'Greece': 'GR', 'Estonia': 'EE', 'Malta': 'MT', 'Norway': 'NO', 'Iceland': 'IS', 'Romania': 'RO', 'Netherlands': 'NL', 'Georgia': 'GE', 'Czech Republic': 'CZ', 'Hungary': 'HU', 'Bulgaria': 'BG', 'Latvia': 'LV', 'Cyprus': 'CY', 'Costa Rica': 'CR', 'Mexico': 'MX', 'Panama': 'PA', 'Brazil': 'BR', 'Colombia': 'CO', 'Barbados': 'BB', 'Mauritius': 'MU', 'Uruguay': 'UY', 'Chile': 'CL', 'Philippines': 'PH', 'South Korea': 'KR', 'UAE': 'AE', 'Thailand': 'TH', 'Indonesia': 'ID' };
+        
+        function getCountryFlagEmoji(countryName) {
+            const countryCode = COUNTRY_CODE_MAP[countryName];
+            if (!countryCode) return '🏳️';
+            return String.fromCodePoint(...[...countryCode.toUpperCase()].map(char => char.charCodeAt(0) + 127397));
+        }
+        
+        const getScoreAttributes = (score, type = 'standard') => {
+            const maxScore = 5;
+            const standardDesc = ['Very Poor', 'Poor', 'Average', 'Good', 'Excellent'];
+            const bureaucracyDesc = ['Very Low', 'Low', 'Moderate', 'High', 'Very High'];
+            const costDesc = ['Very High', 'High', 'Moderate', 'Low', 'Very Low'];
+            const colors = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#10b981']; 
+            
+            if (score === null || score === undefined || score < 1 || score > maxScore) {
+                return { description: 'N/A', color: '#64748b', percentage: 0 };
+            }
+            const index = Math.round(score) - 1;
+            let description;
+            let currentColors = colors;
+
+            if (type === 'bureaucracy') {
+                description = bureaucracyDesc[index];
+                currentColors = colors.slice().reverse();
+            } else if (type === 'cost_of_living') {
+                description = costDesc[index];
+            }
+             else {
+                description = standardDesc[index];
+            }
+
+            return { description, color: currentColors[index], percentage: (score / maxScore) * 100 };
+        };
+        
+        // --- COMPONENTS ---
+        function App() {
+            const [selectedRegion, setSelectedRegion] = React.useState('');
+            const [selectedIncomeValue, setSelectedIncomeValue] = React.useState("any");
+            const [maxVisaCost, setMaxVisaCost] = React.useState(3000);
+            const [minTaxAttractiveness, setMinTaxAttractiveness] = React.useState(1);
+            const [minVisaLength, setMinVisaLength] = React.useState(1);
+            const [applyOnline, setApplyOnline] = React.useState(false);
+
+            const [visaData, setVisaData] = React.useState([]);
+            const [modalContent, setModalContent] = React.useState(null);
+            const [legalModalContent, setLegalModalContent] = React.useState(null);
+            const [walkthroughContent, setWalkthroughContent] = React.useState(null);
+            const [showBanner, setShowBanner] = React.useState(false);
+            const [showGuide, setShowGuide] = React.useState(false);
+            
+            React.useEffect(() => {
+                if (localStorage.getItem('ga_consent') !== 'true') setShowBanner(true);
+                else initGoogleAnalytics();
+            }, []);
+
+            React.useEffect(() => {
+                const processedData = visaDataSource.flatMap(country => 
+                    country.visas.map(visa => ({
+                        country: country.country_name,
+                        continent: country.continent,
+                        visa_name: visa.visa_name,
+                        visa_cost_usd: visa.visa_cost_usd,
+                        income_requirements_monthly_usd: visa.income_requirement_usd_month,
+                        visa_length_months: visa.visa_length_months,
+                        can_you_apply_remotely: visa.remote_application_bin,
+                        category_citizenship: [visa.eligible_citizens_cluster || visa.eligible_citizens],
+                        bonuses_incentives: visa.bonuses_incentives,
+                        remarks: visa.remarks,
+                        source_url: visa.link_source,
+                        tax_attractiveness: country.ratings.tax_friendliness,
+                        cost_of_living_attractiveness: country.ratings.cost_of_living,
+                        bureaucracy_level: country.ratings.bureaucracy_level
+                    }))
+                );
+                 const specialOrder = ["Spain", "Portugal", "Thailand"];
+                 processedData.sort((a, b) => {
+                    const aIndex = specialOrder.indexOf(a.country);
+                    const bIndex = specialOrder.indexOf(b.country);
+                    if (aIndex === -1 && bIndex === -1) return 0;
+                    if (aIndex === -1) return 1;
+                    if (bIndex === -1) return -1;
+                    return aIndex - bIndex;
+                });
+                setVisaData(processedData);
+            }, []);
+
+
+            const filteredVisas = React.useMemo(() => {
+                let results = visaData;
+
+                if (selectedRegion) {
+                    const selectedCategory = citizenshipRegions.find(r => r.value === selectedRegion);
+                    if (selectedCategory) {
+                        results = results.filter(visa => {
+                            const matchesCategory = selectedCategory.subCategories.some(sub => visa.category_citizenship.includes(sub));
+                            return matchesCategory || visa.category_citizenship.includes("All");
+                        });
+                    }
+                }
+
+                if (applyOnline) {
+                    results = results.filter(visa => visa.can_you_apply_remotely);
+                }
+
+                const incomeOption = incomeLevels.find(level => level.value === selectedIncomeValue);
+                const userIncome = incomeOption?.userIncomeForMatch;
+
+                return results.filter(visa => {
+                    if (userIncome !== null && visa.income_requirements_monthly_usd > userIncome) return false;
+                    if (visa.visa_cost_usd > maxVisaCost) return false;
+                    if (visa.tax_attractiveness < minTaxAttractiveness) return false;
+                    if (visa.visa_length_months < minVisaLength) return false;
+                    return true;
+                });
+
+            }, [visaData, selectedRegion, selectedIncomeValue, maxVisaCost, minTaxAttractiveness, minVisaLength, applyOnline]);
+
+
+            const handleConsent = () => {
+                localStorage.setItem('ga_consent', 'true');
+                setShowBanner(false);
+                if (typeof initGoogleAnalytics === 'function') initGoogleAnalytics();
+            };
+            
+            const openWalkthrough = (country) => {
+                setModalContent(null);
+                setWalkthroughContent(walkthroughData[country]);
+            }
+
+            return (
+                <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-gray-100 font-sans p-4 sm:p-6 md:p-8">
+                    <header className="text-center mb-4 max-w-3xl mx-auto">
+                        <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
+                            Visa Match & Clarity Engine
+                        </h1>
+                        <p className="text-slate-400 mt-2">Instantly find your digital nomad visa options worldwide.</p>
+                    </header>
+                    
+                    <div className="flex justify-center items-center gap-4 my-8">
+                         <button onClick={() => setLegalModalContent(legalContent.about)} className="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">
+                            💡 About This Project
+                        </button>
+                         <button onClick={() => setLegalModalContent({ title: 'How to Use', content: 'Start by selecting your citizenship region to see available visas. Use the income and advanced filters to narrow your search. Click any card for more details. For Spain, Portugal, and Thailand, click the special button to access a detailed, step-by-step application walkthrough with real user insights.' })} className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">
+                            ⚙️ How to Use
+                        </button>
+                    </div>
+                    
+                    <div className="bg-slate-800 shadow-2xl rounded-xl p-6 mb-8 max-w-6xl mx-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                            <div className="space-y-6">
+                                <div>
+                                    <label htmlFor="nationality" className="flex items-center gap-2 text-sm font-medium text-slate-300 mb-2">
+                                        <span>🌍 Your Citizenship Region</span>
+                                        <div className="relative group">
+                                            <span className="cursor-pointer">❓</span>
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 w-72 mb-2 hidden group-hover:block bg-slate-900 text-white text-xs rounded-lg py-2 px-3 z-10 border border-slate-700 shadow-lg">
+                                                <h4 className="font-bold mb-1">How are these grouped?</h4>
+                                                <p><strong>Non-EU/EEA/Swiss:</strong> For citizens outside the European Union, European Economic Area, and Switzerland.</p>
+                                                <p><strong>Specific Developed Countries:</strong> For citizens of OECD member countries.</p>
+                                                <p><strong>Other Specific Nationalities:</strong> For visas that target a unique list of countries not covered by other groups.</p>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    <select id="nationality" value={selectedRegion} onChange={(e) => setSelectedRegion(e.target.value)}
+                                        className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg shadow-sm focus:ring-2 focus:ring-purple-500 focus:border-purple-500 text-white">
+                                        <option value="">-- Select Region --</option>
+                                        {citizenshipRegions.map(region => <option key={region.value} value={region.value}>{region.label}</option>)}
+                                    </select>
+                                </div>
+                                <div>
+                                    <label className="block text-sm font-medium text-slate-300 mb-2">💰 Est. Monthly Income (USD)</label>
+                                    <div className="flex flex-wrap gap-2">
+                                        {incomeLevels.map(level => (
+                                            <button key={level.value} onClick={() => setSelectedIncomeValue(level.value)}
+                                                className={`px-3 py-2 text-sm rounded-md transition-all ${selectedIncomeValue === level.value ? 'bg-purple-600 text-white shadow-lg ring-2 ring-purple-400' : 'bg-slate-700 hover:bg-slate-600 text-slate-300'}`}>
+                                                {level.label}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="space-y-6 bg-slate-900/50 p-4 rounded-lg">
+                                <h3 className="text-lg font-semibold text-purple-400">Advanced Filters</h3>
+                                <div className="space-y-4">
+                                    <div className="text-sm">
+                                        <label htmlFor="cost-slider" className="flex justify-between font-medium text-slate-300 mb-1"><span>💸 Max Visa Cost</span><span>${maxVisaCost}</span></label>
+                                        <input id="cost-slider" type="range" min="0" max="3000" step="50" value={maxVisaCost} onChange={e => setMaxVisaCost(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/>
+                                    </div>
+                                    <div className="text-sm">
+                                        <label htmlFor="tax-slider" className="flex justify-between font-medium text-slate-300 mb-1"><span>👍 Min Tax Attractiveness</span><span>{minTaxAttractiveness}/5</span></label>
+                                        <input id="tax-slider" type="range" min="1" max="5" step="1" value={minTaxAttractiveness} onChange={e => setMinTaxAttractiveness(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/>
+                                    </div>
+                                    <div className="text-sm">
+                                        <label htmlFor="length-slider" className="flex justify-between font-medium text-slate-300 mb-1"><span>⏳ Min Visa Length</span><span>{minVisaLength} months</span></label>
+                                        <input id="length-slider" type="range" min="1" max="36" step="1" value={minVisaLength} onChange={e => setMinVisaLength(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <main className="mt-8 max-w-7xl mx-auto">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {filteredVisas.map((visa, index) => (
+                                <VisaCard key={`${visa.country}-${visa.visa_name}-${index}`} visa={visa} onViewDetails={() => setModalContent(visa)} />
+                            ))}
+                        </div>
+                    </main>
+                    
+                    {modalContent && <DetailsModal visa={modalContent} onClose={() => setModalContent(null)} onOpenWalkthrough={openWalkthrough} />}
+                    {legalModalContent && <LegalModal data={legalModalContent} onClose={() => setLegalModalContent(null)} />}
+                    {walkthroughContent && <WalkthroughModal data={walkthroughContent} onClose={() => setWalkthroughContent(null)} />}
+                    {showBanner && <CookieBanner onAccept={handleConsent} />}
+                    {showGuide && <GuideModal onClose={() => setShowGuide(false)} />}
+                </div>
+            );
+        }
+        
+        function CookieBanner({ onAccept }) {
+             return (
+                <div className="fixed bottom-0 left-0 right-0 bg-slate-900/80 backdrop-blur-sm p-4 border-t border-slate-700 z-50">
+                    <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+                        <p className="text-sm text-slate-300">This site uses cookies for analytics to improve your experience.</p>
+                        <button onClick={onAccept} className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg whitespace-nowrap">Accept</button>
+                    </div>
+                </div>
+            );
+        }
+
+        function LegalModal({ data, onClose }) {
+             return (
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4" onClick={onClose}>
+                    <div className="bg-slate-800 rounded-xl shadow-2xl p-6 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar" onClick={e => e.stopPropagation()}>
+                        <div className="flex justify-between items-center pb-4 border-b border-slate-700">
+                            <h2 className="text-2xl font-bold text-purple-400">{data.title}</h2>
+                            <button onClick={onClose} className="text-slate-400 hover:text-white text-3xl font-light">&times;</button>
+                        </div>
+                        <div className="mt-6 text-slate-300 text-sm space-y-4 leading-relaxed">
+                            {data.imageSrc && (
+                                <div className="text-center mb-6">
+                                    <img src={data.imageSrc} alt="Project Founder Yonatan" className="w-48 h-48 mx-auto rounded-full object-cover border-4 border-purple-400" style={{objectPosition: "25% 50%"}}/>
+                                    <p className="text-xs text-slate-400 mt-2 italic">{data.imageCaption}</p>
+                                </div>
+                            )}
+                            {data.story && data.story.split('\n').map((p, i) => <p key={i}>{p}</p>)}
+                            {data.disclaimer && <p className="mt-4 text-sm text-yellow-400 bg-yellow-900/50 p-3 rounded-lg">{data.disclaimer}</p>}
+                            {data.closing && <p className="mt-4 italic">{data.closing}</p>}
+                            {data.content && data.content.split('\n').map((p, i) => <p key={i}>{p}</p>)}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        function VisaCard({ visa, onViewDetails }) {
+            const bureaucracyAttrs = getScoreAttributes(visa.bureaucracy_level, 'bureaucracy');
+            return (
+                <div className="bg-slate-800 shadow-xl rounded-lg p-5 flex flex-col justify-between transition-all hover:shadow-purple-500/30 hover:scale-[1.02] duration-300">
+                    <div>
+                        <h3 className="text-xl font-bold text-purple-400 mb-2">
+                            {getCountryFlagEmoji(visa.country)} {visa.country} – <span className="font-normal text-slate-300">{visa.visa_name}</span>
+                        </h3>
+                        <div className="space-y-3 text-sm mb-4">
+                            <p>⏳<span className="font-semibold"> Duration:</span> {visa.visa_length_months ? `${visa.visa_length_months} months` : 'N/A'}</p>
+                            <p>💸<span className="font-semibold"> Visa Cost:</span> {visa.visa_cost_usd !== null ? `~$${visa.visa_cost_usd}` : 'N/A'}</p>
+                            <p className="flex items-center">
+                                <span className="font-semibold mr-2">🤯 Bureaucracy:</span>
+                                <span className="font-bold" style={{color: bureaucracyAttrs.color}}>{bureaucracyAttrs.description}</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div className="mt-auto text-center">
+                         <a href={visa.source_url || '#'} target="_blank" rel="noopener noreferrer" className="inline-block bg-slate-700/50 hover:bg-slate-600/50 text-slate-300 text-xs font-semibold py-1 px-3 rounded-full transition-colors mb-4" title={visa.source_url || 'Source not available'}>
+                            Last Checked: June 21 2025
+                        </a>
+                        <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition" onClick={onViewDetails}>
+                            View Full Details
+                        </button>
+                    </div>
+                </div>
+            );
+        }
+
+        const ScoreBar = ({ score, label, emoji, type = 'standard' }) => {
+            const { description, color, percentage } = getScoreAttributes(score, type);
+            return (
+                <div className="w-full relative group">
+                    <div className="flex justify-between items-center mb-1 text-sm">
+                        <span className="font-medium text-slate-300">{emoji} {label}</span>
+                        <span className="font-bold" style={{color: color}}>{description}</span>
+                    </div>
+                    <div className="w-full bg-slate-700 rounded-full h-2.5">
+                        <div className="h-2.5 rounded-full" style={{ width: `${percentage}%`, backgroundColor: color }}></div>
+                    </div>
+                    {type === 'ssn_attractiveness' && (
+                        <div className="absolute bottom-full left-0 w-max max-w-xs mb-2 hidden group-hover:block bg-slate-900 text-white text-xs rounded-lg py-2 px-3 z-10 border border-slate-700 shadow-lg">
+                           Score based on mandatory social security payments. Higher is better (lower payments).
+                        </div>
+                    )}
+                </div>
+            );
+        };
+
+        const DetailText = ({ label, value }) => (
+            <div className="relative group text-sm">
+                 <p className="text-slate-300 truncate">
+                    <strong className="text-slate-400">{label}:</strong> {value || 'N/A'}
+                </p>
+                <div className="absolute bottom-full left-0 w-max max-w-xs mb-2 hidden group-hover:block bg-slate-900 text-white text-xs rounded-lg py-2 px-3 z-10 border border-slate-700 shadow-lg">
+                    {value || 'N/A'}
+                </div>
+            </div>
+        );
+
+        function DetailsModal({ visa, onClose, onOpenWalkthrough }) {
+            const hasWalkthrough = ['Spain', 'Portugal', 'Thailand'].includes(visa.country);
+            return (
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4" onClick={onClose}>
+                    <div className="bg-slate-800 rounded-xl shadow-2xl p-6 md:p-8 max-w-3xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar" onClick={e => e.stopPropagation()}>
+                        <div className="flex justify-between items-start pb-4 border-b border-slate-700">
+                           <div className="flex-grow">
+                                <h2 className="text-2xl font-bold text-purple-400 flex flex-wrap items-center gap-4">
+                                    <span>{getCountryFlagEmoji(visa.country)} {visa.country}</span>
+                                </h2>
+                            </div>
+                            <button onClick={onClose} className="text-slate-400 hover:text-white text-3xl font-light ml-4">&times;</button>
+                        </div>
+                        {hasWalkthrough && (
+                            <div className="text-center my-6">
+                                <button onClick={() => onOpenWalkthrough(visa.country)} className="w-full font-bold bg-amber-500 text-slate-900 px-4 py-2 rounded-lg hover:bg-amber-400 transition-colors shadow-lg transform hover:scale-105">
+                                    🌟 View User Experiences & Application Guide 🌟
+                                </button>
+                            </div>
+                        )}
+                        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="space-y-6">
+                                <div className="bg-slate-900/50 p-4 rounded-lg">
+                                    <h3 className="text-lg font-semibold text-slate-200 mb-3">🔑 Key Information</h3>
+                                    <div className="space-y-2 text-sm text-slate-300">
+                                        <p><strong className="text-slate-400">Visa Name:</strong> {visa.visa_name}</p>
+                                        <p><strong className="text-slate-400">Duration:</strong> {visa.visa_length_months ? `${visa.visa_length_months} months` : 'N/A'}</p>
+                                        <p><strong className="text-slate-400">Cost (est.):</strong> {visa.visa_cost_usd !== null ? `~$${visa.visa_cost_usd}` : 'N/A'}</p>
+                                        <p><strong className="text-slate-400">Apply Online:</strong> {visa.can_you_apply_remotely ? 'Yes' : 'No'}</p>
+                                    </div>
+                                </div>
+                                <div className="bg-slate-900/50 p-4 rounded-lg">
+                                    <h3 className="text-lg font-semibold text-slate-200 mb-3">✅ Requirements</h3>
+                                    <div className="space-y-2 text-sm text-slate-300">
+                                        <p><strong className="text-slate-400">Min. Income:</strong> {visa.income_requirements_monthly_usd ? `$${visa.income_requirements_monthly_usd.toLocaleString()}/mo` : 'Not Specified'}</p>
+                                        <p><strong className="text-slate-400">Eligible Citizens:</strong> {visa.category_citizenship.join(', ')}</p>
+                                    </div>
+                                </div>
+                                <div className="bg-slate-900/50 p-4 rounded-lg">
+                                    <h3 className="text-lg font-semibold text-slate-200 mb-3">⭐ Bonuses & Incentives</h3>
+                                    <p className="text-sm text-slate-300">{visa.bonuses_incentives}</p>
+                                </div>
+                            </div>
+                            <div className="space-y-6">
+                                <div className="bg-slate-900/50 p-4 rounded-lg">
+                                    <h3 className="text-lg font-semibold text-slate-200 mb-4">📊 Attractiveness Scores (1-5)</h3>
+                                    <div className="space-y-4">
+                                        <ScoreBar score={visa.cost_of_living_attractiveness} label="Cost of Living" emoji="💰" type="cost_of_living" />
+                                        <ScoreBar score={visa.tax_attractiveness} label="Tax Attractiveness" emoji="💸"/>
+                                        <ScoreBar score={visa.bureaucracy_level} label="Bureaucracy" emoji="🤯" type="bureaucracy" />
+                                    </div>
+                                </div>
+                                {visa.remarks && (
+                                    <div className="bg-slate-900/50 p-4 rounded-lg">
+                                        <h3 className="text-lg font-semibold text-slate-200 mb-2">📝 Remarks</h3>
+                                        <p className="text-sm text-slate-300">{visa.remarks}</p>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+        
+        function WalkthroughModal({ data, onClose }) {
+            const [step, setStep] = React.useState(0);
+            const currentStep = data.steps[step];
+
+            return (
+                <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4" onClick={onClose}>
+                    <div className="bg-slate-800 rounded-xl shadow-2xl p-6 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto custom-scrollbar" onClick={e => e.stopPropagation()}>
+                        <div className="flex justify-between items-center pb-4 border-b border-slate-700">
+                            <h2 className="text-xl md:text-2xl font-bold text-amber-400">{data.title}</h2>
+                            <button onClick={onClose} className="text-slate-400 hover:text-white text-3xl font-light">&times;</button>
+                        </div>
+
+                        <div className="my-4 text-center">
+                            <p className="text-sm text-slate-400">Step {step + 1} of {data.steps.length}</p>
+                            <div className="w-full bg-slate-700 rounded-full h-1.5 mt-1">
+                                <div className="bg-amber-500 h-1.5 rounded-full" style={{ width: `${((step + 1) / data.steps.length) * 100}%` }}></div>
+                            </div>
+                        </div>
+
+                        <div className="mt-6 space-y-4">
+                            <h3 className="text-lg font-bold text-slate-100">{currentStep.title}</h3>
+                            <div className="bg-slate-900/50 p-4 rounded-lg">
+                                <h4 className="font-semibold text-purple-400 mb-2">Official Info</h4>
+                                <p className="text-sm text-slate-300">{currentStep.officialInfo}</p>
+                            </div>
+                             <div className="bg-slate-900/50 p-4 rounded-lg">
+                                <h4 className="font-semibold text-amber-400 mb-2">💡 User Insights</h4>
+                                {currentStep.insights.map((insight, index) => (
+                                    <div key={index} className="text-sm text-slate-300 border-l-2 border-amber-500 pl-3 mb-2">
+                                        <p>"{insight.text}"</p>
+                                        <p className="text-xs text-slate-500 mt-1">- {insight.metric}</p>
+                                    </div>
+                                ))}
+                            </div>
+                             {currentStep.links && currentStep.links.length > 0 && (
+                                <div className="bg-slate-900/50 p-4 rounded-lg">
+                                    <h4 className="font-semibold text-sky-400 mb-2">Helpful Links</h4>
+                                    <div className="flex flex-col sm:flex-row gap-2">
+                                        {currentStep.links.map((link, index) => (
+                                            <a key={index} href={link.url} target="_blank" rel="noopener noreferrer" className={`text-sm font-semibold py-2 px-3 rounded-lg text-center transition-colors ${link.highlight ? 'bg-amber-500 hover:bg-amber-400 text-slate-900' : 'bg-sky-600 hover:bg-sky-500 text-white'}`}>
+                                                {link.label}
+                                            </a>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                        
+                        <div className="mt-8 flex justify-between items-center">
+                            <button onClick={() => setStep(step - 1)} disabled={step === 0} className="bg-slate-600 hover:bg-slate-500 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed">
+                                Back
+                            </button>
+                            <button onClick={() => { if (step < data.steps.length - 1) setStep(step + 1); else onClose(); }} className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
+                                {step === data.steps.length - 1 ? 'Finish' : 'Next'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        const container = document.getElementById('root');
+        const root = ReactDOM.createRoot(container);
+        root.render(<App />);
+
+    </script>
 </body>
-
 </html>
