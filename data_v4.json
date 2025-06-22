@@ -1,0 +1,2458 @@
+[
+  {
+    "country_name": "Albania",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Unique Permit (for Digital Nomads)",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable up to 5",
+        "visa_length_months": 60,
+        "eligible_citizens": "Non-EU/EEA nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "Cost-effective, easy extensions.",
+        "link_source": "https://e-albania.al/eAlbaniaServices/UseService.aspx?service_code=15356",
+        "issued_date": "2022-01-01",
+        "apply_form_link": "https://e-albania.al/eAlbaniaServices/UseService.aspx?service_code=15356",
+        "remote_application_bin": true,
+        "visa_cost_usd": 48,
+        "income_requirement_usd_month": 834,
+        "cost_of_living": {
+          "accommodation": "~$230-690/month for apartments",
+          "food": "~$173-345/month",
+          "transportation": "~$23-58/month",
+          "overall_index": "Very low, 30-40% of Western European costs"
+        },
+        "remarks": "🇦🇱 Low income threshold & simple online process.\n• The 'Unique Permit' officially covers digital nomads.\n• After 5 years, you can apply for permanent residency. \n• Becomes tax resident after 183 days."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 5,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Bulgaria",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad/Freelancer Program (Type D Visa)",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "12 months, renewable",
+        "visa_length_months": 12,
+        "eligible_citizens": "Non-EU/EEA nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "10% flat tax, low cost of living.",
+        "link_source": "https://www.mfa.bg/en/services-travel/consular-services/travel-bulgaria/visa-bulgaria",
+        "issued_date": "2024-03-01",
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": 107,
+        "income_requirement_usd_month": 2667,
+        "cost_of_living": {
+            "accommodation": "~$345-805/month apartments",
+            "food": "~$230-460/month food",
+            "transportation": "~$35-69/month transport",
+            "overall_index": "Low, Eastern Europe costs"
+        },
+        "remarks": "🇧🇬 Great for those seeking a low-tax EU base.\n• Official government application details are still less clear than in other countries.\n• Must apply in person at a Bulgarian consulate."
+      }
+    ],
+    "ratings": {
+        "tax_friendliness": 4,
+        "cost_of_living": 4,
+        "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Croatia",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Residence Permit",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "Up to 1 year",
+        "visa_length_months": 12,
+        "eligible_citizens": "Non-EU/EEA nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "No local income tax.",
+        "link_source": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833",
+        "issued_date": "2021-01-01",
+        "apply_form_link": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833",
+        "remote_application_bin": true,
+        "visa_cost_usd": 150,
+        "income_requirement_usd_month": 2720,
+        "cost_of_living": {
+          "accommodation": "~$460-1,035/month",
+          "food": "~$288-575/month",
+          "transportation": "~$46-92/month",
+          "overall_index": "Moderate, Southern Europe"
+        },
+        "remarks": "☀️ Major benefit is income tax exemption on foreign earnings.\n• Income requirement increases by 10% for each family member.\n• You cannot reapply for a consecutive year immediately after the first permit expires."
+      },
+          {
+      "visa_name": "Digital Nomad Visa (Long-Stay Type D)",
+      "is_active": true,
+      "verified_status": "Verified",
+      "family_inclusion": "Yes",
+      "visa_length": "Initial visa up to 1 year, convertible to a renewable residence permit.",
+      "visa_length_months": 12,
+      "eligible_citizens": "Non-EU/EEA/Swiss nationals",
+      "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+      "bonuses_incentives": "10% flat income tax, full Schengen Area mobility, low cost of living.",
+      "link_source": "https://www.newbalkanslawoffice.com/recent-work/digital-nomad-visa-bulgaria-2025/",
+      "issued_date": "2024-06-19",
+      "apply_form_link": null,
+      "remote_application_bin": false,
+      "visa_cost_usd": 107,
+      "income_requirement_usd_month": 1400,
+      "cost_of_living": {
+        "accommodation": "~$350-800/month",
+        "food": "~$250-450/month",
+        "transportation": "~$35-70/month",
+        "overall_index": "Low, Eastern Europe"
+      },
+      "remarks": "🇧🇬 New visa as of mid-2024! \n• Key benefit: full Schengen Area access and a very low 10% flat income tax. \n• Requirement is to earn 3x the country's average salary (approx. €1,300/month). \n• Must apply in person at a Bulgarian consulate for the initial Type D visa."
+    }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 3,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Cyprus",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa Scheme",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable twice (up to 3 years)",
+        "visa_length_months": 36,
+        "eligible_citizens": "Non-EU/EEA nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "No income tax if taxed elsewhere.",
+        "link_source": "https://www.moi.gov.cy/moi/crmd/crmd.nsf/All/000922895811A34DC22588820033442A?OpenDocument",
+        "issued_date": "2022-10-03",
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": 75,
+        "income_requirement_usd_month": 3733,
+        "cost_of_living": {
+          "accommodation": "~$575-1,380/month",
+          "food": "~$345-690/month",
+          "transportation": "~$58-115/month",
+          "overall_index": "Moderate, Southern Europe"
+        },
+        "remarks": "⚠️ The program has a strict cap of 500 permits.\n• Must apply in person within 3 months of arriving in Cyprus.\n• Income requirement increases by 20% for a spouse, 15% for each child."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 3,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Czech Republic",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Freelancer Visa (Zivno)",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable",
+        "visa_length_months": 12,
+        "eligible_citizens": "Non-EU nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "Vibrant expat community.",
+        "link_source": "https://www.mvcr.cz/mvcren/article/third-country-nationals-long-term-residence.aspx",
+        "issued_date": null,
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": 150,
+        "income_requirement_usd_month": 446,
+        "cost_of_living": {
+            "accommodation": "€400-900/month",
+            "food": "€250-500/month",
+            "transportation": "€30-70/month",
+            "overall_index": "Moderate, Central Europe"
+        },
+        "remarks": "🛠️ This is a trade license, not a dedicated nomad visa.\n• Process is complex and often requires hiring an agent.\n• Based on proving savings (~$5,350), not monthly income."
+      }
+    ],
+    "ratings": {
+        "tax_friendliness": null,
+        "cost_of_living": null,
+        "bureaucracy_level": null
+    }
+  },
+  {
+    "country_name": "Estonia",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa (Long-Stay D-Visa)",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Access to e-residency services.",
+        "link_source": "https://www.e-resident.gov.ee/nomad-visa/",
+        "issued_date": "2020-08-01",
+        "apply_form_link": "https://www.e-resident.gov.ee/nomad-visa/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 107,
+        "income_requirement_usd_month": 4800,
+        "cost_of_living": {
+          "accommodation": "~$460-1,380/month",
+          "food": "~$230-460/month",
+          "transportation": "~$58-115/month",
+          "overall_index": "Medium, 60-70% of Western European costs"
+        },
+        "remarks": "💻 A pioneer in digital government.\n• High income requirement, must show proof for 6 months prior.\n• Processing is highly efficient (usually 15-30 days)."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 3,
+      "bureaucracy_level": 1
+    }
+  },
+  {
+    "country_name": "France",
+    "continent": "Europe",
+    "visas": [
+        {
+            "visa_name": "Long-Stay Visitor Visa (VLS-T / VLS-TS)",
+            "is_active": true,
+            "verified_status": "Alternative Pathway",
+            "family_inclusion": "Yes",
+            "visa_length": "Up to 1 year, renewable",
+            "visa_length_months": 12,
+            "eligible_citizens": "Non-EU nationals",
+            "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+            "bonuses_incentives": "Schengen travel.",
+            "link_source": "https://france-visas.gouv.fr/en/web/france-visas/long-stay-visa",
+            "issued_date": null,
+            "apply_form_link": "https://france-visas.gouv.fr/",
+            "remote_application_bin": true,
+            "visa_cost_usd": 106,
+            "income_requirement_usd_month": 1887,
+            "cost_of_living": {
+                "accommodation": "~$690-1,725+/month",
+                "food": "~$345-805/month",
+                "transportation": "~$58-115/month",
+                "overall_index": "High, Western Europe"
+            },
+            "remarks": "🇫🇷 This is a visitor visa, not a work visa.\n• Prohibits work for a French company, but remote work for foreign employers is tolerated.\n• You must sign a declaration not to engage in professional activity in France."
+        }
+    ],
+    "ratings": {
+        "tax_friendliness": 1,
+        "cost_of_living": 2,
+        "bureaucracy_level": 5
+    }
+  },
+  {
+    "country_name": "Georgia",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Remotely From Georgia Program",
+        "is_active": false,
+        "verified_status": "Inactive",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year",
+        "visa_length_months": 12,
+        "eligible_citizens": "Citizens of 95+ countries",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Affordable cost of living.",
+        "link_source": "https://agenda.ge/en/news/2020/2858",
+        "issued_date": "2020-08-27",
+        "apply_form_link": null,
+        "remote_application_bin": true,
+        "visa_cost_usd": 0,
+        "income_requirement_usd_month": 2000,
+        "cost_of_living": {
+          "accommodation": "~$74-222/month",
+          "food": "~$37-92.5/month",
+          "transportation": "~$7.4-18.5/month",
+          "overall_index": "Very low, 30-40% of Western European costs"
+        },
+        "remarks": "🛑 Program is inactive; official portal is inaccessible.\n• Many nationalities can enter visa-free for up to 1 year anyway.\n• Tax-friendly: 1% tax for small businesses."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 5,
+      "cost_of_living": 5,
+      "bureaucracy_level": 2
+    }
+  },
+  {
+    "country_name": "Germany",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Freelancer Residence Permit",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Yes",
+        "visa_length": "Up to 3 years, then renewable",
+        "visa_length_months": 36,
+        "eligible_citizens": "Non-EU freelance professionals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "EU mobility rights, family reunification.",
+        "link_source": "https://www.make-it-in-germany.com/en/visa-residence/types/self-employment",
+        "issued_date": null,
+        "apply_form_link": "https://www.digital.diplo.de/",
+        "remote_application_bin": false,
+        "visa_cost_usd": 107,
+        "income_requirement_usd_month": 1000,
+        "cost_of_living": {
+          "accommodation": "~$690-1,725+/month",
+          "food": "~$345-690/month",
+          "transportation": "~$58-115/month",
+          "overall_index": "High, Western Europe"
+        },
+        "remarks": "🇩🇪 Not a nomad visa, but a path for freelancers.\n• Requires proof of 'local economic interest' (e.g., letters of intent from German clients).\n• Process is known to be complex and bureaucratic."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 2,
+      "cost_of_living": 2,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Greece",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable up to 2 years",
+        "visa_length_months": 24,
+        "eligible_citizens": "Non-EU nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "50% tax break for up to 7 years.",
+        "link_source": "https://www.mfa.gr/en/visas/visa-types/national-visas.html",
+        "issued_date": "2021-09-01",
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": 80,
+        "income_requirement_usd_month": 3733,
+        "cost_of_living": {
+          "accommodation": "~$460-1,150/month",
+          "food": "~$288-575/month",
+          "transportation": "~$46-92/month",
+          "overall_index": "Moderate, Southern Europe"
+        },
+        "remarks": "🏛️ Generous tax break is a major draw.\n• Income requirement increases by 20% for a spouse and 15% per child.\n• Application must be made at a Greek consulate in your country of residence."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 3,
+      "bureaucracy_level": 5
+    }
+  },
+  {
+    "country_name": "Hungary",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "White Card",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "No",
+        "visa_length": "1 year, renewable",
+        "visa_length_months": 12,
+        "eligible_citizens": "Non-EU nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "Easy eligibility, fast process.",
+        "link_source": "http://www.bmbah.hu/index.php?option=com_k2&view=item&id=1714:digital-nomad&lang=en",
+        "issued_date": "2022-01-01",
+        "apply_form_link": "https://enterhungary.gov.hu/eh/?en",
+        "remote_application_bin": true,
+        "visa_cost_usd": 118,
+        "income_requirement_usd_month": 3237,
+        "cost_of_living": {
+          "accommodation": "~$345-920/month",
+          "food": "~$230-460/month",
+          "transportation": "~$35-81/month",
+          "overall_index": "Low, Central Europe"
+        },
+        "remarks": "👤 Strictly for individuals; no family inclusion allowed.\n• Straightforward online application via 'Enter Hungary' portal.\n• New, higher income requirement of €3,000/month as of July 2025."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 4,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Iceland",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Remote Work Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "180 days (6 months)",
+        "visa_length_months": 6,
+        "eligible_citizens": "Non-Schengen remote workers",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "No tax if stay is less than 183 days.",
+        "link_source": "https://www.utl.is/en/visas-for-remote-workers",
+        "issued_date": "2020-10-01",
+        "apply_form_link": "https://www.utl.is/en/visas-for-remote-workers",
+        "remote_application_bin": true,
+        "visa_cost_usd": 88,
+        "income_requirement_usd_month": 7200,
+        "cost_of_living": {
+          "accommodation": "~$1,150-2,875+/month",
+          "food": "~$575-1,150+/month",
+          "transportation": "~$115-230+/month",
+          "overall_index": "Extremely high, Northern Europe"
+        },
+        "remarks": "❄️ Ideal for a short-term, unique experience.\n• Very high income requirement.\n• Visa is non-renewable, you must leave after 6 months."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 2,
+      "cost_of_living": 1,
+      "bureaucracy_level": 2
+    }
+  },
+  {
+    "country_name": "Ireland",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": false,
+        "verified_status": "Inactive",
+        "family_inclusion": "Unspecified",
+        "visa_length": "N/A",
+        "visa_length_months": null,
+        "eligible_citizens": "N/A",
+        "eligible_citizens_cluster": "Special Eligibility",
+        "bonuses_incentives": "N/A",
+        "link_source": "https://www.dfa.ie/travel/visas/visas-for-ireland/",
+        "issued_date": null,
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": null,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$920-2,300+/month",
+          "food": "~$345-690/month",
+          "transportation": "~$58-115/month",
+          "overall_index": "High, Western Europe"
+        },
+        "remarks": "❌ No digital nomad visa currently exists.\n• Alternative visa options are not suitable for remote work for foreign companies. Plans have been discussed but not implemented."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 2,
+      "cost_of_living": 1,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Italy",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Visa for Remote Workers and Digital Nomads",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year with the possibility to extend",
+        "visa_length_months": 12,
+        "eligible_citizens": "Non-EU nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "Includes family, health insurance required.",
+        "link_source": "https://vistoperitalia.esteri.it/en/home",
+        "issued_date": "2024-04-04",
+        "apply_form_link": "https://vistoperitalia.esteri.it/en/home",
+        "remote_application_bin": false,
+        "visa_cost_usd": 125,
+        "income_requirement_usd_month": 2496,
+        "cost_of_living": {
+          "accommodation": "~$575-1,380/month",
+          "food": "~$288-575/month",
+          "transportation": "~$46-104/month",
+          "overall_index": "Moderate, Southern Europe"
+        },
+        "remarks": "🎓 Requires 'highly skilled worker' status (degree or 3-5 years' high-level experience).\n• Must apply in person at an Italian consulate.\n• Within 8 days of arrival, must apply for a residence permit (Permesso di Soggiorno)."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 2,
+      "cost_of_living": 2,
+      "bureaucracy_level": 5
+    }
+  },
+  {
+    "country_name": "Latvia",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable",
+        "visa_length_months": 12,
+        "eligible_citizens": "Non-EU nationals employed in OECD countries",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "Schengen access.",
+        "link_source": "https://www.pmlp.gov.lv/en/digital-nomad-visa",
+        "issued_date": "2023-02-01",
+        "apply_form_link": "https://www.pmlp.gov.lv/en/digital-nomad-visa",
+        "remote_application_bin": false,
+        "visa_cost_usd": 64,
+        "income_requirement_usd_month": 4100,
+        "cost_of_living": {
+          "accommodation": "~$345-805/month",
+          "food": "~$230-460/month",
+          "transportation": "~$35-69/month",
+          "overall_index": "Low, Northern Europe"
+        },
+        "remarks": "🌐 Eligibility is restricted to citizens or employees of companies in OECD countries.\n• Relatively high income requirement for the region.\n• Application must be done in person at a Latvian consulate."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 4,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Malta",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Nomad Residence Permit",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable",
+        "visa_length_months": 12,
+        "eligible_citizens": "Non-EU nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "No local tax if taxed elsewhere.",
+        "link_source": "https://nomad.residencymalta.gov.mt/",
+        "issued_date": "2021-06-01",
+        "apply_form_link": "https://nomad.residencymalta.gov.mt/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 321,
+        "income_requirement_usd_month": 2880,
+        "cost_of_living": {
+          "accommodation": "~$690-1,380/month",
+          "food": "~$288-575/month",
+          "transportation": "~$35-81/month",
+          "overall_index": "Moderate, Southern Europe"
+        },
+        "remarks": "🇲🇹 Fully remote application process.\n• Tax-exempt if you maintain tax residency elsewhere.\n• Income requirements increase for any accompanying family members."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 3,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Montenegro",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "2 years, extendable for 2 more years",
+        "visa_length_months": 48,
+        "eligible_citizens": "Non-EU nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "Income tax exemption.",
+        "link_source": "https://www.gov.me/en/article/programme-for-attracting-digital-nomads-in-montenegro-until-2025-adopted",
+        "issued_date": "2023-12-01",
+        "apply_form_link": null,
+        "remote_application_bin": true,
+        "visa_cost_usd": 27,
+        "income_requirement_usd_month": 1440,
+        "cost_of_living": {
+          "accommodation": "~$345-805/month",
+          "food": "~$173-345/month",
+          "transportation": "~$23-58/month",
+          "overall_index": "Low, Southern Europe"
+        },
+        "remarks": "🏔️ Long duration: stay up to 4 years.\n• Program is active and applications are open.\n• Low income requirement makes it very accessible."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 4,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Netherlands",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Self-Employed Residence Permit",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Yes",
+        "visa_length": "Up to 2 years, renewable",
+        "visa_length_months": 24,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Can register business and work freelance.",
+        "link_source": "https://ind.nl/en/residence-permits/work/residence-permit-self-employed-person",
+        "issued_date": null,
+        "apply_form_link": "https://ind.nl/en/residence-permits/work/residence-permit-self-employed-person",
+        "remote_application_bin": false,
+        "visa_cost_usd": 407,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$920-2,300+/month",
+          "food": "~$345-690/month",
+          "transportation": "~$58-115/month",
+          "overall_index": "High, Western Europe"
+        },
+        "remarks": "🌷 This is an alternative path, not a true nomad visa.\n• Requires a points-based assessment of your business plan and its value to the Dutch economy.\n• Application must be made at a Dutch embassy."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 2,
+      "cost_of_living": 1,
+      "bureaucracy_level": 2
+    }
+  },
+  {
+    "country_name": "North Macedonia",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": false,
+        "verified_status": "Inactive",
+        "family_inclusion": "Unspecified",
+        "visa_length": "Likely 1 year",
+        "visa_length_months": 12,
+        "eligible_citizens": "Unknown",
+        "eligible_citizens_cluster": "Special Eligibility",
+        "bonuses_incentives": "Low living costs.",
+        "link_source": "https://www.finance.gov.mk/en/",
+        "issued_date": null,
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": null,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+            "accommodation": "€200-500/month",
+            "food": "€150-300/month",
+            "transportation": "€20-50/month",
+            "overall_index": "Very low, Eastern Europe"
+        },
+        "remarks": "⏳ Program has been announced but official requirements and a launch date have not been confirmed. Details are subject to change."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": null,
+      "cost_of_living": null,
+      "bureaucracy_level": null
+    }
+  },
+  {
+    "country_name": "Norway",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Svalbard Residency",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Unspecified",
+        "visa_length": "Indefinite, subject to self-sufficiency",
+        "visa_length_months": null,
+        "eligible_citizens": "All nationalities (visa-free treaty)",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Unique Arctic experience.",
+        "link_source": "https://www.sysselmesteren.no/en/entry-and-residence/",
+        "issued_date": null,
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": 0,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "NOK 8000-15000+/month",
+          "food": "NOK 4000-8000+/month",
+          "transportation": "NOK 500-1000+/month",
+          "overall_index": "Extremely high, Arctic"
+        },
+        "remarks": "🐻‍❄️ Not a visa program; a unique treaty allows visa-free residency.\n• You must prove self-sufficiency to reside there.\n• Entry via mainland Norway may require a separate Schengen visa."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": null,
+      "cost_of_living": null,
+      "bureaucracy_level": null
+    }
+  },
+  {
+    "country_name": "Portugal",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Temporary-Stay Visa (D8 Digital Nomad Visa)",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "4-month visa, converted to a 2-year residence permit, renewable up to 5 years",
+        "visa_length_months": 60,
+        "eligible_citizens": "Non-EU/EEA/Swiss nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "Schengen access, path to permanent residency and citizenship.",
+        "link_source": "https://vistos.mne.gov.pt/en/national-visas/general-information/type-of-visa",
+        "issued_date": "2022-10-30",
+        "apply_form_link": "https://vistos.mne.gov.pt/en/",
+        "remote_application_bin": false,
+        "visa_cost_usd": 177,
+        "income_requirement_usd_month": 3710,
+        "cost_of_living": {
+          "accommodation": "~$575-1,725/month",
+          "food": "~$230-460/month",
+          "transportation": "~$46-92/month",
+          "overall_index": "Medium, 65-75% of Western European averages"
+        },
+        "remarks": "🇵🇹 Very popular option with a clear path to residency.\n• Income requirement is 4x the Portuguese minimum wage.\n• Process can be slow, taking 3-6 months."
+      },
+      {
+        "visa_name": "D7 Passive Income Visa",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Yes",
+        "visa_length": "4-months visa, converted to a 2-year residence permit, renewable",
+        "visa_length_months": 24,
+        "eligible_citizens": "Non-EU/EEA/Swiss nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "Healthcare and Schengen access; path to permanent residency.",
+        "link_source": "https://vistos.mne.gov.pt/en/national-visas/necessary-documentation/residency",
+        "issued_date": null,
+        "apply_form_link": "https://vistos.mne.gov.pt/en/",
+        "remote_application_bin": false,
+        "visa_cost_usd": 177,
+        "income_requirement_usd_month": 872,
+        "cost_of_living": {
+          "accommodation": "~$575-1,725/month",
+          "food": "~$230-460/month",
+          "transportation": "~$46-92/month",
+          "overall_index": "Medium, 65-75% of Western European averages"
+        },
+        "remarks": "💰 For those with passive income, not active remote work.\n• Lower income requirement than the D8 visa.\n• A good alternative for retirees or investors."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 3,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Romania",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable 1 more year",
+        "visa_length_months": 24,
+        "eligible_citizens": "Non-EU nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "Families allowed.",
+        "link_source": "https://eviza.mae.ro/digitalnomad",
+        "issued_date": "2022-01-21",
+        "apply_form_link": "https://eviza.mae.ro/digitalnomad",
+        "remote_application_bin": true,
+        "visa_cost_usd": 128,
+        "income_requirement_usd_month": 3955,
+        "cost_of_living": {
+          "accommodation": "~$345-805/month",
+          "food": "~$230-460/month",
+          "transportation": "~$35-81/month",
+          "overall_index": "Low, Eastern Europe"
+        },
+        "remarks": "🧛 Low cost of living and fast internet speeds.\n• Income requirement is 3x the average Romanian gross salary.\n• Can be applied for online or at an embassy."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 4,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Serbia",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": false,
+        "verified_status": "Inactive",
+        "family_inclusion": "Unspecified",
+        "visa_length": "One year",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Tax-free first 90 days.",
+        "link_source": "https://www.srbija.gov.rs/",
+        "issued_date": null,
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": null,
+        "income_requirement_usd_month": 3500,
+        "cost_of_living": {
+          "accommodation": "~$345-805/month",
+          "food": "~$173-345/month",
+          "transportation": "~$23-58/month",
+          "overall_index": "Low, Eastern Europe"
+        },
+        "remarks": "⏳ Program announced but not yet fully implemented.\n• Key details are still subject to change upon official launch.\n• High proposed income requirement."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 4,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Spain",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa (Telework Visa)",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "Initial 1 year; renew up to 5 years",
+        "visa_length_months": 60,
+        "eligible_citizens": "Non-EU/EEA/Swiss nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "Special tax regime, family inclusion, path to long-term residency.",
+        "link_source": "https://www.exteriores.gob.es/Consulados/londres/en/ServiciosConsulares/Paginas/Consular/Visado-de-Teletrabajo.aspx",
+        "issued_date": "2023-02-01",
+        "apply_form_link": null,
+        "remote_application_bin": true,
+        "visa_cost_usd": 215,
+        "income_requirement_usd_month": 2520,
+        "cost_of_living": {
+          "accommodation": "~$575-1,380/month",
+          "food": "~$288-575/month",
+          "transportation": "~$46-104/month",
+          "overall_index": "Moderate, Southern Europe"
+        },
+        "remarks": "🇪🇸 Path to long-term residency and special tax regime.\n• Income requirement: 200% of Spain's Minimum Interprofessional Salary (SMI).\n• Can be applied for in Spain or at a consulate."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 2,
+      "cost_of_living": 3,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Switzerland",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Self-Employment Residence Permit",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Yes",
+        "visa_length": "Initial 12 months; extensions depend on canton",
+        "visa_length_months": 12,
+        "eligible_citizens": "Non-EU/EFTA nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "High quality of life.",
+        "link_source": "https://www.sem.admin.ch/sem/en/home/themen/arbeit/nicht-eu_efta-angehoerige.html",
+        "issued_date": null,
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": 200,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$1,220-3,660+/month",
+          "food": "~$610-1,220+/month",
+          "transportation": "~$122-244+/month",
+          "overall_index": "Extremely high, Western Europe"
+        },
+        "remarks": "🏔️ Extremely difficult to obtain for non-EU citizens.\n• Requires proving your business serves a Swiss economic interest.\n• Not a practical option for most digital nomads."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 1,
+      "bureaucracy_level": 3
+    }
+  },
+  
+  {
+    "country_name": "Armenia",
+    "continent": "Asia",
+    "visas": [
+      {
+        "visa_name": "Residency Program for Remote Workers",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable up to 5 years",
+        "visa_length_months": 60,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "No income proof; path to permanent residency.",
+        "link_source": "https://www.mfa.am/en/visa/",
+        "issued_date": null,
+        "apply_form_link": "https://www.mfa.am/en/visa/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 350,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$300-800/month",
+          "food": "~$150-350/month",
+          "transportation": "~$20-50/month",
+          "overall_index": "Low, 35-45% of Western European costs"
+        },
+        "remarks": "🇦🇲 Path to residency by registering as a sole proprietor.\n• No explicit income requirement, making it very accessible.\n• After 3 years of residency, you can apply for citizenship (requires a language/civics test)."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 5,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Cambodia",
+    "continent": "Asia",
+    "visas": [
+      {
+        "visa_name": "Ordinary (E-Class) Business Visa",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Unspecified",
+        "visa_length": "Initially 30 days, can be extended up to 1 year",
+        "visa_length_months": 12,
+        "eligible_citizens": "Citizens of most countries",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Suitable for longer stays.",
+        "link_source": "https://www.evisa.gov.kh/",
+        "issued_date": null,
+        "apply_form_link": "https://www.evisa.gov.kh/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 35,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$200-600/month",
+          "food": "~$150-300/month",
+          "transportation": "~$20-50/month",
+          "overall_index": "Very low, Southeast Asia"
+        },
+        "remarks": "🇰🇭 Popular unofficial route for long-term stays.\n• The E-class visa can be extended indefinitely (most use the 'EB' extension).\n• Using a local visa agent is highly recommended for extensions."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 5,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "India",
+    "continent": "Asia",
+    "visas": [
+      {
+        "visa_name": "Tourist e-Visa",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Unspecified",
+        "visa_length": "Up to 5 years (180-day limit per visit)",
+        "visa_length_months": 6,
+        "eligible_citizens": "Citizens of eligible countries for e-Visa",
+        "eligible_citizens_cluster": "Country-Specific Nationals",
+        "bonuses_incentives": "Low cost of living.",
+        "link_source": "https://indianvisaonline.gov.in/evisa/tvoa.html",
+        "issued_date": null,
+        "apply_form_link": "https://indianvisaonline.gov.in/evisa/tvoa.html",
+        "remote_application_bin": true,
+        "visa_cost_usd": 55,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$150-500/month",
+          "food": "~$100-250/month",
+          "transportation": "~$10-40/month",
+          "overall_index": "Very low, South Asia"
+        },
+        "remarks": "⚠️ Alternative Pathway: Remote work is officially not permitted on a Tourist Visa.\n• Length reflects max stay per visit (180 days for most nationalities).\n• No official digital nomad visa exists yet."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 5,
+      "bureaucracy_level": 5
+    }
+  },
+  {
+    "country_name": "Indonesia",
+    "continent": "Asia",
+    "visas": [
+      {
+        "visa_name": "Remote Worker Visa (E33G)",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, extendable",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Tax-free on foreign income.",
+        "link_source": "https://molina.imigrasi.go.id/",
+        "issued_date": "2024-04-01",
+        "apply_form_link": "https://molina.imigrasi.go.id/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 150,
+        "income_requirement_usd_month": 5000,
+        "cost_of_living": {
+          "accommodation": "~$500-800/month",
+          "food": "~$200-300/month",
+          "transportation": "~$50-70/month",
+          "overall_index": "Low to moderate, Southeast Asia"
+        },
+        "remarks": "🌴 The official 'Second Home' visa for remote workers in Bali & beyond.\n• High income requirement of $60,000/year.\n• You are exempt from paying taxes on income sourced from outside Indonesia."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 4,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Japan",
+    "continent": "Asia",
+    "visas": [
+      {
+        "visa_name": "Designated Activities (Digital Nomad) Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "6 months (non-renewable)",
+        "visa_length_months": 6,
+        "eligible_citizens": "Nationals of 49 countries with tax treaties or visa-free agreements",
+        "eligible_citizens_cluster": "Country-Specific Nationals",
+        "bonuses_incentives": "Exempt from Japanese income tax on foreign earnings.",
+        "link_source": "https://www.mofa.go.jp/ca/fna/page22e_001037.html",
+        "issued_date": "2024-03-31",
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": 40,
+        "income_requirement_usd_month": 5692,
+        "cost_of_living": {
+          "accommodation": "~$500-1,200/month",
+          "food": "~$300-600/month",
+          "transportation": "~$100-200/month",
+          "overall_index": "High, East Asia"
+        },
+        "remarks": "🇯🇵 Short-term visa for specific nationalities.\n• Cannot be renewed; must leave Japan for 6 months before reapplying.\n• Must apply in person at a Japanese embassy or consulate."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 2,
+      "cost_of_living": 1,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Malaysia",
+    "continent": "Asia",
+    "visas": [
+      {
+        "visa_name": "DE Rantau Nomad Pass",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "12 months, renewable",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Multicultural society; strategic Asia location.",
+        "link_source": "https://mdec.my/derantau/foreign",
+        "issued_date": "2022-10-01",
+        "apply_form_link": "https://mdec.my/derantau",
+        "remote_application_bin": true,
+        "visa_cost_usd": 220,
+        "income_requirement_usd_month": 2000,
+        "cost_of_living": {
+          "accommodation": "~$250-700/month",
+          "food": "~$150-300/month",
+          "transportation": "~$30-70/month",
+          "overall_index": "Low, 40-50% of Western costs"
+        },
+        "remarks": "🇲🇾 Low income requirement and straightforward online process.\n• An additional fee of RM 500 (~$110) applies for each dependent.\n• Tax-exempt on foreign-sourced income."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 4,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Philippines",
+    "continent": "Asia",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Unverified",
+        "family_inclusion": "Unspecified",
+        "visa_length": "12 months, extendable once",
+        "visa_length_months": 24,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Exempt from income tax on foreign earnings.",
+        "link_source": "https://immigration.gov.ph/",
+        "issued_date": "2025-04-24",
+        "apply_form_link": null,
+        "remote_application_bin": true,
+        "visa_cost_usd": 200,
+        "income_requirement_usd_month": 167,
+        "cost_of_living": {
+          "accommodation": "~$200-600/month",
+          "food": "~$100-250/month",
+          "transportation": "~$15-40/month",
+          "overall_index": "Very low, Southeast Asia"
+        },
+        "remarks": "✅ Recently approved, but rollout details are still pending.\n• Official income requirement is exceptionally low at $2,000/year.\n• Applications will be handled via the e-Visa portal once live."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 5,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "South Korea",
+    "continent": "Asia",
+    "visas": [
+      {
+        "visa_name": "Workation Visa (Digital Nomad Visa)",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, extendable for another year.",
+        "visa_length_months": 24,
+        "eligible_citizens": "Nationals from eligible countries.",
+        "eligible_citizens_cluster": "Country-Specific Nationals",
+        "bonuses_incentives": "Cannot work for a local company.",
+        "link_source": "https://overseas.mofa.go.kr/sg-en/brd/m_2444/view.do?seq=761493&page=1",
+        "issued_date": "2024-01-01",
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": 54,
+        "income_requirement_usd_month": 5417,
+        "cost_of_living": {
+          "accommodation": "~$400-1,200/month",
+          "food": "~$300-600/month",
+          "transportation": "~$50-100/month",
+          "overall_index": "High, East Asia"
+        },
+        "remarks": "🇰🇷 High-tech infrastructure and vibrant culture.\n• High income requirement (double South Korea's GNI per capita).\n• Application must be done in person at a Korean embassy."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": null,
+      "cost_of_living": null,
+      "bureaucracy_level": null
+    }
+  },
+  {
+    "country_name": "Sri Lanka",
+    "continent": "Asia",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": false,
+        "verified_status": "Inactive",
+        "family_inclusion": "Unspecified",
+        "visa_length": "To be announced.",
+        "visa_length_months": null,
+        "eligible_citizens": "To be announced.",
+        "eligible_citizens_cluster": "Special Eligibility",
+        "bonuses_incentives": "To be announced.",
+        "link_source": "http://www.immigration.gov.lk/",
+        "issued_date": null,
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": null,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "$200-600/month",
+          "food": "$100-250/month",
+          "transportation": "$15-40/month",
+          "overall_index": "Very low, South Asia"
+        },
+        "remarks": "⏳ The government has announced intentions to launch a nomad visa, but it is not yet implemented. Keep an eye on official immigration channels for updates."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": null,
+      "cost_of_living": null,
+      "bureaucracy_level": null
+    }
+  },
+  {
+    "country_name": "Taiwan",
+    "continent": "Asia",
+    "visas": [
+      {
+        "visa_name": "Employment Gold Card",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Yes",
+        "visa_length": "1–3 years, renewable",
+        "visa_length_months": 36,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Exempt from Taiwan's income tax on foreign earnings.",
+        "link_source": "https://goldcard.nat.gov.tw/en/",
+        "issued_date": "2018-02-08",
+        "apply_form_link": "https://goldcard.nat.gov.tw/en/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 205,
+        "income_requirement_usd_month": 5700,
+        "cost_of_living": {
+          "accommodation": "~$400-1000/month",
+          "food": "~$200-500/month",
+          "transportation": "~$30-80/month",
+          "overall_index": "Moderate, East Asia"
+        },
+        "remarks": "💼 For highly skilled professionals, not a simple nomad visa.\n• Requires proving expertise in specific fields (e.g., Science, Technology, Economy).\n• Offers open work rights and a path to residency."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 3,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Thailand",
+    "continent": "Asia",
+    "visas": [
+      {
+        "visa_name": "Long Term Residence Visa (LTR)",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Yes",
+        "visa_length": "10 years",
+        "visa_length_months": 120,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Reduced 17% tax. Most nomads use a tourist visa instead.",
+        "link_source": "https://ltr.boi.go.th/",
+        "issued_date": "2022-09-01",
+        "apply_form_link": "https://ltr.boi.go.th/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 1360,
+        "income_requirement_usd_month": 6667,
+        "cost_of_living": {
+          "accommodation": "~$300-900/month",
+          "food": "~$150-400/month",
+          "transportation": "~$30-80/month",
+          "overall_index": "Low to medium, 40-60% of Western costs"
+        },
+        "remarks": "💰 For high-income professionals and investors.\n• Very high income requirement ($80k/year).\n• A premium option for those seeking long-term stability and tax benefits."
+      },
+      {
+        "visa_name": "Destination Thailand Visa (DTV)",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "180 days, extendable for another 180 days (5 years total validity)",
+        "visa_length_months": 60,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "No work permit required for remote work.",
+        "link_source": "https://www.thaievisa.go.th/",
+        "issued_date": "2024-06-01",
+        "apply_form_link": "https://www.thaievisa.go.th/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 270,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$300-900/month",
+          "food": "~$150-400/month",
+          "transportation": "~$30-80/month",
+          "overall_index": "Low to medium, 40-60% of Western costs"
+        },
+        "remarks": "🎉 Thailand's newest visa for nomads!\n• Allows a 180-day stay, extendable once within the country.\n• Requires proof of ~$13,500 in savings. Much more accessible than the LTR."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 4,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Turkey",
+    "continent": "Asia",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year (renewable)",
+        "visa_length_months": 12,
+        "eligible_citizens": "Nationals of 36 select countries, aged 21-55",
+        "eligible_citizens_cluster": "Country-Specific Nationals",
+        "bonuses_incentives": "Tax-free status for stays under 183 days.",
+        "link_source": "https://digitalnomads.goturkiye.com/",
+        "issued_date": "2024-04-01",
+        "apply_form_link": "https://digitalnomads.goturkiye.com/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 190,
+        "income_requirement_usd_month": 3000,
+        "cost_of_living": {
+          "accommodation": "~$250-700/month",
+          "food": "~$150-350/month",
+          "transportation": "~$20-50/month",
+          "overall_index": "Very low, Eurasia"
+        },
+        "remarks": "🇹🇷 Great option but has restrictions.\n• Eligibility is limited by age (21-55) and to 36 specific countries (most of EU, UK, USA, Canada).\n• Apply online, then visit a consulate to finalize."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 4,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "United Arab Emirates",
+    "continent": "Asia",
+    "visas": [
+      {
+        "visa_name": "Virtual Working Programme",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "One year, renewable",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "0% income tax. Resident ID and access to public services.",
+        "link_source": "https://www.visitdubai.com/en/invest-in-dubai/live-and-work/visas-and-entry/work-remotely-from-dubai",
+        "issued_date": "2021-03-01",
+        "apply_form_link": "https://www.visitdubai.com/en/invest-in-dubai/live-and-work/visas-and-entry/work-remotely-from-dubai",
+        "remote_application_bin": true,
+        "visa_cost_usd": 287,
+        "income_requirement_usd_month": 3500,
+        "cost_of_living": {
+          "accommodation": "~$1,100-2,700/month",
+          "food": "~$400-800/month",
+          "transportation": "~$100-250/month",
+          "overall_index": "High, Middle East"
+        },
+        "remarks": "🇦🇪 Enjoy a 0% income tax rate.\n• The visa applies to all Emirates, not just Dubai.\n• Additional fees for medical tests and the Emirates ID are required."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": null,
+      "cost_of_living": null,
+      "bureaucracy_level": null
+    }
+  },
+  {
+    "country_name": "Vietnam",
+    "continent": "Asia",
+    "visas": [
+      {
+        "visa_name": "Tourist e-Visa",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Unspecified",
+        "visa_length": "90 days",
+        "visa_length_months": 3,
+        "eligible_citizens": "Citizens of most countries are eligible.",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Low cost of living, vibrant nomad community.",
+        "link_source": "https://evisa.xuatnhapcanh.gov.vn/trang-chu-ttdt",
+        "issued_date": null,
+        "apply_form_link": "https://evisa.xuatnhapcanh.gov.vn/trang-chu-ttdt",
+        "remote_application_bin": true,
+        "visa_cost_usd": 38,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$250-600/month",
+          "food": "~$150-300/month",
+          "transportation": "~$20-50/month",
+          "overall_index": "Very low, Southeast Asia"
+        },
+        "remarks": "🍜 Not a dedicated nomad visa, but the 90-day e-visa is a common choice.\n• For longer stays, 'visa runs' (leaving and re-entering the country) are common practice.\n• Remote work is tolerated but not officially sanctioned."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 5,
+      "bureaucracy_level": 4
+    }
+  },
+  
+  {
+    "country_name": "Antigua and Barbuda",
+    "continent": "Caribbean",
+    "visas": [
+      {
+        "visa_name": "Antigua Nomad Digital Residence program",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "2 years",
+        "visa_length_months": 24,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "No local income tax.",
+        "link_source": "https://nomad.gov.ag/ui/ndrVisa.php",
+        "issued_date": "2020-09-29",
+        "apply_form_link": "https://nomad.gov.ag/ui/ndrVisa.php",
+        "remote_application_bin": true,
+        "visa_cost_usd": 1500,
+        "income_requirement_usd_month": 4167,
+        "cost_of_living": {
+          "accommodation": "~$1000-2,500/month",
+          "food": "~$400-800/month",
+          "transportation": "~$200-400/month",
+          "overall_index": "High, 80-90% of US costs"
+        },
+        "remarks": "🇦🇬 Enjoy 0% personal income tax in a Caribbean paradise.\n• Straightforward online application.\n• Fees are tiered: $1,500 for an individual, $2,000 for a couple, and $3,000 for a family of 3+."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 5,
+      "cost_of_living": 2,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Argentina",
+    "continent": "South America",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "180 days, renewable once",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Access to healthcare and social services.",
+        "link_source": "https://www.argentina.gob.ar/interior/migraciones/extranjeros_que_desean_ingresar_a_la_argentina",
+        "issued_date": "2022-05-21",
+        "apply_form_link": "https://www.argentina.gob.ar/interior/migraciones",
+        "remote_application_bin": true,
+        "visa_cost_usd": 200,
+        "income_requirement_usd_month": 2500,
+        "cost_of_living": {
+          "accommodation": "~$250-700/month",
+          "food": "~$200-400/month",
+          "transportation": "~$30-80/month",
+          "overall_index": "Low due to currency devaluation"
+        },
+        "remarks": "🇦🇷 Extremely low cost of living due to currency situation.\n• No specific income requirement, but you must prove sufficient funds (est. ~$2,500/month).\n• Apply online, then finalize at an Argentine consulate."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 2,
+      "cost_of_living": 4,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Aruba",
+    "continent": "Caribbean",
+    "visas": [
+      {
+        "visa_name": "One Happy Workation Program",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Unspecified",
+        "visa_length": "Up to 90 days",
+        "visa_length_months": 3,
+        "eligible_citizens": "US, Canadian, and European nationals",
+        "eligible_citizens_cluster": "Special Eligibility",
+        "bonuses_incentives": "Easy short-term remote work.",
+        "link_source": "https://www.aruba.com/us/one-happy-workation",
+        "issued_date": "2020-09-01",
+        "apply_form_link": "https://www.aruba.com/us/one-happy-workation",
+        "remote_application_bin": true,
+        "visa_cost_usd": 0,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$900-2,200/month",
+          "food": "~$400-800/month",
+          "transportation": "~$150-300/month",
+          "overall_index": "High, similar to Netherlands"
+        },
+        "remarks": "🏝️ This is a program for tourists, not a formal visa.\n• No application fee is required.\n• Only available to nationals who do not require a visa to enter Aruba for tourism."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 2,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Belize",
+    "continent": "Central America",
+    "visas": [
+      {
+        "visa_name": "Work Where You Vacation program",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "6 months, renewable",
+        "visa_length_months": 6,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "English-speaking; no taxes on foreign income.",
+        "link_source": "https://www.belizetourismboard.org/work-where-you-vacation/",
+        "issued_date": "2021-02-01",
+        "apply_form_link": "https://www.belizetourismboard.org/work-where-you-vacation/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 250,
+        "income_requirement_usd_month": 6250,
+        "cost_of_living": {
+            "accommodation": "~$300-1,000/month",
+            "food": "~$200-500/month",
+            "transportation": "~$100-250/month",
+            "overall_index": "Medium, varies by location"
+        },
+        "remarks": "🐠 High income requirement but tax-free on foreign earnings.\n• Entirely online application process.\n• Family income requirement is $100,000 per year."
+      }
+    ],
+    "ratings": {
+        "tax_friendliness": 4,
+        "cost_of_living": 3,
+        "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Brazil",
+    "continent": "South America",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable up to 3 years",
+        "visa_length_months": 36,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Path to citizenship.",
+        "link_source": "https://www.gov.br/mre/pt-br/consulado-washington/consular-services/visas/temporary-visa/temporary-visa-xiv-digital-nomad",
+        "issued_date": "2022-01-24",
+        "apply_form_link": "https://formulario-mre.serpro.gov.br/sci/pages/web/ui/#/servicos-estrangeiros",
+        "remote_application_bin": false,
+        "visa_cost_usd": 195,
+        "income_requirement_usd_month": 1500,
+        "cost_of_living": {
+            "accommodation": "~$300-800/month",
+            "food": "~$150-350/month",
+            "transportation": "~$30-70/month",
+            "overall_index": "Low, Latin America"
+        },
+        "remarks": "🇧🇷 Low income requirement of $1,500/month or $18,000 in savings.\n• Must apply in person at a Brazilian consulate.\n• Visa fee can vary significantly based on your nationality."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": null,
+      "cost_of_living": null,
+      "bureaucracy_level": null
+    }
+  },
+  {
+    "country_name": "Cayman Islands",
+    "continent": "Caribbean",
+    "visas": [
+      {
+        "visa_name": "Global Citizen Concierge Program (GCCP)",
+        "is_active": false,
+        "verified_status": "Inactive",
+        "family_inclusion": "Yes",
+        "visa_length": "2 years",
+        "visa_length_months": 24,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "No local income tax.",
+        "link_source": "https://www.visitcaymanislands.com/en-us/global-citizen-concierge",
+        "issued_date": "2020-10-21",
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": 1469,
+        "income_requirement_usd_month": 8333,
+        "cost_of_living": {
+          "accommodation": "$1500-4000+/month",
+          "food": "$500-1000+/month",
+          "transportation": "$100-300+/month",
+          "overall_index": "Extremely high, Caribbean"
+        },
+        "remarks": "❌ This program is permanently closed to new applicants.\n• It had a very high income requirement and application fee.\n• Was known for its 0% tax and luxury lifestyle."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": null,
+      "cost_of_living": null,
+      "bureaucracy_level": null
+    }
+  },
+  {
+    "country_name": "Colombia",
+    "continent": "South America",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa (Type V)",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "Up to 2 years",
+        "visa_length_months": 24,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Residency status with family inclusion.",
+        "link_source": "https://www.cancilleria.gov.co/tramites_servicios/visa/v-nomadas-digitales",
+        "issued_date": "2022-10-22",
+        "apply_form_link": "https://www.cancilleria.gov.co/tramites_servicios/visa",
+        "remote_application_bin": true,
+        "visa_cost_usd": 233,
+        "income_requirement_usd_month": 765,
+        "cost_of_living": {
+          "accommodation": "~$300-800/month",
+          "food": "~$150-350/month",
+          "transportation": "~$30-70/month",
+          "overall_index": "Low, Latin America"
+        },
+        "remarks": "🇨🇴 Very low income requirement (3x Colombia's minimum wage).\n• Straightforward online application process.\n• You cannot work for any Colombian company on this visa."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 4,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Costa Rica",
+    "continent": "Central America",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa (Estancia por Teletrabajo)",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable 1 year",
+        "visa_length_months": 24,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Full income tax exemption.",
+        "link_source": "https://www.visitcostarica.com/en/costa-rica/digital-nomads",
+        "issued_date": "2022-07-04",
+        "apply_form_link": "https://tramiteya.go.cr/dgme/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 195,
+        "income_requirement_usd_month": 3000,
+        "cost_of_living": {
+            "accommodation": "$500-1200/month",
+            "food": "$300-600/month",
+            "transportation": "$50-100/month",
+            "overall_index": "Moderate, Central America"
+        },
+        "remarks": " pura vida! 🌴 This visa offers a full exemption from local income tax.\n• Application is online, but the process can be slow (3-6 months).\n• Family income requirement is $4,000/month."
+      }
+    ],
+    "ratings": {
+        "tax_friendliness": null,
+        "cost_of_living": null,
+        "bureaucracy_level": null
+    }
+  },
+  {
+    "country_name": "Curacao",
+    "continent": "Caribbean",
+    "visas": [
+      {
+        "visa_name": "@Home in Curaçao Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "6 months, renewable once",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Fast processing.",
+        "link_source": "https://athomeincuracao.com/",
+        "issued_date": "2021-02-01",
+        "apply_form_link": "https://athomeincuracao.com/remote-workers/apply-now/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 294,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$800-2000/month",
+          "food": "~$400-800/month",
+          "transportation": "~$50-150/month",
+          "overall_index": "Moderate to high, Caribbean"
+        },
+        "remarks": "🇨🇼 No specific income requirement, but you must prove you can support yourself.\n• Quick and easy online application process.\n• You remain a tax resident of your home country."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 2,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Dominica",
+    "continent": "Caribbean",
+    "visas": [
+      {
+        "visa_name": "Work in Nature (WIN) Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "up to 18 months",
+        "visa_length_months": 18,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Nature-focused lifestyle.",
+        "link_source": "https://windominica.gov.dm/",
+        "issued_date": "2021-03-24",
+        "apply_form_link": "https://windominica.gov.dm/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 900,
+        "income_requirement_usd_month": 4167,
+        "cost_of_living": {
+          "accommodation": "~$400-1000/month",
+          "food": "~$200-500/month",
+          "transportation": "~$30-80/month",
+          "overall_index": "Moderate, Caribbean"
+        },
+        "remarks": "🍃 Live and work in the 'Nature Isle' of the Caribbean.\n• High application fee ($800 visa fee + $100 application fee).\n• Family bundle visa costs $1,200."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 3,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Ecuador",
+    "continent": "South America",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "2 years, renewable",
+        "visa_length_months": 24,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Path toward permanent residency.",
+        "link_source": "https://www.gob.ec/miduvi/tramites/emision-visas-rentistas-trabajo-remoto",
+        "issued_date": "2022-07-01",
+        "apply_form_link": "https://www.gob.ec/miduvi/tramites/emision-visas-rentistas-trabajo-remoto",
+        "remote_application_bin": true,
+        "visa_cost_usd": 450,
+        "income_requirement_usd_month": 1350,
+        "cost_of_living": {
+          "accommodation": "~$300-700/month",
+          "food": "~$150-300/month",
+          "transportation": "~$20-50/month",
+          "overall_index": "Very low, South America"
+        },
+        "remarks": "🇪🇨 Very low cost of living and uses the US dollar.\n• Low income requirement (3x Ecuador's basic salary).\n• $400 visa fee plus a $50 application fee."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 5,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "El Salvador",
+    "continent": "Central America",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable",
+        "visa_length_months": 24,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "No income, capital gains, or property tax on foreign assets.",
+        "link_source": "https://visas.rree.gob.sv/",
+        "issued_date": "2024-02-15",
+        "apply_form_link": "https://visas.rree.gob.sv/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 4600,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+            "accommodation": "$300-700/month",
+            "food": "$150-300/month",
+            "transportation": "$20-50/month",
+            "overall_index": "Low, Central America"
+        },
+        "remarks": "₿ The first country to make Bitcoin legal tender.\n• Very high application fee.\n• The visa promises 0% tax on income and a path to citizenship."
+      }
+    ],
+    "ratings": {
+        "tax_friendliness": null,
+        "cost_of_living": null,
+        "bureaucracy_level": null
+    }
+  },
+  {
+    "country_name": "Grenada",
+    "continent": "Caribbean",
+    "visas": [
+      {
+        "visa_name": "Remote Employment Act",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable once",
+        "visa_length_months": 24,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Beautiful environment.",
+        "link_source": "https://www.grenadaitc.com/nomad-digital-residence",
+        "issued_date": "2021-06-01",
+        "apply_form_link": "https://www.grenadaitc.com/nomad-digital-residence",
+        "remote_application_bin": true,
+        "visa_cost_usd": 1500,
+        "income_requirement_usd_month": 3084,
+        "cost_of_living": {
+          "accommodation": "~$500-1200/month",
+          "food": "~$250-500/month",
+          "transportation": "~$30-80/month",
+          "overall_index": "Moderate, Caribbean"
+        },
+        "remarks": "🇬🇩 Live on the 'Island of Spice'.\n• High application fee: $1,500 for individuals, $2,000 for families.\n• You are exempt from paying local income tax."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 3,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Mexico",
+    "continent": "North America",
+    "visas": [
+      {
+        "visa_name": "Temporary Resident Visa",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable up to 4 years",
+        "visa_length_months": 48,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Proximity to North America.",
+        "link_source": "https://consulmex.sre.gob.mx/washington/index.php/visas/131-temporary-resident-visa",
+        "issued_date": null,
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": 51,
+        "income_requirement_usd_month": 4350,
+        "cost_of_living": {
+            "accommodation": "~$300-800/month",
+            "food": "~$150-350/month",
+            "transportation": "~$20-60/month",
+            "overall_index": "Low, North America"
+        },
+        "remarks": "🌮 Not a nomad visa, but a popular temporary residency path.\n• Must apply in person at a Mexican consulate outside of Mexico.\n• Income requirements vary significantly by consulate, check locally!"
+      }
+    ],
+    "ratings": {
+        "tax_friendliness": 3,
+        "cost_of_living": 4,
+        "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Montserrat",
+    "continent": "Caribbean",
+    "visas": [
+      {
+        "visa_name": "Remote Workers Stamp",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "12 months",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Peaceful environment.",
+        "link_source": "https://montserratremoteworker.com/",
+        "issued_date": "2021-02-12",
+        "apply_form_link": "https://montserratremoteworker.com/application-form/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 500,
+        "income_requirement_usd_month": 5833,
+        "cost_of_living": {
+          "accommodation": "~$500-1200/month",
+          "food": "~$250-500/month",
+          "transportation": "~$30-80/month",
+          "overall_index": "Moderate, Caribbean"
+        },
+        "remarks": "🌋 Live on a quiet Caribbean island with an active volcano.\n• High income requirement of $70,000/year.\n• Application fee is $500 for individuals, $750 for families."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 2,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Panama",
+    "continent": "Central America",
+    "visas": [
+      {
+        "visa_name": "Short-Term Visa for Remote Workers",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "9 months, extendable to 18 months",
+        "visa_length_months": 18,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "No taxes on foreign income; U.S. dollar economy.",
+        "link_source": "https://www.embassyofpanama.org/visas-1",
+        "issued_date": "2021-05-07",
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": 300,
+        "income_requirement_usd_month": 3000,
+        "cost_of_living": {
+            "accommodation": "~$500-1200/month",
+            "food": "~$250-500/month",
+            "transportation": "~$30-70/month",
+            "overall_index": "Moderate, Central America"
+        },
+        "remarks": "⚖️ You must hire a Panamanian immigration lawyer to handle the application.\n• 0% tax on foreign-sourced income.\n• The official economy uses the U.S. Dollar."
+      }
+    ],
+    "ratings": {
+        "tax_friendliness": 5,
+        "cost_of_living": 3,
+        "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Peru",
+    "continent": "South America",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Retain foreign tax residency.",
+        "link_source": "https://www.gob.pe/migraciones",
+        "issued_date": "2024-06-22",
+        "apply_form_link": "https://agenciavirtual.migraciones.gob.pe/agencia-virtual/identidad",
+        "remote_application_bin": true,
+        "visa_cost_usd": 115,
+        "income_requirement_usd_month": 1000,
+        "cost_of_living": {
+          "accommodation": "~$300-700/month",
+          "food": "~$150-300/month",
+          "transportation": "~$20-50/month",
+          "overall_index": "Low, South America"
+        },
+        "remarks": "🇵🇪 Recently launched! Details are still emerging.\n• Low income requirement makes it very accessible.\n• Allows you to work remotely without becoming a Peruvian tax resident."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 4,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Puerto Rico",
+    "continent": "North America",
+    "visas": [
+      {
+        "visa_name": "N/A - US Territory",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Unspecified",
+        "visa_length": "90 days (under ESTA) or indefinitely for US citizens",
+        "visa_length_months": 3,
+        "eligible_citizens": "US citizens or those with US work authorization.",
+        "eligible_citizens_cluster": "Special Eligibility",
+        "bonuses_incentives": "Tax incentives under Act 60 for residents.",
+        "link_source": "https://www.discoverpuertorico.com/info/travel-guidelines",
+        "issued_date": null,
+        "apply_form_link": "https://esta.cbp.dhs.gov/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 21,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "$600-1500+/month",
+          "food": "$300-600/month",
+          "transportation": "$50-100/month",
+          "overall_index": "Moderate, US territory"
+        },
+        "remarks": "🇺🇸 Not a visa, but a US territory.\n• No visa needed for US citizens. Foreigners follow standard US entry rules (e.g., ESTA).\n• Major tax incentives under Act 60 for those who become residents."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": null,
+      "cost_of_living": null,
+      "bureaucracy_level": null
+    }
+  },
+  {
+    "country_name": "Saint Lucia",
+    "continent": "Caribbean",
+    "visas": [
+      {
+        "visa_name": "Live It program",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Unspecified",
+        "visa_length": "Up to 12 months",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Access to tropical lifestyle.",
+        "link_source": "https://www.stlucia.org/en/live-it/",
+        "issued_date": "2021-03-01",
+        "apply_form_link": "https://www.stlucia.org/en/live-it/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 75,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "$500-1200/month",
+          "food": "$250-500/month",
+          "transportation": "$30-80/month",
+          "overall_index": "Moderate, Caribbean"
+        },
+        "remarks": "🇱🇨 This is a multiple-entry visa designed for remote work.\n• No specific income requirement, but must prove you can support yourself.\n• Low application fee makes it an attractive option."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": null,
+      "cost_of_living": null,
+      "bureaucracy_level": null
+    }
+  },
+  {
+    "country_name": "Uruguay",
+    "continent": "South America",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Permit",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "6 months, renewable once",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Path to permanent residency.",
+        "link_source": "https://www.gub.uy/tramites/permiso-residencia-trabajadores-remotos-nomades-digitales",
+        "issued_date": "2022-10-01",
+        "apply_form_link": "https://www.gub.uy/tramites/permiso-residencia-trabajadores-remotos-nomades-digitales",
+        "remote_application_bin": true,
+        "visa_cost_usd": 10,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$500-1200/month",
+          "food": "~$250-500/month",
+          "transportation": "~$30-70/month",
+          "overall_index": "Moderate, South America"
+        },
+        "remarks": "🇺🇾 Unique for its lack of a specific income requirement.\n• You only need to sign a sworn affidavit promising self-sufficiency.\n• After the initial permit, you can apply for a 2-year temporary residency."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 3,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Australia",
+    "continent": "Oceania",
+    "visas": [
+      {
+        "visa_name": "Working Holiday Visa (subclass 417 or 462)",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "No",
+        "visa_length": "12 months, with renewal options",
+        "visa_length_months": 12,
+        "eligible_citizens": "Citizens of eligible partner countries, aged 18-30 or 18-35.",
+        "eligible_citizens_cluster": "Special Eligibility",
+        "bonuses_incentives": "Allows for incidental work.",
+        "link_source": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417",
+        "issued_date": null,
+        "apply_form_link": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417",
+        "remote_application_bin": true,
+        "visa_cost_usd": 420,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$1300-2500/month",
+          "food": "~$400-700/month",
+          "transportation": "~$100-200/month",
+          "overall_index": "Very high, among world's most expensive"
+        },
+        "remarks": "🇦🇺 This is a youth travel visa, not a nomad visa.\n• Strict age (18-35) and nationality requirements apply.\n• Requires proof of sufficient funds (~$3,300 USD) and a return ticket."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 2,
+      "cost_of_living": 1,
+      "bureaucracy_level": 2
+    }
+  },
+  {
+    "country_name": "Cabo Verde",
+    "continent": "Africa",
+    "visas": [
+      {
+        "visa_name": "Cabo Verde Remote Working Program",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "6 months, renewable once",
+        "visa_length_months": 12,
+        "eligible_citizens": "Citizens of North America, Europe, CPLP, and ECOWAS",
+        "eligible_citizens_cluster": "Country-Specific Nationals",
+        "bonuses_incentives": "No local income tax on foreign earnings.",
+        "link_source": "https://www.remoteworkingcaboverde.com/en_GB/",
+        "issued_date": "2020-12-14",
+        "apply_form_link": "https://www.remoteworkingcaboverde.com/en_GB/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 58,
+        "income_requirement_usd_month": 1600,
+        "cost_of_living": {
+            "accommodation": "~$300-700/month",
+            "food": "~$200-400/month",
+            "transportation": "~$30-70/month",
+            "overall_index": "Moderate, lower than Europe"
+        },
+        "remarks": "🇨🇻 Island life with a low cost of living.\n• Eligibility is restricted to citizens from Europe, North America, CPLP, and ECOWAS countries.\n• Income requirement for a family is €2,700/month."
+      }
+    ],
+    "ratings": {
+        "tax_friendliness": null,
+        "cost_of_living": null,
+        "bureaucracy_level": null
+    }
+  },
+  {
+    "country_name": "Egypt",
+    "continent": "Africa",
+    "visas": [
+      {
+        "visa_name": "5-Year Tourist Visa",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Unspecified",
+        "visa_length": "5 years, multiple-entry",
+        "visa_length_months": 60,
+        "eligible_citizens": "Citizens of 180 selected countries",
+        "eligible_citizens_cluster": "Country-Specific Nationals",
+        "bonuses_incentives": "Long-term stay option.",
+        "link_source": "https://visa2egypt.gov.eg/eVisa/Home",
+        "issued_date": "2023-04-01",
+        "apply_form_link": "https://visa2egypt.gov.eg/eVisa/Home",
+        "remote_application_bin": true,
+        "visa_cost_usd": 700,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$200-600/month",
+          "food": "~$100-250/month",
+          "transportation": "~$15-40/month",
+          "overall_index": "Very low, North Africa"
+        },
+        "remarks": "🏺 Not a work visa, but a long-term tourist visa.\n• Remote work is tolerated but not officially sanctioned.\n• High up-front cost, but provides 5 years of multiple-entry access."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 5,
+      "bureaucracy_level": 5
+    }
+  },
+  {
+    "country_name": "Mauritius",
+    "continent": "Africa",
+    "visas": [
+      {
+        "visa_name": "Premium Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "1 year, renewable",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "No local income tax on foreign earnings.",
+        "link_source": "https://www.edbmauritius.org/premium-visa",
+        "issued_date": "2020-10-23",
+        "apply_form_link": "https://www.edbmauritius.org/premium-visa",
+        "remote_application_bin": true,
+        "visa_cost_usd": 0,
+        "income_requirement_usd_month": 1500,
+        "cost_of_living": {
+          "accommodation": "~$400-1000/month",
+          "food": "~$250-500/month",
+          "transportation": "~$40-100/month",
+          "overall_index": "Moderate, Indian Ocean"
+        },
+        "remarks": "🇲🇺 This visa is completely free to apply for!\n• Low income requirement ($1,500/month for individual).\n• Dependents require an extra $500/month each in income."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 3,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "Morocco",
+    "continent": "Africa",
+    "visas": [
+      {
+        "visa_name": "Tourist Visa",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "Unspecified",
+        "visa_length": "90 days",
+        "visa_length_months": 3,
+        "eligible_citizens": "Citizens of most countries worldwide",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "No local income tax on foreign earnings for stays under 183 days.",
+        "link_source": "https://www.consulat.ma/en/tourist-visa",
+        "issued_date": null,
+        "apply_form_link": "https://www.consulat.ma/en",
+        "remote_application_bin": true,
+        "visa_cost_usd": 63,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$300-700/month",
+          "food": "~$150-300/month",
+          "transportation": "~$20-50/month",
+          "overall_index": "Very low, North Africa"
+        },
+        "remarks": "🇲🇦 Common unofficial nomad base.\n• Most nationalities can enter visa-free for 90 days.\n• A formal digital nomad visa has been announced but is not yet implemented."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 5,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "Namibia",
+    "continent": "Africa",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "6 months, renewable",
+        "visa_length_months": 6,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "No local income tax on foreign earnings.",
+        "link_source": "https://nipdb.com/nomadvisa/",
+        "issued_date": "2022-10-11",
+        "apply_form_link": "https://nipdb.com/nomadvisa/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 124,
+        "income_requirement_usd_month": 2000,
+        "cost_of_living": {
+          "accommodation": "~$350-700/month",
+          "food": "~$200-400/month",
+          "transportation": "~$50-100/month",
+          "overall_index": "Low, Southern Africa"
+        },
+        "remarks": "🇳🇦 Explore stunning desert landscapes while you work.\n• Income requirements increase by $1,000/month for a spouse and $500/month per child.\n• Straightforward online application process."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 4,
+      "bureaucracy_level": 4
+    }
+  },
+  {
+    "country_name": "New Zealand",
+    "continent": "Oceania",
+    "visas": [
+      {
+        "visa_name": "Working Holiday Visa",
+        "is_active": true,
+        "verified_status": "Alternative Pathway",
+        "family_inclusion": "No",
+        "visa_length": "Up to 12 or 23 months depending on nationality.",
+        "visa_length_months": 23,
+        "eligible_citizens": "Citizens from eligible countries, aged 18-30 or 18-35.",
+        "eligible_citizens_cluster": "Special Eligibility",
+        "bonuses_incentives": "Access to diverse outdoor activities.",
+        "link_source": "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/working-holiday-visa",
+        "issued_date": null,
+        "apply_form_link": "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/working-holiday-visa",
+        "remote_application_bin": true,
+        "visa_cost_usd": 278,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "NZD 1000-2500+/month",
+          "food": "NZD 500-1000+/month",
+          "transportation": "NZD 100-200+/month",
+          "overall_index": "High, Oceania"
+        },
+        "remarks": "🥝 For young travelers, not a true nomad visa.\n• Primary purpose must be tourism, with work being incidental.\n• Strict age (18-35) and nationality requirements apply."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": null,
+      "cost_of_living": null,
+      "bureaucracy_level": null
+    }
+  },
+  {
+    "country_name": "Seychelles",
+    "continent": "Africa",
+    "visas": [
+      {
+        "visa_name": "Workation Visitor's Permit",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "One year",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "No local income tax on foreign earnings.",
+        "link_source": "https://goplaces.gov.sc/workcaction",
+        "issued_date": "2021-04-01",
+        "apply_form_link": "https://goplaces.gov.sc/workcaction",
+        "remote_application_bin": true,
+        "visa_cost_usd": 48,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$900-2200+/month",
+          "food": "~$400-800+/month",
+          "transportation": "~$50-150/month",
+          "overall_index": "High, Indian Ocean"
+        },
+        "remarks": "🇸🇨 Simple, low-cost application for a slice of paradise.\n• No specific income requirement, but must show proof of funds.\n• Applicant must have valid medical and travel insurance."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 2,
+      "bureaucracy_level": 3
+    }
+  },
+  {
+    "country_name": "South Africa",
+    "continent": "Africa",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "Up to 3 years",
+        "visa_length_months": 36,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "No local income tax on foreign earnings under 183 days.",
+        "link_source": "http://www.dha.gov.za/",
+        "issued_date": "2024-06-21",
+        "apply_form_link": null,
+        "remote_application_bin": false,
+        "visa_cost_usd": 0,
+        "income_requirement_usd_month": 3000,
+        "cost_of_living": {
+          "accommodation": "~$400-900/month",
+          "food": "~$200-400/month",
+          "transportation": "~$50-100/month",
+          "overall_index": "Low, Southern Africa"
+        },
+        "remarks": "🇿🇦 Newly launched! Applications opened in June 2024.\n• Must earn over R55,000/month (~$3000 USD).\n• You become a tax resident if you stay over 183 days in a year."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": null,
+      "cost_of_living": null,
+      "bureaucracy_level": null
+    }
+  }
+]
+
+
