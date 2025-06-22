@@ -61,7 +61,31 @@
             "overall_index": "Low, Eastern Europe costs"
         },
         "remarks": "🇧🇬 Great for those seeking a low-tax EU base.\n• Official government application details are still less clear than in other countries.\n• Must apply in person at a Bulgarian consulate."
-      }
+      },
+      {
+  "visa_name": "Digital Nomad Visa",
+  "is_active": true,
+  "verified_status": "Verified",
+  "family_inclusion": "Not specified",
+  "visa_length": "6 months initial, likely 1 year renewable",
+  "visa_length_months": 12,
+  "eligible_citizens": "Non-EU/EEA/Swiss nationals",
+  "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+  "bonuses_incentives": "10% flat income tax, Schengen Area mobility, low cost of living",
+  "link_source": "Not available (awaiting State Gazette publication)",
+  "issued_date": "2025-06-18",
+  "apply_form_link": "Not available",
+  "remote_application_bin": false,
+  "visa_cost_usd": null,
+  "income_requirement_usd_month": 1987,
+  "cost_of_living": {
+    "accommodation": "~€250-400/month (Sofia); €300-350/month (Plovdiv, Varna); lower in Bansko",
+    "food": "~€150-250/month",
+    "transportation": "~€20-50/month",
+    "overall_index": "Low, among the lowest in the EU"
+  },
+  "remarks": "🇧🇬 Inferred income threshold (~€2,000/month) based on 50x Bulgaria's 2024 minimum salary (933 BGN). Strict 'employment contract' definition may limit freelancers. Higher education degree recognition may be required. New program, expect potential bureaucratic delays. Family inclusion likely under general law."
+}
     ],
     "ratings": {
         "tax_friendliness": 4,
