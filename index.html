@@ -47,12 +47,12 @@
     <script type="text/babel">
         // --- DATA & CONTENT ---
         const visaDataSource = [
-          { "country_name": "Spain", "continent": "Europe", "visas": [{ "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 153, "income_requirement_usd_month": 2762, "visa_length_months": 12, "remote_application_bin": true, "eligible_citizens": "Non-EU/EEA/Swiss", "bonuses_incentives": "20% tax cap; family members allowed; eventual path to residency", "remarks": "Formally launched in 2023 under its Startup Act. *cost_remark - Original cost: $73 consular fee plus $80 NIE. *length_remark - Renewable for up to 3 years.", "issued_date": "2023-01-01", "link_source": "https://www.exteriores.gob.es/Consulados/londres/en/ServiciosConsulares/Paginas/Consular/Visado-de-teletrabajo.aspx" }], "ratings": { "ssn_attractiveness": 3, "tax_friendliness": 4, "cost_of_living": 3, "bureaucracy_level": 4 } },
-          { "country_name": "Portugal", "continent": "Europe", "visas": [{ "visa_name": "Temporary-Stay Visa (D8 Digital Nomad Visa)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 165, "income_requirement_usd_month": 3480, "visa_length_months": 24, "remote_application_bin": true, "eligible_citizens": "Non-EU/EEA/Swiss", "bonuses_incentives": "Access to Schengen; can include dependents; path to permanent residency and citizenship", "remarks": "Tailored for freelancers and remote employees earning active income from abroad. *cost_remark - Original cost: $75 (visa) + $90 (residence permit). *length_remark - Initial 4-month visa leads to a 2-year residence permit, renewable up to 5 years. *remote_apply_remark - Application is via a Portuguese embassy.", "issued_date": "2025-06-11", "link_source": "https://vistos.mne.gov.pt/en/national-visas/general-information/type-of-visa" }], "ratings": { "ssn_attractiveness": 4, "tax_friendliness": 4, "cost_of_living": 4, "bureaucracy_level": 4 } },
-          { "country_name": "Thailand", "continent": "Asia", "visas": [{ "visa_name": "Destination Thailand Visa (DTV)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 270, "income_requirement_usd_month": 0, "visa_length_months": 60, "remote_application_bin": true, "eligible_citizens": "All", "bonuses_incentives": "5-year validity, 180-day entries, very flexible", "remarks": "Requires proof of 500k THB in savings. A major pain point is the inconsistent application of rules across different embassies. *remote_apply_remark - Must apply from outside Thailand.", "issued_date": "2025-06-16", "link_source": "https://www.thaievisa.go.th/" }], "ratings": { "ssn_attractiveness": 3, "tax_friendliness": 4, "cost_of_living": 5, "bureaucracy_level": 2 } },
-          { "country_name": "Albania", "continent": "Europe", "visas": [ { "visa_name": "Unique Permit (for Digital Nomads)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "1 year, renewable up to 5", "visa_length_months": 60, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "Cost-effective, easy extensions.", "link_source": "https://e-albania.al/eAlbaniaServices/UseService.aspx?service_code=15356", "issued_date": "2022-01-01", "apply_form_link": "https://e-albania.al/eAlbaniaServices/UseService.aspx?service_code=15356", "remote_application_bin": true, "visa_cost_usd": 48, "income_requirement_usd_month": 834, "cost_of_living": { "accommodation": "~$230-690/month for apartments", "food": "~$173-345/month", "transportation": "~$23-58/month", "overall_index": "Very low, 30-40% of Western European costs" }, "remarks": "🇦🇱 Low income threshold & simple online process.\n• The 'Unique Permit' officially covers digital nomads.\n• After 5 years, you can apply for permanent residency. \n• Becomes tax resident after 183 days." } ], "ratings": { "tax_friendliness": 4, "cost_of_living": 5, "bureaucracy_level": 3, "ssn_attractiveness": 4 } },
-          { "country_name": "Bulgaria", "continent": "Europe", "visas": [ { "visa_name": "Digital Nomad/Freelancer Program (Type D Visa)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "12 months, renewable", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "10% flat tax, low cost of living.", "link_source": "https://www.mfa.bg/en/services-travel/consular-services/travel-bulgaria/visa-bulgaria", "issued_date": "2024-03-01", "apply_form_link": null, "remote_application_bin": false, "visa_cost_usd": 107, "income_requirement_usd_month": 2667, "cost_of_living": { "accommodation": "~$345-805/month apartments", "food": "~$230-460/month food", "transportation": "~$35-69/month transport", "overall_index": "Low, Eastern Europe" }, "remarks": "🇧🇬 Great for those seeking a low-tax EU base.\n• Official government application details are still less clear than in other countries.\n• Must apply in person at a Bulgarian consulate." } ], "ratings": { "tax_friendliness": 4, "cost_of_living": 4, "bureaucracy_level": 4, "ssn_attractiveness": 3 } },
-          { "country_name": "Croatia", "continent": "Europe", "visas": [ { "visa_name": "Digital Nomad Residence Permit", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "Up to 1 year", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "No local income tax.", "link_source": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "issued_date": "2021-01-01", "apply_form_link": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "remote_application_bin": true, "visa_cost_usd": 150, "income_requirement_usd_month": 2720, "cost_of_living": { "accommodation": "~$460-1,035/month", "food": "~$288-575/month", "transportation": "~$46-92/month", "overall_index": "Moderate, Southern Europe" }, "remarks": "☀️ Major benefit is income tax exemption on foreign earnings.\n• Income requirement increases by 10% for each family member.\n• You cannot reapply for a consecutive year immediately after the first permit expires." }, { "visa_name": "Digital Nomad Visa (Long-Stay Type D)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "Initial visa up to 1 year, convertible to a renewable residence permit.", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA/Swiss nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "10% flat income tax, full Schengen Area mobility, low cost of living.", "link_source": "https://www.newbalkanslawoffice.com/recent-work/digital-nomad-visa-bulgaria-2025/", "issued_date": "2024-06-19", "apply_form_link": null, "remote_application_bin": false, "visa_cost_usd": 107, "income_requirement_usd_month": 1400, "cost_of_living": { "accommodation": "~$350-800/month", "food": "~$250-450/month", "transportation": "~$35-70/month", "overall_index": "Low, Eastern Europe" }, "remarks": "🇧🇬 New visa as of mid-2024! \n• Key benefit: full Schengen Area access and a very low 10% flat income tax. \n• Requirement is to earn 3x the country's average salary (approx. €1,300/month). \n• Must apply in person at a Bulgarian consulate." } ], "ratings": { "tax_friendliness": 3, "cost_of_living": 3, "bureaucracy_level": 4, "ssn_attractiveness": 3 } }
+          { "country_name": "Spain", "continent": "Europe", "visas": [{ "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 153, "income_requirement_usd_month": 2762, "visa_length_months": 12, "remote_application_bin": true, "eligible_citizens": "Non-EU/EEA/Swiss", "bonuses_incentives": "20% tax cap; family members allowed; eventual path to residency", "remarks": "Formally launched in 2023 under its Startup Act. *cost_remark - Original cost: $73 consular fee plus $80 NIE. *length_remark - Renewable for up to 3 years.", "issued_date": "2023-01-01", "link_source": "https://www.exteriores.gob.es/Consulados/londres/en/ServiciosConsulares/Paginas/Consular/Visado-de-teletrabajo.aspx" }], "ratings": { "tax_friendliness": 4, "cost_of_living": 3, "bureaucracy_level": 4 } },
+          { "country_name": "Portugal", "continent": "Europe", "visas": [{ "visa_name": "Temporary-Stay Visa (D8 Digital Nomad Visa)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 165, "income_requirement_usd_month": 3480, "visa_length_months": 24, "remote_application_bin": true, "eligible_citizens": "Non-EU/EEA/Swiss", "bonuses_incentives": "Access to Schengen; can include dependents; path to permanent residency and citizenship", "remarks": "Tailored for freelancers and remote employees earning active income from abroad. *cost_remark - Original cost: $75 (visa) + $90 (residence permit). *length_remark - Initial 4-month visa leads to a 2-year residence permit, renewable up to 5 years. *remote_apply_remark - Application is via a Portuguese embassy.", "issued_date": "2025-06-11", "link_source": "https://vistos.mne.gov.pt/en/national-visas/general-information/type-of-visa" }], "ratings": { "tax_friendliness": 4, "cost_of_living": 4, "bureaucracy_level": 4 } },
+          { "country_name": "Thailand", "continent": "Asia", "visas": [{ "visa_name": "Destination Thailand Visa (DTV)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 270, "income_requirement_usd_month": 0, "visa_length_months": 60, "remote_application_bin": true, "eligible_citizens": "All", "bonuses_incentives": "5-year validity, 180-day entries, very flexible", "remarks": "Requires proof of 500k THB in savings. A major pain point is the inconsistent application of rules across different embassies. *remote_apply_remark - Must apply from outside Thailand.", "issued_date": "2025-06-16", "link_source": "https://www.thaievisa.go.th/" }], "ratings": { "tax_friendliness": 4, "cost_of_living": 5, "bureaucracy_level": 2 } },
+          { "country_name": "Albania", "continent": "Europe", "visas": [ { "visa_name": "Unique Permit (for Digital Nomads)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "1 year, renewable up to 5", "visa_length_months": 60, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "Cost-effective, easy extensions.", "link_source": "https://e-albania.al/eAlbaniaServices/UseService.aspx?service_code=15356", "issued_date": "2022-01-01", "apply_form_link": "https://e-albania.al/eAlbaniaServices/UseService.aspx?service_code=15356", "remote_application_bin": true, "visa_cost_usd": 48, "income_requirement_usd_month": 834, "cost_of_living": { "accommodation": "~$230-690/month for apartments", "food": "~$173-345/month", "transportation": "~$23-58/month", "overall_index": "Very low, 30-40% of Western European costs" }, "remarks": "🇦🇱 Low income threshold & simple online process.\n• The 'Unique Permit' officially covers digital nomads.\n• After 5 years, you can apply for permanent residency. \n• Becomes tax resident after 183 days." } ], "ratings": { "tax_friendliness": 4, "cost_of_living": 5, "bureaucracy_level": 3 } },
+          { "country_name": "Bulgaria", "continent": "Europe", "visas": [ { "visa_name": "Digital Nomad/Freelancer Program (Type D Visa)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "12 months, renewable", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "10% flat tax, low cost of living.", "link_source": "https://www.mfa.bg/en/services-travel/consular-services/travel-bulgaria/visa-bulgaria", "issued_date": "2024-03-01", "apply_form_link": null, "remote_application_bin": false, "visa_cost_usd": 107, "income_requirement_usd_month": 2667, "cost_of_living": { "accommodation": "~$345-805/month apartments", "food": "~$230-460/month food", "transportation": "~$35-69/month transport", "overall_index": "Low, Eastern Europe" }, "remarks": "🇧🇬 Great for those seeking a low-tax EU base.\n• Official government application details are still less clear than in other countries.\n• Must apply in person at a Bulgarian consulate." }, { "visa_name": "Digital Nomad Visa (Long-Stay Type D)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Not specified", "visa_length": "Initial visa up to 1 year, convertible to a renewable residence permit.", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA/Swiss nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "10% flat income tax, full Schengen Area mobility, low cost of living.", "link_source": "Not available (awaiting State Gazette publication)", "issued_date": "2025-06-18", "apply_form_link": "Not available", "remote_application_bin": false, "visa_cost_usd": null, "income_requirement_usd_month": 1987, "cost_of_living": { "accommodation": "~€250-400/month (Sofia); €300-350/month (Plovdiv, Varna); lower in Bansko", "food": "~€150-250/month", "transportation": "~€20-50/month", "overall_index": "Low, among the lowest in the EU" }, "remarks": "🇧🇬 New visa as of mid-2024! \n• Key benefit: full Schengen Area access and a very low 10% flat income tax. \n• Requirement is to earn 3x the country's average salary (approx. €1,300/month). \n• Must apply in person at a Bulgarian consulate." } ], "ratings": { "tax_friendliness": 4, "cost_of_living": 4, "bureaucracy_level": 4 } },
+          { "country_name": "Croatia", "continent": "Europe", "visas": [ { "visa_name": "Digital Nomad Residence Permit", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "Up to 1 year", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "No local income tax.", "link_source": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "issued_date": "2021-01-01", "apply_form_link": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "remote_application_bin": true, "visa_cost_usd": 150, "income_requirement_usd_month": 2720, "cost_of_living": { "accommodation": "~$460-1,035/month", "food": "~$288-575/month", "transportation": "~$46-92/month", "overall_index": "Moderate, Southern Europe" }, "remarks": "☀️ Major benefit is income tax exemption on foreign earnings.\n• Income requirement increases by 10% for each family member.\n• You cannot reapply for a consecutive year immediately after the first permit expires." } ], "ratings": { "tax_friendliness": 3, "cost_of_living": 3, "bureaucracy_level": 4 } }
         ];
         
         const legalContent = {
@@ -63,7 +63,7 @@
                 story: `My name is Yonatan, and I've been living the digital nomad life for the past several years. With a background in tech, I grew increasingly frustrated with the inconsistent, outdated, and often confusing visa information scattered across the web. \n\nI built this tool to solve my own problem: to create a single, clear, and user-friendly place to compare visa options without the headache. My goal is to reduce the bureaucratic pain for fellow nomads.\n\nData on this site is aggregated from official government websites, reputable legal and immigration blogs, and cross-referenced with validated user experiences from online communities like Reddit.`,
                 disclaimer: `Information keeps changing, and updates are currently done on a monthly average, so it's always better to double-check official sources.`,
                 closing: `I hope this serves you well, and I'm always open to suggestions for improvement!`,
-                imageSrc: 'ME_ALBN.jpg', 
+                imageSrc: 'https://i.imgur.com/kQoA1m5.jpeg', 
                 imageCaption: "Me in Durrës beach, Albania, a day before the official end of season (shoulder seasons for the win!)"
             }
         };
@@ -139,12 +139,14 @@
             const [maxVisaCost, setMaxVisaCost] = React.useState(3000);
             const [minTaxAttractiveness, setMinTaxAttractiveness] = React.useState(1);
             const [minVisaLength, setMinVisaLength] = React.useState(1);
+            const [applyOnline, setApplyOnline] = React.useState(false);
 
             const [visaData, setVisaData] = React.useState([]);
             const [modalContent, setModalContent] = React.useState(null);
             const [legalModalContent, setLegalModalContent] = React.useState(null);
             const [walkthroughContent, setWalkthroughContent] = React.useState(null);
             const [showBanner, setShowBanner] = React.useState(false);
+            const [showGuide, setShowGuide] = React.useState(false);
             
             React.useEffect(() => {
                 if (localStorage.getItem('ga_consent') !== 'true') setShowBanner(true);
@@ -152,95 +154,66 @@
             }, []);
 
             React.useEffect(() => {
-                fetch('./data.json')
-                    .then(response => {
-                        if (!response.ok) throw new Error('Network response was not ok');
-                        return response.json();
-                    })
-                    .then(data => {
-                        const processedData = data.flatMap(country => 
-                            country.visas.map(visa => ({
-                                country: country.country_name,
-                                continent: country.continent,
-                                visa_name: visa.visa_name,
-                                visa_cost_usd: visa.visa_cost_usd,
-                                income_requirements_monthly_usd: visa.income_requirement_usd_month,
-                                visa_length_months: visa.visa_length_months,
-                                can_you_apply_remotely: visa.remote_application_bin ? 'Yes' : 'No',
-                                category_citizenship: [visa.eligible_citizens_cluster || visa.eligible_citizens],
-                                bonuses_incentives: visa.bonuses_incentives,
-                                remarks: visa.remarks,
-                                source_url: visa.link_source,
-                                ssn_attractiveness: country.ratings.ssn_attractiveness,
-                                tax_attractiveness: country.ratings.tax_friendliness,
-                                cost_of_living_attractiveness: country.ratings.cost_of_living,
-                                bureaucracy_level: country.ratings.bureaucracy_level
-                            }))
-                        );
-                         const specialOrder = ["Spain", "Portugal", "Thailand"];
-                         processedData.sort((a, b) => {
-                            const aIndex = specialOrder.indexOf(a.country);
-                            const bIndex = specialOrder.indexOf(b.country);
-                            if (aIndex === -1 && bIndex === -1) return 0;
-                            if (aIndex === -1) return 1;
-                            if (bIndex === -1) return -1;
-                            return aIndex - bIndex;
-                        });
-                        setVisaData(processedData);
-                    })
-                    .catch(error => {
-                        console.error('Could not fetch data.json, using fallback data.', error);
-                         const processedFallback = fallbackVisaData.flatMap(country => 
-                            country.visas.map(visa => ({
-                                country: country.country_name,
-                                continent: country.continent,
-                                visa_name: visa.visa_name,
-                                visa_cost_usd: visa.visa_cost_usd,
-                                income_requirements_monthly_usd: visa.income_requirement_usd_month,
-                                visa_length_months: visa.visa_length_months,
-                                can_you_apply_remotely: visa.remote_application_bin ? 'Yes' : 'No',
-                                category_citizenship: [visa.eligible_citizens_cluster || visa.eligible_citizens],
-                                bonuses_incentives: visa.bonuses_incentives,
-                                remarks: visa.remarks,
-                                source_url: visa.link_source,
-                                ssn_attractiveness: country.ratings.ssn_attractiveness,
-                                tax_attractiveness: country.ratings.tax_friendliness,
-                                cost_of_living_attractiveness: country.ratings.cost_of_living,
-                                bureaucracy_level: country.ratings.bureaucracy_level
-                            }))
-                        );
-                        setVisaData(processedFallback);
-                    });
+                const processedData = visaDataSource.flatMap(country => 
+                    country.visas.map(visa => ({
+                        country: country.country_name,
+                        continent: country.continent,
+                        visa_name: visa.visa_name,
+                        visa_cost_usd: visa.visa_cost_usd,
+                        income_requirements_monthly_usd: visa.income_requirement_usd_month,
+                        visa_length_months: visa.visa_length_months,
+                        can_you_apply_remotely: visa.remote_application_bin,
+                        category_citizenship: [visa.eligible_citizens_cluster || visa.eligible_citizens],
+                        bonuses_incentives: visa.bonuses_incentives,
+                        remarks: visa.remarks,
+                        source_url: visa.link_source,
+                        tax_attractiveness: country.ratings.tax_friendliness,
+                        cost_of_living_attractiveness: country.ratings.cost_of_living,
+                        bureaucracy_level: country.ratings.bureaucracy_level
+                    }))
+                );
+                 const specialOrder = ["Spain", "Portugal", "Thailand"];
+                 processedData.sort((a, b) => {
+                    const aIndex = specialOrder.indexOf(a.country);
+                    const bIndex = specialOrder.indexOf(b.country);
+                    if (aIndex === -1 && bIndex === -1) return 0;
+                    if (aIndex === -1) return 1;
+                    if (bIndex === -1) return -1;
+                    return aIndex - bIndex;
+                });
+                setVisaData(processedData);
             }, []);
 
 
             const filteredVisas = React.useMemo(() => {
-                if (!selectedRegion) {
-                    return visaData;
+                let results = visaData;
+
+                if (selectedRegion) {
+                    const selectedCategory = citizenshipRegions.find(r => r.value === selectedRegion);
+                    if (selectedCategory) {
+                        results = results.filter(visa => {
+                            const matchesCategory = selectedCategory.subCategories.some(sub => visa.category_citizenship.includes(sub));
+                            return matchesCategory || visa.category_citizenship.includes("All");
+                        });
+                    }
                 }
 
-                const selectedCategory = citizenshipRegions.find(r => r.value === selectedRegion);
-                if (!selectedCategory) return visaData;
+                if (applyOnline) {
+                    results = results.filter(visa => visa.can_you_apply_remotely);
+                }
 
                 const incomeOption = incomeLevels.find(level => level.value === selectedIncomeValue);
                 const userIncome = incomeOption?.userIncomeForMatch;
 
-                return visaData.filter(visa => {
-                    const matchesCategory = selectedCategory.subCategories.some(sub => visa.category_citizenship.includes(sub));
-
-                    if (!matchesCategory && !visa.category_citizenship.includes("All")) {
-                       if(selectedRegion !== 'All') return false;
-                    }
-                    
+                return results.filter(visa => {
                     if (userIncome !== null && visa.income_requirements_monthly_usd > userIncome) return false;
                     if (visa.visa_cost_usd > maxVisaCost) return false;
                     if (visa.tax_attractiveness < minTaxAttractiveness) return false;
                     if (visa.visa_length_months < minVisaLength) return false;
-                    
                     return true;
                 });
 
-            }, [visaData, selectedRegion, selectedIncomeValue, maxVisaCost, minTaxAttractiveness, minVisaLength]);
+            }, [visaData, selectedRegion, selectedIncomeValue, maxVisaCost, minTaxAttractiveness, minVisaLength, applyOnline]);
 
 
             const handleConsent = () => {
@@ -266,6 +239,9 @@
                     <div className="flex justify-center items-center gap-4 my-8">
                          <button onClick={() => setLegalModalContent(legalContent.about)} className="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">
                             💡 About This Project
+                        </button>
+                         <button onClick={() => setLegalModalContent({ title: 'How to Use', content: 'Start by selecting your citizenship region to see available visas. Use the income and advanced filters to narrow your search. Click any card for more details. For Spain, Portugal, and Thailand, click the special button to access a detailed, step-by-step application walkthrough with real user insights.' })} className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">
+                            ⚙️ How to Use
                         </button>
                     </div>
                     
@@ -335,14 +311,7 @@
                     {legalModalContent && <LegalModal data={legalModalContent} onClose={() => setLegalModalContent(null)} />}
                     {walkthroughContent && <WalkthroughModal data={walkthroughContent} onClose={() => setWalkthroughContent(null)} />}
                     {showBanner && <CookieBanner onAccept={handleConsent} />}
-
-                    <footer className="text-center mt-12 py-4 border-t border-slate-700">
-                        <div className="text-sm text-slate-400 space-x-4">
-                            <a href="#" onClick={(e) => {e.preventDefault(); setLegalModalContent(legalContent.terms)}} className="hover:text-white underline">Terms of Use</a>
-                            <a href="#" onClick={(e) => {e.preventDefault(); setLegalModalContent(legalContent.privacy)}} className="hover:text-white underline">Privacy Policy</a>
-                        </div>
-                        <p className="text-xs text-slate-500 mt-2">Always verify information with official sources.</p>
-                    </footer>
+                    {showGuide && <GuideModal onClose={() => setShowGuide(false)} />}
                 </div>
             );
         }
@@ -369,7 +338,7 @@
                         <div className="mt-6 text-slate-300 text-sm space-y-4 leading-relaxed">
                             {data.imageSrc && (
                                 <div className="text-center mb-6">
-                                    <img src={data.imageSrc} alt="Project Founder Yonatan" className="w-48 h-48 mx-auto rounded-full object-cover border-4 border-purple-400 shadow-lg"/>
+                                    <img src={data.imageSrc} alt="Project Founder Yonatan" className="w-48 h-48 mx-auto rounded-full object-cover border-4 border-purple-400" style={{objectPosition: "25% 50%"}}/>
                                     <p className="text-xs text-slate-400 mt-2 italic">{data.imageCaption}</p>
                                 </div>
                             )}
@@ -402,7 +371,7 @@
                     </div>
                     <div className="mt-auto text-center">
                          <a href={visa.source_url || '#'} target="_blank" rel="noopener noreferrer" className="inline-block bg-slate-700/50 hover:bg-slate-600/50 text-slate-300 text-xs font-semibold py-1 px-3 rounded-full transition-colors mb-4" title={visa.source_url || 'Source not available'}>
-                            Last Checked: June 17, 2025
+                            Last Checked: June 21 2025
                         </a>
                         <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition" onClick={onViewDetails}>
                             View Full Details
@@ -471,7 +440,7 @@
                                         <p><strong className="text-slate-400">Visa Name:</strong> {visa.visa_name}</p>
                                         <p><strong className="text-slate-400">Duration:</strong> {visa.visa_length_months ? `${visa.visa_length_months} months` : 'N/A'}</p>
                                         <p><strong className="text-slate-400">Cost (est.):</strong> {visa.visa_cost_usd !== null ? `~$${visa.visa_cost_usd}` : 'N/A'}</p>
-                                        <p><strong className="text-slate-400">Apply Remotely:</strong> {visa.can_you_apply_remotely}</p>
+                                        <p><strong className="text-slate-400">Apply Online:</strong> {visa.can_you_apply_remotely ? 'Yes' : 'No'}</p>
                                     </div>
                                 </div>
                                 <div className="bg-slate-900/50 p-4 rounded-lg">
@@ -492,7 +461,6 @@
                                     <div className="space-y-4">
                                         <ScoreBar score={visa.cost_of_living_attractiveness} label="Cost of Living" emoji="💰" type="cost_of_living" />
                                         <ScoreBar score={visa.tax_attractiveness} label="Tax Attractiveness" emoji="💸"/>
-                                        <ScoreBar score={visa.ssn_attractiveness} label="SSN Attractiveness" emoji="🤝" type="ssn_attractiveness" />
                                         <ScoreBar score={visa.bureaucracy_level} label="Bureaucracy" emoji="🤯" type="bureaucracy" />
                                     </div>
                                 </div>
@@ -561,9 +529,6 @@
                             <button onClick={() => setStep(step - 1)} disabled={step === 0} className="bg-slate-600 hover:bg-slate-500 text-white font-bold py-2 px-4 rounded disabled:opacity-50 disabled:cursor-not-allowed">
                                 Back
                             </button>
-                             <div className="text-xs text-center text-slate-400 bg-slate-900/50 p-2 rounded-lg">
-                                Alpha Testers Feature
-                            </div>
                             <button onClick={() => { if (step < data.steps.length - 1) setStep(step + 1); else onClose(); }} className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
                                 {step === data.steps.length - 1 ? 'Finish' : 'Next'}
                             </button>
