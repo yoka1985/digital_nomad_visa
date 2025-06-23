@@ -74,11 +74,27 @@
             { label: "Any", value: "any", userIncomeForMatch: null }, { label: "< $2k", value: "0-1999", userIncomeForMatch: 1999 }, { label: "$2k-4k", value: "2000-3999", userIncomeForMatch: 3999 }, { label: "$4k+", value: "4000+", userIncomeForMatch: Infinity }
         ];
 
-        const citizenshipRegions = [
-            { value: "All", label: "For All Nationalities", subCategories: ["All", "Most Nationalities", "Visa-Exempt Nationals"]}, 
-            { value: "Non-EU/EEA/Swiss", label: "For Non-EU/EEA/Swiss Citizens", subCategories: ["Non-EU/EEA/Swiss", "Non-EU/EFTA", "Non-EU", "Non-EU/EEA nationals"] }, 
-            { value: "Developed Countries", label: "Specific Developed Countries (OECD, etc.)", subCategories: ["OECD Nationals"]}, 
-            { value: "Specific Nationalities", label: "Other Specific Nationalities", subCategories: ["Select Countries", "Non-Mexican"]}
+const citizenshipRegions = [
+            { 
+                value: "All", 
+                label: "For All Nationalities", 
+                subCategories: ["All", "Most Nationalities", "Visa-Exempt Nationals", "All Nationalities"]
+            }, 
+            { 
+                value: "Non-EU/EEA/Swiss", 
+                label: "For Non-EU/EEA/Swiss Citizens", 
+                subCategories: ["Non-EU/EEA/Swiss", "Non-EU/EFTA", "Non-EU", "Non-EU/EEA Nationals"] 
+            }, 
+            { 
+                value: "Developed Countries", 
+                label: "Specific Developed Countries (OECD, etc.)", 
+                subCategories: ["OECD Nationals"]
+            }, 
+            { 
+                value: "Specific Nationalities", 
+                label: "Other Specific Nationalities", 
+                subCategories: ["Select Countries", "Non-Mexican", "Country-Specific Nationals", "Special Eligibility"]
+            }
         ];
         
         const walkthroughData = {
