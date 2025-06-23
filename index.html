@@ -4,15 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Digital Nomad Visa Matcher</title>
-    <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- React Libraries -->
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <!-- Babel to transpile JSX in the browser -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
-    <!-- Google Analytics Gtag Script -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6N573S8D8S"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -46,15 +42,6 @@
 
     <script type="text/babel">
         // --- DATA & CONTENT ---
-        const visaDataSource = [
-          { "country_name": "Spain", "continent": "Europe", "visas": [{ "visa_name": "Digital Nomad Visa", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 153, "income_requirement_usd_month": 2762, "visa_length_months": 12, "remote_application_bin": true, "eligible_citizens": "Non-EU/EEA/Swiss", "bonuses_incentives": "20% tax cap; family members allowed; eventual path to residency", "remarks": "Formally launched in 2023 under its Startup Act. *cost_remark - Original cost: $73 consular fee plus $80 NIE. *length_remark - Renewable for up to 3 years.", "issued_date": "2023-01-01", "link_source": "https://www.exteriores.gob.es/Consulados/londres/en/ServiciosConsulares/Paginas/Consular/Visado-de-teletrabajo.aspx" }], "ratings": { "tax_friendliness": 4, "cost_of_living": 3, "bureaucracy_level": 4 } },
-          { "country_name": "Portugal", "continent": "Europe", "visas": [{ "visa_name": "Temporary-Stay Visa (D8 Digital Nomad Visa)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 165, "income_requirement_usd_month": 3480, "visa_length_months": 24, "remote_application_bin": true, "eligible_citizens": "Non-EU/EEA/Swiss", "bonuses_incentives": "Access to Schengen; can include dependents; path to permanent residency and citizenship", "remarks": "Tailored for freelancers and remote employees earning active income from abroad. *cost_remark - Original cost: $75 (visa) + $90 (residence permit). *length_remark - Initial 4-month visa leads to a 2-year residence permit, renewable up to 5 years. *remote_apply_remark - Application is via a Portuguese embassy.", "issued_date": "2025-06-11", "link_source": "https://vistos.mne.gov.pt/en/national-visas/general-information/type-of-visa" }], "ratings": { "tax_friendliness": 4, "cost_of_living": 4, "bureaucracy_level": 4 } },
-          { "country_name": "Thailand", "continent": "Asia", "visas": [{ "visa_name": "Destination Thailand Visa (DTV)", "visa_type": "Digital Nomad Visa", "visa_cost_usd": 270, "income_requirement_usd_month": 0, "visa_length_months": 60, "remote_application_bin": true, "eligible_citizens": "All", "bonuses_incentives": "5-year validity, 180-day entries, very flexible", "remarks": "Requires proof of 500k THB in savings. A major pain point is the inconsistent application of rules across different embassies. *remote_apply_remark - Must apply from outside Thailand.", "issued_date": "2025-06-16", "link_source": "https://www.thaievisa.go.th/" }], "ratings": { "tax_friendliness": 4, "cost_of_living": 5, "bureaucracy_level": 2 } },
-          { "country_name": "Albania", "continent": "Europe", "visas": [ { "visa_name": "Unique Permit (for Digital Nomads)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "1 year, renewable up to 5", "visa_length_months": 60, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "Cost-effective, easy extensions.", "link_source": "https://e-albania.al/eAlbaniaServices/UseService.aspx?service_code=15356", "issued_date": "2022-01-01", "apply_form_link": "https://e-albania.al/eAlbaniaServices/UseService.aspx?service_code=15356", "remote_application_bin": true, "visa_cost_usd": 48, "income_requirement_usd_month": 834, "cost_of_living": { "accommodation": "~$230-690/month for apartments", "food": "~$173-345/month", "transportation": "~$23-58/month", "overall_index": "Very low, 30-40% of Western European costs" }, "remarks": "🇦🇱 Low income threshold & simple online process.\n• The 'Unique Permit' officially covers digital nomads.\n• After 5 years, you can apply for permanent residency. \n• Becomes tax resident after 183 days." } ], "ratings": { "tax_friendliness": 4, "cost_of_living": 5, "bureaucracy_level": 3 } },
-          { "country_name": "Bulgaria", "continent": "Europe", "visas": [ { "visa_name": "Digital Nomad/Freelancer Program (Type D Visa)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "12 months, renewable", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "10% flat tax, low cost of living.", "link_source": "https://www.mfa.bg/en/services-travel/consular-services/travel-bulgaria/visa-bulgaria", "issued_date": "2024-03-01", "apply_form_link": null, "remote_application_bin": false, "visa_cost_usd": 107, "income_requirement_usd_month": 2667, "cost_of_living": { "accommodation": "~$345-805/month apartments", "food": "~$230-460/month food", "transportation": "~$35-69/month transport", "overall_index": "Low, Eastern Europe" }, "remarks": "🇧🇬 Great for those seeking a low-tax EU base.\n• Official government application details are still less clear than in other countries.\n• Must apply in person at a Bulgarian consulate." }, { "visa_name": "Digital Nomad Visa (Long-Stay Type D)", "is_active": true, "verified_status": "Verified", "family_inclusion": "Not specified", "visa_length": "Initial visa up to 1 year, convertible to a renewable residence permit.", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA/Swiss nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "10% flat income tax, full Schengen Area mobility, low cost of living.", "link_source": "Not available (awaiting State Gazette publication)", "issued_date": "2025-06-18", "apply_form_link": "Not available", "remote_application_bin": false, "visa_cost_usd": null, "income_requirement_usd_month": 1987, "cost_of_living": { "accommodation": "~€250-400/month (Sofia); €300-350/month (Plovdiv, Varna); lower in Bansko", "food": "~€150-250/month", "transportation": "~€20-50/month", "overall_index": "Low, among the lowest in the EU" }, "remarks": "🇧🇬 New visa as of mid-2024! \n• Key benefit: full Schengen Area access and a very low 10% flat income tax. \n• Requirement is to earn 3x the country's average salary (approx. €1,300/month). \n• Must apply in person at a Bulgarian consulate." } ], "ratings": { "tax_friendliness": 4, "cost_of_living": 4, "bureaucracy_level": 4 } },
-          { "country_name": "Croatia", "continent": "Europe", "visas": [ { "visa_name": "Digital Nomad Residence Permit", "is_active": true, "verified_status": "Verified", "family_inclusion": "Yes", "visa_length": "Up to 1 year", "visa_length_months": 12, "eligible_citizens": "Non-EU/EEA nationals", "eligible_citizens_cluster": "Non-EU/EEA Nationals", "bonuses_incentives": "No local income tax.", "link_source": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "issued_date": "2021-01-01", "apply_form_link": "https://mup.gov.hr/aliens-281621/stay-and-work/temporary-stay-of-digital-nomads/286833", "remote_application_bin": true, "visa_cost_usd": 150, "income_requirement_usd_month": 2720, "cost_of_living": { "accommodation": "~$460-1,035/month", "food": "~$288-575/month", "transportation": "~$46-92/month", "overall_index": "Moderate, Southern Europe" }, "remarks": "☀️ Major benefit is income tax exemption on foreign earnings.\n• Income requirement increases by 10% for each family member.\n• You cannot reapply for a consecutive year immediately after the first permit expires." } ], "ratings": { "tax_friendliness": 3, "cost_of_living": 3, "bureaucracy_level": 4 } }
-        ];
-        
         const legalContent = {
             terms: { title: 'Terms of Use', content: `Welcome to our Digital Nomad Visa Matcher... For any questions, please contact us at 10mvpsin20days@gmail.com.` },
             privacy: { title: 'Privacy Policy', content: `This Privacy Policy describes how we handle your information... please contact us at 10mvpsin20days@gmail.com.` },
@@ -63,8 +50,23 @@
                 story: `My name is Yonatan, and I've been living the digital nomad life for the past several years. With a background in tech, I grew increasingly frustrated with the inconsistent, outdated, and often confusing visa information scattered across the web. \n\nI built this tool to solve my own problem: to create a single, clear, and user-friendly place to compare visa options without the headache. My goal is to reduce the bureaucratic pain for fellow nomads.\n\nData on this site is aggregated from official government websites, reputable legal and immigration blogs, and cross-referenced with validated user experiences from online communities like Reddit.`,
                 disclaimer: `Information keeps changing, and updates are currently done on a monthly average, so it's always better to double-check official sources.`,
                 closing: `I hope this serves you well, and I'm always open to suggestions for improvement!`,
-                imageSrc: 'ME_ALB_33.jpg', 
+                imageSrc: 'images/ME_ALB.jpg', 
                 imageCaption: "Me in Durrës beach, Albania, a day before the official end of season (shoulder seasons for the win!)"
+            },
+            fieldsExplanation: {
+                title: 'Filter Fields Explained',
+                content: `
+                    <p class="mb-4">Here’s a quick guide to understanding the filters:</p>
+                    <div class="space-y-3 text-left">
+                        <p><strong>🌍 Your Citizenship Region:</strong> This is the most important filter! Visa rules depend on your passport. For example, rules for a US citizen (Non-EU) are very different from a French citizen (EU).</p>
+                        <p><strong>💰 Est. Monthly Income:</strong> Most visas require proof you earn a minimum amount each month. Select your income bracket to see visas you might qualify for.</p>
+                        <p><strong>💸 Max Visa Cost:</strong> The one-time government application fee for the visa itself. This doesn't include lawyer fees or other related costs.</p>
+                        <p><strong>👍 Min Tax Attractiveness:</strong> A simple 1-5 score. A higher score means the country has lower income tax for nomads (e.g., 0% tax), which can save you a lot of money.</p>
+                        <p><strong>⏳ Min Visa Length:</strong> How long the initial visa is valid before you need to renew it. Use this to find longer-term options from the start.</p>
+                        <hr class="border-slate-600 my-4" />
+                        <p class="p-3 bg-slate-900 rounded-lg"><strong>Use Case Example:</strong> Dan from the UK is a non-EU citizen earning $3,500/month. He sets Citizenship to 'Non-EU/EEA/Swiss' and Income to '$2k-4k'. He wants a long-term, low-tax option, so he sets Visa Length to 12 months and Tax Attractiveness to 4. The tool now shows him the best matches.</p>
+                    </div>
+                `
             }
         };
 
@@ -83,14 +85,14 @@
           Spain: {
             title: "Spain DNV: User Experience Walkthrough",
             steps: [
-              { title: "Step 1: Choose Your Path: Apply Abroad vs. In Spain", officialInfo: "You can apply at a Spanish Consulate for a 1-year visa, or apply as a tourist from within Spain for a 3-year permit.", insights: [{ text: "Applying within Spain grants a 3-year residency permit, unlike the 1-year visa from consulates. This is a huge advantage but requires careful timing.", metric: "Widely Corroborated, 2024/2025" }], links: [{label: "Complete Guide", url: "https://www.digitalnomadvisa.help/g_demo_esp.html", highlight: true},{label: "Find Your Spanish Consulate", url: "https://www.exteriores.gob.es/en/EmbajadasConsulados/Paginas/index.aspx"}] },
+              { title: "Step 1: Choose Your Path: Apply Abroad vs. In Spain", officialInfo: "You can apply at a Spanish Consulate for a 1-year visa, or apply as a tourist from within Spain for a 3-year permit.", insights: [{ text: "Applying within Spain grants a 3-year residency permit, unlike the 1-year visa from consulates. This is a huge advantage but requires careful timing.", metric: "Widely Corroborated, 2024/2025" }], links: [{label: "Complete Guide", url: "guides/g_demo_esp.html", highlight: true},{label: "Find Your Spanish Consulate", url: "https://www.exteriores.gob.es/en/EmbajadasConsulados/Paginas/index.aspx"}] },
               { title: "Step 2: Get a Criminal Record Check", officialInfo: "A criminal background check from your country of residence for the last 2-5 years is required. For US citizens, this is an FBI Identity History Summary.", insights: [{ text: "This is the first document you should request as it can take time to arrive.", metric: "Community Advice" }], links: [{label: "Get a US FBI Background Check", url: "https://www.fbi.gov/services/cjis/identity-history-summary-checks"}] },
               { title: "Step 3: Get the Apostille", officialInfo: "The criminal record check must be legalized with an Apostille of The Hague.", insights: [{ text: "This process can take weeks or months depending on your country. Do not skip this, or your document is invalid.", metric: "Critical Requirement" }], links: [] },
               { title: "Step 4: Get a Sworn Translation", officialInfo: "All non-Spanish official documents must be translated by a 'traductor jurado' recognized by Spain.", insights: [{ text: "Only use an official sworn translator. A regular translation will be rejected. This is a common and costly mistake.", metric: "Multiple User Warnings, 2024" }], links: [{label: "Find an Official Sworn Translator", url: "https://www.exteriores.gob.es/en/ServiciosAlCiudadano/Paginas/Traductores-Interpretes-Jurados.aspx"}] },
               { title: "Step 5: Handle the US W2 Roadblock", officialInfo: "US employees must provide an A-1 Certificate of Coverage from the SSA.", insights: [{ text: "This is nearly impossible. The A-1 takes 6-9+ months to get. The ONLY reliable workaround is to switch to a 1099 independent contractor status before applying.", metric: "Major Pain Point, Multiple Threads" }], links: [{label: "US Social Security Administration (A-1)", url: "https://www.ssa.gov/international/CoC_requests.html"}] },
               { title: "Step 6: The Final Hurdle: TIE Appointment", officialInfo: "After approval, you must book a TIE (residency card) fingerprinting appointment within 30 days of arrival.", insights: [{ text: "Getting a TIE appointment is the hardest part. The official website rarely has slots. Pro Tip: Use a Telegram bot (like citapreviabot.com) or pay a 'gestor' (~€30-€50) to book one for you.", metric: "Highly Validated, Late 2023/2024" }], links: [{label: "Official TIE Appointment Booking Site", url: "https://sede.administracionespublicas.gob.es/pagina/index/directorio/icpplus"}] },
               { title: "Step 7: Tax & Cost Reality Check", officialInfo: "The official visa processing time is 20 working days.", insights: [{ text: "The official timeline is a myth. Expect the entire end-to-end process to take 6-9+ months. Also, assume you will NOT get the 'Beckham Law' flat tax; budget for standard progressive tax rates and high 'autónomo' fees.", metric: "22 Upvotes, Early 2024" }], links: [] },
-              { title: "Step 8: Get the Detailed Guide", officialInfo: "Download the complete community-sourced guide for a final checklist and detailed tips.", insights: [{ text: "Reviewing this guide before submitting can help you avoid common rejection reasons and prepare for life in Spain.", metric: "Community Best Practice" }], links: [{label: "Download Instructional PDF", url: "./spn.pdf", highlight: true}, {label: "View as HTML Guide", url: "https://www.digitalnomadvisa.help/g_demo_esp.html", highlight: true}] }
+              { title: "Step 8: Get the Detailed Guide", officialInfo: "This demo guide provides a final checklist and detailed tips.", insights: [{ text: "Reviewing this guide before submitting can help you avoid common rejection reasons and prepare for life in Spain.", metric: "Community Best Practice" }], links: [{label: "Download Instructional PDF", url: "./spn.pdf", highlight: true}, {label: "View as HTML Guide", url: "guides/g_demo_esp.html", highlight: true}] }
             ]
           },
           Portugal: { title: "Portugal D8: User Experience Walkthrough", steps: [ { title: "Step 1: Get a NIF & Bank Account", officialInfo: "Applicants must have a Portuguese NIF (tax number) and a Portuguese bank account before applying.", insights: [{ text: "You MUST do this first. Hire a lawyer or use an online service. You'll need to deposit at least €9,840 to prove sufficient funds for one year.", metric: "Universal Advice, 2024" }], links: [{label: "Get a NIF Online (Service Provider)", url: "https://www.nifonline.pt/"}] }, { title: "Step 2: The 12-Month Lease Paradox", officialInfo: "Proof of long-term accommodation is required.", insights: [{ text: "This is the most painful step. Most consulates demand a signed 12-month lease. This means paying rent on an empty flat for months while you wait. Pro Tip: Use a service like Flatio that provides visa-compliant lease documents.", metric: "18 Upvotes, Mid-2024" }], links: [{label: "Find Compliant Leases on Flatio", url: "https://www.flatio.com/"}] }, { title: "Step 3: The Consulate Appointment", officialInfo: "Apply at the Portuguese consulate in your country of residence.", insights: [{ text: "Processing times vary wildly by consulate (22 days to 183+ days). Research your specific consulate's recent performance on community forums before applying.", metric: "Community Data" }], links: [{label: "Find your Portuguese Consulate", url: "https://vistos.mne.gov.pt/en/world-area"}, {label: "VFS Global Portal (Example for USA)", url: "https://www.vfsglobal.com/portugal/usa/index.html"}] }, { title: "Step 4: The AIMA Backlog & Legal Limbo", officialInfo: "If approved, you get a 4-month visa to enter and attend a residency appointment with AIMA.", insights: [{ text: "The real bottleneck is AIMA, which is severely backlogged. Your 4-month visa WILL expire while you wait for your 8+ month appointment. While you are legal inside Portugal, you are trapped and CANNOT travel in the Schengen Area until your card arrives.", metric: "5 Upvotes, Mid-2024" }], links: [] }, { title: "Step 5: Citizenship Timeline Reality", officialInfo: "Portugal offers a path to citizenship after 5 years of residency.", insights: [{ text: "The 5-year clock is real, but the process takes longer. After 5 years, the citizenship application itself has a 2-3 year backlog. Plan for a 7-8 year total journey to get a passport.", metric: "Community Consensus, Late 2023" }], links: [] } ] },
@@ -142,6 +144,7 @@
             const [applyOnline, setApplyOnline] = React.useState(false);
 
             const [visaData, setVisaData] = React.useState([]);
+            const [visaDataSource, setVisaDataSource] = React.useState([]);
             const [modalContent, setModalContent] = React.useState(null);
             const [legalModalContent, setLegalModalContent] = React.useState(null);
             const [walkthroughContent, setWalkthroughContent] = React.useState(null);
@@ -154,6 +157,20 @@
             }, []);
 
             React.useEffect(() => {
+                fetch('data/data.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => setVisaDataSource(data))
+                    .catch(error => console.error('Error fetching visa data:', error));
+            }, []);
+
+            React.useEffect(() => {
+                if (visaDataSource.length === 0) return;
+
                 const processedData = visaDataSource.flatMap(country => 
                     country.visas.map(visa => ({
                         country: country.country_name,
@@ -180,9 +197,9 @@
                     if (aIndex === -1) return 1;
                     if (bIndex === -1) return -1;
                     return aIndex - bIndex;
-                });
+                 });
                 setVisaData(processedData);
-            }, []);
+            }, [visaDataSource]);
 
 
             const filteredVisas = React.useMemo(() => {
@@ -236,20 +253,23 @@
                         <p className="text-slate-400 mt-2">Instantly find your digital nomad visa options worldwide.</p>
                     </header>
                     
-                    <div className="flex justify-center items-center gap-4 my-8">
+                    <div className="flex justify-center items-center flex-wrap gap-4 my-8">
                          <button onClick={() => setLegalModalContent(legalContent.about)} className="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">
                             💡 About This Project
-                        </button>
-                         <button onClick={() => setLegalModalContent({ title: 'How to Use', content: 'Start by selecting your citizenship region to see available visas. Use the income and advanced filters to narrow your search. Click any card for more details. For Spain, Portugal, and Thailand, click the special button to access a detailed, step-by-step application walkthrough with real user insights.' })} className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">
+                         </button>
+                         <button onClick={() => setLegalModalContent(legalContent.fieldsExplanation)} className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">
+                            📖 Field Guide
+                         </button>
+                         <button onClick={() => setLegalModalContent({ title: 'How to Use', content: '<p>Start by selecting your citizenship region to see available visas. Use the income and advanced filters to narrow your search. Click any card for more details. For Spain, Portugal, and Thailand, click the special button to access a detailed, step-by-step application walkthrough with real user insights.</p>' })} className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">
                             ⚙️ How to Use
-                        </button>
+                         </button>
                     </div>
                     
                     <div className="bg-slate-800 shadow-2xl rounded-xl p-6 mb-8 max-w-6xl mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                             <div className="space-y-6">
                                 <div>
-                                    <label htmlFor="nationality" className="flex items-center gap-2 text-sm font-medium text-slate-300 mb-2">
+                                    <label htmlFor="nationality" className="flex items-center gap-2 text-sm font-medium text-slate-300 mb-2" title="Select the region your passport is from.">
                                         <span>🌍 Your Citizenship Region</span>
                                         <div className="relative group">
                                             <span className="cursor-pointer">❓</span>
@@ -268,7 +288,7 @@
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-300 mb-2">💰 Est. Monthly Income (USD)</label>
+                                    <label className="block text-sm font-medium text-slate-300 mb-2" title="Filter by your remote work monthly income.">💰 Est. Monthly Income (USD)</label>
                                     <div className="flex flex-wrap gap-2">
                                         {incomeLevels.map(level => (
                                             <button key={level.value} onClick={() => setSelectedIncomeValue(level.value)}
@@ -283,16 +303,16 @@
                                 <h3 className="text-lg font-semibold text-purple-400">Advanced Filters</h3>
                                 <div className="space-y-4">
                                     <div className="text-sm">
-                                        <label htmlFor="cost-slider" className="flex justify-between font-medium text-slate-300 mb-1"><span>💸 Max Visa Cost</span><span>${maxVisaCost}</span></label>
+                                        <label htmlFor="cost-slider" className="flex justify-between font-medium text-slate-300 mb-1" title="Set the maximum you want to pay for the visa fee."><span>💸 Max Visa Cost</span><span>${maxVisaCost}</span></label>
                                         <input id="cost-slider" type="range" min="0" max="3000" step="50" value={maxVisaCost} onChange={e => setMaxVisaCost(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/>
                                     </div>
                                     <div className="text-sm">
-                                        <label htmlFor="tax-slider" className="flex justify-between font-medium text-slate-300 mb-1"><span>👍 Min Tax Attractiveness</span><span>{minTaxAttractiveness}/5</span></label>
+                                        <label htmlFor="tax-slider" className="flex justify-between font-medium text-slate-300 mb-1" title="Higher score means lower taxes or better tax breaks."><span>👍 Min Tax Attractiveness</span><span>{minTaxAttractiveness}/5</span></label>
                                         <input id="tax-slider" type="range" min="1" max="5" step="1" value={minTaxAttractiveness} onChange={e => setMinTaxAttractiveness(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/>
                                     </div>
                                     <div className="text-sm">
-                                        <label htmlFor="length-slider" className="flex justify-between font-medium text-slate-300 mb-1"><span>⏳ Min Visa Length</span><span>{minVisaLength} months</span></label>
-                                        <input id="length-slider" type="range" min="1" max="36" step="1" value={minVisaLength} onChange={e => setMinVisaLength(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/>
+                                        <label htmlFor="length-slider" className="flex justify-between font-medium text-slate-300 mb-1" title="Find visas that last at least this many months."><span>⏳ Min Visa Length</span><span>{minVisaLength} months</span></label>
+                                        <input id="length-slider" type="range" min="1" max="60" step="1" value={minVisaLength} onChange={e => setMinVisaLength(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/>
                                     </div>
                                 </div>
                             </div>
@@ -338,14 +358,14 @@
                         <div className="mt-6 text-slate-300 text-sm space-y-4 leading-relaxed">
                             {data.imageSrc && (
                                 <div className="text-center mb-6">
-                                    <img src={data.imageSrc} alt="Project Founder Yonatan" className="w-48 h-48 mx-auto rounded-full object-cover border-4 border-purple-400" style={{objectPosition: "25% 50%"}}/>
+                                    <img src={data.imageSrc} alt="Project Founder Yonatan" className="mx-auto rounded-full object-cover border-4 border-purple-400" style={{objectPosition: "95% 50%", width:"38%", height:"auto"}}/>
                                     <p className="text-xs text-slate-400 mt-2 italic">{data.imageCaption}</p>
                                 </div>
                             )}
                             {data.story && data.story.split('\n').map((p, i) => <p key={i}>{p}</p>)}
                             {data.disclaimer && <p className="mt-4 text-sm text-yellow-400 bg-yellow-900/50 p-3 rounded-lg">{data.disclaimer}</p>}
                             {data.closing && <p className="mt-4 italic">{data.closing}</p>}
-                            {data.content && data.content.split('\n').map((p, i) => <p key={i}>{p}</p>)}
+                            {data.content && <div dangerouslySetInnerHTML={{ __html: data.content }} />}
                         </div>
                     </div>
                 </div>
@@ -358,7 +378,9 @@
                 <div className="bg-slate-800 shadow-xl rounded-lg p-5 flex flex-col justify-between transition-all hover:shadow-purple-500/30 hover:scale-[1.02] duration-300">
                     <div>
                         <h3 className="text-xl font-bold text-purple-400 mb-2">
-                            {getCountryFlagEmoji(visa.country)} {visa.country} – <span className="font-normal text-slate-300">{visa.visa_name}</span>
+                            {getCountryFlagEmoji(visa.country)} {visa.country}
+                            {visa.country === 'Spain' && <span title="A free user-experience guide is available for this visa!"> 📖</span>}
+                             – <span className="font-normal text-slate-300">{visa.visa_name}</span>
                         </h3>
                         <div className="space-y-3 text-sm mb-4">
                             <p>⏳<span className="font-semibold"> Duration:</span> {visa.visa_length_months ? `${visa.visa_length_months} months` : 'N/A'}</p>
@@ -372,7 +394,7 @@
                     <div className="mt-auto text-center">
                          <a href={visa.source_url || '#'} target="_blank" rel="noopener noreferrer" className="inline-block bg-slate-700/50 hover:bg-slate-600/50 text-slate-300 text-xs font-semibold py-1 px-3 rounded-full transition-colors mb-4" title={visa.source_url || 'Source not available'}>
                             Last Checked: June 21 2025
-                        </a>
+                         </a>
                         <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition" onClick={onViewDetails}>
                             View Full Details
                         </button>
@@ -394,7 +416,7 @@
                     </div>
                     {type === 'ssn_attractiveness' && (
                         <div className="absolute bottom-full left-0 w-max max-w-xs mb-2 hidden group-hover:block bg-slate-900 text-white text-xs rounded-lg py-2 px-3 z-10 border border-slate-700 shadow-lg">
-                           Score based on mandatory social security payments. Higher is better (lower payments).
+                            Score based on mandatory social security payments. Higher is better (lower payments).
                         </div>
                     )}
                 </div>
