@@ -10,33 +10,41 @@
             margin: 0; 
             padding: 0; 
             font-family: 'Inter', sans-serif; 
-            background: linear-gradient(to bottom, #0f172a, #1e293b); 
+            background: #0f172a;
             color: #e2e8f0; 
+            overflow: hidden;
         }
         svg { 
             width: 100vw; 
-            height: 60vh; 
-            max-height: 600px; 
+            height: 100vh; 
             display: block; 
+            background: #0f172a;
         }
-        .title { 
+        .controls { 
             position: absolute; 
             top: 1rem; 
-            left: 1rem; 
-            font-size: 1.8rem; 
-            font-weight: 700; 
-            color: #00d4ff; 
-            text-shadow: 0 0 8px rgba(0, 212, 255, 0.5); 
-            z-index: 1000; 
-        }
-        .filter { 
-            position: absolute; 
-            top: 4rem; 
             left: 1rem; 
             z-index: 1000; 
             display: flex; 
             flex-direction: column; 
-            gap: 0.75rem; 
+            gap: 1rem;
+            background: rgba(15, 23, 42, 0.8);
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid #38bdf8;
+            backdrop-filter: blur(5px);
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .title { 
+            font-size: 1.8rem; 
+            font-weight: 700; 
+            color: #38bdf8; 
+            text-shadow: 0 0 8px rgba(56, 189, 248, 0.5); 
+            margin-bottom: 0.5rem;
         }
         label {
             font-size: 0.9rem;
@@ -48,427 +56,223 @@
             font-size: 1rem; 
             font-weight: 500; 
             border-radius: 8px; 
-            border: 1px solid #00d4ff; 
-            background: #2c3e50; 
+            border: 1px solid #38bdf8; 
+            background: #1e293b;
             color: #e2e8f0; 
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
             transition: transform 0.2s, box-shadow 0.2s; 
             outline: none; 
+            width: 250px;
         }
         select:hover, select:focus { 
-            transform: scale(1.05); 
-            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5); 
+            transform: scale(1.02); 
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5); 
         }
         .legend { 
             position: absolute; 
-            top: 10rem; 
+            bottom: 1rem; 
             right: 1rem; 
-            background: linear-gradient(to bottom, #1a2a44, #2c3e50); 
-            padding: 1.2rem; 
+            background: rgba(15, 23, 42, 0.8);
+            padding: 1rem; 
             border-radius: 10px; 
-            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3); 
+            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3); 
             z-index: 1000; 
-            border: 1px solid #00d4ff; 
+            border: 1px solid #38bdf8; 
+            backdrop-filter: blur(5px);
+            min-width: 220px;
         }
-        .legend text {
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-        }
-        .legend rect { 
-            cursor: pointer; 
-            stroke: #00d4ff; 
-            stroke-width: 1; 
-            border-radius: 4px; 
-            transition: transform 0.2s; 
-        }
-        .legend rect:hover {
-            transform: scale(1.05);
-        }
-        .legend-tooltip { 
-            position: absolute; 
-            background: #1a2a44; 
-            color: #e2e8f0; 
-            padding: 0.6rem; 
-            border-radius: 6px; 
-            font-size: 0.85rem; 
-            z-index: 2000; 
-            pointer-events: none; 
-            box-shadow: 0 2px 8px rgba(0, 212, 255, 0.3); 
-            border: 1px solid #00d4ff; 
-        }
-        .popup { 
-            position: absolute; 
-            background: #1a2a44; 
-            padding: 1.2rem; 
-            border-radius: 10px; 
-            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.3); 
-            z-index: 2000; 
-            max-width: 90vw; 
-            width: 340px; 
-            font-size: 0.9rem; 
-            color: #e2e8f0; 
-            border: 1px solid #ffd700; 
-        }
-        .popup .close { 
-            position: absolute; 
-            top: 0.6rem; 
-            right: 0.6rem; 
-            cursor: pointer; 
-            color: #00d4ff; 
-            font-weight: 700; 
-            transition: color 0.2s; 
-        }
-        .popup .close:hover { 
-            color: #ff4d4d; 
-        }
-        .popup .header { 
-            font-size: 1.1rem; 
-            font-weight: 700; 
-            margin-bottom: 0.8rem; 
-        }
-        .popup .row { 
-            display: flex; 
-            align-items: center; 
-            margin-bottom: 0.5rem; 
-        }
-        .popup .icon { 
-            margin-right: 0.5rem; 
-            font-size: 1rem; 
-        }
-        .popup .bar { 
-            height: 8px; 
-            border-radius: 4px; 
-            margin-left: 0.5rem; 
-        }
-        .popup .notes { 
-            position: relative; 
-            cursor: pointer; 
-        }
-        .popup .notes-tooltip { 
-            position: absolute; 
-            background: #1a2a44; 
-            color: #e2e8f0; 
-            padding: 0.6rem; 
-            border-radius: 6px; 
-            font-size: 0.85rem; 
-            z-index: 2001; 
-            box-shadow: 0 2px 8px rgba(0, 212, 255, 0.3); 
-            border: 1px solid #00d4ff; 
-            width: 280px; 
-            left: 0; 
-            top: 1.5rem; 
-            display: none; 
-        }
-        .popup .notes:hover .notes-tooltip { 
-            display: block; 
-        }
-        @media (max-width: 600px) { 
-            .title { font-size: 1.4rem; }
-            .filter { top: 3rem; }
-            .legend { top: 9rem; right: 0.5rem; padding: 0.8rem; }
-            .popup { width: 80vw; font-size: 0.85rem; }
-        }
-        path { 
-            transition: stroke 0.2s; 
-            filter: none; 
-        }
-        .glow { 
-            filter: url(#glow); 
-        }
+        .legend-title { font-weight: 700; color: #38bdf8; margin-bottom: 0.75rem; }
+        .legend-item { display: flex; align-items: center; margin-bottom: 0.5rem; }
+        .legend-color { width: 18px; height: 18px; margin-right: 10px; border-radius: 3px; }
+        .legend-text { font-size: 0.9rem; }
+        .tooltip { position: absolute; background: #1e293b; padding: 0.5rem 0.8rem; border-radius: 6px; border: 1px solid #38bdf8; color: #e2e8f0; font-size: 0.9rem; pointer-events: none; z-index: 3000; }
+        .popup { position: absolute; background: #1e293b; padding: 1rem; border-radius: 10px; box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3); z-index: 2000; max-width: 90vw; width: 340px; font-size: 0.9rem; color: #e2e8f0; border: 1px solid #facc15; }
+        .popup .header { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.8rem; color: #38bdf8;}
+        .popup .row { display: flex; align-items: center; margin-bottom: 0.5rem; }
+        .popup .icon { margin-right: 0.5rem; font-size: 1rem; }
+        path { stroke: #0f172a; stroke-width: 0.5; }
+        path:hover { fill-opacity: 0.7; }
     </style>
 </head>
 <body>
-    <div class="title" id="mapTitle">USA: Visa Duration (Months)</div>
-    <div class="filter">
-        <label for="nationalitySelect">Your Nationality:</label>
-        <select id="nationalitySelect">
-            <option value="USA">USA</option>
-            <option value="UK">UK</option>
-            <option value="Canada">Canada</option>
-            <option value="Other">Other</option>
-        </select>
-        <label for="filterSelect">Filter by:</label>
-        <select id="filterSelect">
-            <option value="duration_months">Duration (Months)</option>
-            <option value="min_income_usd">Min Income (USD)</option>
-            <option value="bureaucracy">Bureaucracy Level</option>
-            <option value="remote_work_proof_required">Remote Work Proof</option>
-            <option value="employment_type">Employment Type</option>
-        </select>
+    <div class="controls">
+        <div class="title">Digital Nomad Visa Explorer</div>
+        <div class="control-group">
+            <label for="nationalitySelect">Your Nationality:</label>
+            <select id="nationalitySelect"></select>
+        </div>
+        <div class="control-group">
+            <label for="filterSelect">View by:</label>
+            <select id="filterSelect"></select>
+        </div>
     </div>
     <div id="map"></div>
+    <div class="legend" id="legendContainer"></div>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
     <script>
-        // Provided JSON data with added bureaucracy field
-        const visaData = [
-            { "country": "Albania", "visa_name": "Albania Digital Nomad Visa", "min_income_usd": 11000, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "bureaucracy": 2, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Albania introduced its Digital Nomad Visa (officially called the \"Unique Permit\") in 2022. This permit is initially valid for 1 year and can be renewed for up to a total of 5 years." },
-            { "country": "Andorra", "visa_name": "Andorra Digital Nomad", "min_income_usd": 2750, "duration_months": 24, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "bureaucracy": 2, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Andorra's Digital Nomad Visa, officially announced in December 2022, opened for applications in mid-2023." },
-            { "country": "Armenia", "visa_name": "Armenia Digital Nomad Visa", "min_income_usd": null, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee"], "bureaucracy": 3, "application_link": null, "source_url": "https://freakingnomads.com/", "notes": "Launched in 2022, Armenia’s Digital Nomad Visa offers two options: a temporary residence permit valid for 1 year." },
-            { "country": "Croatia", "visa_name": "Croatia Digital Nomad Visa", "min_income_usd": 3000, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "bureaucracy": 1, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Croatia’s Digital Nomad Visa was officially launched in 2021." },
-            { "country": "Cyprus", "visa_name": "Cyprus Digital Nomad Visa", "min_income_usd": 4180, "duration_months": 24, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "bureaucracy": 1, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Cyprus opened applications for its Digital Nomad Visa in 2025." },
-            { "country": "Estonia", "visa_name": "Estonia Digital Nomad Visa", "min_income_usd": 4400, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "bureaucracy": 2, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Estonia, known for its pioneering e-residency program, launched the world’s first official Digital Nomad Visa." },
-            { "country": "Finland", "visa_name": "Finland Digital Nomad Visa", "min_income_usd": 1430, "duration_months": 48, "allowed_passports": ["All"], "remote_work_proof_required": true, "employment_type": ["employee", "freelancer"], "bureaucracy": 2, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "While Finland does not offer a dedicated digital nomad visa, it allows remote workers to stay under certain conditions." },
-            { "country": "France", "visa_name": "France Digital Nomad Visa", "min_income_usd": 1980, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "bureaucracy": 1, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "France does not currently have a specific digital nomad visa but allows remote work under existing visa schemes." },
-            { "country": "Germany", "visa_name": "Germany Digital Nomad Visa", "min_income_usd": 9900, "duration_months": 36, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "bureaucracy": 1, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Germany’s freelance visa, officially called the Freiberufler visa, supports digital nomads." },
-            { "country": "Greece", "visa_name": "Greece Digital Nomad Visa", "min_income_usd": 3850, "duration_months": 12, "allowed_passports": ["All"], "remote_work_proof_required": null, "employment_type": ["employee", "freelancer"], "bureaucracy": 1, "application_link": null, "source_url": "https://freakingnomads.com/digital-nomad-visa-countries/", "notes": "Since September 2022, Greece has offered its own digital nomad visa with attractive conditions." }
+        const POPULAR_COUNTRIES = ['USA', 'United Kingdom', 'Canada', 'Germany', 'Australia', 'France', 'India', 'Brazil', 'China', 'Russia', 'Spain', 'Italy', 'Netherlands', 'Sweden', 'Switzerland', 'Ireland', 'Israel', 'South Africa', 'Argentina', 'Mexico'];
+        const ALL_NATIONALITIES = [ "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "USA", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe" ];
+        const EU_COUNTRIES = ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden'];
+
+        const FILTERS = [
+            { path: 'visas[0].visa_length_months', text: 'Duration (Months)', type: 'normal', legendType: 'range' },
+            { path: 'visas[0].income_requirement_usd_month', text: 'Minimum Income (USD)', type: 'inverted', legendType: 'range' },
+            { path: 'visas[0].visa_cost_usd', text: 'Visa Cost (USD)', type: 'inverted', legendType: 'range' },
+            { path: 'ratings.bureaucracy_level', text: 'Bureaucracy Level', type: 'inverted', legendType: 'adjective' },
+            { path: 'ratings.tax_friendliness', text: 'Tax Friendliness', type: 'normal', legendType: 'adjective' },
+            { path: 'ratings.cost_of_living', text: 'Cost of Living', type: 'normal', legendType: 'adjective' }
         ];
 
-        // Define categories and colors
-        const categories = {
-            duration_months: [
-                { range: '≤12', value: 12, color: '#ff4d4d', desc: 'Red: Short-term visa (up to 1 year)' },
-                { range: '13–24', value: 24, color: '#ff9900', desc: 'Orange: Medium-term visa (1–2 years)' },
-                { range: '25–36', value: 36, color: '#ffd700', desc: 'Yellow: Extended visa (2–3 years)' },
-                { range: '37–48', value: 48, color: '#33cc33', desc: 'Green: Long-term visa (3–4 years)' },
-                { range: '>48', value: Infinity, color: '#3399ff', desc: 'Blue: Very long-term visa (over 4 years)' }
-            ],
-            min_income_usd: [
-                { range: '≤2000', value: 2000, color: '#ff4d4d', desc: 'Red: Very low income requirement' },
-                { range: '2001–4000', value: 4000, color: '#ff9900', desc: 'Orange: Low income requirement' },
-                { range: '4001–6000', value: 6000, color: '#ffd700', desc: 'Yellow: Moderate income requirement' },
-                { range: '6001–10000', value: 10000, color: '#33cc33', desc: 'Green: High income requirement' },
-                { range: '>10000', value: Infinity, color: '#3399ff', desc: 'Blue: Very high income requirement' }
-            ],
-            bureaucracy: [
-                { range: 'Low', value: 1, color: '#33cc33', desc: 'Green: Simple application process' },
-                { range: 'Medium', value: 2, color: '#ffd700', desc: 'Yellow: Moderate application complexity' },
-                { range: 'High', value: 3, color: '#ff4d4d', desc: 'Red: Complex application process' }
-            ],
-            remote_work_proof_required: [
-                { range: 'Not Required', value: false, color: '#33cc33', desc: 'Green: No proof of remote work needed' },
-                { range: 'Required', value: true, color: '#ff4d4d', desc: 'Red: Proof of remote work required' }
-            ],
-            employment_type: [
-                { range: 'None', value: 0, color: '#ff4d4d', desc: 'Red: No employment types specified' },
-                { range: 'Single', value: 1, color: '#ffd700', desc: 'Yellow: One employment type allowed' },
-                { range: 'Both', value: 2, color: '#33cc33', desc: 'Green: Both employee and freelancer allowed' }
-            ]
+        const COLOR_SCALE = ['#16a34a', '#86efac', '#facc15', '#fb923c', '#f87171']; // Dark Green -> Red
+        const ADJECTIVES = ['Very Low', 'Low', 'Moderate', 'High', 'Very High'];
+        const THRESHOLDS = {
+            'visas[0].visa_length_months': [12, 24, 36, 48],
+            'visas[0].income_requirement_usd_month': [446, 2023, 3601, 5178],
+            'visas[0].visa_cost_usd': [100, 331, 660, 990]
         };
 
-        // Current filter and nationality
-        let currentFilter = 'duration_months';
-        let currentNationality = 'USA';
+        function getNestedValue(obj, path) { if (!path || !obj) return undefined; return path.split('.').reduce((acc, part) => { const match = part.match(/(\w+)\[(\d+)\]/); if (match) { return acc && acc[match[1]] ? acc[match[1]][parseInt(match[2])] : undefined; } return acc ? acc[part] : undefined; }, obj); }
+        function populateSelect(selectId, options, isGrouped = false) { const select = document.getElementById(selectId); select.innerHTML = ''; if(isGrouped) { const popularGroup = document.createElement('optgroup'); popularGroup.label = 'Popular Nationalities'; options.popular.forEach(text => popularGroup.appendChild(new Option(text, text))); select.appendChild(popularGroup); const otherGroup = document.createElement('optgroup'); otherGroup.label = 'All Nationalities'; options.other.forEach(text => otherGroup.appendChild(new Option(text, text))); select.appendChild(otherGroup); } else { options.forEach(opt => select.appendChild(new Option(opt.text, opt.path))); } }
+        
+        const otherCountries = ALL_NATIONALITIES.filter(c => !POPULAR_COUNTRIES.includes(c)).sort();
+        populateSelect('nationalitySelect', { popular: POPULAR_COUNTRIES, other: otherCountries }, true);
+        document.getElementById('nationalitySelect').value = 'USA';
+        populateSelect('filterSelect', FILTERS);
 
-        // Set up SVG
         const width = window.innerWidth;
-        const height = Math.min(window.innerHeight * 0.6, 600);
-        const svg = d3.select('#map').append('svg')
-            .attr('width', width)
-            .attr('height', height);
-
-        // Add glow filter
-        svg.append('defs').append('filter')
-            .attr('id', 'glow')
-            .append('feGaussianBlur')
-            .attr('stdDeviation', '2.5')
-            .attr('result', 'coloredBlur')
-            .append('feMerge')
-            .append('feMergeNode')
-            .attr('in', 'coloredBlur')
-            .append('feMergeNode')
-            .attr('in', 'SourceGraphic');
-
-        const projection = d3.geoNaturalEarth1()
-            .scale(width / 6.4)
-            .translate([width / 2, height / 2]);
+        const height = window.innerHeight;
+        const svg = d3.select('#map').append('svg').attr('width', width).attr('height', height);
+        const projection = d3.geoMercator().scale(width / (2 * Math.PI) * 0.9).translate([width / 2, height / 1.7]);
         const path = d3.geoPath().projection(projection);
-
-        // Zoom behavior
-        const zoom = d3.zoom()
-            .scaleExtent([1, 8])
-            .on('zoom', function(event) {
-                svg.selectAll('path').attr('transform', event.transform);
-            });
+        const g = svg.append("g");
+        const zoom = d3.zoom().scaleExtent([1, 10]).on('zoom', (event) => g.attr('transform', event.transform));
         svg.call(zoom);
+        const tooltip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
 
-        // Load TopoJSON data
-        d3.json('https://unpkg.com/world-atlas@2.0.2/countries-110m.json').then(function(topoData) {
+        Promise.all([
+            d3.json('https://unpkg.com/world-atlas@2.0.2/countries-110m.json'),
+            d3.json('data/data.json')
+        ]).then(([topoData, visaDataRaw]) => {
+            const legendDefinitions = visaDataRaw[0];
+            const visaData = visaDataRaw.slice(1);
+            
+            let currentFilter = FILTERS[0].path;
+            let currentNationality = 'USA';
+            const countryDataMap = new Map(visaData.map(d => [d.country_name, d]));
             const geoData = topojson.feature(topoData, topoData.objects.countries);
 
-            // Draw map
-            const paths = svg.selectAll('path')
-                .data(geoData.features)
-                .enter().append('path')
+            const paths = g.selectAll('path').data(geoData.features).enter().append('path')
                 .attr('d', path)
-                .attr('stroke', 'black')
-                .attr('stroke-width', 1);
+                .on('click', showPopup)
+                .on('mouseover', showTooltip)
+                .on('mousemove', moveTooltip)
+                .on('mouseout', hideTooltip);
 
-            // Style function
             function updateStyles() {
-                paths.attr('fill', d => {
-                    const countryData = visaData.find(c => c.country === d.properties.name);
-                    if (countryData && countryData[currentFilter] !== null) {
-                        const value = currentFilter === 'employment_type' ? 
-                            countryData[currentFilter].length : 
-                            currentFilter === 'remote_work_proof_required' ? 
-                            (countryData[currentFilter] === null ? false : countryData[currentFilter]) :
-                            countryData[currentFilter];
-                        const ranges = categories[currentFilter];
-                        for (let cat of ranges) {
-                            if (value <= cat.value || (currentFilter === 'remote_work_proof_required' && value === cat.value)) {
-                                return cat.color;
-                            }
-                        }
-                    }
-                    return '#d3d3d3';
-                });
+                const filterDef = FILTERS.find(f => f.path === currentFilter);
+                const values = visaData.map(d => getNestedValue(d, currentFilter)).filter(v => v !== null && v !== undefined);
+                
+                let colorScale;
+                const colorRange = filterDef.type === 'inverted' ? COLOR_SCALE : [...COLOR_SCALE].reverse();
+                
+                if (filterDef.legendType === 'range') {
+                    colorScale = d3.scaleThreshold().domain(THRESHOLDS[currentFilter]).range(colorRange);
+                } else {
+                    const domain = [1, 5];
+                    colorScale = d3.scaleQuantize().domain(domain).range(colorRange);
+                }
+
+                paths.transition().duration(750)
+                    .style('transition-timing-function', 'ease-in-out')
+                    .attr('fill', d => {
+                        const country = countryDataMap.get(d.properties.name);
+                        const value = country ? getNestedValue(country, currentFilter) : null;
+                        return value !== null && value !== undefined ? colorScale(value) : '#334155';
+                    });
+                updateLegend(colorScale, filterDef);
+            }
+            
+            function showTooltip(event, d) { tooltip.transition().duration(200).style("opacity", .9); tooltip.html(d.properties.name).style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px"); }
+            function moveTooltip(event) { tooltip.style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px"); }
+            function hideTooltip() { tooltip.transition().duration(500).style("opacity", 0); }
+
+            function showPopup(event, d) {
+                hideTooltip();
+                d3.selectAll('.popup').remove();
+                const country = countryDataMap.get(d.properties.name);
+                if (!country || !country.visas || country.visas.length === 0) return;
+
+                const visa = country.visas[0];
+                let eligibilityText = "⚠️ Check Eligibility";
+                if (visa.eligible_citizens_cluster === "All Nationalities" || (visa.eligible_citizens_cluster === "Non-EU/EEA Nationals" && !EU_COUNTRIES.includes(currentNationality))) {
+                    eligibilityText = "✅ Eligible";
+                } else if (EU_COUNTRIES.includes(currentNationality)) {
+                    eligibilityText = "✅ Eligible (Freedom of Movement)";
+                }
+
+                const popup = d3.select('body').append('div').attr('class', 'popup');
+                popup.html(`
+                    <div class="header">${country.country_name}</div>
+                    <p style="margin-bottom: 0.8rem;"><strong>Visa:</strong> ${visa.visa_name}</p>
+                    <div class="row"><span class="icon">📅</span>Duration: ${visa.visa_length_months || 'N/A'} months</div>
+                    <div class="row"><span class="icon">💰</span>Min Income: ${visa.income_requirement_usd_month ? `$${visa.income_requirement_usd_month.toLocaleString()}` : 'N/A'}</div>
+                    <div class="row"><span class="icon">🛂</span>For ${currentNationality}: ${eligibilityText}</div>
+                    <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 1rem;">${visa.remarks || ''}</p>
+                `);
+                popup.style('left', (event.pageX + 15) + 'px').style('top', (event.pageY - 28) + 'px');
             }
 
-            // Initial styling
+            d3.select('body').on('click', (event) => { if (!event.target.closest('path')) { d3.selectAll('.popup').remove(); } });
+
+            function updateLegend(scale, filterDef) {
+                const legendContainer = d3.select("#legendContainer");
+                legendContainer.html('');
+                legendContainer.append('div').attr('class', 'legend-title').text(filterDef.text);
+                const colors = scale.range();
+
+                if (filterDef.legendType === 'adjective') {
+                    const adjectives = filterDef.type === 'normal' ? [...ADJECTIVES].reverse() : ADJECTIVES;
+                    colors.forEach((color, i) => {
+                        const legendItem = d3.create('div').attr('class', 'legend-item');
+                        legendItem.append('div').attr('class', 'legend-color').style('background-color', color);
+                        legendItem.append('div').attr('class', 'legend-text').text(adjectives[i]);
+                        legendContainer.node().appendChild(legendItem.node());
+                    });
+                } else { // 'range'
+                    const thresholds = THRESHOLDS[filterDef.path];
+                    const legendLabels = [];
+                    const format = (d, type) => {
+                        if (type.includes('cost') || type.includes('income')) return `$${Math.round(d).toLocaleString()}`;
+                        if (type.includes('month')) return `${Math.round(d)} mo`;
+                        return Math.round(d);
+                    };
+
+                    if (filterDef.path.includes('month')) {
+                        legendLabels.push(`3 - 11 mo`, `12 - 23 mo`, `24 - 35 mo`, `36 - 47 mo`, `48+ mo`);
+                    } else if (filterDef.path.includes('income')) {
+                        legendLabels.push(`$0 - $445`, `$446 - $2,022`, `$2,023 - $3,600`, `$3,601 - $5,177`, `$5,178+`);
+                    } else if (filterDef.path.includes('cost')) {
+                        legendLabels.push(`$0 - $99`, `$100 - $330`, `$331 - $659`, `$660 - $989`, `$990+`);
+                    }
+                    
+                    colors.forEach((color, i) => {
+                        const legendItem = d3.create('div').attr('class', 'legend-item');
+                        legendItem.append('div').attr('class', 'legend-color').style('background-color', color);
+                        legendItem.append('div').attr('class', 'legend-text').text(legendLabels[i]);
+                        legendContainer.node().appendChild(legendItem.node());
+                    });
+                }
+            }
+            
+            d3.select('#filterSelect').on('change', function() { currentFilter = this.value; updateStyles(); });
+            d3.select('#nationalitySelect').on('change', function() { currentNationality = this.value; });
+
             updateStyles();
 
-            // Add hover effect
-            paths.on('mouseover', function() {
-                const path = d3.select(this);
-                const currentTransform = path.attr('transform') || 'translate(0,0) scale(1)';
-                path.classed('glow', true)
-                    .transition()
-                    .duration(200)
-                    .attr('transform', `${currentTransform} translate(0,-2)`)
-                    .attr('stroke', '#ffd700')
-                    .attr('stroke-width', 2);
-            })
-            .on('mouseout', function() {
-                const path = d3.select(this);
-                const currentTransform = path.attr('transform') || 'translate(0,0) scale(1)';
-                const baseTransform = currentTransform.replace(/translate\(0,-2\)/, '');
-                path.classed('glow', false)
-                    .transition()
-                    .duration(200)
-                    .attr('transform', baseTransform)
-                    .attr('stroke', 'black')
-                    .attr('stroke-width', 1);
-            });
-
-            // Add popups
-            paths.on('click', function(event, d) {
-                const path = d3.select(this);
-                path.classed('glow', false); // Remove glow on click
-                const countryData = visaData.find(c => c.country === d.properties.name);
-                if (countryData && countryData.duration_months !== null && countryData.min_income_usd !== null) {
-                    d3.selectAll('.popup').remove();
-                    const popup = document.createElement('div');
-                    popup.className = 'popup';
-                    const notesPreview = countryData.notes.length > 50 ? countryData.notes.slice(0, 50) + '...' : countryData.notes;
-                    const durationColor = categories.duration_months.find(cat => countryData.duration_months <= cat.value).color;
-                    const incomeColor = countryData.min_income_usd ? categories.min_income_usd.find(cat => countryData.min_income_usd <= cat.value).color : '#d3d3d3';
-                    const bureaucracyColor = categories.bureaucracy.find(cat => countryData.bureaucracy === cat.value).color;
-                    const remoteColor = categories.remote_work_proof_required.find(cat => (countryData.remote_work_proof_required === null ? false : countryData.remote_work_proof_required) === cat.value).color;
-                    const employmentColor = categories.employment_type.find(cat => countryData.employment_type.length === cat.value).color;
-                    popup.innerHTML = `
-                        <span class="close">✖</span>
-                        <div class="header">${d.properties.name}: ${countryData.visa_name}</div>
-                        <div class="row">
-                            <span class="icon">📅</span>Duration: ${countryData.duration_months} months
-                            <div class="bar" style="width: ${countryData.duration_months * 2}px; background: ${durationColor};"></div>
-                        </div>
-                        <div class="row">
-                            <span class="icon">💰</span>Min Income: $${countryData.min_income_usd || 'N/A'}
-                            <div class="bar" style="width: ${countryData.min_income_usd ? Math.min(countryData.min_income_usd / 100, 100) : 0}px; background: ${incomeColor};"></div>
-                        </div>
-                        <div class="row">
-                            <span class="icon">📋</span>Bureaucracy: ${['', 'Low', 'Medium', 'High'][countryData.bureaucracy] || 'N/A'}
-                            <div class="bar" style="width: ${countryData.bureaucracy * 20}px; background: ${bureaucracyColor};"></div>
-                        </div>
-                        <div class="row">
-                            <span class="icon">💼</span>Remote Proof: ${countryData.remote_work_proof_required ? 'Required' : 'Not Required'}
-                            <div class="bar" style="width: ${countryData.remote_work_proof_required ? 30 : 15}px; background: ${remoteColor};"></div>
-                        </div>
-                        <div class="row">
-                            <span class="icon">👷</span>Employment: ${countryData.employment_type.join(', ')}
-                            <div class="bar" style="width: ${countryData.employment_type.length * 20}px; background: ${employmentColor};"></div>
-                        </div>
-                        <div class="row">
-                            <span class="icon">${countryData.allowed_passports.includes('All') ? '✅' : '❌'}</span>Eligible for ${currentNationality}
-                        </div>
-                        <div class="row notes">
-                            <span class="icon">📝</span>Notes: ${notesPreview}
-                            <div class="notes-tooltip">${countryData.notes}</div>
-                        </div>
-                    `;
-                    const coords = d3.pointer(event, svg.node());
-                    popup.style.left = Math.min(coords[0], width - 350) + 'px';
-                    popup.style.top = Math.min(coords[1], height - 240) + 'px';
-                    document.body.appendChild(popup);
-                    popup.querySelector('.close').onclick = () => popup.remove();
-                }
-            });
-
-            // Add legend
-            const legend = svg.append('g')
-                .attr('class', 'legend')
-                .attr('transform', `translate(${width - 140}, 40)`);
-
-            function updateLegend() {
-                legend.selectAll('*').remove();
-                legend.append('text')
-                    .attr('x', 0)
-                    .attr('y', 0)
-                    .text({
-                        duration_months: 'Duration (Months)',
-                        min_income_usd: 'Min Income (USD)',
-                        bureaucracy: 'Bureaucracy Level',
-                        remote_work_proof_required: 'Remote Work Proof',
-                        employment_type: 'Employment Type'
-                    }[currentFilter])
-                    .style('font-weight', '700')
-                    .style('font-size', '1rem')
-                    .style('fill', '#00d4ff');
-                categories[currentFilter].forEach((cat, i) => {
-                    const group = legend.append('g')
-                        .attr('transform', `translate(0, ${24 + i * 24})`);
-                    group.append('rect')
-                        .attr('x', 0)
-                        .attr('y', 0)
-                        .attr('width', 20)
-                        .attr('height', 20)
-                        .style('fill', cat.color)
-                        .on('mouseover', function() {
-                            d3.select('.legend-tooltip').remove();
-                            svg.append('text')
-                                .attr('class', 'legend-tooltip')
-                                .attr('x', width - 140)
-                                .attr('y', 24 + i * 24 - 12)
-                                .text(cat.desc)
-                                .style('visibility', 'visible');
-                        })
-                        .on('mouseout', function() {
-                            d3.select('.legend-tooltip').remove();
-                        });
-                    group.append('text')
-                        .attr('x', 28)
-                        .attr('y', 16)
-                        .text(cat.range)
-                        .style('font-size', '0.9rem')
-                        .style('fill', '#e2e8f0');
-                });
-            }
-            updateLegend();
-
-            // Update on filter or nationality change
-            d3.select('#filterSelect').on('change', function() {
-                currentFilter = this.value;
-                updateStyles();
-                updateLegend();
-                updateTitle();
-            });
-            d3.select('#nationalitySelect').on('change', function() {
-                currentNationality = this.value;
-                updateStyles();
-                updateTitle();
-            });
-
-            function updateTitle() {
-                d3.select('#mapTitle').text(`${currentNationality}: ${{
-                    duration_months: 'Visa Duration (Months)',
-                    min_income_usd: 'Minimum Income (USD)',
-                    bureaucracy: 'Bureaucracy Level',
-                    remote_work_proof_required: 'Remote Work Proof',
-                    employment_type: 'Employment Type'
-                }[currentFilter]}`);
-            }
+        }).catch(error => {
+            console.error('Error loading data:', error);
+            document.getElementById('map').innerHTML = `<div style="text-align: center; padding: 2rem; font-size: 1.2rem; color: #f87171;"><h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Error: Could not load data.</h2><p>Please ensure 'data/data.json' is available and you are running a local server.</p></div>`;
         });
     </script>
 </body>
