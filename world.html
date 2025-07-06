@@ -24,7 +24,7 @@
             position: absolute; 
             top: 1rem; 
             left: 1rem; 
-            z-index: 1000; 
+            z-index: 10; 
             display: flex; 
             flex-direction: column; 
             gap: 1rem;
@@ -60,13 +60,8 @@
             background: #1e293b;
             color: #e2e8f0; 
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2); 
-            transition: transform 0.2s, box-shadow 0.2s; 
             outline: none; 
             width: 250px;
-        }
-        select:hover, select:focus { 
-            transform: scale(1.02); 
-            box-shadow: 0 0 10px rgba(56, 189, 248, 0.5); 
         }
         .legend { 
             position: absolute; 
@@ -76,7 +71,7 @@
             padding: 1rem; 
             border-radius: 10px; 
             box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3); 
-            z-index: 1000; 
+            z-index: 10; 
             border: 1px solid #38bdf8; 
             backdrop-filter: blur(5px);
             min-width: 220px;
@@ -86,25 +81,37 @@
         .legend-color { width: 18px; height: 18px; margin-right: 10px; border-radius: 3px; }
         .legend-text { font-size: 0.9rem; }
         .tooltip { position: absolute; background: #1e293b; padding: 0.5rem 0.8rem; border-radius: 6px; border: 1px solid #38bdf8; color: #e2e8f0; font-size: 0.9rem; pointer-events: none; z-index: 3000; }
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1999;
+            backdrop-filter: blur(4px);
+        }
         .popup { 
-            position: absolute; 
+            position: relative; 
             background: #1e293b; 
-            padding: 1rem; 
+            padding: 1.5rem; 
             border-radius: 10px; 
-            box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3); 
-            z-index: 2000; 
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4); 
             max-width: 90vw; 
-            width: 340px; 
-            font-size: 0.9rem; 
+            width: 400px; 
+            font-size: 1rem; 
             color: #e2e8f0; 
             border: 1px solid #facc15; 
-            max-height: 80vh; 
+            max-height: 85vh;
             overflow-y: auto;
         }
-        .popup .header { font-size: 1.1rem; font-weight: 700; margin-bottom: 0.8rem; color: #38bdf8;}
-        .popup .row { display: flex; align-items: center; margin-bottom: 0.5rem; }
-        .popup .icon { margin-right: 0.5rem; font-size: 1rem; }
-        path { stroke: #0f172a; stroke-width: 0.5; }
+        .popup .header { font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: #38bdf8;}
+        .popup .row { display: flex; align-items: center; margin-bottom: 0.75rem; }
+        .popup .icon { margin-right: 0.75rem; font-size: 1.1rem; }
+        path { stroke: #0f172a; stroke-width: 0.5; cursor: pointer; }
         path:hover { fill-opacity: 0.7; }
     </style>
 </head>
@@ -128,14 +135,16 @@
         const POPULAR_COUNTRIES = ['USA', 'United Kingdom', 'Canada', 'Germany', 'Australia', 'France', 'India', 'Brazil', 'China', 'Russia', 'Spain', 'Italy', 'Netherlands', 'Sweden', 'Switzerland', 'Ireland', 'Israel', 'South Africa', 'Argentina', 'Mexico'];
         const ALL_NATIONALITIES = [ "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "USA", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe" ];
         const EU_COUNTRIES = ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden'];
+        
         const FILTERS = [
             { path: 'visas[0].visa_length_months', text: 'Duration (Months)', type: 'normal', legendType: 'range' },
             { path: 'visas[0].income_requirement_usd_month', text: 'Minimum Income (USD)', type: 'inverted', legendType: 'range' },
             { path: 'visas[0].visa_cost_usd', text: 'Visa Cost (USD)', type: 'inverted', legendType: 'range' },
             { path: 'ratings.bureaucracy_level', text: 'Bureaucracy Level', type: 'inverted', legendType: 'adjective' },
             { path: 'ratings.tax_friendliness', text: 'Tax Friendliness', type: 'normal', legendType: 'adjective' },
-            { path: 'ratings.cost_of_living', text: 'Cost of Living', type: 'normal', legendType: 'adjective' }
+            { path: 'ratings.cost_of_living', text: 'Cost of Living', type: 'inverted', legendType: 'adjective' }
         ];
+
         const COLOR_SCALE = ['#16a34a', '#86efac', '#facc15', '#fb923c', '#f87171'];
         const ADJECTIVES = ['Very Low', 'Low', 'Moderate', 'High', 'Very High'];
         const THRESHOLDS = {
@@ -143,12 +152,15 @@
             'visas[0].income_requirement_usd_month': [446, 2023, 3601, 5178],
             'visas[0].visa_cost_usd': [100, 331, 660, 990]
         };
+        
         function getNestedValue(obj, path) { if (!path || !obj) return undefined; return path.split('.').reduce((acc, part) => { const match = part.match(/(\w+)\[(\d+)\]/); if (match) { return acc && acc[match[1]] ? acc[match[1]][parseInt(match[2])] : undefined; } return acc ? acc[part] : undefined; }, obj); }
         function populateSelect(selectId, options, isGrouped = false) { const select = document.getElementById(selectId); select.innerHTML = ''; if(isGrouped) { const popularGroup = document.createElement('optgroup'); popularGroup.label = 'Popular Nationalities'; options.popular.forEach(text => popularGroup.appendChild(new Option(text, text))); select.appendChild(popularGroup); const otherGroup = document.createElement('optgroup'); otherGroup.label = 'All Nationalities'; options.other.forEach(text => otherGroup.appendChild(new Option(text, text))); select.appendChild(otherGroup); } else { options.forEach(opt => select.appendChild(new Option(opt.text, opt.path))); } }
+        
         const otherCountries = ALL_NATIONALITIES.filter(c => !POPULAR_COUNTRIES.includes(c)).sort();
         populateSelect('nationalitySelect', { popular: POPULAR_COUNTRIES, other: otherCountries }, true);
         document.getElementById('nationalitySelect').value = 'USA';
         populateSelect('filterSelect', FILTERS);
+
         const width = window.innerWidth;
         const height = window.innerHeight;
         const svg = d3.select('#map').append('svg').attr('width', width).attr('height', height);
@@ -158,33 +170,38 @@
         const zoom = d3.zoom().scaleExtent([1, 10]).on('zoom', (event) => g.attr('transform', event.transform));
         svg.call(zoom);
         const tooltip = d3.select("body").append("div").attr("class", "tooltip").style("opacity", 0);
+
         Promise.all([
             d3.json('https://unpkg.com/world-atlas@2.0.2/countries-110m.json'),
             d3.json('data/data.json')
         ]).then(([topoData, visaDataRaw]) => {
-            const legendDefinitions = visaDataRaw[0];
             const visaData = visaDataRaw.slice(1);
             let currentFilter = FILTERS[0].path;
             let currentNationality = 'USA';
             const countryDataMap = new Map(visaData.map(d => [d.country_name, d]));
             const geoData = topojson.feature(topoData, topoData.objects.countries);
+
             const paths = g.selectAll('path').data(geoData.features).enter().append('path')
                 .attr('d', path)
                 .on('click', showPopup)
                 .on('mouseover', showTooltip)
                 .on('mousemove', moveTooltip)
                 .on('mouseout', hideTooltip);
+
             function updateStyles() {
                 const filterDef = FILTERS.find(f => f.path === currentFilter);
                 const values = visaData.map(d => getNestedValue(d, currentFilter)).filter(v => v !== null && v !== undefined);
+                
                 let colorScale;
                 const colorRange = filterDef.type === 'inverted' ? COLOR_SCALE : [...COLOR_SCALE].reverse();
+                
                 if (filterDef.legendType === 'range') {
                     colorScale = d3.scaleThreshold().domain(THRESHOLDS[currentFilter]).range(colorRange);
                 } else {
                     const domain = [1, 5];
                     colorScale = d3.scaleQuantize().domain(domain).range(colorRange);
                 }
+
                 paths.transition().duration(750)
                     .style('transition-timing-function', 'ease-in-out')
                     .attr('fill', d => {
@@ -194,12 +211,14 @@
                     });
                 updateLegend(colorScale, filterDef);
             }
+            
             function showTooltip(event, d) { tooltip.transition().duration(200).style("opacity", .9); tooltip.html(d.properties.name).style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px"); }
             function moveTooltip(event) { tooltip.style("left", (event.pageX + 10) + "px").style("top", (event.pageY - 28) + "px"); }
             function hideTooltip() { tooltip.transition().duration(500).style("opacity", 0); }
+
             function showPopup(event, d) {
                 hideTooltip();
-                d3.selectAll('.popup').remove();
+                d3.selectAll('.popup-overlay').remove();
                 const country = countryDataMap.get(d.properties.name);
                 if (!country || !country.visas || country.visas.length === 0) return;
                 const visa = country.visas[0];
@@ -209,73 +228,55 @@
                 } else if (EU_COUNTRIES.includes(currentNationality)) {
                     eligibilityText = "✅ Eligible (Freedom of Movement)";
                 }
-                const popup = d3.select('body').append('div').attr('class', 'popup');
-                popup.html(`
-                    <div class="header">${country.country_name}</div>
-                    <p style="margin-bottom: 0.8rem;"><strong>Visa:</strong> ${visa.visa_name}</p>
-                    <div class="row"><span class="icon">📅</span>Duration: ${visa.visa_length_months || 'N/A'} months</div>
-                    <div class="row"><span class="icon">💰</span>Min Income: ${visa.income_requirement_usd_month ? `$${visa.income_requirement_usd_month.toLocaleString()}` : 'N/A'}</div>
-                    <div class="row"><span class="icon">🛂</span>For ${currentNationality}: ${eligibilityText}</div>
-                    <p style="font-size: 0.8rem; color: #94a3b8; margin-top: 1rem;">${visa.remarks || ''}</p>
-                `);
-                // Dynamic positioning to keep popup in viewport
-                const popupNode = popup.node();
-                const popupRect = popupNode.getBoundingClientRect();
-                let left = event.pageX + 15;
-                let top = event.pageY - 28;
-                // Adjust if popup exceeds right edge
-                if (left + popupRect.width > window.innerWidth) {
-                    left = window.innerWidth - popupRect.width - 10;
-                }
-                // Adjust if popup exceeds bottom edge
-                if (top + popupRect.height > window.innerHeight) {
-                    top = window.innerHeight - popupRect.height - 10;
-                }
-                // Ensure popup doesn't go off-screen on top or left
-                left = Math.max(10, left);
-                top = Math.max(10, top);
-                popup.style('left', left + 'px').style('top', top + 'px');
+                const overlay = d3.select('body').append('div').attr('class', 'popup-overlay');
+                const popup = overlay.append('div').attr('class', 'popup');
+                popup.html(`<div class="header">${country.country_name}</div><p style="margin-bottom: 0.8rem;"><strong>Visa:</strong> ${visa.visa_name}</p><div class="row"><span class="icon">📅</span>Duration: ${visa.visa_length_months || 'N/A'} months</div><div class="row"><span class="icon">💰</span>Min Income: ${visa.income_requirement_usd_month ? `$${visa.income_requirement_usd_month.toLocaleString()}` : 'N/A'}</div><div class="row"><span class="icon">🛂</span>For ${currentNationality}: ${eligibilityText}</div><p style="font-size: 0.8rem; color: #94a3b8; margin-top: 1rem;">${visa.remarks || ''}</p>`);
+                overlay.on('click', function() { d3.select(this).remove(); });
+                popup.on('click', (e) => e.stopPropagation());
             }
-            d3.select('body').on('click', (event) => { if (!event.target.closest('path')) { d3.selectAll('.popup').remove(); } });
+
             function updateLegend(scale, filterDef) {
                 const legendContainer = d3.select("#legendContainer");
                 legendContainer.html('');
                 legendContainer.append('div').attr('class', 'legend-title').text(filterDef.text);
+                
+                const legendItems = [];
                 const colors = scale.range();
+
                 if (filterDef.legendType === 'adjective') {
-                    const adjectives = filterDef.type === 'normal' ? [...ADJECTIVES].reverse() : ADJECTIVES;
+                    const adjectives = ADJECTIVES;
                     colors.forEach((color, i) => {
-                        const legendItem = d3.create('div').attr('class', 'legend-item');
-                        legendItem.append('div').attr('class', 'legend-color').style('background-color', color);
-                        legendItem.append('div').attr('class', 'legend-text').text(adjectives[i]);
-                        legendContainer.node().appendChild(legendItem.node());
+                        legendItems.push({ color: color, text: adjectives[i] });
                     });
-                } else {
-                    const thresholds = THRESHOLDS[filterDef.path];
-                    const legendLabels = [];
-                    const format = (d, type) => {
-                        if (type.includes('cost') || type.includes('income')) return `$${Math.round(d).toLocaleString()}`;
-                        if (type.includes('month')) return `${Math.round(d)} mo`;
-                        return Math.round(d);
-                    };
-                    if (filterDef.path.includes('month')) {
-                        legendLabels.push(`3 - 11 mo`, `12 - 23 mo`, `24 - 35 mo`, `36 - 47 mo`, `48+ mo`);
-                    } else if (filterDef.path.includes('income')) {
-                        legendLabels.push(`$0 - $445`, `$446 - $2,022`, `$2,023 - $3,600`, `$3,601 - $5,177`, `$5,178+`);
-                    } else if (filterDef.path.includes('cost')) {
-                        legendLabels.push(`$0 - $99`, `$100 - $330`, `$331 - $659`, `$660 - $989`, `$990+`);
-                    }
+                } else { 
+                    const labels = [];
+                    // FIXED: Use specific path check instead of .includes()
+                    if (filterDef.path === 'visas[0].visa_length_months') { labels.push(`3 - 11 mo`, `12 - 23 mo`, `24 - 35 mo`, `36 - 47 mo`, `48+ mo`); } 
+                    else if (filterDef.path === 'visas[0].income_requirement_usd_month') { labels.push(`$0 - $445`, `$446 - $2,022`, `$2,023 - $3,600`, `$3,601 - $5,177`, `$5,178+`); } 
+                    else if (filterDef.path === 'visas[0].visa_cost_usd') { labels.push(`$0 - $99`, `$100 - $330`, `$331 - $659`, `$660 - $989`, `$990+`); }
+                    
                     colors.forEach((color, i) => {
-                        const legendItem = d3.create('div').attr('class', 'legend-item');
-                        legendItem.append('div').attr('class', 'legend-color').style('background-color', color);
-                        legendItem.append('div').attr('class', 'legend-text').text(legendLabels[i]);
-                        legendContainer.node().appendChild(legendItem.node());
+                        legendItems.push({ color: color, text: labels[i] });
                     });
                 }
+                
+                if (filterDef.type === 'normal') {
+                    legendItems.reverse();
+                }
+
+                legendItems.forEach(item => {
+                    const legendItem = d3.create('div').attr('class', 'legend-item');
+                    legendItem.append('div').attr('class', 'legend-color').style('background-color', item.color);
+                    legendItem.append('div').attr('class', 'legend-text').text(item.text);
+                    legendContainer.node().appendChild(legendItem.node());
+                });
             }
+            
             d3.select('#filterSelect').on('change', function() { currentFilter = this.value; updateStyles(); });
             d3.select('#nationalitySelect').on('change', function() { currentNationality = this.value; });
+
             updateStyles();
+
         }).catch(error => {
             console.error('Error loading data:', error);
             document.getElementById('map').innerHTML = `<div style="text-align: center; padding: 2rem; font-size: 1.2rem; color: #f87171;"><h2 style="font-size: 1.5rem; margin-bottom: 1rem;">Error: Could not load data.</h2><p>Please ensure 'data/data.json' is available and you are running a local server.</p></div>`;
