@@ -71,13 +71,13 @@
             fieldsExplanation: {
                 title: 'Field Guide: Understanding the Scores',
                 content: `<p class="mb-4">The scores are rated from 1-5. Here's what they mean:</p>
-                    <div class="space-y-4 text-left">
-                        <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">🤯 Bureaucracy Level</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.bureaucracy_level || 'N/A'}</p></div>
-                        <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">💰 Cost of Living</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.cost_of_living || 'N/A'}</p></div>
-                        <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">💸 Tax Friendliness</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.tax_friendliness || 'N/A'}</p></div>
-                        <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">🧾 Social Security Liability</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.social_security_liability || 'N/A'}</p></div>
-                        <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">🏥 Social Security Benefits</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.social_security_benefits || 'N/A'}</p></div>
-                    </div>`
+                        <div class="space-y-4 text-left">
+                            <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">🤯 Bureaucracy Level</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.bureaucracy_level || 'N/A'}</p></div>
+                            <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">💰 Cost of Living</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.cost_of_living || 'N/A'}</p></div>
+                            <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">💸 Tax Friendliness</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.tax_friendliness || 'N/A'}</p></div>
+                            <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">🧾 Social Security Liability</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.social_security_liability || 'N/A'}</p></div>
+                            <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">🏥 Social Security Benefits</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.social_security_benefits || 'N/A'}</p></div>
+                        </div>`
             },
             howToUse: { title: 'How to Use This Tool', content: `<p class="mb-2">This tool is designed to quickly narrow down your visa options. Here's how to get the most out of it:</p><ol class="list-decimal list-inside space-y-2"><li><strong>Select Your Nationality:</strong> This is the most important first step.</li><li><strong>Set Your Income:</strong> Click your approximate monthly income bracket to filter out visas.</li><li><strong>Use Advanced Filters:</strong> Adjust the sliders for visa cost, tax attractiveness, and visa length.</li><li><strong>Review the Cards:</strong> The counter at the top tells you how many visas match your search.</li><li><strong>View Full Details:</strong> Click on any card to open a pop-up with much more information.</li></ol>` },
             faq: { title: 'Visas FAQ', content: `<div class="space-y-4 text-left"><h4 class="font-bold text-lg text-slate-100">What is a digital nomad visa?</h4><p>A digital nomad visa is a residence permit that allows remote workers to legally live and work in a foreign country for an extended period.</p><h4 class="font-bold text-lg text-slate-100">Why do I need a special visa?</h4><p>Working on a tourist visa is often illegal. A DNV provides legal authorization and access to services like banking.</p></div>` },
@@ -119,7 +119,7 @@
             const displayColor = (type === 'bureaucracy_level') ? color : [...colors].reverse()[score - 1];
 
             if (type === 'bureaucracy_level') {
-                 description = `${description} Complexity`;
+                description = `${description} Complexity`;
             }
             return { description, color: displayColor, percentage: (score / 5) * 100 };
         };
@@ -135,15 +135,15 @@
             const otherCountries = allCountries.filter(c => !popularSet.has(c));
 
             const renderList = (countryList, isPopular = false) => {
-                 return countryList
-                   .filter(country => country.toLowerCase().includes(searchTerm.toLowerCase()))
-                   .map(country => (
-                         <li key={country} onClick={() => { onSelectNationality(country); setIsOpen(false); setSearchTerm(""); }} className="p-2 hover:bg-purple-600 cursor-pointer flex items-center gap-2" >
-                             <span>{getCountryFlagEmoji(country)}</span>
-                             <span>{country}</span>
-                             {isPopular && <span className="text-amber-400 text-xs">★</span>}
-                         </li>
-                   ));
+                return countryList
+                    .filter(country => country.toLowerCase().includes(searchTerm.toLowerCase()))
+                    .map(country => (
+                        <li key={country} onClick={() => { onSelectNationality(country); setIsOpen(false); setSearchTerm(""); }} className="p-2 hover:bg-purple-600 cursor-pointer flex items-center gap-2" >
+                            <span>{getCountryFlagEmoji(country)}</span>
+                            <span>{country}</span>
+                            {isPopular && <span className="text-amber-400 text-xs">★</span>}
+                        </li>
+                    ));
             };
 
             return (
@@ -155,15 +155,15 @@
                             <span>▼</span>
                         </button>
                         {isOpen && (
-                             <div className="absolute top-full left-0 right-0 mt-2 bg-slate-700 border border-slate-600 rounded-lg shadow-lg z-20">
-                                 <input type="text" placeholder="Search for your country..." className="w-full p-2 bg-slate-800 text-white border-b border-slate-600 focus:outline-none" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
-                                 <ul className="max-h-60 overflow-y-auto custom-scrollbar">
-                                     <li className="px-2 pt-2 pb-1 text-xs text-slate-400 font-bold uppercase">Most Popular</li>
-                                     {renderList(POPULAR_COUNTRIES, true)}
-                                     <hr className="border-slate-500 my-1"/>
-                                     {renderList(otherCountries)}
-                                 </ul>
-                             </div>
+                            <div className="absolute top-full left-0 right-0 mt-2 bg-slate-700 border border-slate-600 rounded-lg shadow-lg z-20">
+                                <input type="text" placeholder="Search for your country..." className="w-full p-2 bg-slate-800 text-white border-b border-slate-600 focus:outline-none" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} />
+                                <ul className="max-h-60 overflow-y-auto custom-scrollbar">
+                                    <li className="px-2 pt-2 pb-1 text-xs text-slate-400 font-bold uppercase">Most Popular</li>
+                                    {renderList(POPULAR_COUNTRIES, true)}
+                                    <hr className="border-slate-500 my-1"/>
+                                    {renderList(otherCountries)}
+                                </ul>
+                            </div>
                         )}
                     </div>
                 </div>
@@ -173,7 +173,7 @@
         function NewsFeed({ newsItems, onReadMore }) {
             return (
                 <div className="max-w-6xl mx-auto mb-8">
-           
+                
                 <div class="text-center my-8">
     <a href="./world.html" class="inline-block bg-sky-500 hover:bg-sky-400 text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-sky-500/30">
         <span class="text-xl">🗺️ Launch Interactive Visa Map</span>
@@ -252,8 +252,7 @@
             );
         };
 
-        function VisaCard({ country, onViewDetails }) {
-            const visa = country.visas?.[0];
+        function VisaCard({ country, visa, onViewDetails }) {
             if (!visa) return null;
             const { description, color } = getScoreAttributes(country.ratings?.bureaucracy_level, 'bureaucracy_level');
             return (
@@ -272,7 +271,7 @@
                         </div>
                     </div>
                     <div className="mt-auto pt-4 border-t border-slate-700/50">
-                        <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition" onClick={() => onViewDetails(country)}>
+                        <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition" onClick={() => onViewDetails({ ...country, visas: [visa] })}>
                             View Full Details
                         </button>
                     </div>
@@ -337,6 +336,11 @@
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-4">
                                 <DetailSection title="🔑 Key Information" data={{ "Duration": `${visa.visa_length_months} months`, "Cost (est.)": visa.visa_cost_usd ? `$${visa.visa_cost_usd}`: 'N/A', "Minimum Income": visa.income_requirement_usd_month ? `$${visa.income_requirement_usd_month.toLocaleString()}/month`: 'Not specified', "Eligible Nationalities": visa.eligible_citizens_cluster }} />
+                                <div>
+                                    <a href="#" target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-4 rounded-lg transition-all transform hover:scale-105 shadow-lg">
+                                        📚 View Step-by-Step Application Guide
+                                    </a>
+                                </div>
                                 {visa.remarks && <DetailSection title="📝 Remarks" data={{ "Note": visa.remarks }} />}
                             </div>
                             <div className="space-y-4">
@@ -393,7 +397,37 @@
                 fetchData();
             }, []);
 
-            const filteredVisas = React.useMemo(() => { let results = visaData; if (selectedNationality) { const userClusters = nationalityToClusters(selectedNationality); const isEU = userClusters.includes('EU Citizen'); results = visaData.filter(country => { if (isEU && EU_COUNTRIES.includes(country.country_name)) return false; const visa = country.visas?.[0]; if (!visa) return false; const visaIsEligible = userClusters.includes(visa.eligible_citizens_cluster); const isOpenToAll = visa.eligible_citizens_cluster === "All Nationalities"; return visaIsEligible || isOpenToAll; }); } const incomeOption = incomeLevels.find(level => level.value === selectedIncomeValue); const userIncome = incomeOption?.userIncomeForMatch; return results.filter(country => { const visa = country.visas?.[0]; if (!visa) return false; if (userIncome !== null && visa.income_requirement_usd_month && visa.income_requirement_usd_month > userIncome) return false; if (visa.visa_cost_usd > maxVisaCost) return false; if (country.ratings?.tax_friendliness < minTaxAttractiveness) return false; if (visa.visa_length_months < minVisaLength) return false; return true; }); }, [visaData, selectedNationality, selectedIncomeValue, maxVisaCost, minTaxAttractiveness, minVisaLength]);
+            const filteredVisas = React.useMemo(() => {
+                const incomeOption = incomeLevels.find(level => level.value === selectedIncomeValue);
+                const userIncome = incomeOption?.userIncomeForMatch;
+                const userClusters = selectedNationality ? nationalityToClusters(selectedNationality) : [];
+                const isEU = userClusters.includes('EU Citizen');
+
+                if (!visaData || visaData.length === 0) {
+                    return [];
+                }
+
+                const allPossibleVisas = visaData.flatMap(country =>
+                    country.visas && Array.isArray(country.visas) ? country.visas.map(visa => ({ country, visa })) : []
+                );
+
+                return allPossibleVisas.filter(({ country, visa }) => {
+                    if (selectedNationality) {
+                        if (isEU && EU_COUNTRIES.includes(country.country_name)) return false;
+                        const visaIsEligible = userClusters.includes(visa.eligible_citizens_cluster);
+                        const isOpenToAll = visa.eligible_citizens_cluster === "All Nationalities";
+                        if (!visaIsEligible && !isOpenToAll) return false;
+                    }
+
+                    if (userIncome !== null && visa.income_requirement_usd_month && visa.income_requirement_usd_month > userIncome) return false;
+                    if (visa.visa_cost_usd > maxVisaCost) return false;
+                    if (country.ratings?.tax_friendliness < minTaxAttractiveness) return false;
+                    if (visa.visa_length_months < minVisaLength) return false;
+                    
+                    return true;
+                });
+            }, [visaData, selectedNationality, selectedIncomeValue, maxVisaCost, minTaxAttractiveness, minVisaLength]);
+            
             const handleConsent = () => { localStorage.setItem('ga_consent', 'true'); setShowBanner(false); if (typeof initGoogleAnalytics === 'function') initGoogleAnalytics(); };
             const legalContent = legalContentTemplate(dataLegend);
             
@@ -403,7 +437,7 @@
                     <div className="flex justify-center items-center flex-wrap gap-4 my-8"> <button onClick={() => setLegalModalContent(legalContent.about)} className="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">💡 About This Project</button> <button onClick={() => setLegalModalContent(legalContent.fieldsExplanation)} className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">📖 Field Guide</button> <button onClick={() => setLegalModalContent(legalContent.howToUse)} className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">⚙️ How to Use</button> </div>
                     <div className="bg-slate-800 shadow-2xl rounded-xl p-6 mb-8 max-w-6xl mx-auto"> <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"> <div className="space-y-6"> <NationalitySelector selectedNationality={selectedNationality} onSelectNationality={setSelectedNationality} /> <div> <label className="block text-sm font-medium text-slate-300 mb-2">💰 Est. Monthly Income (USD)</label> <div className="flex flex-wrap gap-2"> {incomeLevels.map(level => ( <button key={level.value} onClick={() => setSelectedIncomeValue(level.value)} className={`px-3 py-2 text-sm rounded-md transition-all ${selectedIncomeValue === level.value ? 'bg-purple-600 text-white shadow-lg ring-2 ring-purple-400' : 'bg-slate-700 hover:bg-slate-600 text-slate-300'}`}>{level.label}</button>))}</div> </div> </div> <div className="space-y-6 bg-slate-900/50 p-4 rounded-lg"> <h3 className="text-lg font-semibold text-purple-400">Advanced Filters</h3> <div className="space-y-4"> <div className="text-sm"> <label className="flex justify-between font-medium text-slate-300 mb-1"><span>💸 Max Visa Cost</span><span>${maxVisaCost}</span></label> <input type="range" min="0" max="4000" step="50" value={maxVisaCost} onChange={e => setMaxVisaCost(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/> </div> <div className="text-sm"> <label className="flex justify-between font-medium text-slate-300 mb-1"><span>👍 Min Tax Attractiveness</span><span>{minTaxAttractiveness}/5</span></label> <input type="range" min="1" max="5" step="1" value={minTaxAttractiveness} onChange={e => setMinTaxAttractiveness(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/> </div> <div className="text-sm"> <label className="flex justify-between font-medium text-slate-300 mb-1"><span>⏳ Min Visa Length</span><span>{minVisaLength} months</span></label> <input type="range" min="1" max="60" step="1" value={minVisaLength} onChange={e => setMinVisaLength(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/> </div> </div> </div> </div> </div>
                     <NewsFeed newsItems={newsItemsData} onReadMore={setNewsModalContent} />
-                    <main className="mt-8 max-w-7xl mx-auto"> {isLoading ? ( <p className="text-center text-slate-400 text-lg">Loading Visa Data...</p> ) : error ? ( <div className="text-center text-red-400 bg-red-900/50 p-4 rounded-lg">{error}</div> ) : ( <> <div className="mb-6 text-center"> <h2 className="text-2xl font-bold text-slate-300"> Showing <span className="text-purple-400">{filteredVisas.length}</span> Matching Visa Options </h2> {visaData.length > 0 && filteredVisas.length === 0 && <p className="text-slate-400 mt-2">No visas match your current criteria. Try adjusting filters.</p>} </div> <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {filteredVisas.map((country, index) => ( <VisaCard key={`${country.country_name}-${index}`} country={country} onViewDetails={setModalContent} /> ))} </div> </> )} </main>
+                    <main className="mt-8 max-w-7xl mx-auto"> {isLoading ? ( <p className="text-center text-slate-400 text-lg">Loading Visa Data...</p> ) : error ? ( <div className="text-center text-red-400 bg-red-900/50 p-4 rounded-lg">{error}</div> ) : ( <> <div className="mb-6 text-center"> <h2 className="text-2xl font-bold text-slate-300"> Showing <span className="text-purple-400">{filteredVisas.length}</span> Matching Visa Options </h2> {visaData.length > 0 && filteredVisas.length === 0 && <p className="text-slate-400 mt-2">No visas match your current criteria. Try adjusting filters.</p>} </div> <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {filteredVisas.map(({ country, visa }, index) => ( <VisaCard key={`${country.country_name}-${visa.visa_name || index}`} country={country} visa={visa} onViewDetails={setModalContent} /> ))} </div> </> )} </main>
                     <footer className="text-center mt-12 pt-6 border-t border-slate-700"> <div className="flex justify-center items-center flex-wrap gap-x-4 gap-y-2 text-xs text-slate-500"> <button onClick={() => setLegalModalContent(legalContent.terms)} className="hover:text-purple-400 transition">Terms of Use</button> <span>|</span> <button onClick={() => setLegalModalContent(legalContent.privacy)} className="hover:text-purple-400 transition">Privacy Policy</button> <span>|</span> <button onClick={() => setLegalModalContent(legalContent.faq)} className="hover:text-purple-400 transition">Visas FAQ</button> <span>|</span> <button onClick={() => setLegalModalContent(legalContent.countryFaq)} className="hover:text-purple-400 transition">Country-Specific FAQs</button> <span>|</span> <a href="mailto:contact@digitalnomadvisa.help" className="hover:text-purple-400 transition">Contact</a> </div> </footer>
                     {modalContent && <DetailsModal country={modalContent} onClose={() => setModalContent(null)} />}
                     {legalModalContent && <LegalModal data={legalModalContent} onClose={() => setLegalModalContent(null)} />}
