@@ -58,8 +58,8 @@
         
         const newsItemsData = [
             { date: 'Coming Late 2025', title: 'Slovenia Plans to Launch New Digital Nomad Visa', content: '<p>Slovenia has announced its intention to launch a dedicated one-year digital nomad visa. Keep an eye on official channels for launch dates and requirements.</p>' },
-            { date: 'June 23, 2025', title: 'Philippines launches new Digital Nomad Visa!', content: '<p>The Philippines has officially launched its much-anticipated digital nomad visa, opening its doors to remote workers seeking to live and work in the tropical archipelago. The new visa is available via an online portal.</p>' },
-            { date: 'June 18, 2025', title: 'Bulgaria launches new Digital Nomad Visa!', content: '<p>Bulgaria has now formalized its pathway for remote workers with a new Type D visa tailored for digital nomads. This move simplifies the process for non-EU nationals to reside in the country while working for foreign employers.</p>' }
+            { date: 'July 26, 2025', title: 'Philippines launches new Digital Nomad Visa!', content: '<p>The Philippines has officially launched its much-anticipated digital nomad visa, opening its doors to remote workers seeking to live and work in the tropical archipelago. The new visa is available via an online portal.</p>' },
+            { date: 'July 18, 2025', title: 'Bulgaria launches new Digital Nomad Visa!', content: '<p>Bulgaria has now formalized its pathway for remote workers with a new Type D visa tailored for digital nomads. This move simplifies the process for non-EU nationals to reside in the country while working for foreign employers.</p>' }
         ];
 
         const COUNTRY_CODE_MAP = { 'Andorra': 'AD', 'Argentina': 'AR', 'Australia': 'AU', 'Austria': 'AT', 'Brazil': 'BR', 'Bulgaria': 'BG', 'Canada': 'CA', 'Colombia': 'CO', 'Croatia': 'HR', 'Cyprus': 'CY', 'Czech Republic': 'CZ', 'Estonia': 'EE', 'Germany': 'DE', 'Greece': 'GR', 'Hungary': 'HU', 'Iceland': 'IS', 'Indonesia': 'ID', 'Italy': 'IT', 'Japan': 'JP', 'Latvia': 'LV', 'Malaysia': 'MY', 'Malta': 'MT', 'Mauritius': 'MU', 'Mexico': 'MX', 'Montenegro': 'ME', 'Norway': 'NO', 'Panama': 'PA', 'Philippines': 'PH', 'Portugal': 'PT', 'Romania': 'RO', 'South Africa': 'ZA', 'South Korea': 'KR', 'Spain': 'ES', 'Sri Lanka': 'LK', 'Thailand': 'TH', 'UAE (Dubai)': 'AE', 'United Kingdom': 'GB', 'United States': 'US' };
@@ -175,15 +175,14 @@
                 <div className="max-w-6xl mx-auto mb-8">
                 
                 <div class="text-center my-8">
-    <a href="./world.html" class="inline-block bg-sky-500 hover:bg-sky-400 text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-sky-500/30">
-        <span class="text-xl">🗺️ Launch Interactive Visa Map</span>
-    </a>
-</div>
+                    <a href="./world.html" class="inline-block bg-sky-500 hover:bg-sky-400 text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-sky-500/30">
+                        <span class="text-xl">🗺️ Launch Interactive Visa Map</span>
+                    </a>
+                </div>
 
                     <details className="bg-slate-800/50 rounded-lg overflow-hidden">
                     
                         <summary className="p-4 cursor-pointer flex justify-between items-center">
-                        
                         
                             <h3 className="text-lg font-semibold text-purple-400">Latest Updates</h3>
                             <span className="plus-minus text-purple-400 text-xl font-semibold"></span>
@@ -212,11 +211,7 @@
                 </div>
             );
         };
-<div class="text-center my-8">
-    <a href="./world.html" class="inline-block bg-sky-500 hover:bg-sky-400 text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-sky-500/30">
-        <span class="text-xl">🗺️ Launch Interactive Visa Map</span>
-    </a>
-</div>
+
         function LegalModal({ data, onClose }) {
             return (
                 <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4" onClick={onClose}>
