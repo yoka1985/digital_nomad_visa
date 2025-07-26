@@ -145,7 +145,7 @@
     "continent": "Europe",
     "visas": [
       {
-        "visa_name": "Digital Nomad/Freelancer Program (Type D Visa)",
+        "visa_name": "Type D Visa (long-term residence)",
         "is_active": true,
         "verified_status": "Verified",
         "family_inclusion": "Yes",
@@ -168,30 +168,30 @@
         },
         "remarks": "🇧🇬 Great for those seeking a low-tax EU base.\n• Official government application details are still less clear than in other countries.\n• Must apply in person at a Bulgarian consulate."
       },
-      {
-        "visa_name": "Digital Nomad Visa",
-        "is_active": true,
-        "verified_status": "Verified",
-        "family_inclusion": "Not specified",
-        "visa_length": "6 months initial, likely 1 year renewable",
-        "visa_length_months": 12,
-        "eligible_citizens": "Non-EU/EEA/Swiss nationals",
-        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
-        "bonuses_incentives": "10% flat income tax, Schengen Area mobility, low cost of living",
-        "link_source": "https://www.newbalkanslawoffice.com/recent-work/digital-nomad-visa-bulgaria-2025/",
-        "issued_date": "2025-06-18",
-        "apply_form_link": "Not available",
-        "remote_application_bin": false,
-        "visa_cost_usd": null,
-        "income_requirement_usd_month": 1987,
-        "cost_of_living": {
-          "accommodation": "~€250-400/month (Sofia); €300-350/month (Plovdiv, Varna); lower in Bansko",
-          "food": "~€150-250/month",
-          "transportation": "~€20-50/month",
-          "overall_index": "Low, among the lowest in the EU"
-        },
-        "remarks": "🇧🇬 Inferred income threshold (~€2,000/month) based on 50x Bulgaria's 2024 minimum salary (933 BGN). Strict 'employment contract' definition may limit freelancers. Higher education degree recognition may be required. New program, expect potential bureaucratic delays. Family inclusion likely under general law."
-      }
+    {
+      "visa_name": "Digital Nomad Visa",
+      "is_active": true,
+      "verified_status": "Verified",
+      "family_inclusion": "Yes",
+      "visa_length": "1 year, renewable once",
+      "visa_length_months": 12,
+      "eligible_citizens": "Non-EU/EEA/Swiss nationals",
+      "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+      "bonuses_incentives": "Schengen Area access, 10% flat income tax, low cost of living.",
+      "link_source": "https://www.mvr.bg/direkcia-migratsia",
+      "issued_date": "2025-06-15",
+      "apply_form_link": "https://www.mfa.bg/en/services-travel/consular-services/travel-bulgaria/visa-application-forms",
+      "remote_application_bin": false,
+      "visa_cost_usd": 110,
+      "income_requirement_usd_month": 2150,
+      "cost_of_living": {
+        "accommodation": "~$345-805/month apartments",
+        "food": "~$230-460/month food",
+        "transportation": "~$35-69/month transport",
+        "overall_index": "Low, Eastern Europe costs"
+      },
+      "remarks": "🇧🇬 Officially launched in June 2025. Requires proof of annual income from the previous calendar year of at least BGN 46,650 (~€23,850). The initial Type D visa fee is €100 (~$110), with separate fees for the residence permit card paid in Bulgaria. This is a long-term residence permit applied for in-person in Bulgaria. It is valid for 1 year, can be renewed once, and does not grant access to the local labor market."
+    }
     ],
     "ratings": {
       "tax_friendliness": 4,
