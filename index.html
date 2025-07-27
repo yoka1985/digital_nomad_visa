@@ -96,54 +96,68 @@
 
         // --- UTILITY & GUIDE FUNCTIONS ---
 
-        const VISA_GUIDE_CONFIG = {
-            'Portugal': { all: true, specialVisa: { name: 'D8', ratings: '6+' } },
-            'Thailand': { all: true },
-            'Georgia': { all: true },
-            'Spain': { all: true },
-            'Bulgaria': { all: true },
-            'Croatia': { all: true, excluded: ['Digital Nomad Visa'] }
+        const REVIEW_POOL = {
+            review1: { quote: "This guide saved me weeks of confusion!", author: "— Alex P." },
+            review2: { quote: "Literally a step-by-step roadmap. Worth every penny.", author: "— Sarah K." },
+            review3: { quote: "Answered questions I didn't even know I had.", author: "— Mike D." },
+            review4: { quote: "Made a complex process seem simple. Highly recommend!", author: "— Jessica L." },
+            review5: { quote: "The best resource I found for this visa, period.", author: "— Tom B." },
+            review6: { quote: "I was stuck for months, this guide unlocked everything.", author: "— Chen W." },
+            review7: { quote: "Clear, concise, and incredibly helpful. A must-have.", author: "— Fatima A." }
         };
 
-        const REVIEW_POOL = [
-            { quote: "This guide saved me weeks of confusion!", author: "— Alex P." },
-            { quote: "Literally a step-by-step roadmap. Worth every penny.", author: "— Sarah K." },
-            { quote: "Answered questions I didn't even know I had.", author: "— Mike D." },
-            { quote: "Made a complex process seem simple. Highly recommend!", author: "— Jessica L." },
-            { quote: "The best resource I found for this visa, period.", author: "— Tom B." },
-            { quote: "I was stuck for months, this guide unlocked everything.", author: "— Chen W." },
-            { quote: "Clear, concise, and incredibly helpful. A must-have.", author: "— Fatima A." },
-            { quote: "I wish I had this when I first started my application.", author: "— David R." }
-        ];
-
-        function pickRandom(arr, n) {
-            const shuffled = [...arr].sort(() => 0.5 - Math.random());
-            return shuffled.slice(0, n);
-        }
+        const VISA_GUIDE_CONFIG = {
+            'Portugal': {
+                all: true,
+                specialVisa: { name: 'D8', ratings: '6+', reviews: [REVIEW_POOL.review1, REVIEW_POOL.review2, REVIEW_POOL.review3] },
+                defaultReviews: { ratings: '4 ratings', reviews: [REVIEW_POOL.review4, REVIEW_POOL.review5, REVIEW_POOL.review1] }
+            },
+            'Thailand': {
+                all: true,
+                defaultReviews: { ratings: '5 ratings', reviews: [REVIEW_POOL.review2, REVIEW_POOL.review6, REVIEW_POOL.review7] }
+            },
+            'Georgia': {
+                all: true,
+                defaultReviews: { ratings: '3 ratings', reviews: [REVIEW_POOL.review1, REVIEW_POOL.review4, REVIEW_POOL.review5] }
+            },
+            'Spain': {
+                all: true,
+                defaultReviews: { ratings: '5 ratings', reviews: [REVIEW_POOL.review7, REVIEW_POOL.review3, REVIEW_POOL.review2] }
+            },
+            'Bulgaria': {
+                all: true,
+                defaultReviews: { ratings: '2 ratings', reviews: [REVIEW_POOL.review5, REVIEW_POOL.review6, REVIEW_POOL.review4] }
+            },
+            'Croatia': {
+                all: true,
+                excluded: ['Digital Nomad Visa'],
+                defaultReviews: { ratings: '4 ratings', reviews: [REVIEW_POOL.review1, REVIEW_POOL.review3, REVIEW_POOL.review6] }
+            }
+        };
 
         function getGuideDetails(countryName, visaName) {
             const config = VISA_GUIDE_CONFIG[countryName];
             if (!config) return { hasGuide: false };
 
-            let hasGuide = false;
-            if (config.all) hasGuide = true;
+            let hasGuide = config.all;
             if (config.excluded && config.excluded.some(excludedName => visaName.includes(excludedName))) {
                 hasGuide = false;
             }
             
             if (!hasGuide) return { hasGuide: false };
 
-            let ratingsCount;
-            if (countryName === 'Portugal' && visaName.includes(config.specialVisa.name)) {
-                ratingsCount = config.specialVisa.ratings;
-            } else {
-                ratingsCount = Math.floor(Math.random() * 4) + 2; // Random number between 2 and 5
+            if (config.specialVisa && visaName.includes(config.specialVisa.name)) {
+                return {
+                    hasGuide: true,
+                    ratings: config.specialVisa.ratings,
+                    reviews: config.specialVisa.reviews
+                };
             }
 
             return {
                 hasGuide: true,
-                ratings: `${ratingsCount}${ratingsCount === '6+' ? '' : ' ratings'}`,
-                reviews: pickRandom(REVIEW_POOL, 3)
+                ratings: config.defaultReviews.ratings,
+                reviews: config.defaultReviews.reviews
             };
         }
 
@@ -528,9 +542,14 @@
             
             return (
                 <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-gray-100 font-sans p-4 sm:p-6 md:p-8">
-                    <header className="text-center mb-4 max-w-3xl mx-auto">
-                        <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Visa Match & Clarity Engine</h1>
-                        <p className="text-slate-400 mt-2">Instantly find your digital nomad visa options worldwide.</p>
+                    <header className="text-center mb-4 max-w-4xl mx-auto">
+                        <div className="flex justify-center items-center gap-4">
+                            <img src="images/logo_cln.png" alt="Site Logo" className="h-16 w-16" />
+                            <div className="text-left">
+                                <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Visa Match & Clarity Engine</h1>
+                                <p className="text-slate-400 mt-1">Instantly find your digital nomad visa options worldwide.</p>
+                            </div>
+                        </div>
                     </header>
                     
                     <div className="text-center my-8">
