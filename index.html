@@ -87,7 +87,10 @@
                         </div>`
             },
             howToUse: { title: 'How to Use This Tool', content: `<p class="mb-2">This tool is designed to quickly narrow down your visa options. Here's how to get the most out of it:</p><ol class="list-decimal list-inside space-y-2"><li><strong>Select Your Nationality:</strong> This is the most important first step.</li><li><strong>Set Your Income:</strong> Click your approximate monthly income bracket to filter out visas.</li><li><strong>Use Advanced Filters:</strong> Adjust the sliders for visa cost, tax attractiveness, and visa length.</li><li><strong>Review the Cards:</strong> The counter at the top tells you how many visas match your search.</li><li><strong>View Full Details:</strong> Click on any card to open a pop-up with much more information.</li></ol>` },
-            faq: { title: 'Visas FAQs', <a href = "FAQs.html"> }
+faq: {
+  title: 'Visas FAQs',
+  content: `<p class="mt-2"><a href="FAQs.html" class="text-blue-600 underline">Read our detailed FAQ page</a></p>`
+}
         });
         
         const incomeLevels = [ { label: "Any", value: "any", userIncomeForMatch: null }, { label: "< $2k", value: "0-1999", userIncomeForMatch: 1999 }, { label: "$2k-4k", value: "2000-3999", userIncomeForMatch: 3999 }, { label: "$4k+", value: "4000+", userIncomeForMatch: Infinity } ];
