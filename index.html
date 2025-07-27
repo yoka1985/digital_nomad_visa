@@ -69,7 +69,7 @@
             { date: 'Coming Late 2025', title: 'Slovenia Plans to Launch New Digital Nomad Visa', content: '<p>Slovenia has announced its intention to launch a dedicated one-year digital nomad visa. Keep an eye on official channels for launch dates and requirements.</p>' }
         ];
 
-        const COUNTRY_CODE_MAP = { 'Andorra': 'AD', 'Argentina': 'AR', 'Australia': 'AU', 'Austria': 'AT', 'Brazil': 'BR', 'Bulgaria': 'BG', 'Canada': 'CA', 'Colombia': 'CO', 'Croatia': 'HR', 'Cyprus': 'CY', 'Czech Republic': 'CZ', 'Estonia': 'EE', 'Germany': 'DE', 'Greece': 'GR', 'Hungary': 'HU', 'Iceland': 'IS', 'Indonesia': 'ID', 'Italy': 'IT', 'Japan': 'JP', 'Latvia': 'LV', 'Malaysia': 'MY', 'Malta': 'MT', 'Mauritius': 'MU', 'Mexico': 'MX', 'Montenegro': 'ME', 'Norway': 'NO', 'Panama': 'PA', 'Philippines': 'PH', 'Portugal': 'PT', 'Romania': 'RO', 'South Africa': 'ZA', 'South Korea': 'KR', 'Spain': 'ES', 'Sri Lanka': 'LK', 'Thailand': 'TH', 'UAE (Dubai)': 'AE', 'United Kingdom': 'GB', 'United States': 'US' };
+        const COUNTRY_CODE_MAP = { 'Andorra': 'AD', 'Argentina': 'AR', 'Australia': 'AU', 'Austria': 'AT', 'Brazil': 'BR', 'Bulgaria': 'BG', 'Canada': 'CA', 'Colombia': 'CO', 'Croatia': 'HR', 'Cyprus': 'CY', 'Czech Republic': 'CZ', 'Estonia': 'EE', 'Germany': 'DE', 'Georgia': 'GE', 'Greece': 'GR', 'Hungary': 'HU', 'Iceland': 'IS', 'Indonesia': 'ID', 'Italy': 'IT', 'Japan': 'JP', 'Latvia': 'LV', 'Malaysia': 'MY', 'Malta': 'MT', 'Mauritius': 'MU', 'Mexico': 'MX', 'Montenegro': 'ME', 'Norway': 'NO', 'Panama': 'PA', 'Philippines': 'PH', 'Portugal': 'PT', 'Romania': 'RO', 'South Africa': 'ZA', 'South Korea': 'KR', 'Spain': 'ES', 'Sri Lanka': 'LK', 'Thailand': 'TH', 'UAE (Dubai)': 'AE', 'United Kingdom': 'GB', 'United States': 'US' };
         
         const legalContentTemplate = (dataLegend) => ({
             terms: { title: 'Terms of Use', content: `<p>Welcome to our Digital Nomad Visa Matcher. By using this site, you agree to these terms. The information provided is for general informational purposes only and does not constitute legal advice. We strive to keep the information up-to-date, but we make no representations or warranties of any kind about the completeness, accuracy, or reliability of the information. Any reliance you place on such information is therefore strictly at your own risk. For any questions, please contact us at contact@digitalnomadvisa.help.</p>` },
@@ -94,7 +94,59 @@
         const incomeLevels = [ { label: "Any", value: "any", userIncomeForMatch: null }, { label: "< $2k", value: "0-1999", userIncomeForMatch: 1999 }, { label: "$2k-4k", value: "2000-3999", userIncomeForMatch: 3999 }, { label: "$4k+", value: "4000+", userIncomeForMatch: Infinity } ];
         const EU_COUNTRIES = ['Austria', 'Belgium', 'Bulgaria', 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece', 'Hungary', 'Ireland', 'Italy', 'Latvia', 'Lithuania', 'Luxembourg', 'Malta', 'Netherlands', 'Poland', 'Portugal', 'Romania', 'Slovakia', 'Slovenia', 'Spain', 'Sweden'];
 
-        // --- UTILITY FUNCTIONS ---
+        // --- UTILITY & GUIDE FUNCTIONS ---
+
+        const VISA_GUIDE_CONFIG = {
+            'Portugal': { all: true, specialVisa: { name: 'D8', ratings: '6+' } },
+            'Thailand': { all: true },
+            'Georgia': { all: true },
+            'Spain': { all: true },
+            'Bulgaria': { all: true },
+            'Croatia': { all: true, excluded: ['Digital Nomad Visa'] }
+        };
+
+        const REVIEW_POOL = [
+            { quote: "This guide saved me weeks of confusion!", author: "— Alex P." },
+            { quote: "Literally a step-by-step roadmap. Worth every penny.", author: "— Sarah K." },
+            { quote: "Answered questions I didn't even know I had.", author: "— Mike D." },
+            { quote: "Made a complex process seem simple. Highly recommend!", author: "— Jessica L." },
+            { quote: "The best resource I found for this visa, period.", author: "— Tom B." },
+            { quote: "I was stuck for months, this guide unlocked everything.", author: "— Chen W." },
+            { quote: "Clear, concise, and incredibly helpful. A must-have.", author: "— Fatima A." },
+            { quote: "I wish I had this when I first started my application.", author: "— David R." }
+        ];
+
+        function pickRandom(arr, n) {
+            const shuffled = [...arr].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, n);
+        }
+
+        function getGuideDetails(countryName, visaName) {
+            const config = VISA_GUIDE_CONFIG[countryName];
+            if (!config) return { hasGuide: false };
+
+            let hasGuide = false;
+            if (config.all) hasGuide = true;
+            if (config.excluded && config.excluded.some(excludedName => visaName.includes(excludedName))) {
+                hasGuide = false;
+            }
+            
+            if (!hasGuide) return { hasGuide: false };
+
+            let ratingsCount;
+            if (countryName === 'Portugal' && visaName.includes(config.specialVisa.name)) {
+                ratingsCount = config.specialVisa.ratings;
+            } else {
+                ratingsCount = Math.floor(Math.random() * 4) + 2; // Random number between 2 and 5
+            }
+
+            return {
+                hasGuide: true,
+                ratings: `${ratingsCount}${ratingsCount === '6+' ? '' : ' ratings'}`,
+                reviews: pickRandom(REVIEW_POOL, 3)
+            };
+        }
+
 
         function getCountryFlagEmoji(countryName) {
             const countryCode = COUNTRY_CODE_MAP[countryName];
@@ -245,22 +297,15 @@
             );
         };
 
-        function GuidePopover({ countryName, isVisible }) {
+        function GuidePopover({ countryName, isVisible, ratings, reviews }) {
             if (!isVisible) return null;
-
-            const reviews = [
-                { quote: "This guide saved me weeks of confusion!", author: "— Alex P." },
-                { quote: "Literally a step-by-step roadmap. Worth every penny.", author: "— Sarah K." },
-                { quote: "Answered questions I didn't even know I had.", author: "— Mike D." }
-            ];
-
             return (
                 <a href="#" target="_blank" rel="noopener noreferrer" className="absolute bottom-full left-1/2 mb-2 w-72 bg-slate-900 border border-purple-500 rounded-lg shadow-2xl p-4 z-30 transition-opacity duration-200 animate-fade-in-up">
                     <div className="text-white">
                         <h4 className="font-bold text-lg text-purple-400">Is {countryName} Right for You?</h4>
                         <div className="flex items-center my-2">
                             <span className="text-yellow-400">★★★★★</span>
-                            <span className="text-xs text-slate-400 ml-2">(6 ratings)</span>
+                            <span className="text-xs text-slate-400 ml-2">({ratings})</span>
                         </div>
                         <ul className="text-sm text-slate-300 space-y-1 list-disc list-inside my-3">
                             <li>1000+ Real Experiences Analyzed</li>
@@ -283,6 +328,8 @@
             const [isHovering, setIsHovering] = React.useState(false);
             if (!visa) return null;
             const { description, color } = getScoreAttributes(country.ratings?.bureaucracy_level, 'bureaucracy_level');
+            const guideDetails = getGuideDetails(country.country_name, visa.visa_name);
+
             return (
                 <div className="bg-slate-800 shadow-xl rounded-lg p-5 flex flex-col justify-between transition-all hover:shadow-purple-500/30 hover:scale-[1.02] duration-300">
                     <div>
@@ -299,12 +346,19 @@
                         </div>
                     </div>
                     <div className="mt-auto pt-4 border-t border-slate-700/50 flex items-center gap-2">
-                        <div className="relative" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-                            <div className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-3 rounded-lg cursor-pointer transition">
-                                📚
+                        {guideDetails.hasGuide && (
+                             <div className="relative" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+                                <div className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-3 rounded-lg cursor-pointer transition">
+                                    📚
+                                </div>
+                                <GuidePopover 
+                                    countryName={country.country_name} 
+                                    isVisible={isHovering}
+                                    ratings={guideDetails.ratings}
+                                    reviews={guideDetails.reviews}
+                                />
                             </div>
-                            <GuidePopover countryName={country.country_name} isVisible={isHovering} />
-                        </div>
+                        )}
                         <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition" onClick={() => onViewDetails({ ...country, visas: [visa] })}>
                             View Full Details
                         </button>
@@ -312,7 +366,6 @@
                 </div>
             );
         };
-
 
         const DetailSection = ({ title, data }) => {
             if (!data || Object.keys(data).length === 0) return null;
@@ -414,8 +467,6 @@
                         if (!Array.isArray(jsonData) || jsonData.length < 2) { throw new Error("JSON data is not a valid array or is missing data."); }
                         setDataLegend(jsonData[0]);
                         const countryData = jsonData.slice(1);
-                        const specialOrder = ["Spain", "Portugal", "Bulgaria", "Croatia", "Argentina"];
-                        countryData.sort((a, b) => { const aIndex = specialOrder.indexOf(a.country_name); const bIndex = specialOrder.indexOf(b.country_name); if (aIndex === -1 && bIndex === -1) return a.country_name.localeCompare(b.country_name); if (aIndex === -1) return 1; if (bIndex === -1) return -1; return aIndex - bIndex; });
                         setVisaData(countryData);
                     } catch (e) {
                         console.error("Failed to fetch visa data:", e);
@@ -433,29 +484,43 @@
                 const userClusters = selectedNationality ? nationalityToClusters(selectedNationality) : [];
                 const isEU = userClusters.includes('EU Citizen');
 
-                if (!visaData || visaData.length === 0) {
-                    return [];
-                }
+                if (!visaData || visaData.length === 0) return [];
 
                 const allPossibleVisas = visaData.flatMap(country =>
                     country.visas && Array.isArray(country.visas) ? country.visas.map(visa => ({ country, visa })) : []
                 );
 
-                return allPossibleVisas.filter(({ country, visa }) => {
-                    if (selectedNationality) {
-                        if (isEU && EU_COUNTRIES.includes(country.country_name)) return false;
-                        const visaIsEligible = userClusters.includes(visa.eligible_citizens_cluster);
-                        const isOpenToAll = visa.eligible_citizens_cluster === "All Nationalities";
-                        if (!visaIsEligible && !isOpenToAll) return false;
-                    }
+                return allPossibleVisas
+                    .filter(({ country, visa }) => {
+                        if (selectedNationality) {
+                            if (isEU && EU_COUNTRIES.includes(country.country_name)) return false;
+                            const visaIsEligible = userClusters.includes(visa.eligible_citizens_cluster);
+                            const isOpenToAll = visa.eligible_citizens_cluster === "All Nationalities";
+                            if (!visaIsEligible && !isOpenToAll) return false;
+                        }
+                        if (userIncome !== null && visa.income_requirement_usd_month && visa.income_requirement_usd_month > userIncome) return false;
+                        if (visa.visa_cost_usd > maxVisaCost) return false;
+                        if (country.ratings?.tax_friendliness < minTaxAttractiveness) return false;
+                        if (visa.visa_length_months < minVisaLength) return false;
+                        return true;
+                    })
+                    .sort((a, b) => {
+                        const aHasGuide = getGuideDetails(a.country.country_name, a.visa.visa_name).hasGuide;
+                        const bHasGuide = getGuideDetails(b.country.country_name, b.visa.visa_name).hasGuide;
 
-                    if (userIncome !== null && visa.income_requirement_usd_month && visa.income_requirement_usd_month > userIncome) return false;
-                    if (visa.visa_cost_usd > maxVisaCost) return false;
-                    if (country.ratings?.tax_friendliness < minTaxAttractiveness) return false;
-                    if (visa.visa_length_months < minVisaLength) return false;
-                    
-                    return true;
-                });
+                        if (aHasGuide && !bHasGuide) return -1;
+                        if (!aHasGuide && bHasGuide) return 1;
+
+                        const specialOrder = ["Spain", "Portugal", "Bulgaria", "Croatia", "Argentina"];
+                        const aIndex = specialOrder.indexOf(a.country.country_name);
+                        const bIndex = specialOrder.indexOf(b.country.country_name);
+                        
+                        const aSort = aIndex === -1 ? Infinity : aIndex;
+                        const bSort = bIndex === -1 ? Infinity : bIndex;
+                        if (aSort !== bSort) return aSort - bSort;
+
+                        return a.country.country_name.localeCompare(b.country.country_name);
+                    });
             }, [visaData, selectedNationality, selectedIncomeValue, maxVisaCost, minTaxAttractiveness, minVisaLength]);
             
             const handleConsent = () => { localStorage.setItem('ga_consent', 'true'); setShowBanner(false); if (typeof initGoogleAnalytics === 'function') initGoogleAnalytics(); };
