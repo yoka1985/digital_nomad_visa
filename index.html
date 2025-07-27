@@ -48,6 +48,13 @@
         details > summary::-webkit-details-marker { display: none; }
         details summary .plus-minus::before { content: '+'; }
         details[open] summary .plus-minus::before { content: '−'; }
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(10px) translateX(-50%); }
+            to { opacity: 1; transform: translateY(0) translateX(-50%); }
+        }
+        .animate-fade-in-up {
+            animation: fade-in-up 0.3s ease-out forwards;
+        }
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -57,9 +64,9 @@
         // --- DATA & CONTENT ---
         
         const newsItemsData = [
-            { date: 'Coming Late 2025', title: 'Slovenia Plans to Launch New Digital Nomad Visa', content: '<p>Slovenia has announced its intention to launch a dedicated one-year digital nomad visa. Keep an eye on official channels for launch dates and requirements.</p>' },
-            { date: 'July 26, 2025', title: 'Philippines launches new Digital Nomad Visa!', content: '<p>The Philippines has officially launched its much-anticipated digital nomad visa, opening its doors to remote workers seeking to live and work in the tropical archipelago. The new visa is available via an online portal.</p>' },
-            { date: 'July 18, 2025', title: 'Bulgaria launches new Digital Nomad Visa!', content: '<p>Bulgaria has now formalized its pathway for remote workers with a new Type D visa tailored for digital nomads. This move simplifies the process for non-EU nationals to reside in the country while working for foreign employers.</p>' }
+            { date: 'June 23, 2025', title: 'Philippines launches new Digital Nomad Visa!', content: '<p>The Philippines has officially launched its much-anticipated digital nomad visa, opening its doors to remote workers seeking to live and work in the tropical archipelago. The new visa is available via an online portal.</p>' },
+            { date: 'June 18, 2025', title: 'Bulgaria launches new Digital Nomad Visa!', content: '<p>Bulgaria has now formalized its pathway for remote workers with a new Type D visa tailored for digital nomads. This move simplifies the process for non-EU nationals to reside in the country while working for foreign employers.</p>' },
+            { date: 'Coming Late 2025', title: 'Slovenia Plans to Launch New Digital Nomad Visa', content: '<p>Slovenia has announced its intention to launch a dedicated one-year digital nomad visa. Keep an eye on official channels for launch dates and requirements.</p>' }
         ];
 
         const COUNTRY_CODE_MAP = { 'Andorra': 'AD', 'Argentina': 'AR', 'Australia': 'AU', 'Austria': 'AT', 'Brazil': 'BR', 'Bulgaria': 'BG', 'Canada': 'CA', 'Colombia': 'CO', 'Croatia': 'HR', 'Cyprus': 'CY', 'Czech Republic': 'CZ', 'Estonia': 'EE', 'Germany': 'DE', 'Greece': 'GR', 'Hungary': 'HU', 'Iceland': 'IS', 'Indonesia': 'ID', 'Italy': 'IT', 'Japan': 'JP', 'Latvia': 'LV', 'Malaysia': 'MY', 'Malta': 'MT', 'Mauritius': 'MU', 'Mexico': 'MX', 'Montenegro': 'ME', 'Norway': 'NO', 'Panama': 'PA', 'Philippines': 'PH', 'Portugal': 'PT', 'Romania': 'RO', 'South Africa': 'ZA', 'South Korea': 'KR', 'Spain': 'ES', 'Sri Lanka': 'LK', 'Thailand': 'TH', 'UAE (Dubai)': 'AE', 'United Kingdom': 'GB', 'United States': 'US' };
@@ -173,17 +180,8 @@
         function NewsFeed({ newsItems, onReadMore }) {
             return (
                 <div className="max-w-6xl mx-auto mb-8">
-                
-                <div class="text-center my-8">
-                    <a href="./world.html" class="inline-block bg-sky-500 hover:bg-sky-400 text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-sky-500/30">
-                        <span class="text-xl">🗺️ Launch Interactive Visa Map</span>
-                    </a>
-                </div>
-
                     <details className="bg-slate-800/50 rounded-lg overflow-hidden">
-                    
                         <summary className="p-4 cursor-pointer flex justify-between items-center">
-                        
                             <h3 className="text-lg font-semibold text-purple-400">Latest Updates</h3>
                             <span className="plus-minus text-purple-400 text-xl font-semibold"></span>
                         </summary>
@@ -247,7 +245,42 @@
             );
         };
 
+        function GuidePopover({ countryName, isVisible }) {
+            if (!isVisible) return null;
+
+            const reviews = [
+                { quote: "This guide saved me weeks of confusion!", author: "— Alex P." },
+                { quote: "Literally a step-by-step roadmap. Worth every penny.", author: "— Sarah K." },
+                { quote: "Answered questions I didn't even know I had.", author: "— Mike D." }
+            ];
+
+            return (
+                <a href="#" target="_blank" rel="noopener noreferrer" className="absolute bottom-full left-1/2 mb-2 w-72 bg-slate-900 border border-purple-500 rounded-lg shadow-2xl p-4 z-30 transition-opacity duration-200 animate-fade-in-up">
+                    <div className="text-white">
+                        <h4 className="font-bold text-lg text-purple-400">Is {countryName} Right for You?</h4>
+                        <div className="flex items-center my-2">
+                            <span className="text-yellow-400">★★★★★</span>
+                            <span className="text-xs text-slate-400 ml-2">(6 ratings)</span>
+                        </div>
+                        <ul className="text-sm text-slate-300 space-y-1 list-disc list-inside my-3">
+                            <li>1000+ Real Experiences Analyzed</li>
+                            <li>Complex Requirements Simplified</li>
+                        </ul>
+                        <div className="border-t border-slate-700 pt-2 mt-2">
+                            {reviews.map((review, index) => (
+                                <p key={index} className="text-xs italic text-slate-400 mt-1">"{review.quote}" <span className="font-bold">{review.author}</span></p>
+                            ))}
+                        </div>
+                        <div className="mt-3 text-center bg-green-500/10 border border-green-500/50 rounded p-2">
+                            <p className="text-sm font-bold text-green-400">Special Introductory Price!</p>
+                        </div>
+                    </div>
+                </a>
+            );
+        }
+
         function VisaCard({ country, visa, onViewDetails }) {
+            const [isHovering, setIsHovering] = React.useState(false);
             if (!visa) return null;
             const { description, color } = getScoreAttributes(country.ratings?.bureaucracy_level, 'bureaucracy_level');
             return (
@@ -265,7 +298,13 @@
                             </p>
                         </div>
                     </div>
-                    <div className="mt-auto pt-4 border-t border-slate-700/50">
+                    <div className="mt-auto pt-4 border-t border-slate-700/50 flex items-center gap-2">
+                        <div className="relative" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+                            <div className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-3 rounded-lg cursor-pointer transition">
+                                📚
+                            </div>
+                            <GuidePopover countryName={country.country_name} isVisible={isHovering} />
+                        </div>
                         <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition" onClick={() => onViewDetails({ ...country, visas: [visa] })}>
                             View Full Details
                         </button>
@@ -273,6 +312,7 @@
                 </div>
             );
         };
+
 
         const DetailSection = ({ title, data }) => {
             if (!data || Object.keys(data).length === 0) return null;
@@ -331,11 +371,6 @@
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="space-y-4">
                                 <DetailSection title="🔑 Key Information" data={{ "Duration": `${visa.visa_length_months} months`, "Cost (est.)": visa.visa_cost_usd ? `$${visa.visa_cost_usd}`: 'N/A', "Minimum Income": visa.income_requirement_usd_month ? `$${visa.income_requirement_usd_month.toLocaleString()}/month`: 'Not specified', "Eligible Nationalities": visa.eligible_citizens_cluster }} />
-                                <div>
-                                    <a href="#" target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-sky-600 hover:bg-sky-700 text-white font-bold py-3 px-4 rounded-lg transition-all transform hover:scale-105 shadow-lg">
-                                        📚 View Step-by-Step Application Guide
-                                    </a>
-                                </div>
                                 {visa.remarks && <DetailSection title="📝 Remarks" data={{ "Note": visa.remarks }} />}
                             </div>
                             <div className="space-y-4">
@@ -428,8 +463,23 @@
             
             return (
                 <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-gray-100 font-sans p-4 sm:p-6 md:p-8">
-                    <header className="text-center mb-4 max-w-3xl mx-auto"> <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Visa Match & Clarity Engine</h1> <p className="text-slate-400 mt-2">Instantly find your digital nomad visa options worldwide.</p> </header>
-                    <div className="flex justify-center items-center flex-wrap gap-4 my-8"> <button onClick={() => setLegalModalContent(legalContent.about)} className="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">💡 About This Project</button> <button onClick={() => setLegalModalContent(legalContent.fieldsExplanation)} className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">📖 Field Guide</button> <button onClick={() => setLegalModalContent(legalContent.howToUse)} className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">⚙️ How to Use</button> </div>
+                    <header className="text-center mb-4 max-w-3xl mx-auto">
+                        <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Visa Match & Clarity Engine</h1>
+                        <p className="text-slate-400 mt-2">Instantly find your digital nomad visa options worldwide.</p>
+                    </header>
+                    
+                    <div className="text-center my-8">
+                        <a href="./world.html" className="inline-block bg-sky-500 hover:bg-sky-400 text-white font-bold py-4 px-8 rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-sky-500/30">
+                            <span className="text-xl">🗺️ View All Visas on an Interactive Map</span>
+                        </a>
+                    </div>
+                    
+                    <div className="flex justify-center items-center flex-wrap gap-4 mb-8">
+                        <button onClick={() => setLegalModalContent(legalContent.about)} className="inline-block bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">💡 About This Project</button>
+                        <button onClick={() => setLegalModalContent(legalContent.fieldsExplanation)} className="inline-block bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">📖 Field Guide</button>
+                        <button onClick={() => setLegalModalContent(legalContent.howToUse)} className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">⚙️ How to Use</button>
+                    </div>
+
                     <div className="bg-slate-800 shadow-2xl rounded-xl p-6 mb-8 max-w-6xl mx-auto"> <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"> <div className="space-y-6"> <NationalitySelector selectedNationality={selectedNationality} onSelectNationality={setSelectedNationality} /> <div> <label className="block text-sm font-medium text-slate-300 mb-2">💰 Est. Monthly Income (USD)</label> <div className="flex flex-wrap gap-2"> {incomeLevels.map(level => ( <button key={level.value} onClick={() => setSelectedIncomeValue(level.value)} className={`px-3 py-2 text-sm rounded-md transition-all ${selectedIncomeValue === level.value ? 'bg-purple-600 text-white shadow-lg ring-2 ring-purple-400' : 'bg-slate-700 hover:bg-slate-600 text-slate-300'}`}>{level.label}</button>))}</div> </div> </div> <div className="space-y-6 bg-slate-900/50 p-4 rounded-lg"> <h3 className="text-lg font-semibold text-purple-400">Advanced Filters</h3> <div className="space-y-4"> <div className="text-sm"> <label className="flex justify-between font-medium text-slate-300 mb-1"><span>💸 Max Visa Cost</span><span>${maxVisaCost}</span></label> <input type="range" min="0" max="4000" step="50" value={maxVisaCost} onChange={e => setMaxVisaCost(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/> </div> <div className="text-sm"> <label className="flex justify-between font-medium text-slate-300 mb-1"><span>👍 Min Tax Attractiveness</span><span>{minTaxAttractiveness}/5</span></label> <input type="range" min="1" max="5" step="1" value={minTaxAttractiveness} onChange={e => setMinTaxAttractiveness(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/> </div> <div className="text-sm"> <label className="flex justify-between font-medium text-slate-300 mb-1"><span>⏳ Min Visa Length</span><span>{minVisaLength} months</span></label> <input type="range" min="1" max="60" step="1" value={minVisaLength} onChange={e => setMinVisaLength(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/> </div> </div> </div> </div> </div>
                     <NewsFeed newsItems={newsItemsData} onReadMore={setNewsModalContent} />
                     <main className="mt-8 max-w-7xl mx-auto"> {isLoading ? ( <p className="text-center text-slate-400 text-lg">Loading Visa Data...</p> ) : error ? ( <div className="text-center text-red-400 bg-red-900/50 p-4 rounded-lg">{error}</div> ) : ( <> <div className="mb-6 text-center"> <h2 className="text-2xl font-bold text-slate-300"> Showing <span className="text-purple-400">{filteredVisas.length}</span> Matching Visa Options </h2> {visaData.length > 0 && filteredVisas.length === 0 && <p className="text-slate-400 mt-2">No visas match your current criteria. Try adjusting filters.</p>} </div> <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {filteredVisas.map(({ country, visa }, index) => ( <VisaCard key={`${country.country_name}-${visa.visa_name || index}`} country={country} visa={visa} onViewDetails={setModalContent} /> ))} </div> </> )} </main>
