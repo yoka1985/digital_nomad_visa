@@ -129,6 +129,52 @@
         .popup .icon { margin-right: 0.75rem; font-size: 1.1rem; }
         path { stroke: #0f172a; stroke-width: 0.5; cursor: pointer; }
         path:hover { fill-opacity: 0.7; }
+        .preview-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            backdrop-filter: blur(4px);
+        }
+        .preview-container {
+            position: relative;
+            background: #1e293b;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4);
+            max-width: 90vw;
+            max-height: 90vh;
+            overflow: auto;
+            text-align: center;
+        }
+        .preview-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #38bdf8;
+            margin-bottom: 1rem;
+        }
+        .preview-url {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            word-break: break-all;
+            margin-top: 1rem;
+        }
+        .close-preview {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: none;
+            border: none;
+            color: #e2e8f0;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -142,12 +188,13 @@
             <label for="filterSelect">View by:</label>
             <select id="filterSelect"></select>
         </div>
-        <button class="share-button" onclick="generateShareUrl()">Share on Social Media</button>
+        <button class="share-button" onclick="generateSharePreview()">Share on Social Media</button>
     </div>
     <div id="map"></div>
     <div class="legend" id="legendContainer"></div>
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
         const POPULAR_COUNTRIES = ['USA', 'United Kingdom', 'Canada', 'Germany', 'Australia', 'France', 'India', 'Brazil', 'China', 'Russia', 'Spain', 'Italy', 'Netherlands', 'Sweden', 'Switzerland', 'Ireland', 'Israel', 'South Africa', 'Argentina', 'Mexico'];
         const ALL_NATIONALITIES = [ "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo, Democratic Republic of the", "Congo, Republic of the", "Costa Rica", "Cote d'Ivoire", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "USA", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe" ];
@@ -199,8 +246,7 @@
                 filter: filter,
                 transform: transform
             });
-            const shareUrl = `${window.location.origin}${window.location.pathname}?${params.toString()}`;
-            prompt("Copy this URL to share the current map state:", shareUrl);
+            return `${window.location.origin}${window.location.pathname}?${params.toString()}`;
         }
 
         function updateUrlParams(transform) {
@@ -232,6 +278,105 @@
                 const [scale, translateX, translateY] = transform.match(/scale\(([^)]+)\) translate\(([^,]+), ([^)]+)\)/).slice(1);
                 svg.call(zoom.transform, d3.zoomIdentity.translate(+translateX, +translateY).scale(+scale));
             }
+        }
+
+        function generateSharePreview() {
+            const shareUrl = generateShareUrl();
+            const mapElement = document.getElementById('map');
+            const controlsElement = document.querySelector('.controls');
+            const legendElement = document.querySelector('.legend');
+
+            // Create a temporary container for the preview
+            const tempContainer = document.createElement('div');
+            tempContainer.style.position = 'absolute';
+            tempContainer.style.top = '-9999px';
+            tempContainer.style.left = '-9999px';
+            tempContainer.style.width = `${window.innerWidth}px`;
+            tempContainer.style.height = `${window.innerHeight}px`;
+            tempContainer.style.background = '#0f172a';
+            document.body.appendChild(tempContainer);
+
+            // Clone map, controls, and legend
+            const clonedMap = mapElement.cloneNode(true);
+            const clonedControls = controlsElement.cloneNode(true);
+            const clonedLegend = legendElement.cloneNode(true);
+            tempContainer.appendChild(clonedMap);
+            tempContainer.appendChild(clonedControls);
+            tempContainer.appendChild(clonedLegend);
+
+            // Adjust styles for cloned elements
+            clonedControls.style.position = 'absolute';
+            clonedControls.style.top = '1rem';
+            clonedControls.style.left = '1rem';
+            clonedLegend.style.position = 'absolute';
+            clonedLegend.style.bottom = '1rem';
+            clonedLegend.style.right = '1rem';
+
+            // Add title and URL text
+            const textContainer = document.createElement('div');
+            textContainer.style.position = 'absolute';
+            textContainer.style.bottom = '3rem';
+            textContainer.style.left = '50%';
+            textContainer.style.transform = 'translateX(-50%)';
+            textContainer.style.textAlign = 'center';
+            textContainer.style.color = '#e2e8f0';
+            textContainer.style.fontFamily = 'Inter, sans-serif';
+            textContainer.innerHTML = `
+                <div style="font-size: 1.5rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem;">
+                    Digital Nomad Visa Explorer
+                </div>
+                <div style="font-size: 0.9rem; word-break: break-all;">
+                    ${shareUrl}
+                </div>
+            `;
+            tempContainer.appendChild(textContainer);
+
+            // Capture the preview
+            html2canvas(tempContainer, {
+                backgroundColor: '#0f172a',
+                width: window.innerWidth,
+                height: window.innerHeight
+            }).then(canvas => {
+                // Create preview overlay
+                const overlay = d3.select('body').append('div').attr('class', 'preview-overlay');
+                const previewContainer = overlay.append('div').attr('class', 'preview-container');
+                
+                // Add title
+                previewContainer.append('div')
+                    .attr('class', 'preview-title')
+                    .text('Share this Map View');
+
+                // Add preview image
+                previewContainer.node().appendChild(canvas);
+
+                // Add URL text
+                previewContainer.append('div')
+                    .attr('class', 'preview-url')
+                    .text(shareUrl);
+
+                // Add close button
+                previewContainer.append('button')
+                    .attr('class', 'close-preview')
+                    .text('×')
+                    .on('click', () => overlay.remove());
+
+                // Add copy URL button
+                previewContainer.append('button')
+                    .attr('class', 'share-button')
+                    .style('margin-top', '1rem')
+                    .text('Copy URL')
+                    .on('click', () => {
+                        navigator.clipboard.writeText(shareUrl);
+                        alert('URL copied to clipboard!');
+                    });
+
+                // Clean up
+                document.body.removeChild(tempContainer);
+            }).catch(error => {
+                console.error('Error generating preview:', error);
+                document.body.removeChild(tempContainer);
+                alert('Failed to generate preview. Please try again.');
+            });
         }
 
         Promise.all([
