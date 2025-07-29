@@ -69,15 +69,26 @@
             font-weight: 500;
             border-radius: 8px;
             border: 1px solid #38bdf8;
-            background: #1e293b;
+            background: linear-gradient(135deg, #1e293b, #2563eb);
             color: #e2e8f0;
             cursor: pointer;
             text-align: center;
-            transition: background 0.2s;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         .share-button:hover {
-            background: #38bdf8;
+            background: linear-gradient(135deg, #38bdf8, #06b6d4);
             color: #0f172a;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(56, 189, 248, 0.4);
+        }
+        .share-button:active {
+            transform: translateY(0);
+        }
+        .share-button.loading {
+            opacity: 0.7;
+            cursor: not-allowed;
         }
         .legend { 
             position: absolute; 
@@ -129,51 +140,148 @@
         .popup .icon { margin-right: 0.75rem; font-size: 1.1rem; }
         path { stroke: #0f172a; stroke-width: 0.5; cursor: pointer; }
         path:hover { fill-opacity: 0.7; }
-        .preview-overlay {
+        .share-modal {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.8);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 2000;
-            backdrop-filter: blur(4px);
+            backdrop-filter: blur(6px);
         }
-        .preview-container {
-            position: relative;
+        .share-modal-content {
             background: #1e293b;
-            padding: 1.5rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.4);
+            border-radius: 15px;
+            padding: 2rem;
             max-width: 90vw;
             max-height: 90vh;
-            overflow: auto;
-            text-align: center;
+            overflow-y: auto;
+            position: relative;
+            border: 2px solid #38bdf8;
+            box-shadow: 0 20px 60px rgba(56, 189, 248, 0.3);
         }
-        .preview-title {
+        .share-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .share-modal-title {
             font-size: 1.5rem;
             font-weight: 700;
             color: #38bdf8;
-            margin-bottom: 1rem;
+            margin: 0;
         }
-        .preview-url {
-            font-size: 0.9rem;
-            color: #e2e8f0;
-            word-break: break-all;
-            margin-top: 1rem;
-        }
-        .close-preview {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
+        .close-modal {
             background: none;
             border: none;
             color: #e2e8f0;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+        .close-modal:hover {
+            background: rgba(248, 113, 113, 0.2);
+            color: #f87171;
+        }
+        .share-preview {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .share-preview canvas {
+            max-width: 100%;
+            border-radius: 10px;
+            border: 1px solid #38bdf8;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+        .share-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .share-option {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, #334155, #475569);
+            border: 1px solid #64748b;
+            border-radius: 10px;
+            color: #e2e8f0;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .share-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            border-color: #38bdf8;
+        }
+        .share-option.twitter:hover { background: linear-gradient(135deg, #1da1f2, #0d8bd9); }
+        .share-option.facebook:hover { background: linear-gradient(135deg, #1877f2, #166fe5); }
+        .share-option.linkedin:hover { background: linear-gradient(135deg, #0077b5, #005885); }
+        .share-option.reddit:hover { background: linear-gradient(135deg, #ff4500, #e03d00); }
+        .share-option.whatsapp:hover { background: linear-gradient(135deg, #25d366, #1da851); }
+        .share-option.telegram:hover { background: linear-gradient(135deg, #0088cc, #006699); }
+        
+        .share-icon {
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+        }
+        .share-text {
+            font-weight: 500;
+        }
+        .download-section {
+            border-top: 1px solid #38bdf8;
+            padding-top: 1.5rem;
+            text-align: center;
+        }
+        .download-button {
+            background: linear-gradient(135deg, #059669, #047857);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0 0.5rem;
+        }
+        .download-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
+        }
+        .share-url {
+            background: #334155;
+            border: 1px solid #64748b;
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-top: 1rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+            color: #e2e8f0;
+        }
+        .copy-url-button {
+            background: #374151;
+            color: #e2e8f0;
+            border: 1px solid #64748b;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            transition: all 0.2s;
+        }
+        .copy-url-button:hover {
+            background: #38bdf8;
+            color: #0f172a;
         }
     </style>
 </head>
@@ -188,7 +296,9 @@
             <label for="filterSelect">View by:</label>
             <select id="filterSelect"></select>
         </div>
-        <button class="share-button" onclick="generateSharePreview()">Share on Social Media</button>
+        <button class="share-button" onclick="openShareModal()">
+            📱 Share on Social Media
+        </button>
     </div>
     <div id="map"></div>
     <div class="legend" id="legendContainer"></div>
@@ -280,103 +390,237 @@
             }
         }
 
-        function generateSharePreview() {
-            const shareUrl = generateShareUrl();
-            const mapElement = document.getElementById('map');
-            const controlsElement = document.querySelector('.controls');
-            const legendElement = document.querySelector('.legend');
+        function generateMapScreenshot() {
+            return new Promise((resolve, reject) => {
+                const shareButton = document.querySelector('.share-button');
+                shareButton.classList.add('loading');
+                shareButton.textContent = '📸 Generating...';
 
-            // Create a temporary container for the preview
-            const tempContainer = document.createElement('div');
-            tempContainer.style.position = 'absolute';
-            tempContainer.style.top = '-9999px';
-            tempContainer.style.left = '-9999px';
-            tempContainer.style.width = `${window.innerWidth}px`;
-            tempContainer.style.height = `${window.innerHeight}px`;
-            tempContainer.style.background = '#0f172a';
-            document.body.appendChild(tempContainer);
+                // Create temporary container for screenshot
+                const tempContainer = document.createElement('div');
+                tempContainer.style.position = 'absolute';
+                tempContainer.style.top = '-9999px';
+                tempContainer.style.left = '-9999px';
+                tempContainer.style.width = '1200px';
+                tempContainer.style.height = '800px';
+                tempContainer.style.background = '#0f172a';
+                document.body.appendChild(tempContainer);
 
-            // Clone map, controls, and legend
-            const clonedMap = mapElement.cloneNode(true);
-            const clonedControls = controlsElement.cloneNode(true);
-            const clonedLegend = legendElement.cloneNode(true);
-            tempContainer.appendChild(clonedMap);
-            tempContainer.appendChild(clonedControls);
-            tempContainer.appendChild(clonedLegend);
+                // Clone and style elements
+                const mapClone = document.getElementById('map').cloneNode(true);
+                const controlsClone = document.querySelector('.controls').cloneNode(true);
+                const legendClone = document.querySelector('.legend').cloneNode(true);
 
-            // Adjust styles for cloned elements
-            clonedControls.style.position = 'absolute';
-            clonedControls.style.top = '1rem';
-            clonedControls.style.left = '1rem';
-            clonedLegend.style.position = 'absolute';
-            clonedLegend.style.bottom = '1rem';
-            clonedLegend.style.right = '1rem';
+                // Set up cloned elements
+                mapClone.style.width = '1200px';
+                mapClone.style.height = '800px';
+                controlsClone.style.position = 'absolute';
+                controlsClone.style.top = '20px';
+                controlsClone.style.left = '20px';
+                legendClone.style.position = 'absolute';
+                legendClone.style.bottom = '20px';
+                legendClone.style.right = '20px';
 
-            // Add title and URL text
-            const textContainer = document.createElement('div');
-            textContainer.style.position = 'absolute';
-            textContainer.style.bottom = '3rem';
-            textContainer.style.left = '50%';
-            textContainer.style.transform = 'translateX(-50%)';
-            textContainer.style.textAlign = 'center';
-            textContainer.style.color = '#e2e8f0';
-            textContainer.style.fontFamily = 'Inter, sans-serif';
-            textContainer.innerHTML = `
-                <div style="font-size: 1.5rem; font-weight: 700; color: #38bdf8; margin-bottom: 0.5rem;">
-                    Digital Nomad Visa Explorer
-                </div>
-                <div style="font-size: 0.9rem; word-break: break-all;">
-                    ${shareUrl}
-                </div>
-            `;
-            tempContainer.appendChild(textContainer);
+                tempContainer.appendChild(mapClone);
+                tempContainer.appendChild(controlsClone);
+                tempContainer.appendChild(legendClone);
 
-            // Capture the preview
-            html2canvas(tempContainer, {
-                backgroundColor: '#0f172a',
-                width: window.innerWidth,
-                height: window.innerHeight
-            }).then(canvas => {
-                // Create preview overlay
-                const overlay = d3.select('body').append('div').attr('class', 'preview-overlay');
-                const previewContainer = overlay.append('div').attr('class', 'preview-container');
-                
-                // Add title
-                previewContainer.append('div')
-                    .attr('class', 'preview-title')
-                    .text('Share this Map View');
+                // Add branding
+                const brandingDiv = document.createElement('div');
+                brandingDiv.style.position = 'absolute';
+                brandingDiv.style.bottom = '20px';
+                brandingDiv.style.left = '50%';
+                brandingDiv.style.transform = 'translateX(-50%)';
+                brandingDiv.style.textAlign = 'center';
+                brandingDiv.style.color = '#e2e8f0';
+                brandingDiv.style.fontFamily = 'Inter, sans-serif';
+                brandingDiv.innerHTML = `
+                    <div style="font-size: 14px; opacity: 0.8;">
+                        Created with Digital Nomad Visa Explorer
+                    </div>
+                `;
+                tempContainer.appendChild(brandingDiv);
 
-                // Add preview image
-                previewContainer.node().appendChild(canvas);
-
-                // Add URL text
-                previewContainer.append('div')
-                    .attr('class', 'preview-url')
-                    .text(shareUrl);
-
-                // Add close button
-                previewContainer.append('button')
-                    .attr('class', 'close-preview')
-                    .text('×')
-                    .on('click', () => overlay.remove());
-
-                // Add copy URL button
-                previewContainer.append('button')
-                    .attr('class', 'share-button')
-                    .style('margin-top', '1rem')
-                    .text('Copy URL')
-                    .on('click', () => {
-                        navigator.clipboard.writeText(shareUrl);
-                        alert('URL copied to clipboard!');
-                    });
-
-                // Clean up
-                document.body.removeChild(tempContainer);
-            }).catch(error => {
-                console.error('Error generating preview:', error);
-                document.body.removeChild(tempContainer);
-                alert('Failed to generate preview. Please try again.');
+                // Capture screenshot
+                html2canvas(tempContainer, {
+                    backgroundColor: '#0f172a',
+                    width: 1200,
+                    height: 800,
+                    scale: 1
+                }).then(canvas => {
+                    document.body.removeChild(tempContainer);
+                    shareButton.classList.remove('loading');
+                    shareButton.textContent = '📱 Share on Social Media';
+                    resolve(canvas);
+                }).catch(error => {
+                    document.body.removeChild(tempContainer);
+                    shareButton.classList.remove('loading');
+                    shareButton.textContent = '📱 Share on Social Media';
+                    reject(error);
+                });
             });
+        }
+
+        function openShareModal() {
+            generateMapScreenshot().then(canvas => {
+                const shareUrl = generateShareUrl();
+                const nationality = document.getElementById('nationalitySelect').value;
+                const filterText = FILTERS.find(f => f.path === document.getElementById('filterSelect').value).text;
+                
+                const shareText = `Check out digital nomad visa options for ${nationality} citizens! 🌍✈️ Interactive map showing ${filterText.toLowerCase()} across different countries.`;
+                
+                // Create modal
+                const modal = document.createElement('div');
+                modal.className = 'share-modal';
+                modal.innerHTML = `
+                    <div class="share-modal-content">
+                        <div class="share-modal-header">
+                            <h2 class="share-modal-title">Share Your Map View</h2>
+                            <button class="close-modal" onclick="this.closest('.share-modal').remove()">×</button>
+                        </div>
+                        
+                        <div class="share-preview">
+                            <canvas id="shareCanvas"></canvas>
+                        </div>
+                        
+                        <div class="share-options">
+                            <a href="#" class="share-option twitter" onclick="shareToTwitter('${encodeURIComponent(shareText)}', '${shareUrl}')">
+                                <span class="share-icon">🐦</span>
+                                <span class="share-text">Share on Twitter</span>
+                            </a>
+                            <a href="#" class="share-option facebook" onclick="shareToFacebook('${shareUrl}')">
+                                <span class="share-icon">📘</span>
+                                <span class="share-text">Share on Facebook</span>
+                            </a>
+                            <a href="#" class="share-option linkedin" onclick="shareToLinkedIn('${shareUrl}', '${encodeURIComponent(shareText)}')">
+                                <span class="share-icon">💼</span>
+                                <span class="share-text">Share on LinkedIn</span>
+                            </a>
+                            <a href="#" class="share-option reddit" onclick="shareToReddit('${shareUrl}', '${encodeURIComponent(shareText)}')">
+                                <span class="share-icon">🤖</span>
+                                <span class="share-text">Share on Reddit</span>
+                            </a>
+                            <a href="#" class="share-option whatsapp" onclick="shareToWhatsApp('${encodeURIComponent(shareText + ' ' + shareUrl)}')">
+                                <span class="share-icon">💬</span>
+                                <span class="share-text">Share on WhatsApp</span>
+                            </a>
+                            <a href="#" class="share-option telegram" onclick="shareToTelegram('${encodeURIComponent(shareText)}', '${shareUrl}')">
+                                <span class="share-icon">✈️</span>
+                                <span class="share-text">Share on Telegram</span>
+                            </a>
+                        </div>
+                        
+                        <div class="download-section">
+                            <button class="download-button" onclick="downloadImage()">
+                                📁 Download Image
+                            </button>
+                            <button class="download-button copy-url-button" onclick="copyShareUrl('${shareUrl}')">
+                                🔗 Copy Link
+                            </button>
+                            <div class="share-url">${shareUrl}</div>
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(modal);
+                
+                // Add the canvas to the modal
+                const shareCanvas = document.getElementById('shareCanvas');
+                shareCanvas.width = canvas.width;
+                shareCanvas.height = canvas.height;
+                const ctx = shareCanvas.getContext('2d');
+                ctx.drawImage(canvas, 0, 0);
+                
+                // Store canvas globally for download
+                window.currentShareCanvas = canvas;
+                
+                // Close modal when clicking outside
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.remove();
+                    }
+                });
+            }).catch(error => {
+                console.error('Failed to generate screenshot:', error);
+                alert('Failed to generate map preview. Please try again.');
+            });
+        }
+
+        // Social media sharing functions
+        function shareToTwitter(text, url) {
+            const twitterUrl = `https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(url)}`;
+            window.open(twitterUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareToFacebook(url) {
+            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+            window.open(facebookUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareToLinkedIn(url, text) {
+            const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}&summary=${text}`;
+            window.open(linkedinUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareToReddit(url, text) {
+            const redditUrl = `https://reddit.com/submit?url=${encodeURIComponent(url)}&title=${text}`;
+            window.open(redditUrl, '_blank', 'width=600,height=400');
+        }
+
+        function shareToWhatsApp(text) {
+            const whatsappUrl = `https://wa.me/?text=${text}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function shareToTelegram(text, url) {
+            const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${text}`;
+            window.open(telegramUrl, '_blank');
+        }
+
+        function downloadImage() {
+            if (window.currentShareCanvas) {
+                const link = document.createElement('a');
+                link.download = `nomad-visa-map-${Date.now()}.png`;
+                link.href = window.currentShareCanvas.toDataURL();
+                link.click();
+            }
+        }
+
+        function copyShareUrl(url) {
+            navigator.clipboard.writeText(url).then(() => {
+                const button = event.target;
+                const originalText = button.textContent;
+                button.textContent = '✅ Copied!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = url;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('URL copied to clipboard!');
+            });
+        }
+
+        // Native sharing API support
+        function tryNativeShare() {
+            if (navigator.share) {
+                const shareUrl = generateShareUrl();
+                const nationality = document.getElementById('nationalitySelect').value;
+                const filterText = FILTERS.find(f => f.path === document.getElementById('filterSelect').value).text;
+                
+                navigator.share({
+                    title: 'Digital Nomad Visa Explorer',
+                    text: `Check out digital nomad visa options for ${nationality} citizens! Interactive map showing ${filterText.toLowerCase()}.`,
+                    url: shareUrl
+                }).catch(console.error);
+                return true;
+            }
+            return false;
         }
 
         Promise.all([
@@ -438,7 +682,7 @@
                 }
                 const overlay = d3.select('body').append('div').attr('class', 'popup-overlay');
                 const popup = overlay.append('div').attr('class', 'popup');
-                popup.html(`<div class="header">${country.country_name}</div><p style="margin-bottom: 0.8rem;"><strong>Visa:</strong> ${visa.visa_name}</p><div class="row"><span class="icon">📅</span>Duration: ${visa.visa_length_months || 'N/A'} months</div><div class="row"><span class="icon">💰</span>Min Income: ${visa.income_requirement_usd_month ? `$${visa.income_requirement_usd_month.toLocaleString()}` : 'N/A'}</div><div class="row"><span class="icon">🛂</span>For ${currentNationality}: ${eligibilityText}</div><p style="font-size: 0.8rem; color: #94a3b8; margin-top: 1rem;">${visa.remarks || ''}</p>`);
+                popup.html(`<div class="header">${country.country_name}</div><p style="margin-bottom: 0.8rem;"><strong>Visa:</strong> ${visa.visa_name}</p><div class="row"><span class="icon">📅</span>Duration: ${visa.visa_length_months || 'N/A'} months</div><div class="row"><span class="icon">💰</span>Min Income: ${visa.income_requirement_usd_month ? `${visa.income_requirement_usd_month.toLocaleString()}` : 'N/A'}</div><div class="row"><span class="icon">🛂</span>For ${currentNationality}: ${eligibilityText}</div><p style="font-size: 0.8rem; color: #94a3b8; margin-top: 1rem;">${visa.remarks || ''}</p>`);
                 overlay.on('click', function() { d3.select(this).remove(); });
                 popup.on('click', (e) => e.stopPropagation());
                 updateUrlParams(g.attr('transform'));
