@@ -1,16 +1,41 @@
-Below is the complete HTML code with the requested modification to integrate the link `https://nomadvisahelp.gumroad.com/l/portugal_D8` as the `href` for the guide button of Portugal's D8 (Digital Nomad Visa) in the `GuidePopover` component. The change is isolated to the `GuidePopover` function, as specified, with no other alterations to the original code.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Digital Nomad Visa Matcher | Compare Visas & Requirements 2025</title>
-    <meta name="description" content="Instantly compare Digital Nomad Visas from around the world. Filter by income requirements, cost, tax friendliness, and other key metrics to find your perfect match. Updated for 2025." />
+    <title>Digital Nomad Visa Matcher 2025 | Compare Requirements & Find Your Perfect Match</title>
+    <meta name="description" content="Find the perfect digital nomad visa for 2025. Compare 40+ countries, filter by income, tax benefits, and bureaucracy levels. Updated daily with latest requirements." />
+    <meta name="keywords" content="digital nomad visa, remote work visa, digital nomad countries 2025, work abroad, nomad visa requirements, Portugal D7 visa, Spain digital nomad visa" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nomadvisa.help/" />
+    <meta property="og:title" content="Digital Nomad Visa Matcher 2025 | Find Your Perfect Visa" />
+    <meta property="og:description" content="Compare 40+ digital nomad visas worldwide. Filter by income, tax benefits, and bureaucracy levels to find your perfect match." />
+    <meta property="og:image" content="https://nomadvisa.help/images/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://nomadvisa.help/" />
+    <meta property="twitter:title" content="Digital Nomad Visa Matcher 2025" />
+    <meta property="twitter:description" content="Find your perfect digital nomad visa from 40+ countries. Updated for 2025." />
+    <meta property="twitter:image" content="https://nomadvisa.help/images/og-image.jpg" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://nomadvisa.help/" />
+    
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="Global" />
+    <meta name="geo.placename" content="Worldwide" />
+    <meta name="ICBM" content="0,0" />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdn.tailwindcss.com" as="script" />
+    <link rel="preload" href="./data/data.json" as="fetch" crossorigin />
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6N573S8D8S"></script>
@@ -29,6 +54,28 @@ Below is the complete HTML code with the requested modification to integrate the
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Digital Nomad Visa Matcher",
+      "description": "Find and compare digital nomad visas from 40+ countries worldwide",
+      "url": "https://nomadvisa.help",
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Yonatan",
+        "description": "Digital nomad and tech professional"
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [{
         "@type": "Question",
@@ -36,8 +83,12 @@ Below is the complete HTML code with the requested modification to integrate the
         "acceptedAnswer": { "@type": "Answer", "text": "A digital nomad visa is a residence permit that allows remote workers to legally live and work in a foreign country for an extended period (usually one year or more). Unlike tourist visas, they officially sanction remote work for foreign employers." }
       },{
         "@type": "Question",
-        "name": "Why do I need a special visa to work remotely?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Working while on a standard tourist visa is often illegal and can lead to penalties, including fines or being banned from a country. A digital nomad visa provides legal authorization, clarifies your tax situation, and often gives you access to services like banking and healthcare." }
+        "name": "Which countries offer digital nomad visas in 2025?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Over 40 countries now offer digital nomad visas including Portugal, Spain, Estonia, Croatia, Barbados, Dubai UAE, Mexico, and many more. Each has different requirements for income, nationality eligibility, and application processes." }
+      },{
+        "@type": "Question", 
+        "name": "What are the income requirements for digital nomad visas?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Income requirements vary widely from $2,000/month (some countries) to $5,000+/month (premium destinations). Use our visa matcher tool to filter by your specific income level." }
       }]
     }
     </script>
@@ -58,8 +109,19 @@ Below is the complete HTML code with the requested modification to integrate the
         .animate-fade-in-up {
             animation: fade-in-up 0.3s ease-out forwards;
         }
+        .newsletter-popup {
+            animation: slideInUp 0.5s ease-out;
+        }
+        @keyframes slideInUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
     </style>
 </head>
+
+
+
+
 <body oncontextmenu="return false;">
     <div id="root"></div>
 
@@ -75,8 +137,8 @@ Below is the complete HTML code with the requested modification to integrate the
         const COUNTRY_CODE_MAP = { 'Andorra': 'AD', 'Argentina': 'AR', 'Australia': 'AU', 'Austria': 'AT', 'Brazil': 'BR', 'Bulgaria': 'BG', 'Canada': 'CA', 'Colombia': 'CO', 'Croatia': 'HR', 'Cyprus': 'CY', 'Czech Republic': 'CZ', 'Estonia': 'EE', 'Germany': 'DE', 'Georgia': 'GE', 'Greece': 'GR', 'Hungary': 'HU', 'Iceland': 'IS', 'Indonesia': 'ID', 'Italy': 'IT', 'Japan': 'JP', 'Latvia': 'LV', 'Malaysia': 'MY', 'Malta': 'MT', 'Mauritius': 'MU', 'Mexico': 'MX', 'Montenegro': 'ME', 'Norway': 'NO', 'Panama': 'PA', 'Philippines': 'PH', 'Portugal': 'PT', 'Romania': 'RO', 'South Africa': 'ZA', 'South Korea': 'KR', 'Spain': 'ES', 'Sri Lanka': 'LK', 'Thailand': 'TH', 'UAE (Dubai)': 'AE', 'United Kingdom': 'GB', 'United States': 'US' };
         
         const legalContentTemplate = (dataLegend) => ({
-            terms: { title: 'Terms of Use', content: `<p>Welcome to our Digital Nomad Visa Matcher. By using this site, you agree to these terms. The information provided is for general informational purposes only and does not constitute legal advice. We strive to keep the information up-to-date, but we make no representations or warranties of any kind about the completeness, accuracy, or reliability of the information. Any reliance you place on such information is therefore strictly at your own risk. For any questions, please contact us at contact@digitalnomadvisa.help.</p>` },
-            privacy: { title: 'Privacy Policy', content: `<p>This Privacy Policy describes how we handle your information. We use Google Analytics to collect anonymous data about website traffic to improve the user experience. This data is aggregated and does not personally identify you. We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties. If you accept our cookie policy, you consent to our use of analytics. For any concerns, please contact us at contact@digitalnomadvisa.help.</p>` },
+            terms: { title: 'Terms of Use', content: `<p>Welcome to our Digital Nomad Visa Matcher. By using this site, you agree to these terms. The information provided is for general informational purposes only and does not constitute legal advice. We strive to keep the information up-to-date, but we make no representations or warranties of any kind about the completeness, accuracy, or reliability of the information. Any reliance you place on such information is therefore strictly at your own risk. For any questions, please contact us at contact@nomadvisa.help.</p>` },
+            privacy: { title: 'Privacy Policy', content: `<p>This Privacy Policy describes how we handle your information. We use Google Analytics to collect anonymous data about website traffic to improve the user experience. This data is aggregated and does not personally identify you. We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties. If you accept our cookie policy, you consent to our use of analytics. For any concerns, please contact us at contact@nomadvisa.help.</p>` },
             about: { title: 'About This Project', story: `My name is Yonatan, and I've been living the digital nomad life for the past several years. With a background in tech, I grew increasingly frustrated with the inconsistent, outdated, and often confusing visa information scattered across the web. \n\nI built this tool to solve my own problem: to create a single, clear, and user-friendly place to compare visa options without the headache. My goal is to reduce the bureaucratic pain for fellow nomads.\n\nData on this site is aggregated from official government websites, reputable legal and immigration blogs, and cross-referenced with validated user experiences from online communities like Reddit.`, dataSources: `Beyond official sources, this tool incorporates validated user experiences from online communities and forums. This provides a crucial layer of 'on-the-ground' reality to balance official documentation.\n\n**Transparency is key:** This project is independent. If any affiliate links are ever used (e.g., for services like insurance or banking), they will be clearly marked. My commitment is to you, the user. Where possible, I will always opt to split or reduce any commission to give you a better deal.`, disclaimer: `Information keeps changing, and updates are currently done on a monthly average, so it's always better to double-check official sources.`, closing: `I hope this serves you well, and I'm always open to suggestions for improvement!`, imageSrc: 'images/ME_ALB.jpg', imageCaption: "Me in Durrës beach, Albania, a day before the official end of season (shoulder seasons for the win!)" },
             fieldsExplanation: {
                 title: 'Field Guide: Understanding the Scores',
@@ -317,17 +379,8 @@ Below is the complete HTML code with the requested modification to integrate the
 
         function GuidePopover({ countryName, isVisible, ratings, reviews }) {
             if (!isVisible) return null;
-            const guideLink = countryName === 'Portugal' && ratings === '6+'
-                ? 'https://nomadvisahelp.gumroad.com/l/portugal_D8'
-                : '#';
-            
             return (
-                <a 
-                    href={guideLink} 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="absolute bottom-full left-1/2 mb-2 w-72 bg-slate-900 border border-purple-500 rounded-lg shadow-2xl p-4 z-30 transition-opacity duration-200 animate-fade-in-up"
-                >
+                <a href="#" target="_blank" rel="noopener noreferrer" className="absolute bottom-full left-1/2 mb-2 w-72 bg-slate-900 border border-purple-500 rounded-lg shadow-2xl p-4 z-30 transition-opacity duration-200 animate-fade-in-up">
                     <div className="text-white">
                         <h4 className="font-bold text-lg text-purple-400">Is {countryName} Right for You?</h4>
                         <div className="flex items-center my-2">
@@ -577,10 +630,119 @@ Below is the complete HTML code with the requested modification to integrate the
                         <button onClick={() => setLegalModalContent(legalContent.howToUse)} className="inline-block bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105 shadow-lg">⚙️ How to Use</button>
                     </div>
 
-                    <div className="bg-slate-800 shadow-2xl rounded-xl p-6 mb-8 max-w-6xl mx-auto"> <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"> <div className="space-y-6"> <NationalitySelector selectedNationality={selectedNationality} onSelectNationality={setSelectedNationality} /> <div> <label className="block text-sm font-medium text-slate-300 mb-2">💰 Est. Monthly Income (USD)</label> <div className="flex flex-wrap gap-2"> {incomeLevels.map(level => ( <button key={level.value} onClick={() => setSelectedIncomeValue(level.value)} className={`px-3 py-2 text-sm rounded-md transition-all ${selectedIncomeValue === level.value ? 'bg-purple-600 text-white shadow-lg ring-2 ring-purple-400' : 'bg-slate-700 hover:bg-slate-600 text-slate-300'}`}>{level.label}</button>))}</div> </div> </div> <div className="space-y-6 bg-slate-900/50 p-4 rounded-lg"> <h3 className="text-lg font-semibold text-purple-400">Advanced Filters</h3> <div className="space-y-4"> <div className="text-sm"> <label className="flex justify-between font-medium text-slate-300 mb-1"><span>💸 Max Visa Cost</span><span>${maxVisaCost}</span></label> <input type="range" min="0" max="4000" step="50" value={maxVisaCost} onChange={e => setMaxVisaCost(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/> </div> <div className="text-sm"> <label className="flex justify-between font-medium text-slate-300 mb-1"><span>👍 Min Tax Attractiveness</span><span>{minTaxAttractiveness}/5</span></label> <input type="range" min="1" max="5" step="1" value={minTaxAttractiveness} onChange={e => setMinTaxAttractiveness(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/> </div> <div className="text-sm"> <label className="flex justify-between font-medium text-slate-300 mb-1"><span>⏳ Min Visa Length</span><span>{minVisaLength} months</span></label> <input type="range" min="1" max="60" step="1" value={minVisaLength} onChange={e => setMinVisaLength(e.target.value)} className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"/> </div> </div> </div> </div> </div>
+                    <div className="bg-slate-800 shadow-2xl rounded-xl p-6 mb-8 max-w-6xl mx-auto"> 
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start"> 
+                            <div className="space-y-6"> 
+                                <NationalitySelector selectedNationality={selectedNationality} onSelectNationality={setSelectedNationality} /> 
+                                <div> 
+                                    <label className="block text-sm font-medium text-slate-300 mb-2">💰 Est. Monthly Income (USD)</label> 
+                                    <div className="flex flex-wrap gap-2"> 
+                                        {incomeLevels.map(level => ( 
+                                            <button 
+                                                key={level.value} 
+                                                onClick={() => setSelectedIncomeValue(level.value)} 
+                                                className={`px-3 py-2 text-sm rounded-md transition-all ${selectedIncomeValue === level.value ? 'bg-purple-600 text-white shadow-lg ring-2 ring-purple-400' : 'bg-slate-700 hover:bg-slate-600 text-slate-300'}`}>
+                                                {level.label}
+                                            </button>
+                                        ))}
+                                    </div> 
+                                </div> 
+                            </div> 
+                            <div className="space-y-6 bg-slate-900/50 p-4 rounded-lg"> 
+                                <h3 className="text-lg font-semibold text-purple-400">Advanced Filters</h3> 
+                                <div className="space-y-4"> 
+                                    <div className="text-sm"> 
+                                        <label className="flex justify-between font-medium text-slate-300 mb-1">
+                                            <span>💸 Max Visa Cost</span>
+                                            <span>${maxVisaCost}</span>
+                                        </label> 
+                                        <input 
+                                            type="range" 
+                                            min="0" 
+                                            max="4000" 
+                                            step="50" 
+                                            value={maxVisaCost} 
+                                            onChange={e => setMaxVisaCost(e.target.value)} 
+                                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"
+                                        /> 
+                                    </div> 
+                                    <div className="text-sm"> 
+                                        <label className="flex justify-between font-medium text-slate-300 mb-1">
+                                            <span>👍 Min Tax Attractiveness</span>
+                                            <span>{minTaxAttractiveness}/5</span>
+                                        </label> 
+                                        <input 
+                                            type="range" 
+                                            min="1" 
+                                            max="5" 
+                                            step="1" 
+                                            value={minTaxAttractiveness} 
+                                            onChange={e => setMinTaxAttractiveness(e.target.value)} 
+                                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"
+                                        /> 
+                                    </div> 
+                                    <div className="text-sm"> 
+                                        <label className="flex justify-between font-medium text-slate-300 mb-1">
+                                            <span>⏳ Min Visa Length</span>
+                                            <span>{minVisaLength} months</span>
+                                        </label> 
+                                        <input 
+                                            type="range" 
+                                            min="1" 
+                                            max="60" 
+                                            step="1" 
+                                            value={minVisaLength} 
+                                            onChange={e => setMinVisaLength(e.target.value)} 
+                                            className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer"
+                                        /> 
+                                    </div> 
+                                </div> 
+                            </div> 
+                        </div> 
+                    </div>
                     <NewsFeed newsItems={newsItemsData} onReadMore={setNewsModalContent} />
-                    <main className="mt-8 max-w-7xl mx-auto"> {isLoading ? ( <p className="text-center text-slate-400 text-lg">Loading Visa Data...</p> ) : error ? ( <div className="text-center text-red-400 bg-red-900/50 p-4 rounded-lg">{error}</div> ) : ( <> <div className="mb-6 text-center"> <h2 className="text-2xl font-bold text-slate-300"> Showing <span className="text-purple-400">{filteredVisas.length}</span> Matching Visa Options </h2> {visaData.length > 0 && filteredVisas.length === 0 && <p className="text-slate-400 mt-2">No visas match your current criteria. Try adjusting filters.</p>} </div> <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> {filteredVisas.map(({ country, visa }, index) => ( <VisaCard key={`${country.country_name}-${visa.visa_name || index}`} country={country} visa={visa} onViewDetails={setModalContent} /> ))} </div> </> )} </main>
-                    <footer className="text-center mt-12 pt-6 border-t border-slate-700"> <div className="flex justify-center items-center flex-wrap gap-x-4 gap-y-2 text-xs text-slate-500"> <button onClick={() => setLegalModalContent(legalContent.terms)} className="hover:text-purple-400 transition">Terms of Use</button> <span>|</span> <button onClick={() => setLegalModalContent(legalContent.privacy)} className="hover:text-purple-400 transition">Privacy Policy</button> <span>|</span> <button onClick={() => setLegalModalContent(legalContent.faq)} className="hover:text-purple-400 transition">Visas FAQ</button> <span>|</span> <button onClick={() => setLegalModalContent(legalContent.countryFaq)} className="hover:text-purple-400 transition">Country-Specific FAQs</button> <span>|</span> <a href="mailto:contact@digitalnomadvisa.help" className="hover:text-purple-400 transition">Contact</a> </div> </footer>
+                    <main className="mt-8 max-w-7xl mx-auto"> 
+                        {isLoading ? ( 
+                            <p className="text-center text-slate-400 text-lg">Loading Visa Data...</p> 
+                        ) : error ? ( 
+                            <div className="text-center text-red-400 bg-red-900/50 p-4 rounded-lg">{error}</div> 
+                        ) : ( 
+                            <> 
+                                <div className="mb-6 text-center"> 
+                                    <h2 className="text-2xl font-bold text-slate-300"> 
+                                        Showing <span className="text-purple-400">{filteredVisas.length}</span> Matching Visa Options 
+                                    </h2> 
+                                    {visaData.length > 0 && filteredVisas.length === 0 && <p className="text-slate-400 mt-2">No visas match your current criteria. Try adjusting filters.</p>} 
+                                </div> 
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"> 
+                                    {filteredVisas.map(({ country, visa }, index) => ( 
+                                        <VisaCard 
+                                            key={`${country.country_name}-${visa.visa_name || index}`} 
+                                            country={country} 
+                                            visa={visa} 
+                                            onViewDetails={setModalContent} 
+                                        /> 
+                                    ))} 
+                                </div> 
+                            </> 
+                        )} 
+                    </main>
+                    <footer className="text-center mt-12 pt-6 border-t border-slate-700"> 
+                        <div className="flex justify-center items-center flex-wrap gap-x-4 gap-y-2 text-xs text-slate-500"> 
+                            <button onClick={() => setLegalModalContent(legalContent.terms)} className="hover:text-purple-400 transition">Terms of Use</button> 
+                            <span>|</span> 
+                            <button onClick={() => setLegalModalContent(legalContent.privacy)} className="hover:text-purple-400 transition">Privacy Policy</button> 
+                            <span>|</span> 
+                            <button onClick={() => setLegalModalContent(legalContent.faq)} className="hover:text-purple-400 transition">Visas FAQ</button> 
+                            <span>|</span> 
+                            <button onClick={() => setLegalModalContent(legalContent.countryFaq)} className="hover:text-purple-400 transition">Country-Specific FAQs</button> 
+                            <span>|</span> 
+                            <a href="mailto:contact@nomadvisa.help" className="hover:text-purple-400 transition">Contact</a> 
+                        </div> 
+                        <p className="text-slate-600 text-xs mt-2">
+                            © 2025 Digital Nomad Visa Matcher. Data updated monthly. Always verify requirements with official sources.
+                        </p>
+                    </footer>
                     {modalContent && <DetailsModal country={modalContent} onClose={() => setModalContent(null)} />}
                     {legalModalContent && <LegalModal data={legalModalContent} onClose={() => setLegalModalContent(null)} />}
                     {newsModalContent && <LegalModal data={newsModalContent} onClose={() => setNewsModalContent(null)} />}
@@ -592,18 +754,7 @@ Below is the complete HTML code with the requested modification to integrate the
         const container = document.getElementById('root');
         const root = ReactDOM.createRoot(container);
         root.render(<App />);
+
     </script>
 </body>
 </html>
-```
-
-### Change Summary
-- **Modified Component**: `GuidePopover`
-- **Change Details**:
-  - Added a `guideLink` constant that sets the `href` to `https://nomadvisahelp.gumroad.com/l/portugal_D8` when `countryName` is `'Portugal'` and `ratings` is `'6+'` (matching the `VISA_GUIDE_CONFIG` for Portugal's D8 visa).
-  - Default `href` remains `'#'` for all other cases.
-  - The `href` attribute in the `<a>` tag of the `GuidePopover` component now uses `guideLink`.
-- **Scope**: The change is confined to the `GuidePopover` component, ensuring no other part of the code is altered, as requested.
-- **Functionality**: When the guide button (📚) for Portugal's D8 visa is hovered over, the popover will link to the provided Gumroad URL, opening in a new tab (`target="_blank"` with `rel="noopener noreferrer"` for security).
-
-This code is ready to use and maintains all original functionality while incorporating the requested link for Portugal's D8 visa guide.
