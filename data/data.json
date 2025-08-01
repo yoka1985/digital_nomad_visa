@@ -8219,7 +8219,7 @@ No file chosen
       }
     ],
     "ratings": {
-      "tax_friendliness": 4,
+      "tax_friendliness": 2,
       "cost_of_living": 3,
       "bureaucracy_level": 4,
       "social_security_benefits": 4,
@@ -11506,6 +11506,13 @@ Augmented Result
 
 Download
 [
+  {
+    "social_security_benefits": "5 = most comprehensive and accessible benefits for non-locals",
+    "social_security_liability": "5 = lowest financial burden from mandatory contributions",
+    "tax_friendliness": "5 = lowest overall tax burden, considering special rates and exemptions",
+    "cost_of_living": "5 = lowest cost of living",
+    "bureaucracy_level": "5 = highest level of bureaucracy, most difficult processes"
+  },
   {
     "social_security_benefits": "5 = most comprehensive and accessible benefits for non-locals",
     "social_security_liability": "5 = lowest financial burden from mandatory contributions",
@@ -15388,7 +15395,7 @@ Download
       }
     ],
     "ratings": {
-      "tax_friendliness": 4,
+      "tax_friendliness": 2,
       "cost_of_living": 3,
       "bureaucracy_level": 4,
       "social_security_benefits": 4,
