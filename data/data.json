@@ -145,7 +145,7 @@
     "continent": "Europe",
     "visas": [
       {
-        "visa_name": "Type D Visa (long-term residence)",
+        "visa_name": "Digital Nomad/Freelancer Program (Type D Visa)",
         "is_active": true,
         "verified_status": "Verified",
         "family_inclusion": "Yes",
@@ -168,30 +168,30 @@
         },
         "remarks": "🇧🇬 Great for those seeking a low-tax EU base.\n• Official government application details are still less clear than in other countries.\n• Must apply in person at a Bulgarian consulate."
       },
-    {
-      "visa_name": "Digital Nomad Visa",
-      "is_active": true,
-      "verified_status": "Verified",
-      "family_inclusion": "Yes",
-      "visa_length": "1 year, renewable once",
-      "visa_length_months": 12,
-      "eligible_citizens": "Non-EU/EEA/Swiss nationals",
-      "eligible_citizens_cluster": "Non-EU/EEA Nationals",
-      "bonuses_incentives": "Schengen Area access, 10% flat income tax, low cost of living.",
-      "link_source": "https://www.mvr.bg/direkcia-migratsia",
-      "issued_date": "2025-06-15",
-      "apply_form_link": "https://www.mfa.bg/en/services-travel/consular-services/travel-bulgaria/visa-application-forms",
-      "remote_application_bin": false,
-      "visa_cost_usd": 110,
-      "income_requirement_usd_month": 2150,
-      "cost_of_living": {
-        "accommodation": "~$345-805/month apartments",
-        "food": "~$230-460/month food",
-        "transportation": "~$35-69/month transport",
-        "overall_index": "Low, Eastern Europe costs"
-      },
-      "remarks": "🇧🇬 Officially launched in June 2025. Requires proof of annual income from the previous calendar year of at least BGN 46,650 (~€23,850). The initial Type D visa fee is €100 (~$110), with separate fees for the residence permit card paid in Bulgaria. This is a long-term residence permit applied for in-person in Bulgaria. It is valid for 1 year, can be renewed once, and does not grant access to the local labor market."
-    }
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Not specified",
+        "visa_length": "6 months initial, likely 1 year renewable",
+        "visa_length_months": 12,
+        "eligible_citizens": "Non-EU/EEA/Swiss nationals",
+        "eligible_citizens_cluster": "Non-EU/EEA Nationals",
+        "bonuses_incentives": "10% flat income tax, Schengen Area mobility, low cost of living",
+        "link_source": "https://www.newbalkanslawoffice.com/recent-work/digital-nomad-visa-bulgaria-2025/",
+        "issued_date": "2025-06-18",
+        "apply_form_link": "Not available",
+        "remote_application_bin": false,
+        "visa_cost_usd": null,
+        "income_requirement_usd_month": 1987,
+        "cost_of_living": {
+          "accommodation": "~€250-400/month (Sofia); €300-350/month (Plovdiv, Varna); lower in Bansko",
+          "food": "~€150-250/month",
+          "transportation": "~€20-50/month",
+          "overall_index": "Low, among the lowest in the EU"
+        },
+        "remarks": "🇧🇬 Inferred income threshold (~€2,000/month) based on 50x Bulgaria's 2024 minimum salary (933 BGN). Strict 'employment contract' definition may limit freelancers. Higher education degree recognition may be required. New program, expect potential bureaucratic delays. Family inclusion likely under general law."
+      }
     ],
     "ratings": {
       "tax_friendliness": 4,
@@ -1104,6 +1104,73 @@
       "bank_account": "Moderately difficult. Non-residents may face enhanced scrutiny due to strict anti-money laundering (AML) regulations. An in-person visit is required, along with proof of identity and source of funds.",
       "general_admin": "The system is generally efficient but formal and document-heavy. English is widely spoken in Riga, but less so in government offices outside the capital.",
       "source": "Claude, based on synthesis of official guidelines and expat experiences."
+    }
+  },
+  { 
+  "country_name": "Lithuania",
+    "continent": "Europe",
+    "visas": [
+      {
+        "visa_name": "Temporary Residence Permit (Individual Activity)",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "2 years, renewable",
+        "visa_length_months": 24,
+        "eligible_citizens": "All non-EU nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Pathway to EU long-term residency after 5 years, access to EU social safety net.",
+        "link_source": "https://www.migracija.lt/en/home",
+        "issued_date": null,
+        "apply_form_link": "https://www.migracija.lt/app/auth/login",
+        "remote_application_bin": true,
+        "visa_cost_usd": 170,
+        "income_requirement_usd_month": 1120,
+        "cost_of_living": {
+          "accommodation": "~$800/month for a one-bedroom apartment in Vilnius city center.",
+          "food": "~$450-600/month for a couple.",
+          "transportation": "~$40-80/month for public transport.",
+          "overall_index": "Low. Significantly more affordable than Western Europe or the Caribbean."
+        },
+        "remarks": "🇱🇹 This is a two-step process: first, register for 'individual activity' with the tax authority (VMI), then apply for the Temporary Residence Permit (TRP) via the MIGRIS portal. A National (D) Visa may be needed to enter while the TRP is processed. An in-person appointment for biometrics is mandatory."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 3,
+      "cost_of_living": 5,
+      "bureaucracy_level": 4,
+      "social_security_benefits": 4,
+      "social_security_liability": 2
+    },
+    "legal_pathways": {
+      "digital_nomad_visa": "The TRP for 'Individual Activity' is the de-facto pathway for self-employed remote workers.",
+      "startup_visa": "A streamlined TRP for founders of innovative startups, valid for 2 years and renewable for 3.",
+      "investment_visa": "A TRP is available for shareholders of a Lithuanian company that meets certain equity and operational criteria.",
+      "other": "A standard TRP for employment with a Lithuanian company is also available.",
+      "source": "https://www.migracija.lt/en/im-a-foreigner"
+    },
+    "tax_system": {
+      "personal_income_tax": "For 'individual activity', tax is progressive from 5% to 15% on taxable income. For standard employment, it is 20% or 32% depending on income.",
+      "special_regimes": "The individual activity tax regime is significantly lower than standard employment tax.",
+      "non_resident_tax": null,
+      "source": "https://vmi.lrv.lt/en/"
+    },
+    "social_security": {
+      "contribution_rates": {
+        "self_employed": "Mandatory contribution of 19.5% on a base of 90% of taxable income to the SODRA fund."
+      },
+      "benefits": {
+        "healthcare": "Full access to the state-funded public healthcare system.",
+        "pension": "Entitlement to a state pension based on contributions.",
+        "unemployment": "Access to unemployment benefits, paid sickness leave, and paid maternity leave."
+      },
+      "source": "https://www.sodra.lt/en/"
+    },
+    "bureaucracy": {
+      "visa_process": "High. The TRP application via the MIGRIS portal is a complex, document-heavy procedure requiring a mandatory in-person visit for biometrics.",
+      "bank_account": "Moderately difficult. Typically requires an in-person visit and proof of a legal basis for residency in Lithuania (e.g., TRP or individual activity registration).",
+      "general_admin": "Reflects a standard, regulated EU member state system. Processes are well-defined but can be slow and require strict adherence to rules.",
+      "source": "https://www.migracija.lt/en/home"
     }
   },
   {
@@ -3665,6 +3732,268 @@
       "bank_account": "Difficult for non-residents on a temporary visa. Relying on international banking is standard.",
       "general_admin": "The visa process is well-defined. General administration is typical for a small Caribbean nation. English as the official language is a major advantage.",
       "source": "Claude, based on synthesis of official guidelines and visa agency information."
+    }
+  },
+  
+
+  {
+    "country_name": "The Bahamas",
+    "continent": "North America",
+    "visas": [
+      {
+        "visa_name": "Bahamas Extended Access Travel Stay (BEATS) Program",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "12 months, renewable up to 36 months",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "0% income tax environment. Pathway to PR via investment.",
+        "link_source": "https://www.bahamasbeats.com/",
+        "issued_date": "2020-10-01",
+        "apply_form_link": "https://portal.immigration.gov.bs/login",
+        "remote_application_bin": true,
+        "visa_cost_usd": 1025,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$1,000-3,000/month for a one-bedroom apartment in Nassau.",
+          "food": "~$800+/month for a couple.",
+          "transportation": "Public transport is affordable (~$1.50/trip), but owning a car is very expensive.",
+          "overall_index": "Very High. Ranks among the world's most expensive locations."
+        },
+        "remarks": "🇧🇸 Streamlined online application with a 5-day processing target. The permit fee is $1,000 for the primary applicant and $500 for each dependent. The final permit is delivered digitally with a QR code."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 5,
+      "cost_of_living": 1,
+      "bureaucracy_level": 2,
+      "social_security_benefits": 1,
+      "social_security_liability": 5
+    },
+    "legal_pathways": {
+      "digital_nomad_visa": "The BEATS Program is the primary pathway for remote workers.",
+      "investment_visa": "Economic Permanent Residency is available via a minimum real estate investment of $1 million USD.",
+      "other": "An Annual Residence Permit ($1,000/year) and a Home Owner's Card ($250/year) are also available for shorter-term stays. Citizenship requires 10 years of PR and renunciation of previous nationality.",
+      "source": "https://www.immigration.gov.bs/"
+    },
+    "tax_system": {
+      "personal_income_tax": "0% personal income tax, capital gains tax, and dividend tax.",
+      "vat": "A standard Value Added Tax (VAT) of 10% applies to most goods and services.",
+      "other_taxes": "Very high customs duties on imported goods (e.g., 35% on electronics, 45% on cars) significantly increase living costs. Property tax is also a key revenue source.",
+      "source": "https://www.bahamas.gov.bs/finance"
+    },
+    "social_security": {
+      "contribution_rates": {
+        "employed": "11.3% of wages for local employees (split between employee/employer).",
+        "self_employed": "10.3% for locally self-employed persons."
+      },
+      "benefits": {
+        "healthcare": "BEATS participants are not entitled to public benefits and must have comprehensive private health insurance.",
+        "pension": "No entitlement for BEATS participants."
+      },
+      "applicability_to_nomads": "It is inferred that BEATS participants are exempt from National Insurance Board (NIB) contributions, as the program is designed for foreign-employed individuals and mandatory contributions would be administratively complex.",
+      "source": "https://www.nib-bahamas.com/"
+    },
+    "bureaucracy": {
+      "visa_process": "Low. The BEATS application is fully online, streamlined, and fast.",
+      "bank_account": "High. Opening an account is subject to rigorous AML/KYC checks, requiring extensive documentation on the source of funds. The sector is geared more toward private wealth management than retail banking for temporary residents.",
+      "general_admin": "A mix of efficient, modern systems for attracting investment and tourism, contrasted with more traditional bureaucracy in other areas.",
+      "source": "https://cbb.bs/"
+    }
+  },
+  {
+    "country_name": "Barbados",
+    "continent": "North America",
+    "visas": [
+      {
+        "visa_name": "Welcome Stamp",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "12 months, renewable",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "Legally codified 0% income tax and social security exemption for visa holders.",
+        "link_source": "https://www.barbadoswelcomestamp.bb/",
+        "issued_date": "2020-07-01",
+        "apply_form_link": "https://www.barbadoswelcomestamp.bb/apply/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 2000,
+        "income_requirement_usd_month": 4167,
+        "cost_of_living": {
+          "accommodation": "~$540-700/month for a one-bedroom apartment in Bridgetown.",
+          "food": "Groceries are expensive due to reliance on imports.",
+          "transportation": "Public transport is affordable; car ownership is expensive.",
+          "overall_index": "Moderate to High. More affordable than Bermuda or The Bahamas."
+        },
+        "remarks": "🇧🇧 The application process is fully online and very efficient, with a 5-7 working day turnaround. A key advantage is the Remote Employment Act, 2020, which provides legal certainty on the tax and social security exemptions."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 5,
+      "cost_of_living": 2,
+      "bureaucracy_level": 1,
+      "social_security_benefits": 1,
+      "social_security_liability": 5
+    },
+    "legal_pathways": {
+      "digital_nomad_visa": "The Barbados Welcome Stamp is a purpose-built program for remote workers.",
+      "investment_visa": "The Special Entry and Residence Permit (SERP) offers immediate permanent residency for a $2M investment, or a 5-year renewable permit for a $300,000 real estate investment.",
+      "other": "A pathway to citizenship is available after 7 years of continuous residence.",
+      "source": "https://www.investbarbados.org/"
+    },
+    "tax_system": {
+      "personal_income_tax": "Welcome Stamp holders are explicitly deemed non-resident for tax purposes by the Remote Employment Act, 2020, and pay 0% income tax on foreign-sourced income.",
+      "vat": "Subject to standard Value Added Tax (VAT) on local goods and services.",
+      "source": "https://bra.gov.bb/"
+    },
+    "social_security": {
+      "contribution_rates": {
+        "employed": "23.75% for local employees (split between employee/employer)."
+      },
+      "benefits": {
+        "healthcare": "Welcome Stamp holders are not entitled to local benefits and must have private health insurance."
+      },
+      "applicability_to_nomads": "An explicit and legally codified exemption exists. Welcome Stamp holders are not required to make contributions to the National Insurance Scheme (NIS).",
+      "source": "https://nis.gov.bb/"
+    },
+    "bureaucracy": {
+      "visa_process": "Very Low. The Welcome Stamp application is consistently cited as one of the simplest, fastest, and most user-friendly digital processes available.",
+      "bank_account": "Low to Moderate. Several banks cater to foreign clients, and it is possible to open an account 100% remotely before arrival with standard KYC documentation.",
+      "general_admin": "Generally considered low-bureaucracy, with family-friendly processes that allow for easy enrollment of children in local schools.",
+      "source": "https://www.barbadoswelcomestamp.bb/"
+    }
+  },
+  {
+    "country_name": "Bermuda",
+    "continent": "North America",
+    "visas": [
+      {
+        "visa_name": "Permission to Reside on an Annual Basis",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "12 months, renewable",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "0% income tax environment in a high-quality location.",
+        "link_source": "https://www.gov.bm/coming-to-bermuda/work-in-bermuda",
+        "issued_date": null,
+        "apply_form_link": "https://www.gov.bm/bermuda-entry-visa-form",
+        "remote_application_bin": true,
+        "visa_cost_usd": 275,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "Astronomical. ~$3,434/month for a one-bedroom apartment in Hamilton.",
+          "food": "Extremely high. A gallon of milk can cost over $16 USD.",
+          "transportation": "Car ownership is very expensive.",
+          "overall_index": "Extremely High. Consistently ranked as one of the most expensive places in the world."
+        },
+        "remarks": "🇧🇲 This is a general residency permit, not a dedicated nomad visa. It replaced the 'Work from Bermuda Certificate' which ended Feb 28, 2025. The application process is slow (approx. 12 weeks). Significant ambiguity exists regarding payroll tax liability for remote workers."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 4,
+      "cost_of_living": 1,
+      "bureaucracy_level": 4,
+      "social_security_benefits": 3,
+      "social_security_liability": 2
+    },
+    "legal_pathways": {
+      "digital_nomad_visa": "The 'Permission to Reside on an Annual Basis' is the current pathway for remote workers.",
+      "investment_visa": "The Economic Investment Residential Certificate (EIRC) grants indefinite residency for a $2.5 million investment in approved assets.",
+      "other": "A path to British Overseas Territories Citizenship (Bermuda) is possible after 10 years of residency.",
+      "source": "https://www.gov.bm/department/immigration"
+    },
+    "tax_system": {
+      "personal_income_tax": "0% personal income tax, capital gains, and withholding tax.",
+      "other_taxes": "A complex Payroll Tax exists. Its applicability to remote workers is a significant legal gray area, creating a compliance risk. A formal ruling from the Tax Commissioner is advised.",
+      "source": "https://www.gov.bm/department/office-tax-commissioner"
+    },
+    "social_security": {
+      "contribution_rates": {
+        "employed": "A flat weekly rate of $71.84 BMD, split 50/50 between employee and employer."
+      },
+      "benefits": {
+        "healthcare": "After contributions are made, residents gain access to the Contributory Pension Fund and associated benefits.",
+        "pension": "Contributory state pension system."
+      },
+      "applicability_to_nomads": "Mandatory. A '26-week trap' exists where non-residents working in Bermuda for more than 26 consecutive weeks become liable for social insurance contributions for the entire period, amounting to ~$3,735 annually.",
+      "source": "https://www.gov.bm/department/social-insurance"
+    },
+    "bureaucracy": {
+      "visa_process": "High. The 12-week processing time indicates a much more rigorous and document-intensive process than other Caribbean nomad visas.",
+      "bank_account": "Very High. The process is notoriously difficult for non-residents, with banks catering to corporations and high-net-worth clients, often requiring very high minimum deposits (e.g., $250,000 USD).",
+      "general_admin": "Considered more rigorous and challenging than neighboring island jurisdictions.",
+      "source": "https://www.gov.bm/department/immigration"
+    }
+  },
+  {
+    "country_name": "Anguilla",
+    "continent": "North America",
+    "visas": [
+      {
+        "visa_name": "Digital Nomad Visa",
+        "is_active": true,
+        "verified_status": "Verified",
+        "family_inclusion": "Yes",
+        "visa_length": "12 months, non-renewable (must re-apply)",
+        "visa_length_months": 12,
+        "eligible_citizens": "All nationalities",
+        "eligible_citizens_cluster": "All Nationalities",
+        "bonuses_incentives": "0% direct tax jurisdiction. Fast track to PR via a competitive investment program.",
+        "link_source": "https://escape.ivisitanguilla.com/",
+        "issued_date": "2020-08-01",
+        "apply_form_link": "https://evisa.gov.ai/",
+        "remote_application_bin": true,
+        "visa_cost_usd": 2000,
+        "income_requirement_usd_month": null,
+        "cost_of_living": {
+          "accommodation": "~$1,000-1,500/month for a 2-3 bedroom apartment.",
+          "food": "~$500-600/month for a couple.",
+          "transportation": "Car rental or ownership is common; public transport is limited.",
+          "overall_index": "High. An expensive destination due to reliance on imports."
+        },
+        "remarks": "🇦🇮 Officially named the 'Work from Anguilla' program. The fee is $2,000 for an individual or $3,000 for a family of four. No official income minimum, but self-sufficiency must be demonstrated. Visa is non-renewable; a new application is required to extend stay."
+      }
+    ],
+    "ratings": {
+      "tax_friendliness": 5,
+      "cost_of_living": 1,
+      "bureaucracy_level": 2,
+      "social_security_benefits": 1,
+      "social_security_liability": 5
+    },
+    "legal_pathways": {
+      "digital_nomad_visa": "The 'Work from Anguilla' Digital Nomad Visa is the main remote work pathway.",
+      "investment_visa": "A competitive Residency by Investment program offers immediate PR for a $150,000 donation to the Capital Development Fund or a $400,000 real estate investment.",
+      "other": "Citizenship is available after 5 years of residency, and dual citizenship is permitted.",
+      "source": "https://selectanguilla.com/residency-by-investment/"
+    },
+    "tax_system": {
+      "personal_income_tax": "0% personal income tax, capital gains tax, inheritance tax, and corporate income tax on foreign-sourced earnings.",
+      "other_taxes": "Government revenue is primarily from customs duties on imported goods.",
+      "source": "https://www.gov.ai/"
+    },
+    "social_security": {
+      "contribution_rates": {
+        "employed": "10.5% of wages for the local workforce, split 50/50 between employee and employer."
+      },
+      "benefits": {
+        "healthcare": "Digital nomad visa holders are not entitled to local benefits and must have private health insurance."
+      },
+      "applicability_to_nomads": "It is inferred that digital nomads and their foreign employers are exempt from contributing to the Anguilla Social Security Board (ASSB), as the system is based on local employment contracts.",
+      "source": "https://ssbai.com/"
+    },
+    "bureaucracy": {
+      "visa_process": "Low. The online visa application is described as simple and efficient, with a processing time of 7-14 business days.",
+      "bank_account": "Moderate. Feasible for non-residents but requires standard international due diligence (ID, proof of address, source of funds). Local banks have established procedures for non-resident applicants.",
+      "general_admin": "Generally straightforward for processes related to the remote work program.",
+      "source": "https://evisa.gov.ai/"
     }
   },
   {
