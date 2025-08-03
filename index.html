@@ -3,33 +3,28 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Digital Nomad Visa Matcher 2025 | Compare Requirements & Find Your Perfect Match</title>
-    <meta name="description" content="Find the perfect digital nomad visa for 2025. Compare 40+ countries, filter by income, tax benefits, and bureaucracy levels. Updated daily with latest requirements." />
-    <meta name="keywords" content="digital nomad visa, remote work visa, digital nomad countries 2025, work abroad, nomad visa requirements, Portugal D7 visa, Spain digital nomad visa" />
+    <title>Digital Nomad Visa\Long-Stay Matcher 2025 | Compare Requirements & Find Your Perfect Match</title>
+    <meta name="description" content="Find the perfect digital nomad visa for 2025. Compare 40+ countries, filter by income, tax benefits, & bureaucracy. Get clarity and start your journey with our data-driven matcher." />
+    <meta name="keywords" content="digital nomad visa, remote work visa, digital nomad countries 2025, work abroad, nomad visa requirements, Portugal D8 visa, Portugal digital nomad visa, Spain digital nomad visa, Croatia digital nomad visa, Bulgaria digital nomad visa, Italy digital nomad visa" />
     
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://nomadvisa.help/" />
-    <meta property="og:title" content="Digital Nomad Visa Matcher 2025 | Find Your Perfect Visa" />
+    <meta property="og:title" content="Digital Nomad/Long Stay Visa Matcher 2025 | Find Your Perfect Visa" />
     <meta property="og:description" content="Compare 40+ digital nomad visas worldwide. Filter by income, tax benefits, and bureaucracy levels to find your perfect match." />
     <meta property="og:image" content="https://nomadvisa.help/images/og-image.jpg" />
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://nomadvisa.help/" />
-    <meta property="twitter:title" content="Digital Nomad Visa Matcher 2025" />
+    <meta property="twitter:title" content="Digital Nomad Visa Matcher 2025 | Find Your Perfect Visa" />
     <meta property="twitter:description" content="Find your perfect digital nomad visa from 40+ countries. Updated for 2025." />
     <meta property="twitter:image" content="https://nomadvisa.help/images/og-image.jpg" />
 
-    <!-- Canonical URL -->
     <link rel="canonical" href="https://nomadvisa.help/" />
     
-    <!-- Geo Tags -->
     <meta name="geo.region" content="Global" />
     <meta name="geo.placename" content="Worldwide" />
     <meta name="ICBM" content="0,0" />
     
-    <!-- Preload critical resources -->
     <link rel="preload" href="https://cdn.tailwindcss.com" as="script" />
     <link rel="preload" href="./data/data.json" as="fetch" crossorigin />
     
@@ -87,8 +82,12 @@
         "acceptedAnswer": { "@type": "Answer", "text": "Over 40 countries now offer digital nomad visas including Portugal, Spain, Estonia, Croatia, Barbados, Dubai UAE, Mexico, and many more. Each has different requirements for income, nationality eligibility, and application processes." }
       },{
         "@type": "Question", 
+        "name": "What are the income requirements for a Portugal D8 digital nomad visa?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Portugal D8 visa typically requires a minimum passive or remote income of around €3,280 per month for a single applicant. This amount can change, so always check official sources or use our matcher for the latest figures." }
+      },{
+        "@type": "Question", 
         "name": "What are the income requirements for digital nomad visas?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Income requirements vary widely from $2,000/month (some countries) to $5,000+/month (premium destinations). Use our visa matcher tool to filter by your specific income level." }
+        "acceptedAnswer": { "@type": "Answer", "text": "Income requirements vary widely from under $2,000/month (some countries) to over $5,000/month (premium destinations). Use our visa matcher tool to filter by your specific income level." }
       }]
     }
     </script>
@@ -106,23 +105,22 @@
             from { opacity: 0; transform: translateY(10px) translateX(-50%); }
             to { opacity: 1; transform: translateY(0) translateX(-50%); }
         }
-        .animate-fade-in-up {
-            animation: fade-in-up 0.3s ease-out forwards;
+        .animate-fade-in-up { animation: fade-in-up 0.3s ease-out forwards; }
+        
+        @keyframes modal-fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-        .newsletter-popup {
-            animation: slideInUp 0.5s ease-out;
+        @keyframes modal-content-slide-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes slideInUp {
-            from { transform: translateY(100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+        .modal-enter { animation: modal-fade-in 0.3s ease-out forwards; }
+        .modal-content-enter { animation: modal-content-slide-up 0.3s ease-out forwards; }
     </style>
 </head>
 
-
-
-
-<body oncontextmenu="return false;">
+<body>
     <div id="root"></div>
 
     <script type="text/babel">
@@ -139,23 +137,38 @@
         const legalContentTemplate = (dataLegend) => ({
             terms: { title: 'Terms of Use', content: `<p>Welcome to our Digital Nomad Visa Matcher. By using this site, you agree to these terms. The information provided is for general informational purposes only and does not constitute legal advice. We strive to keep the information up-to-date, but we make no representations or warranties of any kind about the completeness, accuracy, or reliability of the information. Any reliance you place on such information is therefore strictly at your own risk. For any questions, please contact us at contact@nomadvisa.help.</p>` },
             privacy: { title: 'Privacy Policy', content: `<p>This Privacy Policy describes how we handle your information. We use Google Analytics to collect anonymous data about website traffic to improve the user experience. This data is aggregated and does not personally identify you. We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties. If you accept our cookie policy, you consent to our use of analytics. For any concerns, please contact us at contact@nomadvisa.help.</p>` },
+            cookiePolicy: {
+                title: 'Privacy & Cookies',
+                content: `
+                    <div class="space-y-4">
+                        <div>
+                            <h4 class="font-bold text-lg text-purple-400">Purpose</h4>
+                            <p class="mt-1">We use Google Analytics to understand how visitors use our site and to help us improve the experience.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-purple-400">Data Use</h4>
+                            <p class="mt-1">No personal information is collected or shared. Data is anonymized and used for internal insights only.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-purple-400">Opt-out</h4>
+                            <p class="mt-1">You may disable cookies in your browser settings if you prefer not to be tracked anonymously.</p>
+                        </div>
+                    </div>
+                `
+            },
             about: { title: 'About This Project', story: `My name is Yonatan, and I've been living the digital nomad life for the past several years. With a background in tech, I grew increasingly frustrated with the inconsistent, outdated, and often confusing visa information scattered across the web. \n\nI built this tool to solve my own problem: to create a single, clear, and user-friendly place to compare visa options without the headache. My goal is to reduce the bureaucratic pain for fellow nomads.\n\nData on this site is aggregated from official government websites, reputable legal and immigration blogs, and cross-referenced with validated user experiences from online communities like Reddit.`, dataSources: `Beyond official sources, this tool incorporates validated user experiences from online communities and forums. This provides a crucial layer of 'on-the-ground' reality to balance official documentation.\n\n**Transparency is key:** This project is independent. If any affiliate links are ever used (e.g., for services like insurance or banking), they will be clearly marked. My commitment is to you, the user. Where possible, I will always opt to split or reduce any commission to give you a better deal.`, disclaimer: `Information keeps changing, and updates are currently done on a monthly average, so it's always better to double-check official sources.`, closing: `I hope this serves you well, and I'm always open to suggestions for improvement!`, imageSrc: 'images/ME_ALB.jpg', imageCaption: "Me in Durrës beach, Albania, a day before the official end of season (shoulder seasons for the win!)" },
             fieldsExplanation: {
                 title: 'Field Guide: Understanding the Scores',
                 content: `<p class="mb-4">The scores are rated from 1-5. Here's what they mean:</p>
-                        <div class="space-y-4 text-left">
-                            <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">🤯 Bureaucracy Level</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.bureaucracy_level || 'N/A'}</p></div>
-                            <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">💰 Cost of Living</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.cost_of_living || 'N/A'}</p></div>
-                            <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">💸 Tax Friendliness</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.tax_friendliness || 'N/A'}</p></div>
-                            <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">🧾 Social Security Liability</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.social_security_liability || 'N/A'}</p></div>
-                            <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">🏥 Social Security Benefits</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.social_security_benefits || 'N/A'}</p></div>
-                        </div>`
+                            <div class="space-y-4 text-left">
+                                <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">🤯 Bureaucracy Level</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.bureaucracy_level || 'N/A'}</p></div>
+                                <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">💰 Cost of Living</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.cost_of_living || 'N/A'}</p></div>
+                                <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">💸 Tax Friendliness</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.tax_friendliness || 'N/A'}</p></div>
+                                <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">🧾 Social Security Liability</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.social_security_liability || 'N/A'}</p></div>
+                                <div class="bg-slate-900/50 p-4 rounded-lg"><h4 class="font-bold text-lg text-purple-400">🏥 Social Security Benefits</h4><p class="mt-2 text-sm text-slate-300">${dataLegend?.social_security_benefits || 'N/A'}</p></div>
+                            </div>`
             },
-            howToUse: { title: 'How to Use This Tool', content: `<p class="mb-2">This tool is designed to quickly narrow down your visa options. Here's how to get the most out of it:</p><ol class="list-decimal list-inside space-y-2"><li><strong>Select Your Nationality:</strong> This is the most important first step.</li><li><strong>Set Your Income:</strong> Click your approximate monthly income bracket to filter out visas.</li><li><strong>Use Advanced Filters:</strong> Adjust the sliders for visa cost, tax attractiveness, and visa length.</li><li><strong>Review the Cards:</strong> The counter at the top tells you how many visas match your search.</li><li><strong>View Full Details:</strong> Click on any card to open a pop-up with much more information.</li></ol>` },
-            faq: {
-                title: 'Visas FAQs',
-                content: `<p class="mt-2"><a href="FAQs.html" class="text-blue-600 underline">Read our detailed FAQ page</a></p>`
-            }
+            howToUse: { title: 'How to Use This Tool', content: `<p class="mb-2">This tool is designed to quickly narrow down your visa options. Here's how to get the most out of it:</p><ol class="list-decimal list-inside space-y-2"><li><strong>Select Your Nationality:</strong> This is the most important first step.</li><li><strong>Set Your Income:</strong> Click your approximate monthly income bracket to filter out visas.</li><li><strong>Use Advanced Filters:</strong> Adjust the sliders for visa cost, tax attractiveness, and visa length.</li><li><strong>Review the Cards:</strong> The counter at the top tells you how many visas match your search.</li><li><strong>View Full Details:</strong> Click on any card to open a pop-up with much more information.</li></ol>` }
         });
         
         const incomeLevels = [ { label: "Any", value: "any", userIncomeForMatch: null }, { label: "< $2k", value: "0-1999", userIncomeForMatch: 1999 }, { label: "$2k-4k", value: "2000-3999", userIncomeForMatch: 3999 }, { label: "$4k+", value: "4000+", userIncomeForMatch: Infinity } ];
@@ -163,69 +176,31 @@
 
         // --- UTILITY & GUIDE FUNCTIONS ---
 
-        const REVIEW_POOL = {
-            review1: { quote: "This guide saved me weeks of confusion!", author: "— Alex P." },
-            review2: { quote: "Literally a step-by-step roadmap. Worth every penny.", author: "— Sarah K." },
-            review3: { quote: "Answered questions I didn't even know I had.", author: "— Mike D." },
-            review4: { quote: "Made a complex process seem simple. Highly recommend!", author: "— Jessica L." },
-            review5: { quote: "The best resource I found for this visa, period.", author: "— Tom B." },
-            review6: { quote: "I was stuck for months, this guide unlocked everything.", author: "— Chen W." },
-            review7: { quote: "Clear, concise, and incredibly helpful. A must-have.", author: "— Fatima A." }
-        };
-
-        const VISA_GUIDE_CONFIG = {
-            'Portugal': {
-                all: true,
-                specialVisa: { name: 'D8', ratings: '6+', reviews: [REVIEW_POOL.review1, REVIEW_POOL.review2, REVIEW_POOL.review3] },
-                defaultReviews: { ratings: '4 ratings', reviews: [REVIEW_POOL.review4, REVIEW_POOL.review5, REVIEW_POOL.review1] }
-            },
-            'Thailand': {
-                all: true,
-                defaultReviews: { ratings: '5 ratings', reviews: [REVIEW_POOL.review2, REVIEW_POOL.review6, REVIEW_POOL.review7] }
-            },
-            'Georgia': {
-                all: true,
-                defaultReviews: { ratings: '3 ratings', reviews: [REVIEW_POOL.review1, REVIEW_POOL.review4, REVIEW_POOL.review5] }
-            },
-            'Spain': {
-                all: true,
-                defaultReviews: { ratings: '5 ratings', reviews: [REVIEW_POOL.review7, REVIEW_POOL.review3, REVIEW_POOL.review2] }
-            },
-            'Bulgaria': {
-                all: true,
-                defaultReviews: { ratings: '2 ratings', reviews: [REVIEW_POOL.review5, REVIEW_POOL.review6, REVIEW_POOL.review4] }
-            },
-            'Croatia': {
-                all: true,
-                excluded: ['Digital Nomad Visa'],
-                defaultReviews: { ratings: '4 ratings', reviews: [REVIEW_POOL.review1, REVIEW_POOL.review3, REVIEW_POOL.review6] }
-            }
+        const D8_GUIDE_DETAILS = {
+            isSpecial: true,
+            url: 'https://nomadvisahelp.gumroad.com/l/portugal_D8',
+            reviews: [
+                { quote: "excellent and well researched!", author: "Martin", img: 'https://via.placeholder.com/40' }, // Placeholder for picture 1
+                { quote: "The information there is beneficial and can be really helpful for people looking to apply or debating if they want to", author: "Or", img: 'https://via.placeholder.com/40' }, // Placeholder for image 2
+                { quote: "The information was super helpful and help me decide whether to apply soon!", author: "Michelle", img: 'https://via.placeholder.com/40/8b5cf6/FFFFFF?text=M' } // Avatar placeholder
+            ],
+            ratingText: '5/5 Stars (from 5 reviews)',
+            sellingPoints: [
+                "Vetted by a real community, not affiliate fluff.",
+                "Step-by-step process from A-to-Z.",
+                "30-day money-back guarantee if not pleased."
+            ],
+            price: { old: '24.97', new: '14.97' }
         };
 
         function getGuideDetails(countryName, visaName) {
-            const config = VISA_GUIDE_CONFIG[countryName];
-            if (!config) return { hasGuide: false };
-
-            let hasGuide = config.all;
-            if (config.excluded && config.excluded.some(excludedName => visaName.includes(excludedName))) {
-                hasGuide = false;
+            if (countryName === 'Portugal' && visaName.includes('D8')) {
+                return { hasGuide: true, ...D8_GUIDE_DETAILS };
             }
-            
-            if (!hasGuide) return { hasGuide: false };
-
-            if (config.specialVisa && visaName.includes(config.specialVisa.name)) {
-                return {
-                    hasGuide: true,
-                    ratings: config.specialVisa.ratings,
-                    reviews: config.specialVisa.reviews
-                };
+            if (['Spain', 'Croatia', 'Bulgaria', 'Thailand', 'Georgia'].includes(countryName)) {
+                return { hasGuide: true, isComingSoon: true };
             }
-
-            return {
-                hasGuide: true,
-                ratings: config.defaultReviews.ratings,
-                reviews: config.defaultReviews.reviews
-            };
+            return { hasGuide: false };
         }
 
         function getCountryFlagEmoji(countryName) {
@@ -251,16 +226,16 @@
             const invertedDesc = ['Very Low', 'Low', 'Moderate', 'High', 'Very High'];
             const colors = ['#22c55e', '#84cc16', '#eab308', '#f97316', '#ef4444' ];
             if (score === null || score === undefined || score < 1 || score > 5) {
-                return { description: 'N/A', color: '#64748b', percentage: 0 };
+                return { description: 'N/A', color: '#64748b' };
             }
             const color = colors[score - 1];
             let description = invertedDesc[score - 1];
-            const displayColor = (type === 'bureaucracy_level') ? color : [...colors].reverse()[score - 1];
+            const displayColor = (type === 'bureaucracy_level' || type === 'social_security_liability') ? color : [...colors].reverse()[score - 1];
 
             if (type === 'bureaucracy_level') {
                 description = `${description} Complexity`;
             }
-            return { description, color: displayColor, percentage: (score / 5) * 100 };
+            return { description, color: displayColor };
         };
         
         // --- CHILD COMPONENTS ---
@@ -287,7 +262,7 @@
 
             return (
                 <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">🌍 Your Nationality</label>
+                    <label className="block text-sm font-medium text-slate-300 mb-2">🌍 <b>Your</b> Nationality</label>
                     <div className="relative">
                         <button onClick={() => setIsOpen(!isOpen)} className="w-full p-3 bg-slate-700 border border-slate-600 rounded-lg shadow-sm text-left flex justify-between items-center" >
                             <span>{selectedNationality ? `${getCountryFlagEmoji(selectedNationality)} ${selectedNationality}` : '-- Select your country --'}</span>
@@ -331,11 +306,14 @@
             );
         };
 
-        function CookieBanner({ onAccept }) {
+        function CookieBanner({ onAccept, onLearnMore }) {
             return (
                 <div className="fixed bottom-0 left-0 right-0 bg-slate-900/80 backdrop-blur-sm p-4 border-t border-slate-700 z-50">
                     <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-                        <p className="text-sm text-slate-300">This site uses cookies for analytics to improve your experience.</p>
+                        <p className="text-sm text-slate-300">
+                            This site uses cookies for analytics to improve your experience.{" "}
+                            <button onClick={onLearnMore} className="underline hover:text-purple-300">Learn more</button>
+                        </p>
                         <button onClick={onAccept} className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg whitespace-nowrap">Accept</button>
                     </div>
                 </div>
@@ -353,7 +331,7 @@
                         <div className="mt-6 text-slate-300 text-sm space-y-4 leading-relaxed">
                             {data.imageSrc && (
                                 <div className="text-center mb-6">
-                                    <img src={data.imageSrc} alt="Project Founder Yonatan" className="mx-auto rounded-full object-cover border-4 border-purple-400" style={{objectPosition: "95% 50%", width:"38%", height:"auto"}}/>
+                                    <img src={data.imageSrc} alt="Project Founder Yonatan" className="mx-auto rounded-full object-cover border-4 border-purple-400" style={{objectPosition: "95% 50%", width:"38%", height:"auto"}} loading="lazy"/>
                                     <p className="text-xs text-slate-400 mt-2 italic">{data.imageCaption}</p>
                                 </div>
                             )}
@@ -369,40 +347,47 @@
         };
         
         const RatingBar = ({ score, type }) => {
-            const { color, percentage } = getScoreAttributes(score, type);
+            const { color } = getScoreAttributes(score, type);
             return (
-                <div title={`${score}/5`} className="w-full bg-slate-700 rounded-full h-2.5">
-                    <div className="h-2.5 rounded-full" style={{ width: `${percentage}%`, backgroundColor: color }}></div>
-                </div>
+                <div title={`${score}/5`} className="w-full rounded-full h-2.5" style={{ backgroundColor: color }}></div>
             );
         };
 
-        function GuidePopover({ countryName, isVisible, ratings, reviews }) {
-            if (!isVisible) return null;
-            return (
-                <a href="#" target="_blank" rel="noopener noreferrer" className="absolute bottom-full left-1/2 mb-2 w-72 bg-slate-900 border border-purple-500 rounded-lg shadow-2xl p-4 z-30 transition-opacity duration-200 animate-fade-in-up">
-                    <div className="text-white">
-                        <h4 className="font-bold text-lg text-purple-400">Is {countryName} Right for You?</h4>
-                        <div className="flex items-center my-2">
-                            <span className="text-yellow-400">★★★★★</span>
-                            <span className="text-xs text-slate-400 ml-2">({ratings})</span>
+        const D8GuidePopover = ({ details }) => (
+            <div className="absolute bottom-full left-1/2 mb-2 w-80 bg-slate-900 border-2 border-teal-400 rounded-lg shadow-2xl p-4 z-30 animate-fade-in-up">
+                <h4 className="font-bold text-lg text-teal-300">Considering Portugal's D8 Visa?</h4>
+                <p className="text-xs text-slate-400 mb-2">Get the definitive, community-vetted guide.</p>
+                
+                <div className="flex items-center my-2">
+                    <span className="text-yellow-400">★★★★★</span>
+                    <span className="text-xs text-slate-400 ml-2">({details.ratingText})</span>
+                </div>
+                
+                <ul className="text-sm text-slate-300 space-y-1 list-disc list-inside my-3">
+                    {details.sellingPoints.map(point => <li key={point}>{point}</li>)}
+                </ul>
+
+                <div className="border-t border-slate-700 pt-3 mt-3 space-y-2">
+                    {details.reviews.map((review, index) => (
+                         <div key={index} className="flex items-center gap-2">
+                            <img src={review.img} alt={review.author} className="w-8 h-8 rounded-full bg-slate-700" />
+                            <p className="text-xs italic text-slate-400">"{review.quote}" <span className="font-bold not-italic text-slate-300">— {review.author}</span></p>
                         </div>
-                        <ul className="text-sm text-slate-300 space-y-1 list-disc list-inside my-3">
-                            <li>1000+ Real Experiences Analyzed</li>
-                            <li>Complex Requirements Simplified</li>
-                        </ul>
-                        <div className="border-t border-slate-700 pt-2 mt-2">
-                            {reviews.map((review, index) => (
-                                <p key={index} className="text-xs italic text-slate-400 mt-1">"{review.quote}" <span className="font-bold">{review.author}</span></p>
-                            ))}
-                        </div>
-                        <div className="mt-3 text-center bg-green-500/10 border border-green-500/50 rounded p-2">
-                            <p className="text-sm font-bold text-green-400">Special Introductory Price!</p>
-                        </div>
-                    </div>
-                </a>
-            );
-        }
+                    ))}
+                </div>
+
+                <div className="mt-4 text-center bg-green-500/10 border border-green-500/50 rounded-lg p-2">
+                    <p className="text-sm font-bold text-green-400">Limited Time: <span className="line-through text-red-400/70">${details.price.old}</span> → <span className="text-xl">${details.price.new}</span></p>
+                </div>
+            </div>
+        );
+
+        const ComingSoonPopover = () => (
+            <div className="absolute bottom-full left-1/2 mb-2 w-48 bg-slate-900 border border-slate-600 rounded-lg shadow-2xl p-3 z-30 animate-fade-in-up text-center">
+                 <h4 className="font-bold text-slate-300">Guide Coming Soon!</h4>
+                 <p className="text-xs text-slate-400">In-depth guide is in the works.</p>
+            </div>
+        );
 
         function VisaCard({ country, visa, onViewDetails }) {
             const [isHovering, setIsHovering] = React.useState(false);
@@ -425,21 +410,25 @@
                             </p>
                         </div>
                     </div>
-                    <div className="mt-auto pt-4 border-t border-slate-700/50 flex items-center gap-2">
+                    <div className="mt-auto pt-4 border-t border-slate-700/50 flex items-stretch gap-2">
                         {guideDetails.hasGuide && (
-                             <div className="relative" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
-                                <div className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-3 rounded-lg cursor-pointer transition">
-                                    📚
-                                </div>
-                                <GuidePopover 
-                                    countryName={country.country_name} 
-                                    isVisible={isHovering}
-                                    ratings={guideDetails.ratings}
-                                    reviews={guideDetails.reviews}
-                                />
+                             <div className="relative flex-1" onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
+                                <a href={guideDetails.isSpecial ? guideDetails.url : '#'}
+                                   target={guideDetails.isSpecial ? "_blank" : "_self"}
+                                   rel="noopener noreferrer"
+                                   onClick={(e) => !guideDetails.isSpecial && e.preventDefault()}
+                                   className={`w-full h-full flex items-center justify-center font-semibold py-2 px-3 rounded-lg transition text-white text-sm ${
+                                     guideDetails.isSpecial
+                                     ? 'bg-teal-500 hover:bg-teal-600 shadow-md shadow-teal-500/20'
+                                     : 'bg-slate-600 cursor-not-allowed'
+                                   }`}>
+                                    {guideDetails.isSpecial ? '📚 Get the D8 Guide' : '📚 Guide'}
+                                </a>
+                                {isHovering && guideDetails.isSpecial && <D8GuidePopover details={guideDetails} />}
+                                {isHovering && guideDetails.isComingSoon && <ComingSoonPopover />}
                             </div>
                         )}
-                        <button className="w-full bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition" onClick={() => onViewDetails({ ...country, visas: [visa] })}>
+                        <button className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-lg transition" onClick={() => onViewDetails({ ...country, visas: [visa] })}>
                             View Full Details
                         </button>
                     </div>
@@ -508,16 +497,84 @@
                             </div>
                             <div className="space-y-4">
                                 <h3 className="text-xl font-semibold text-slate-100 mb-2">Attractiveness Scores</h3>
-                                <ScoreDetailItem label="💸 Tax Friendliness" score={ratings?.tax_friendliness} type="standard" explanation={formatObjectToString(tax_system)} />
+                                <ScoreDetailItem label="💸 Tax Friendliness" score={ratings?.tax_friendliness} type="tax_friendliness" explanation={formatObjectToString(tax_system)} />
                                 <ScoreDetailItem label="🤯 Bureaucracy Level" score={ratings?.bureaucracy_level} type="bureaucracy_level" explanation={formatObjectToString(bureaucracy)} />
                                 <ScoreDetailItem label="🧾 Social Security Liability" score={ratings?.social_security_liability} type="social_security_liability" explanation={formatObjectToString(social_security?.contribution_rates)} />
-                                <ScoreDetailItem label="🏥 Social Security Benefits" score={ratings?.social_security_benefits} type="standard" explanation={formatObjectToString(social_security?.benefits)} />
+                                <ScoreDetailItem label="🏥 Social Security Benefits" score={ratings?.social_security_benefits} type="social_security_benefits" explanation={formatObjectToString(social_security?.benefits)} />
                             </div>
                         </div>
                     </div>
                 </div>
             );
         };
+        
+function ConvertKitModal({ show, onClose }) {
+    if (!show) {
+        return null;
+    }
+
+    return (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50 p-4 sm:py-[10vh] modal-enter" onClick={onClose}>
+            <div className="bg-slate-800 rounded-lg shadow-2xl border border-purple-500/50 p-4 sm:p-6 relative w-full max-w-md md:max-w-lg lg:max-w-xl max-h-[90vh] overflow-y-auto custom-scrollbar modal-content-enter" onClick={e => e.stopPropagation()}>
+                <button onClick={onClose} className="absolute top-2 right-3 text-slate-400 hover:text-white text-3xl font-light z-10">&times;</button>
+                <div className="formkit-form" data-sv-form="8378924" data-uid="66362223a4" data-format="inline" data-version="5">
+                    <div data-style="image" className="flex flex-col md:flex-row">
+                        <div className="formkit-column bg-slate-900 relative flex flex-col justify-start text-center p-6 sm:p-8 md:min-h-[400px]" style={{ backgroundImage: 'url("https://embed.filekitcdn.com/e/ft8DkvccuKYS4LoHkedJCS/d1H8NRRJc6hVwY5pYWFCgx")', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
+                            <div className="formkit-background absolute inset-0 bg-black/50 z-1"></div>
+                            <div className="relative z-2">
+                                <h2 className="formkit-header text-xl sm:text-2xl font-bold text-white mb-4">Stay One Step Ahead, Anywhere on Earth 🌍</h2>
+                                <div className="formkit-subheader text-sm sm:text-base text-slate-300 opacity-80">
+                                    <p>Visa updates, expat intel, and nomad discoveries: join the waitlist!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="formkit-column p-6 sm:p-8">
+                            <ul className="formkit-alert formkit-alert-error hidden" data-element="errors" data-group="alert"></ul>
+                            <div className="seva-fields formkit-fields space-y-4 mb-4"> {/* Reverted to mb-4 as it was unrelated */}
+                                <div className="formkit-field">
+                                    <input
+                                        className="formkit-input w-full p-3 bg-slate-700 text-slate-200 border border-slate-600 rounded-md focus:outline-none focus:border-purple-400 transition"
+                                        name="email_address"
+                                        aria-label="Email Address"
+                                        placeholder="Email Address"
+                                        required
+                                        type="email"
+                                    />
+                                </div>
+                                <div className="formkit-field">
+                                    <input
+                                        className="formkit-input w-full p-3 bg-slate-700 text-slate-200 border border-slate-600 rounded-md focus:outline-none focus:border-purple-400 transition"
+                                        aria-label="Any feedback on the site? (optional)"
+                                        name="fields[feedback]"
+                                        placeholder="Any feedback on the site? (optional)"
+                                        type="text"
+                                    />
+                                </div>
+                                <button
+                                    data-element="submit"
+                                    className="formkit-submit w-full p-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-md transition flex items-center justify-center"
+                                >
+                                    <span>Keep Me in the Loop</span>
+                                </button>
+                            </div>
+                            <div className="formkit-powered-by-convertkit-container mt-4 text-center">
+                                <a
+                                    href="https://kit.com/features/forms?utm_campaign=poweredby&utm_content=form&utm_medium=referral&utm_source=dynamic"
+                                    data-element="powered-by"
+                                    className="formkit-powered-by-convertkit text-xs text-slate-400 hover:text-purple-400"
+                                    data-variant="dark"
+                                    target="_blank"
+                                    rel="nofollow"
+                                >
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
 
         function App() {
             const [selectedNationality, setSelectedNationality] = React.useState('');
@@ -530,11 +587,25 @@
             const [modalContent, setModalContent] = React.useState(null);
             const [legalModalContent, setLegalModalContent] = React.useState(null);
             const [newsModalContent, setNewsModalContent] = React.useState(null);
-            const [showBanner, setShowBanner] = React.useState(false);
+            const [showBanner, setShowBanner] = React.useState(true);
+            const [showNewsletterModal, setShowNewsletterModal] = React.useState(false);
             const [isLoading, setIsLoading] = React.useState(true);
             const [error, setError] = React.useState(null);
             
-            React.useEffect(() => { if (localStorage.getItem('ga_consent') !== 'true') setShowBanner(true); else initGoogleAnalytics(); }, []);
+            React.useEffect(() => { 
+                if (localStorage.getItem('ga_consent') === 'true') {
+                    setShowBanner(false);
+                    initGoogleAnalytics();
+                }
+            }, []);
+            
+            // Newsletter modal timer
+            React.useEffect(() => {
+                const timer = setTimeout(() => {
+                    setShowNewsletterModal(true);
+                }, 60000); // 60 seconds
+                return () => clearTimeout(timer);
+            }, []);
             
             React.useEffect(() => {
                 const fetchData = async () => {
@@ -550,7 +621,7 @@
                         setVisaData(countryData);
                     } catch (e) {
                         console.error("Failed to fetch visa data:", e);
-                        setError("Could not load visa data. Please ensure the 'data/data.json' file is available in the same directory as this HTML file.");
+                        setError("Could not load visa data.");
                     } finally {
                         setIsLoading(false);
                     }
@@ -585,11 +656,14 @@
                         return true;
                     })
                     .sort((a, b) => {
-                        const aHasGuide = getGuideDetails(a.country.country_name, a.visa.visa_name).hasGuide;
-                        const bHasGuide = getGuideDetails(b.country.country_name, b.visa.visa_name).hasGuide;
+                         const aGuide = getGuideDetails(a.country.country_name, a.visa.visa_name);
+                         const bGuide = getGuideDetails(b.country.country_name, b.visa.visa_name);
 
-                        if (aHasGuide && !bHasGuide) return -1;
-                        if (!aHasGuide && bHasGuide) return 1;
+                         if (aGuide.isSpecial && !bGuide.isSpecial) return -1;
+                         if (!aGuide.isSpecial && bGuide.isSpecial) return 1;
+                         
+                         if (aGuide.hasGuide && !bGuide.hasGuide) return -1;
+                         if (!aGuide.hasGuide && bGuide.hasGuide) return 1;
 
                         const specialOrder = ["Spain", "Portugal", "Bulgaria", "Croatia", "Argentina"];
                         const aIndex = specialOrder.indexOf(a.country.country_name);
@@ -605,15 +679,20 @@
             
             const handleConsent = () => { localStorage.setItem('ga_consent', 'true'); setShowBanner(false); if (typeof initGoogleAnalytics === 'function') initGoogleAnalytics(); };
             const legalContent = legalContentTemplate(dataLegend);
-            
+
+            const openCookiePolicy = () => {
+                setLegalModalContent(legalContent.cookiePolicy);
+            };
+
             return (
                 <div className="min-h-screen bg-gradient-to-br from-slate-900 to-slate-800 text-gray-100 font-sans p-4 sm:p-6 md:p-8">
                     <header className="text-center mb-4 max-w-4xl mx-auto">
                         <div className="flex justify-center items-center gap-4">
-                            <img src="images/logo_cln.png" alt="Site Logo" className="h-16 w-16" />
-                            <div className="text-left">
-                                <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Visa Match & Clarity Engine</h1>
-                                <p className="text-slate-400 mt-1">Instantly find your digital nomad visa options worldwide.</p>
+                            <img src="images/logo_cln.png" alt="Site Logo" className="h-20 w-20" />
+                            
+                            <div className="text-center">
+                                <h1 className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Find Your Perfect Visa in Minutes</h1>
+                                <p className="text-slate-400 mt-3 sm:text-xl">AI × (real nomad visa talks + official visa data) + smart UX = easy life</p>
                             </div>
                         </div>
                     </header>
@@ -668,7 +747,7 @@
                                     </div> 
                                     <div className="text-sm"> 
                                         <label className="flex justify-between font-medium text-slate-300 mb-1">
-                                            <span>👍 Min Tax Attractiveness</span>
+                                            <span>👍 Min Tax Friendliness</span>
                                             <span>{minTaxAttractiveness}/5</span>
                                         </label> 
                                         <input 
@@ -733,9 +812,7 @@
                             <span>|</span> 
                             <button onClick={() => setLegalModalContent(legalContent.privacy)} className="hover:text-purple-400 transition">Privacy Policy</button> 
                             <span>|</span> 
-                            <button onClick={() => setLegalModalContent(legalContent.faq)} className="hover:text-purple-400 transition">Visas FAQ</button> 
-                            <span>|</span> 
-                            <button onClick={() => setLegalModalContent(legalContent.countryFaq)} className="hover:text-purple-400 transition">Country-Specific FAQs</button> 
+                            <a href="https://www.nomadvisa.help/FAQs.html" className="hover:text-purple-400 transition">Visas FAQ</a>
                             <span>|</span> 
                             <a href="mailto:contact@nomadvisa.help" className="hover:text-purple-400 transition">Contact</a> 
                         </div> 
@@ -746,7 +823,8 @@
                     {modalContent && <DetailsModal country={modalContent} onClose={() => setModalContent(null)} />}
                     {legalModalContent && <LegalModal data={legalModalContent} onClose={() => setLegalModalContent(null)} />}
                     {newsModalContent && <LegalModal data={newsModalContent} onClose={() => setNewsModalContent(null)} />}
-                    {showBanner && <CookieBanner onAccept={handleConsent} />}
+                    {showBanner && <CookieBanner onAccept={handleConsent} onLearnMore={openCookiePolicy} />}
+                    <ConvertKitModal show={showNewsletterModal} onClose={() => setShowNewsletterModal(false)} />
                 </div>
             );
         }
@@ -756,5 +834,10 @@
         root.render(<App />);
 
     </script>
+     <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('contextmenu', e => e.preventDefault());
+    });
+  </script>
 </body>
 </html>
