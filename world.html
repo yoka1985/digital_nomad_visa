@@ -49,7 +49,8 @@
         }
     }
     </script>
-    
+        <script>document.addEventListener('contextmenu', e => e.preventDefault());    </script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6N573S8D8S"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -717,80 +718,7 @@
             margin-bottom: 1rem;
         }
 
-        /* Cookie Consent Banner */
-        .cookie-consent {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(15, 23, 42, 0.98);
-            border-top: 2px solid #38bdf8;
-            padding: 1rem;
-            z-index: 5000;
-            backdrop-filter: blur(12px);
-            display: none;
-        }
 
-        .cookie-consent.show {
-            display: block;
-        }
-
-        .cookie-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 1rem;
-            justify-content: space-between;
-        }
-
-        .cookie-text {
-            flex: 1;
-            min-width: 250px;
-            font-size: 0.9rem;
-            color: #e2e8f0;
-            line-height: 1.4;
-        }
-
-        .cookie-buttons {
-            display: flex;
-            gap: 0.8rem;
-            flex-wrap: wrap;
-        }
-
-        .cookie-button {
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            border: 2px solid;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
-            background: none;
-            font-family: inherit;
-        }
-
-        .cookie-accept {
-            background: #059669;
-            border-color: #059669;
-            color: white;
-        }
-
-        .cookie-accept:hover {
-            background: #047857;
-            transform: translateY(-2px);
-        }
-
-        .cookie-decline {
-            border-color: #64748b;
-            color: #e2e8f0;
-        }
-
-        .cookie-decline:hover {
-            border-color: #38bdf8;
-            color: #38bdf8;
-        }
         
         /* Mobile Responsive Design */
         @media (max-width: 768px) {
@@ -916,15 +844,7 @@
                 padding-bottom: 3rem; /* Space for footer */
             }
 
-            .cookie-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 0.8rem;
-            }
 
-            .cookie-buttons {
-                justify-content: center;
-            }
         }
         
         @media (max-width: 480px) {
@@ -1022,19 +942,6 @@
         <div style="font-size: 1rem; margin-top: 0.5rem; opacity: 0.8;">Please wait while we prepare your visa explorer</div>
     </div>
     
-    <!-- Cookie Consent Banner -->
-    <div class="cookie-consent" id="cookieConsent">
-        <div class="cookie-content">
-            <div class="cookie-text">
-                <strong>🍪 We use cookies to improve your experience</strong><br>
-                We use Google Analytics to understand how visitors interact with our site. This helps us improve the tool for everyone. No personal data is collected.
-            </div>
-            <div class="cookie-buttons">
-                <button class="cookie-button cookie-accept" onclick="acceptCookies()">Accept Analytics</button>
-                <button class="cookie-button cookie-decline" onclick="declineCookies()">Essential Only</button>
-            </div>
-        </div>
-    </div>
     
     <div class="main-container">
         <div class="content-area">
@@ -1837,5 +1744,10 @@
             showError(`Could not load map data. ${error.message || 'Please check your internet connection and try again.'}`);
         });
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('contextmenu', e => e.preventDefault());
+    });
+  </script>
 </body>
 </html>
