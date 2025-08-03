@@ -986,29 +986,7 @@
     <script src="https://unpkg.com/topojson@3.0.2/dist/topojson.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script>
-        // Cookie consent functionality
-        function checkCookieConsent() {
-            const consent = localStorage.getItem('cookieConsent');
-            if (!consent) {
-                document.getElementById('cookieConsent').classList.add('show');
-            } else if (consent === 'accepted') {
-                initGoogleAnalytics();
-            }
-        }
-
-        function acceptCookies() {
-            localStorage.setItem('cookieConsent', 'accepted');
-            document.getElementById('cookieConsent').classList.remove('show');
-            initGoogleAnalytics();
-        }
-
-        function declineCookies() {
-            localStorage.setItem('cookieConsent', 'declined');
-            document.getElementById('cookieConsent').classList.remove('show');
-        }
-
-        // Check cookie consent on page load
-        checkCookieConsent();
+        
         
         // Legal content
         const legalContent = {
