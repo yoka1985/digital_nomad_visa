@@ -3886,7 +3886,7 @@
       "cost_of_living": 3,
       "bureaucracy_level": 4,
       "social_security_benefits": 4,
-      "social_security_liability": 1,
+      "social_security_liability": 4,
       "The Time Zone Tether": {
         "score": 5,
         "explanation": "CET is perfect for working with Europe. The late-evening culture also makes overlapping with US East Coast hours easier."
@@ -5693,29 +5693,29 @@
         "remarks": "💰 For high-income professionals and investors. Requires personal income of at least $80k/year or significant investment. A premium option for those seeking long-term stability and tax benefits. The application process is complex."
       },
       {
-        "visa_name": "Destination Thailand Visa (DTV)",
-        "is_active": true,
-        "verified_status": "Verified",
-        "family_inclusion": "Yes",
-        "visa_length": "5 years validity, 180-day stay per entry, extendable once for another 180 days.",
-        "visa_length_months": 12,
-        "eligible_citizens": "All nationalities",
-        "eligible_citizens_cluster": "All Nationalities",
-        "bonuses_incentives": "No work permit required for remote work.",
-        "link_source": "https://www.thaievisa.go.th/",
-        "issued_date": "2024-06-01",
-        "apply_form_link": "https://www.thaievisa.go.th/",
-        "remote_application_bin": true,
-        "visa_cost_usd": 270,
-        "income_requirement_usd_month": null,
-        "cost_of_living": {
-          "accommodation": "~$300-900/month",
-          "food": "~$150-400/month",
-          "transportation": "~$30-80/month",
-          "overall_index": "Low to medium, 40-60% of Western costs"
-        },
-        "remarks": "🎉 Thailand's newest visa for nomads! Allows a 180-day stay, extendable once within the country for another 180 days. Requires proof of ~THB 500,000 (~$13,500) in savings. Much more accessible than the LTR."
-      }
+         "visa_name": "Destination Thailand Visa (DTV)",
+         "is_active": true,
+         "verified_status": "Verified",
+         "family_inclusion": "Yes",
+         "visa_length": "5 years validity, 180-day stay per entry, extendable once for another 180 days.",
+         "visa_length_months": 60,
+         "eligible_citizens": "All nationalities",
+         "eligible_citizens_cluster": "All Nationalities",
+         "bonuses_incentives": "No work permit required for remote work.",
+         "link_source": "https://www.thaievisa.go.th/",
+         "issued_date": "2024-06-01",
+         "apply_form_link": "https://www.thaievisa.go.th/",
+         "remote_application_bin": true,
+         "visa_cost_usd": 270,
+         "income_requirement_usd_month": null,
+         "cost_of_living": {
+           "accommodation": "~$300-900/month",
+           "food": "~$150-400/month",
+           "transportation": "~$30-80/month",
+           "overall_index": "Low to medium, 40-60% of Western costs"
+         },
+         "remarks": "🎉 Thailand's newest visa for nomads! This is a multiple-entry visa valid for 5 years, allowing a 180-day stay per entry. Each entry can be extended once in-country for an additional 180 days. Requires proof of at least THB 500,000 (approx. $14,000 USD) in savings. Much more accessible than the LTR. Note: The first 90-day report must be done in-person, but subsequent reports can be completed online. Leaving and re-entering the country for a new 180-day stay is often considered easier than the in-country extension process. Some users report difficulty opening local bank accounts."
+     }
     ],
     "ratings": {
       "tax_friendliness": 3,
