@@ -177,27 +177,14 @@
         // --- UTILITY & GUIDE FUNCTIONS ---
 
         const D8_GUIDE_DETAILS = {
-            isSpecial: true,
-            url: 'https://nomadvisahelp.gumroad.com/l/portugal_D8',
-            reviews: [
-                { quote: "excellent and well researched!", author: "Martin", img: 'https://via.placeholder.com/40' }, // Placeholder for picture 1
-                { quote: "The information there is beneficial and can be really helpful for people looking to apply or debating if they want to", author: "Or", img: 'https://via.placeholder.com/40' }, // Placeholder for image 2
-                { quote: "The information was super helpful and help me decide whether to apply soon!", author: "Michelle", img: 'https://via.placeholder.com/40/8b5cf6/FFFFFF?text=M' } // Avatar placeholder
-            ],
-            ratingText: '5/5 Stars (from 5 reviews)',
-            sellingPoints: [
-                "Vetted by a real community, not affiliate fluff.",
-                "Step-by-step process from A-to-Z.",
-                "30-day money-back guarantee if not pleased."
-            ],
-            price: { old: '24.97', new: '14.97' }
+           
         };
 
         function getGuideDetails(countryName, visaName) {
-            if (countryName === 'Portugal' && visaName.includes('D8')) {
+            if (countryName === 'Portugal2' && visaName.includes('D8')) {
                 return { hasGuide: true, ...D8_GUIDE_DETAILS };
             }
-            if (['Spain', 'Croatia', 'Bulgaria', 'Thailand', 'Georgia'].includes(countryName)) {
+            if (['Spain', 'Croatia', 'Bulgaria', 'Thailand', 'Georgia','Portugal'].includes(countryName)) {
                 return { hasGuide: true, isComingSoon: true };
             }
             return { hasGuide: false };
@@ -345,7 +332,7 @@
                 </div>
             );
         };
-        
+
         const RatingBar = ({ score, type }) => {
             const { color } = getScoreAttributes(score, type);
             return (
