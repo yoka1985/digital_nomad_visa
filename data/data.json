@@ -2573,27 +2573,32 @@
     "continent": "Asia",
     "visas": [
       {
-        "visa_name": "Long Term Residence Visa (LTR)",
-        "is_active": true,
-        "verified_status": "Alternative Pathway",
-        "family_inclusion": "Yes",
-        "visa_length": "10 years",
-        "visa_length_months": 120,
-        "eligible_citizens": "All nationalities",
-        "eligible_citizens_cluster": "All Nationalities",
-        "bonuses_incentives": "Reduced 17% tax for 'Highly Skilled Professionals'.",
-        "link_source": "https://ltr.boi.go.th/",
-        "issued_date": "2022-09-01",
-        "apply_form_link": "https://ltr.boi.go.th/",
-        "remote_application_bin": true,
-        "visa_cost_usd": 1360,
-        "income_requirement_usd_month": 6667,
-        "cost_of_living": {
-          "accommodation": "~$300-900/month",
-          "food": "~$150-400/month",
-          "transportation": "~$30-80/month",
-          "overall_index": "Low to medium, 40-60% of Western costs"
-        },
+  "visa_name": "Destination Thailand Visa (DTV)",
+  "is_active": true,
+  "verified_status": "Active",
+  "family_inclusion": "Yes",
+  "visa_length": "5 years",
+  "visa_length_months": 60,
+  "eligible_citizens": "All nationalities",
+  "eligible_citizens_cluster": "All Nationalities",
+  "bonuses_incentives": "Multiple entry, 180-day stays, extendable once per entry for additional 180 days",
+  "link_source": "https://www.mfa.go.th/en/page/128025",
+  "issued_date": "2024-06-01",
+  "apply_form_link": "https://www.mfa.go.th/en/page/128025",
+  "remote_application_bin": true,
+  "visa_cost_usd": 350,
+  "income_requirement_usd_month": 0,
+  "banking_access": "Banks no longer accept DTV for account opening",
+  "reporting_requirements": "First 90-day report in-person, subsequent reports can be done online",
+  "extension_process": "One 180-day extension per entry in-country, or exit/re-enter for fresh 180-day stamp (easier option)",
+  "financial_requirement": "500,000 THB minimum (~$15,500 USD) in savings",
+  "cost_of_living": {
+    "accommodation": "~$300-900/month",
+    "food": "~$150-400/month", 
+    "transportation": "~$30-80/month",
+    "overall_index": "Low to medium, 40-60% of Western costs"
+  
+},
         "remarks": "💰 For high-income professionals and investors. Requires personal income of at least $80k/year or significant investment. A premium option for those seeking long-term stability and tax benefits. The application process is complex."
       },
       {
